@@ -13,6 +13,7 @@
 		7CD6834D24D8532E0091ED52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CD6834B24D8532E0091ED52 /* Main.storyboard */; };
 		7CD6834F24D853330091ED52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CD6834E24D853330091ED52 /* Assets.xcassets */; };
 		7CD6835224D853330091ED52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CD6835024D853330091ED52 /* LaunchScreen.storyboard */; };
+		7CD6836024D96A810091ED52 /* SCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6835F24D96A810091ED52 /* SCClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		7CD6834E24D853330091ED52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CD6835124D853330091ED52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CD6835324D853330091ED52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CD6835F24D96A810091ED52 /* SCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +89,17 @@
 		7CD6835B24D86A8D0091ED52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7CD6835C24D96A150091ED52 /* SC Client */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		7CD6835C24D96A150091ED52 /* SC Client */ = {
+			isa = PBXGroup;
+			children = (
+				7CD6835F24D96A810091ED52 /* SCClient.swift */,
+			);
+			path = "SC Client";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +175,7 @@
 			files = (
 				7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */,
 				7CD6834624D8532E0091ED52 /* AppDelegate.swift in Sources */,
+				7CD6836024D96A810091ED52 /* SCClient.swift in Sources */,
 				7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
