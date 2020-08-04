@@ -12,7 +12,6 @@ class LoginVC: UIViewController {
 
     //MARK: - PROPERTIES
     let pickerArray = [SCClient.Servers.europe.rawValue, SCClient.Servers.america.rawValue, SCClient.Servers.asia.rawValue]
-    var selectedServer = SCClient.Servers.europe.rawValue
     
     //MARK: - OUTLETS
     
@@ -29,6 +28,7 @@ class LoginVC: UIViewController {
 
     //MARK: - LOGIN
     @IBAction func loginTapped(_ sender: Any) {
+        print(SCClient.urlComponents(path: .account))
     }
     
 }
@@ -48,7 +48,7 @@ extension LoginVC: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedServer = pickerArray[row]
+        SCClient.selectedServer = pickerArray[row]
     }
 }
 

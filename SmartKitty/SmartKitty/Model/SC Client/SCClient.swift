@@ -10,6 +10,8 @@ import Foundation
 
 class SCClient {
     
+    static var selectedServer = Servers.europe.rawValue
+    
     struct Auth {
         static var accountId: String = ""
         static var apiKey: String = ""
@@ -22,10 +24,23 @@ class SCClient {
     }
     
     enum Servers: String {
-        case europe = "smartcat.ai/"
-        case america = "us.smartcat.ai/"
-        case asia = "ea.smartcat.ai/"
+        case europe = "smartcat.ai"
+        case america = "us.smartcat.ai"
+        case asia = "ea.smartcat.ai"
     }
     
+    enum Path: String {
+        case account = "/api/integration/v1/account"
+        case projectsList = "/api/integration/v1/project/list"
+    }
+    
+    class func urlComponents(path: Path) -> URL {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = selectedServer
+        components.path = path.rawValue
+        let url = components.url
+        return url!
+    }
     
 }
