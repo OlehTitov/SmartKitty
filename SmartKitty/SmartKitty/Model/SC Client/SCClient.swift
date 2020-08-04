@@ -20,4 +20,12 @@ class SCClient {
             return base64LoginString
         }
     }
+    
+    enum Servers: String {
+        case europe = "smartcat.ai/"
+        case america = "us.smartcat.ai/"
+        case asia = "ea.smartcat.ai/"
+    }
+    
+    
 }
