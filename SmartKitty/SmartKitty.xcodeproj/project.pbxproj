@@ -17,6 +17,7 @@
 		7CD6836324D9CB090091ED52 /* AccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6836224D9CB090091ED52 /* AccountResponse.swift */; };
 		7CD6836624D9D1200091ED52 /* DismissKeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6836524D9D1200091ED52 /* DismissKeyboardDelegate.swift */; };
 		7CD6836824DA63860091ED52 /* ProjectsListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6836724DA63860091ED52 /* ProjectsListResponse.swift */; };
+		7CD6836B24DAA9CE0091ED52 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6836A24DAA9CE0091ED52 /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		7CD6836224D9CB090091ED52 /* AccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountResponse.swift; sourceTree = "<group>"; };
 		7CD6836524D9D1200091ED52 /* DismissKeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardDelegate.swift; sourceTree = "<group>"; };
 		7CD6836724DA63860091ED52 /* ProjectsListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsListResponse.swift; sourceTree = "<group>"; };
+		7CD6836A24DAA9CE0091ED52 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		7CD6835B24D86A8D0091ED52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7CD6836924DAA9AD0091ED52 /* Core Data */,
 				7CD6836124D9CAE70091ED52 /* SC Responses */,
 				7CD6835C24D96A150091ED52 /* SC Client */,
 			);
@@ -125,6 +128,14 @@
 				7CD6836524D9D1200091ED52 /* DismissKeyboardDelegate.swift */,
 			);
 			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		7CD6836924DAA9AD0091ED52 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				7CD6836A24DAA9CE0091ED52 /* DataController.swift */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +214,7 @@
 				7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */,
 				7CD6834624D8532E0091ED52 /* AppDelegate.swift in Sources */,
 				7CD6836324D9CB090091ED52 /* AccountResponse.swift in Sources */,
+				7CD6836B24DAA9CE0091ED52 /* DataController.swift in Sources */,
 				7CD6836024D96A810091ED52 /* SCClient.swift in Sources */,
 				7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */,
 			);
