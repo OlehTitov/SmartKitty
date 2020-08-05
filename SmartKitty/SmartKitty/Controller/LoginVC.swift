@@ -26,6 +26,7 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         setupDelegates()
         setupFetchedResultsController()
     
@@ -58,6 +59,7 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     }
     
     func handleGetAccountInfo(companyName: String, error: Error?) {
+        
         print(companyName)
         SCClient.getProjectsList(completion: handleGetProjectsList(projects:error:))
     }
@@ -67,6 +69,7 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         for project in projects {
             createSkProject(prj: project)
         }
+        goToAllProjectsVC()
     }
     
     func createSkProject(prj: Project) {
@@ -76,6 +79,11 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         newProject.deadline = prj.deadline
         try? DataController.shared.viewContext.save()
         setupFetchedResultsController()
+    }
+    
+    func goToAllProjectsVC() {
+        let allProjectsVC = self.storyboard?.instantiateViewController(identifier: "AllProjectsVC") as! AllProjectsVC
+        self.navigationController?.pushViewController(allProjectsVC, animated: true)
     }
     
     //MARK: - SETUP FRC
