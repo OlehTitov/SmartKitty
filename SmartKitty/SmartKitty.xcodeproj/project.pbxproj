@@ -18,7 +18,7 @@
 		7CD6836624D9D1200091ED52 /* DismissKeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6836524D9D1200091ED52 /* DismissKeyboardDelegate.swift */; };
 		7CD6836824DA63860091ED52 /* ProjectsListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6836724DA63860091ED52 /* ProjectsListResponse.swift */; };
 		7CD6836B24DAA9CE0091ED52 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6836A24DAA9CE0091ED52 /* DataController.swift */; };
-		7CD6836E24DAC6490091ED52 /* smartKitty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6836C24DAC6490091ED52 /* smartKitty.xcdatamodeld */; };
+		7CD6836E24DAC6490091ED52 /* SmartKitty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6836C24DAC6490091ED52 /* SmartKitty.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,7 @@
 		7CD6836524D9D1200091ED52 /* DismissKeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardDelegate.swift; sourceTree = "<group>"; };
 		7CD6836724DA63860091ED52 /* ProjectsListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsListResponse.swift; sourceTree = "<group>"; };
 		7CD6836A24DAA9CE0091ED52 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		7CD6836D24DAC6490091ED52 /* smartKitty.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = smartKitty.xcdatamodel; sourceTree = "<group>"; };
+		7CD6836D24DAC6490091ED52 /* SmartKitty.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmartKitty.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				7CD6836A24DAA9CE0091ED52 /* DataController.swift */,
-				7CD6836C24DAC6490091ED52 /* smartKitty.xcdatamodeld */,
+				7CD6836C24DAC6490091ED52 /* SmartKitty.xcdatamodeld */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -213,7 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CD6836624D9D1200091ED52 /* DismissKeyboardDelegate.swift in Sources */,
-				7CD6836E24DAC6490091ED52 /* smartKitty.xcdatamodeld in Sources */,
+				7CD6836E24DAC6490091ED52 /* SmartKitty.xcdatamodeld in Sources */,
 				7CD6836824DA63860091ED52 /* ProjectsListResponse.swift in Sources */,
 				7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */,
 				7CD6834624D8532E0091ED52 /* AppDelegate.swift in Sources */,
@@ -422,13 +422,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		7CD6836C24DAC6490091ED52 /* smartKitty.xcdatamodeld */ = {
+		7CD6836C24DAC6490091ED52 /* SmartKitty.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				7CD6836D24DAC6490091ED52 /* smartKitty.xcdatamodel */,
+				7CD6836D24DAC6490091ED52 /* SmartKitty.xcdatamodel */,
 			);
-			currentVersion = 7CD6836D24DAC6490091ED52 /* smartKitty.xcdatamodel */;
-			path = smartKitty.xcdatamodeld;
+			currentVersion = 7CD6836D24DAC6490091ED52 /* SmartKitty.xcdatamodel */;
+			path = SmartKitty.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

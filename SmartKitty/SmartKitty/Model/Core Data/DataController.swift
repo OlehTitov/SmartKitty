@@ -11,7 +11,7 @@ import CoreData
 
 class DataController {
     
-    static let shared = DataController(modelName: "smartKitty")
+    static let shared = DataController(modelName: "SmartKitty")
     
     let persistentContainer: NSPersistentContainer
     

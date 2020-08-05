@@ -5,12 +5,14 @@
 //  Created by Oleh Titov on 03.08.2020.
 //  Copyright © 2020 Oleh Titov. All rights reserved.
 //
-
+import Foundation
 import UIKit
+import CoreData
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
 
     //MARK: - PROPERTIES
+    var fetchedResultsController: NSFetchedResultsController<SkProject>!
     let dismissKeyboard = DismissKeyboardDelegate()
     let pickerArray = [SCClient.Servers.europe.rawValue, SCClient.Servers.america.rawValue, SCClient.Servers.asia.rawValue]
     
@@ -25,7 +27,20 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegates()
+        setupFetchedResultsController()
     
+    }
+    
+    //MARK: - VIEW WILL APPEAR
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupFetchedResultsController()
+    }
+    
+    //MARK: - VIEW DID DISAPPEAR
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        fetchedResultsController = nil
     }
     
     //MARK: - SETUP DELEGATES
@@ -49,7 +64,34 @@ class LoginVC: UIViewController {
     
     func handleGetProjectsList(projects: [Project], error: Error?) {
         print(projects.count)
+        for project in projects {
+            createSkProject(prj: project)
+        }
     }
+    
+    func createSkProject(prj: Project) {
+        let newProject = SkProject(context: DataController.shared.viewContext)
+        newProject.id = prj.id
+        newProject.name = prj.name
+        newProject.deadline = prj.deadline
+        try? DataController.shared.viewContext.save()
+        setupFetchedResultsController()
+    }
+    
+    //MARK: - SETUP FRC
+    
+    fileprivate func setupFetchedResultsController() {
+        let fetchRequest: NSFetchRequest<SkProject> = SkProject.fetchRequest()
+        fetchRequest.sortDescriptors = []
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("The fetch could not be performed: \(error.localizedDescription)")
+        }
+    }
+ 
     
 }
 

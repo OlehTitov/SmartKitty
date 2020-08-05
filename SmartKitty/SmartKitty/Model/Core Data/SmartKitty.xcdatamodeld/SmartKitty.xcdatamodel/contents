@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="CDProject" representedClassName="CDProject" syncable="YES" codeGenerationType="class">
+    <entity name="SkProject" representedClassName="SkProject" syncable="YES" codeGenerationType="class">
         <attribute name="clientId" optional="YES" attributeType="String"/>
         <attribute name="createdByUserEmail" optional="YES" attributeType="String"/>
         <attribute name="createdByUserId" optional="YES" attributeType="String"/>
@@ -10,17 +10,14 @@
         <attribute name="domainId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="externalTag" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
-        <attribute name="managers" optional="YES" attributeType="Transformable" customClassName="[String]"/>
         <attribute name="modificationDate" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="number" optional="YES" attributeType="String"/>
         <attribute name="sourceLanguage" optional="YES" attributeType="String"/>
-        <attribute name="specializations" optional="YES" attributeType="Transformable" customClassName="[String]"/>
         <attribute name="status" optional="YES" attributeType="String"/>
         <attribute name="statusModificationDate" optional="YES" attributeType="String"/>
-        <attribute name="targetLanguages" optional="YES" attributeType="Transformable" customClassName="[String]"/>
     </entity>
     <elements>
-        <element name="CDProject" positionX="-45" positionY="0" width="128" height="313"/>
+        <element name="SkProject" positionX="-45" positionY="0" width="128" height="268"/>
     </elements>
 </model>
