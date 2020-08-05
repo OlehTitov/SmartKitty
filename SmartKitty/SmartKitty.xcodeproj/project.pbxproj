@@ -16,6 +16,7 @@
 		7CD6836024D96A810091ED52 /* SCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6835F24D96A810091ED52 /* SCClient.swift */; };
 		7CD6836324D9CB090091ED52 /* AccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6836224D9CB090091ED52 /* AccountResponse.swift */; };
 		7CD6836624D9D1200091ED52 /* DismissKeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6836524D9D1200091ED52 /* DismissKeyboardDelegate.swift */; };
+		7CD6836824DA63860091ED52 /* ProjectsListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6836724DA63860091ED52 /* ProjectsListResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		7CD6835F24D96A810091ED52 /* SCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCClient.swift; sourceTree = "<group>"; };
 		7CD6836224D9CB090091ED52 /* AccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountResponse.swift; sourceTree = "<group>"; };
 		7CD6836524D9D1200091ED52 /* DismissKeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardDelegate.swift; sourceTree = "<group>"; };
+		7CD6836724DA63860091ED52 /* ProjectsListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsListResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				7CD6836224D9CB090091ED52 /* AccountResponse.swift */,
+				7CD6836724DA63860091ED52 /* ProjectsListResponse.swift */,
 			);
 			path = "SC Responses";
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CD6836624D9D1200091ED52 /* DismissKeyboardDelegate.swift in Sources */,
+				7CD6836824DA63860091ED52 /* ProjectsListResponse.swift in Sources */,
 				7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */,
 				7CD6834624D8532E0091ED52 /* AppDelegate.swift in Sources */,
 				7CD6836324D9CB090091ED52 /* AccountResponse.swift in Sources */,

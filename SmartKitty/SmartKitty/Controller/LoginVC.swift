@@ -25,7 +25,7 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegates()
-        
+    
     }
     
     //MARK: - SETUP DELEGATES
@@ -44,6 +44,11 @@ class LoginVC: UIViewController {
     
     func handleGetAccountInfo(companyName: String, error: Error?) {
         print(companyName)
+        SCClient.getProjectsList(completion: handleGetProjectsList(projects:error:))
+    }
+    
+    func handleGetProjectsList(projects: [Project], error: Error?) {
+        print(projects.count)
     }
     
 }

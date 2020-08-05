@@ -53,6 +53,17 @@ class SCClient {
         }
     }
     
+    class func getProjectsList(completion: @escaping ([Project], Error?) -> Void) {
+        taskForGETRequest(url: urlComponents(path: .projectsList), responseType: [Project].self) { (response, error) in
+            if let response = response {
+                completion(response, nil)
+            } else {
+                print("Can't decode the projects")
+                completion([], error)
+            }
+        }
+    }
+    
     class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -65,9 +76,9 @@ class SCClient {
                 }
                 return
             }
-            let str = String(decoding: data, as: UTF8.self)
-            print(str)
-            print(request.allHTTPHeaderFields!)
+            //let str = String(decoding: data, as: UTF8.self)
+            //print(str)
+            //print(request.allHTTPHeaderFields!)
             let decoder = JSONDecoder()
             do {
                 let responseObject = try decoder.decode(ResponseType.self, from: data)
@@ -76,6 +87,7 @@ class SCClient {
                 }
             } catch {
                 DispatchQueue.main.async {
+                    print(error)
                     completion(nil, error)
                 }
             }
