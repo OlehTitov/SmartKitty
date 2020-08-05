@@ -14,6 +14,8 @@
 		7CD6834F24D853330091ED52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CD6834E24D853330091ED52 /* Assets.xcassets */; };
 		7CD6835224D853330091ED52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CD6835024D853330091ED52 /* LaunchScreen.storyboard */; };
 		7CD6836024D96A810091ED52 /* SCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6835F24D96A810091ED52 /* SCClient.swift */; };
+		7CD6836324D9CB090091ED52 /* AccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6836224D9CB090091ED52 /* AccountResponse.swift */; };
+		7CD6836624D9D1200091ED52 /* DismissKeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6836524D9D1200091ED52 /* DismissKeyboardDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		7CD6835124D853330091ED52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CD6835324D853330091ED52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CD6835F24D96A810091ED52 /* SCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCClient.swift; sourceTree = "<group>"; };
+		7CD6836224D9CB090091ED52 /* AccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountResponse.swift; sourceTree = "<group>"; };
+		7CD6836524D9D1200091ED52 /* DismissKeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 		7CD6835A24D86A800091ED52 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7CD6836424D9D0FB0091ED52 /* Keyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -89,6 +94,7 @@
 		7CD6835B24D86A8D0091ED52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7CD6836124D9CAE70091ED52 /* SC Responses */,
 				7CD6835C24D96A150091ED52 /* SC Client */,
 			);
 			path = Model;
@@ -100,6 +106,22 @@
 				7CD6835F24D96A810091ED52 /* SCClient.swift */,
 			);
 			path = "SC Client";
+			sourceTree = "<group>";
+		};
+		7CD6836124D9CAE70091ED52 /* SC Responses */ = {
+			isa = PBXGroup;
+			children = (
+				7CD6836224D9CB090091ED52 /* AccountResponse.swift */,
+			);
+			path = "SC Responses";
+			sourceTree = "<group>";
+		};
+		7CD6836424D9D0FB0091ED52 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				7CD6836524D9D1200091ED52 /* DismissKeyboardDelegate.swift */,
+			);
+			path = Keyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,8 +195,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CD6836624D9D1200091ED52 /* DismissKeyboardDelegate.swift in Sources */,
 				7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */,
 				7CD6834624D8532E0091ED52 /* AppDelegate.swift in Sources */,
+				7CD6836324D9CB090091ED52 /* AccountResponse.swift in Sources */,
 				7CD6836024D96A810091ED52 /* SCClient.swift in Sources */,
 				7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */,
 			);

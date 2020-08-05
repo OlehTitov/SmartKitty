@@ -11,6 +11,7 @@ import UIKit
 class LoginVC: UIViewController {
 
     //MARK: - PROPERTIES
+    let dismissKeyboard = DismissKeyboardDelegate()
     let pickerArray = [SCClient.Servers.europe.rawValue, SCClient.Servers.america.rawValue, SCClient.Servers.asia.rawValue]
     
     //MARK: - OUTLETS
@@ -23,16 +24,31 @@ class LoginVC: UIViewController {
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupDelegates()
+        
+    }
+    
+    //MARK: - SETUP DELEGATES
+    func setupDelegates() {
         serverPickerView.delegate = self
+        apiKeyTextfield.delegate = dismissKeyboard
+        accountIDTextfield.delegate = dismissKeyboard
     }
 
     //MARK: - LOGIN
     @IBAction func loginTapped(_ sender: Any) {
-        print(SCClient.urlComponents(path: .account))
+        SCClient.Auth.accountId = accountIDTextfield.text!
+        SCClient.Auth.apiKey = apiKeyTextfield.text!
+        SCClient.getAccountInfo(completion: handleGetAccountInfo(companyName:error:))
+    }
+    
+    func handleGetAccountInfo(companyName: String, error: Error?) {
+        print(companyName)
     }
     
 }
 
+//MARK: - EXTENSION: PICKER VIEW DELEGATE
 extension LoginVC: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

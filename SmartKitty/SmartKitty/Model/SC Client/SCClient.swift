@@ -30,7 +30,7 @@ class SCClient {
     }
     
     enum Path: String {
-        case account = "/api/integration/v1/account"
+        case account = "/api/integration/v1/account/"
         case projectsList = "/api/integration/v1/project/list"
     }
     
@@ -43,11 +43,21 @@ class SCClient {
         return url!
     }
     
+    class func getAccountInfo(completion: @escaping (String, Error?) -> Void) {
+        taskForGETRequest(url: urlComponents(path: .account), responseType: AccountResponse.self) { (response, error) in
+            if let response = response {
+                completion(response.name, nil)
+            } else {
+                completion("", error)
+            }
+        }
+    }
+    
     class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Basic \(Auth.authKey)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Basic \(Auth.authKey)", forHTTPHeaderField: "Authorization")
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 DispatchQueue.main.async {
@@ -55,6 +65,9 @@ class SCClient {
                 }
                 return
             }
+            let str = String(decoding: data, as: UTF8.self)
+            print(str)
+            print(request.allHTTPHeaderFields!)
             let decoder = JSONDecoder()
             do {
                 let responseObject = try decoder.decode(ResponseType.self, from: data)
