@@ -20,10 +20,12 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate {
     var numberOfStarredProjects = 0
     var headerTiles: [HomeHeaderTile]!
     
-    
+    //MARK: - OUTLETS
     @IBOutlet weak var companyName: UILabel!
     
+    @IBOutlet weak var tilesCollectionView: UICollectionView!
     
+    //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
         companyName.text = SCClient.companyName

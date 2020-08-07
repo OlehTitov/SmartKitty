@@ -24,6 +24,7 @@
 		7CD6837524DC3B710091ED52 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837424DC3B710091ED52 /* HomeVC.swift */; };
 		7CD6837724DCF91B0091ED52 /* HomeHeaderElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837624DCF91B0091ED52 /* HomeHeaderElements.swift */; };
 		7CD6837A24DD34BB0091ED52 /* HomeHeaderTileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837924DD34BB0091ED52 /* HomeHeaderTileModel.swift */; };
+		7CD6837C24DD41230091ED52 /* TilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837B24DD41230091ED52 /* TilesCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		7CD6837424DC3B710091ED52 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		7CD6837624DCF91B0091ED52 /* HomeHeaderElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderElements.swift; sourceTree = "<group>"; };
 		7CD6837924DD34BB0091ED52 /* HomeHeaderTileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderTileModel.swift; sourceTree = "<group>"; };
+		7CD6837B24DD41230091ED52 /* TilesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				7CD6834924D8532E0091ED52 /* LoginVC.swift */,
 				7CD6836F24DAFB670091ED52 /* AllProjectsVC.swift */,
 				7CD6837424DC3B710091ED52 /* HomeVC.swift */,
+				7CD6837B24DD41230091ED52 /* TilesCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				7CD6837524DC3B710091ED52 /* HomeVC.swift in Sources */,
 				7CD6836024D96A810091ED52 /* SCClient.swift in Sources */,
 				7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */,
+				7CD6837C24DD41230091ED52 /* TilesCell.swift in Sources */,
 				7CD6837724DCF91B0091ED52 /* HomeHeaderElements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
