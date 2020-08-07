@@ -68,9 +68,47 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     func handleGetProjectsList(projects: [Project], error: Error?) {
         print(projects.count)
         for project in projects {
-            createSkProject(prj: project)
+            if isExisting(project: project) {
+                updateSkProject(prj: project)
+                print("Updating project")
+            } else {
+                createSkProject(prj: project)
+                UserDefaults.standard.set(true, forKey: "SomeProjectsExist")
+                print("Creating project")
+            }
         }
         goToNextVC()
+    }
+    
+    func isExisting(project: Project) -> Bool {
+        var result = false
+        if UserDefaults.standard.bool(forKey: "SomeProjectsExist") {
+            if let existingProjects = fetchedResultsController.fetchedObjects {
+               for existingProject in existingProjects where project.id == existingProject.id {
+                    result = true
+                }
+            }
+        } else {
+            result = false
+        }
+        
+        return result
+    }
+    
+    func updateSkProject(prj: Project) {
+        //First, find appropriate project to update
+        var projectToUpdate: SkProject!
+        guard let existingProjects = fetchedResultsController.fetchedObjects else { return }
+        for existingProject in existingProjects where prj.id == existingProject.id {
+            projectToUpdate = existingProject
+        }
+        //Set new values that were obtained from server
+        if projectToUpdate.name != prj.name {
+            for key in projectToUpdate.entity.attributesByName.keys {
+                let value: Any? = projectToUpdate.value(forKey: key)
+                print("\(key) = \(String(describing: value))")
+            }
+        }
     }
     
     func createSkProject(prj: Project) {

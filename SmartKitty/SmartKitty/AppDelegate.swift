@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             print("This is the first launch")
             UserDefaults.standard.set(true, forKey: "HasLaunchedBefore")
+            UserDefaults.standard.set(false, forKey: "SomeProjectsExist")
             UserDefaults.standard.set(true, forKey: "ShowOnboarding")
         }
     }
