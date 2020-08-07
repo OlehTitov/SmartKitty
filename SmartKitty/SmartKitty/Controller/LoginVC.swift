@@ -59,7 +59,8 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     }
     
     func handleGetAccountInfo(companyName: String, error: Error?) {
-        
+        //TO-DO: add error handling for wrong credentials, no internet connection etc.
+        SCClient.companyName = companyName
         print(companyName)
         SCClient.getProjectsList(completion: handleGetProjectsList(projects:error:))
     }
@@ -77,6 +78,7 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         newProject.id = prj.id
         newProject.name = prj.name
         newProject.deadline = prj.deadline
+        newProject.creationDate = prj.creationDate
         try? DataController.shared.viewContext.save()
         setupFetchedResultsController()
     }

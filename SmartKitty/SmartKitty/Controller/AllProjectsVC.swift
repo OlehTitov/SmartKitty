@@ -46,9 +46,12 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "projectsCell", for: indexPath)
             let name = String(project.name ?? "")
             let deadline = String(project.deadline ?? "")
-
+            var someText = "Some day"
+            if project.isToday {
+                someText = "TODAY"
+            }
             cell.textLabel?.text = name
-            cell.detailTextLabel?.text = deadline
+            cell.detailTextLabel?.text = "\(deadline) \(someText)"
             return cell
         }
         setupSnapshot()
@@ -58,13 +61,14 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate {
         snapshot = NSDiffableDataSourceSnapshot<Int, SkProject>()
         snapshot.appendSections([0])
         snapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
-        dataSource?.apply(self.snapshot)
+        dataSource?.apply(self.snapshot, animatingDifferences: false)
     }
     
     //MARK: - SETUP FRC
     fileprivate func setupFetchedResultsController() {
         let fetchRequest: NSFetchRequest<SkProject> = SkProject.fetchRequest()
-        fetchRequest.sortDescriptors = []
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         do {

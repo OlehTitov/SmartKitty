@@ -11,6 +11,7 @@ import Foundation
 class SCClient {
     
     static var selectedServer = Servers.europe.rawValue
+    static var companyName = ""
     
     struct Auth {
         static var accountId: String = ""

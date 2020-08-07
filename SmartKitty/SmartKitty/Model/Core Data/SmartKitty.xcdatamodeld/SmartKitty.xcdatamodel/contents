@@ -6,10 +6,14 @@
         <attribute name="createdByUserId" optional="YES" attributeType="String"/>
         <attribute name="creationDate" optional="YES" attributeType="String"/>
         <attribute name="deadline" optional="YES" attributeType="String"/>
+        <attribute name="deadlineAsDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="domainId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="externalTag" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="isStarred" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isToday" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isTomorrow" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="modificationDate" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="number" optional="YES" attributeType="String"/>
@@ -18,6 +22,6 @@
         <attribute name="statusModificationDate" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="SkProject" positionX="-45" positionY="0" width="128" height="268"/>
+        <element name="SkProject" positionX="-45" positionY="0" width="128" height="328"/>
     </elements>
 </model>

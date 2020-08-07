@@ -23,6 +23,7 @@ struct Project: Codable {
     let externalTag: String?
     let specializations, managers: [String]?
     let number: String?
+    
 }
 
 // MARK: - Document
