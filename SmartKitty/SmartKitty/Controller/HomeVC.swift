@@ -59,7 +59,6 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
         let projects = fetchedResultsController.fetchedObjects
         if let projects = projects {
             for project in projects {
-                numberOfAllProjects += 1
                 if project.isToday {
                     numberOfProjectsForToday += 1
                 }
@@ -70,7 +69,7 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
                     numberOfStarredProjects += 1
                 }
             }
-            //numberOfAllProjects = projects.count
+            numberOfAllProjects = projects.count
         }
     }
     
@@ -117,8 +116,6 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
                 for: indexPath) as? TilesCell else { fatalError("Cannot create new cell") }
             cell.layer.cornerRadius = 8
             cell.tileTitle.text = tile.title
-            //cell.tileImageView.backgroundColor = tile.color
-            //cell.tileImageView.layer.cornerRadius = 15
             cell.iconContainer.backgroundColor = tile.color
             cell.iconContainer.layer.cornerRadius = 17.5
             cell.tileImageView.image = tile.image

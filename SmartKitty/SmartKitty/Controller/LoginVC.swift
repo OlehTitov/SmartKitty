@@ -70,7 +70,7 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         for project in projects {
             createSkProject(prj: project)
         }
-        goToAllProjectsVC()
+        goToNextVC()
     }
     
     func createSkProject(prj: Project) {
@@ -83,7 +83,8 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         setupFetchedResultsController()
     }
     
-    func goToAllProjectsVC() {
+    func goToNextVC() {
+        
         //let allProjectsVC = self.storyboard?.instantiateViewController(identifier: "AllProjectsVC") as! AllProjectsVC
         //self.navigationController?.pushViewController(allProjectsVC, animated: true)
         let homeVC = self.storyboard?.instantiateViewController(identifier: "HomeVC") as! HomeVC
