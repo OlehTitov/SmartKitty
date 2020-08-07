@@ -18,6 +18,8 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate {
     var numberOfProjectsForTomorrow = 0
     var numberOfAllProjects = 0
     var numberOfStarredProjects = 0
+    var headerTiles: [HomeHeaderTile]!
+    
     
     @IBOutlet weak var companyName: UILabel!
     
@@ -27,6 +29,7 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate {
         companyName.text = SCClient.companyName
         setupFetchedResultsController()
         calculateNumberOfProjects()
+        setupHeaderTiles()
     }
     
     
@@ -44,6 +47,7 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate {
         }
     }
     
+    //MARK: - CALCULATE PROJECTS COUNT
     func calculateNumberOfProjects() {
         let projects = fetchedResultsController.fetchedObjects
         if let projects = projects {
@@ -60,7 +64,38 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate {
             }
             numberOfAllProjects = projects.count
         }
-        
+    }
+    
+    //MARK: - SETUP HEADER TILES
+    func setupHeaderTiles() {
+        headerTiles = [
+        HomeHeaderTile(
+            title: "Today",
+            image: UIImage(systemName: "timer")!,
+            color: .red,
+            projectsCount: numberOfProjectsForToday,
+            link: "TodayVC"
+        ),
+        HomeHeaderTile(
+            title: "Tomorrow",
+            image: UIImage(systemName: "calendar")!,
+            color: .systemBlue,
+            projectsCount: numberOfProjectsForTomorrow, link: "TomorrowVC"
+        ),
+        HomeHeaderTile(
+            title: "Starred",
+            image: UIImage(systemName: "star.fill")!,
+            color: .yellow,
+            projectsCount: numberOfStarredProjects,
+            link: "StarredVC"
+        ),
+        HomeHeaderTile(
+            title: "All",
+            image: UIImage(systemName: "archivebox.fill")!,
+            color: .gray, projectsCount: numberOfAllProjects,
+            link: "AllProjectsVC"
+        )
+        ]
     }
     
 }
