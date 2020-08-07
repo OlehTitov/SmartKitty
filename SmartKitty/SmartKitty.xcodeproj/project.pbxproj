@@ -23,6 +23,7 @@
 		7CD6837324DB2AC00091ED52 /* SkProject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837224DB2AC00091ED52 /* SkProject+Extensions.swift */; };
 		7CD6837524DC3B710091ED52 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837424DC3B710091ED52 /* HomeVC.swift */; };
 		7CD6837724DCF91B0091ED52 /* HomeHeaderElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837624DCF91B0091ED52 /* HomeHeaderElements.swift */; };
+		7CD6837A24DD34BB0091ED52 /* HomeHeaderTileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837924DD34BB0091ED52 /* HomeHeaderTileModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		7CD6837224DB2AC00091ED52 /* SkProject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SkProject+Extensions.swift"; sourceTree = "<group>"; };
 		7CD6837424DC3B710091ED52 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		7CD6837624DCF91B0091ED52 /* HomeHeaderElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderElements.swift; sourceTree = "<group>"; };
+		7CD6837924DD34BB0091ED52 /* HomeHeaderTileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderTileModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		7CD6835B24D86A8D0091ED52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7CD6837824DD34830091ED52 /* HomeHeaderTile */,
 				7CD6837124DB2A8F0091ED52 /* Managed Objects Extensions */,
 				7CD6836924DAA9AD0091ED52 /* Core Data */,
 				7CD6836124D9CAE70091ED52 /* SC Responses */,
@@ -159,6 +162,14 @@
 				7CD6837224DB2AC00091ED52 /* SkProject+Extensions.swift */,
 			);
 			path = "Managed Objects Extensions";
+			sourceTree = "<group>";
+		};
+		7CD6837824DD34830091ED52 /* HomeHeaderTile */ = {
+			isa = PBXGroup;
+			children = (
+				7CD6837924DD34BB0091ED52 /* HomeHeaderTileModel.swift */,
+			);
+			path = HomeHeaderTile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +252,7 @@
 				7CD6837324DB2AC00091ED52 /* SkProject+Extensions.swift in Sources */,
 				7CD6836324D9CB090091ED52 /* AccountResponse.swift in Sources */,
 				7CD6836B24DAA9CE0091ED52 /* DataController.swift in Sources */,
+				7CD6837A24DD34BB0091ED52 /* HomeHeaderTileModel.swift in Sources */,
 				7CD6837524DC3B710091ED52 /* HomeVC.swift in Sources */,
 				7CD6836024D96A810091ED52 /* SCClient.swift in Sources */,
 				7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */,
