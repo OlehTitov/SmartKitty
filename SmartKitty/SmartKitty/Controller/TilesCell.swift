@@ -16,4 +16,5 @@ class TilesCell: UICollectionViewCell {
     
     @IBOutlet weak var tileImageView: UIImageView!
     
+    @IBOutlet weak var iconContainer: UIView!
 }

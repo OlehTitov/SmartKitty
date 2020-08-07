@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class HomeVC: UIViewController, NSFetchedResultsControllerDelegate {
+class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollectionViewDelegate {
     
     //MARK: - PROPERTIES
     var tilesDataSource: UICollectionViewDiffableDataSource<Int, HomeHeaderTile>! = nil
@@ -30,11 +30,13 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate {
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
+        tilesCollectionView.delegate = self
         companyName.text = SCClient.companyName
         setupFetchedResultsController()
         calculateNumberOfProjects()
         setupHeaderTiles()
         configureTilesDataSource()
+        configureTilesLayout()
     }
     
     
@@ -57,6 +59,7 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate {
         let projects = fetchedResultsController.fetchedObjects
         if let projects = projects {
             for project in projects {
+                numberOfAllProjects += 1
                 if project.isToday {
                     numberOfProjectsForToday += 1
                 }
@@ -67,7 +70,7 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate {
                     numberOfStarredProjects += 1
                 }
             }
-            numberOfAllProjects = projects.count
+            //numberOfAllProjects = projects.count
         }
     }
     
@@ -112,9 +115,14 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "TilesCellIdentifier",
                 for: indexPath) as? TilesCell else { fatalError("Cannot create new cell") }
-            
+            cell.layer.cornerRadius = 8
             cell.tileTitle.text = tile.title
+            //cell.tileImageView.backgroundColor = tile.color
+            //cell.tileImageView.layer.cornerRadius = 15
+            cell.iconContainer.backgroundColor = tile.color
+            cell.iconContainer.layer.cornerRadius = 17.5
             cell.tileImageView.image = tile.image
+            cell.tileImageView.tintColor = UIColor.white
             cell.projectsCount.text = String(tile.projectsCount)
             return cell
         }
@@ -128,4 +136,36 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate {
         tilesDataSource.apply(self.tilesSnapshot, animatingDifferences: true)
     }
     
+    //MARK: - CONFIGURE COLLECTION VIEW LAYOUT
+    func configureTilesLayout() {
+        tilesCollectionView.collectionViewLayout = generateTilesLayout()
+        //photoCollection.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    }
+    
+    func generateTilesLayout() -> UICollectionViewLayout {
+      
+      let itemSize = NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
+        heightDimension: .fractionalHeight(1.0))
+      let fullPhotoItem = NSCollectionLayoutItem(layoutSize: itemSize)
+      
+        fullPhotoItem.contentInsets = NSDirectionalEdgeInsets(
+            top: 4,
+            leading: 4,
+            bottom: 4,
+            trailing: 4)
+        
+      let groupSize = NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
+        heightDimension: .fractionalWidth(1/3))
+      let group = NSCollectionLayoutGroup.horizontal(
+        layoutSize: groupSize,
+        subitem: fullPhotoItem,
+        count: 2
+      )
+      
+      let section = NSCollectionLayoutSection(group: group)
+      let layout = UICollectionViewCompositionalLayout(section: section)
+      return layout
+    }
 }
