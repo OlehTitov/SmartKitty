@@ -13,6 +13,8 @@ import CoreData
 class HomeVC: UIViewController, NSFetchedResultsControllerDelegate {
     
     //MARK: - PROPERTIES
+    var tilesDataSource: UICollectionViewDiffableDataSource<Int, HomeHeaderTile>! = nil
+    var tilesSnapshot = NSDiffableDataSourceSnapshot<Int, HomeHeaderTile>()
     var fetchedResultsController: NSFetchedResultsController<SkProject>!
     var numberOfProjectsForToday = 0
     var numberOfProjectsForTomorrow = 0
@@ -32,6 +34,7 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate {
         setupFetchedResultsController()
         calculateNumberOfProjects()
         setupHeaderTiles()
+        configureTilesDataSource()
     }
     
     
@@ -98,6 +101,31 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate {
             link: "AllProjectsVC"
         )
         ]
+    }
+    
+    //MARK: - COLLECTION VIEW DIFFABLE DATA SOURCE
+    
+    private func configureTilesDataSource() {
+        tilesDataSource = UICollectionViewDiffableDataSource<Int, HomeHeaderTile>(collectionView: tilesCollectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, tile: HomeHeaderTile) -> UICollectionViewCell? in
+            // Create cell
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: "TilesCellIdentifier",
+                for: indexPath) as? TilesCell else { fatalError("Cannot create new cell") }
+            
+            cell.tileTitle.text = tile.title
+            cell.tileImageView.image = tile.image
+            cell.projectsCount.text = String(tile.projectsCount)
+            return cell
+        }
+        setupTilesSnapshot()
+    }
+    
+    private func setupTilesSnapshot() {
+        tilesSnapshot = NSDiffableDataSourceSnapshot<Int, HomeHeaderTile>()
+        tilesSnapshot.appendSections([0])
+        tilesSnapshot.appendItems(headerTiles)
+        tilesDataSource.apply(self.tilesSnapshot, animatingDifferences: true)
     }
     
 }

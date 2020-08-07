@@ -84,8 +84,10 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     }
     
     func goToAllProjectsVC() {
-        let allProjectsVC = self.storyboard?.instantiateViewController(identifier: "AllProjectsVC") as! AllProjectsVC
-        self.navigationController?.pushViewController(allProjectsVC, animated: true)
+        //let allProjectsVC = self.storyboard?.instantiateViewController(identifier: "AllProjectsVC") as! AllProjectsVC
+        //self.navigationController?.pushViewController(allProjectsVC, animated: true)
+        let homeVC = self.storyboard?.instantiateViewController(identifier: "HomeVC") as! HomeVC
+        self.navigationController?.pushViewController(homeVC, animated: true)
     }
     
     //MARK: - SETUP FRC
