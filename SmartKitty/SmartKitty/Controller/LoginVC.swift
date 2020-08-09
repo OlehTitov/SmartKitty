@@ -26,7 +26,7 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
+        
         setupDelegates()
         setupFetchedResultsController()
     
@@ -35,6 +35,8 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     //MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = true
         setupFetchedResultsController()
     }
     
@@ -117,6 +119,29 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         newProject.name = prj.name
         newProject.deadline = prj.deadline
         newProject.creationDate = prj.creationDate
+        //Computed property for deadlineAsDate
+        let RFC3339DateFormatter = DateFormatter()
+        RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        if let deadline = prj.deadline {
+            let date = RFC3339DateFormatter.date(from: deadline)!
+            newProject.deadlineAsDate = date
+            //Computed property for isToday
+            let calendar = NSCalendar.current
+            let isToday = calendar.isDateInToday(date)
+            newProject.isToday = isToday
+            //Computed property for isTomorrow
+            let isTomorrow = calendar.isDateInTomorrow(date)
+            newProject.isTomorrow = isTomorrow
+        }
+        
+        
+        
+        
+        
+        
+        
         try? DataController.shared.viewContext.save()
         setupFetchedResultsController()
     }

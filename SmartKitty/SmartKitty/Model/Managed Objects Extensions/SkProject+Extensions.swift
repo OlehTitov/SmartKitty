@@ -10,17 +10,29 @@ import Foundation
 import CoreData
 
 extension SkProject {
-    public override func awakeFromInsert() {
-        super.awakeFromInsert()
-        //MARK: - DEADLINE AS DATE
-        var deadlineAsDate: Date? {
-            return convertStringToDate(str: deadline)
+    
+    public override func awakeFromFetch() {
+        super.awakeFromFetch()
+        if deadlineAsDate != nil {
+            isToday = compareDateIfToday(date: deadlineAsDate!)
         }
         
+    }
+    
+    public override func awakeFromInsert() {
+        super.awakeFromInsert()
+        
+        dummyText = "Some smart text"
+        
+        //MARK: - DEADLINE AS DATE
+        //deadlineAsDate = convertStringToDate(str: deadline)
+        
+        
         //MARK: - IS TODAY
-        var isToday: Bool? {
-            return compareDateIfToday(date: deadlineAsDate!)
+        if deadlineAsDate != nil {
+            isToday = compareDateIfToday(date: deadlineAsDate!)
         }
+        
         
         //MARK: - IS TOMOROOW
         var isTomorrow: Bool? {
@@ -29,7 +41,7 @@ extension SkProject {
         
     }
     
-    private func convertStringToDate(str: String?) -> Date {
+    func convertStringToDate(str: String?) -> Date {
         let RFC3339DateFormatter = DateFormatter()
         RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
         RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"

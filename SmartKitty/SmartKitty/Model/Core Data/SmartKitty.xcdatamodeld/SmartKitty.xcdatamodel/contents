@@ -9,6 +9,7 @@
         <attribute name="deadlineAsDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="domainId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dummyText" optional="YES" attributeType="String"/>
         <attribute name="externalTag" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="isStarred" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -22,6 +23,6 @@
         <attribute name="statusModificationDate" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="SkProject" positionX="-45" positionY="0" width="128" height="328"/>
+        <element name="SkProject" positionX="-45" positionY="0" width="128" height="343"/>
     </elements>
 </model>

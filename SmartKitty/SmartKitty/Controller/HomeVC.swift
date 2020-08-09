@@ -39,6 +39,20 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
         configureTilesLayout()
     }
     
+    //MARK: - VIEW WILL APPEAR
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = true
+        setupFetchedResultsController()
+    }
+    
+    //MARK: - VIEW DID DISAPPEAR
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        fetchedResultsController = nil
+    }
+    
     
     //MARK: - SETUP FRC
     fileprivate func setupFetchedResultsController() {
@@ -81,26 +95,27 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
             image: UIImage(systemName: "timer")!,
             color: .red,
             projectsCount: numberOfProjectsForToday,
-            link: "TodayVC"
+            link: "isToday"
         ),
         HomeHeaderTile(
             title: "Tomorrow",
             image: UIImage(systemName: "calendar")!,
             color: .systemBlue,
-            projectsCount: numberOfProjectsForTomorrow, link: "TomorrowVC"
+            projectsCount: numberOfProjectsForTomorrow,
+            link: "isTomorrow"
         ),
         HomeHeaderTile(
             title: "Starred",
             image: UIImage(systemName: "star.fill")!,
             color: .yellow,
             projectsCount: numberOfStarredProjects,
-            link: "StarredVC"
+            link: "isStarred"
         ),
         HomeHeaderTile(
             title: "All",
             image: UIImage(systemName: "archivebox.fill")!,
             color: .gray, projectsCount: numberOfAllProjects,
-            link: "AllProjectsVC"
+            link: "ShowAllProjects"
         )
         ]
     }
@@ -131,6 +146,27 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
         tilesSnapshot.appendSections([0])
         tilesSnapshot.appendItems(headerTiles)
         tilesDataSource.apply(self.tilesSnapshot, animatingDifferences: true)
+    }
+    
+    //MARK: - COLLECTION VIEW DELEGATE
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedTile = headerTiles[(indexPath as NSIndexPath).row]
+        let allProjectsVC = self.storyboard?.instantiateViewController(identifier: "AllProjectsVC") as! AllProjectsVC
+        allProjectsVC.attributeNameForPredicate = selectedTile.link
+        self.navigationController?.pushViewController(allProjectsVC, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        let selectedTile = headerTiles[(indexPath as NSIndexPath).row]
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            cell.contentView.backgroundColor = selectedTile.color
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            cell.contentView.backgroundColor = nil
+        }
     }
     
     //MARK: - CONFIGURE COLLECTION VIEW LAYOUT

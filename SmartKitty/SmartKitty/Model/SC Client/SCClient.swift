@@ -71,14 +71,16 @@ class SCClient {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Basic \(Auth.authKey)", forHTTPHeaderField: "Authorization")
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
             guard let data = data else {
                 DispatchQueue.main.async {
+                    print(error as Any)
                     completion(nil, error)
                 }
                 return
             }
-            //let str = String(decoding: data, as: UTF8.self)
-            //print(str)
+            let str = String(decoding: data, as: UTF8.self)
+            print(str)
             //print(request.allHTTPHeaderFields!)
             let decoder = JSONDecoder()
             do {
@@ -88,7 +90,7 @@ class SCClient {
                 }
             } catch {
                 DispatchQueue.main.async {
-                    print(error)
+                    print(error.localizedDescription)
                     completion(nil, error)
                 }
             }
