@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7C46019E24E03B9C00CCDA63 /* HTTPStatusCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C46019D24E03B9C00CCDA63 /* HTTPStatusCodes.swift */; };
+		7C4601A124E054BA00CCDA63 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4601A024E054BA00CCDA63 /* Alerts.swift */; };
 		7CD6834624D8532E0091ED52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834524D8532E0091ED52 /* AppDelegate.swift */; };
 		7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834724D8532E0091ED52 /* SceneDelegate.swift */; };
 		7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834924D8532E0091ED52 /* LoginVC.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		7C46019D24E03B9C00CCDA63 /* HTTPStatusCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatusCodes.swift; sourceTree = "<group>"; };
+		7C4601A024E054BA00CCDA63 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		7CD6834224D8532E0091ED52 /* SmartKitty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartKitty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD6834524D8532E0091ED52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CD6834724D8532E0091ED52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C46019F24E054A200CCDA63 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				7C4601A024E054BA00CCDA63 /* Alerts.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
 		7CD6833924D8532E0091ED52 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +119,7 @@
 		7CD6835A24D86A800091ED52 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7C46019F24E054A200CCDA63 /* Alerts */,
 				7CD6836424D9D0FB0091ED52 /* Keyboard */,
 			);
 			path = View;
@@ -259,6 +270,7 @@
 				7CD6837324DB2AC00091ED52 /* SkProject+Extensions.swift in Sources */,
 				7CD6836324D9CB090091ED52 /* AccountResponse.swift in Sources */,
 				7CD6836B24DAA9CE0091ED52 /* DataController.swift in Sources */,
+				7C4601A124E054BA00CCDA63 /* Alerts.swift in Sources */,
 				7CD6837A24DD34BB0091ED52 /* HomeHeaderTileModel.swift in Sources */,
 				7CD6837524DC3B710091ED52 /* HomeVC.swift in Sources */,
 				7CD6836024D96A810091ED52 /* SCClient.swift in Sources */,
