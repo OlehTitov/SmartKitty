@@ -44,18 +44,18 @@ class SCClient {
         return url!
     }
     
-    class func getAccountInfo(completion: @escaping (String, Error?) -> Void) {
-        taskForGETRequest(url: urlComponents(path: .account), responseType: AccountResponse.self) { (response, error) in
+    class func getAccountInfo(completion: @escaping (String, Int, Error?) -> Void) {
+        taskForGETRequest(url: urlComponents(path: .account), responseType: AccountResponse.self) { (response, httpResponse, error) in
             if let response = response {
-                completion(response.name, nil)
+                completion(response.name, httpResponse!.statusCode, nil)
             } else {
-                completion("", error)
+                completion("", httpResponse!.statusCode, error)
             }
         }
     }
     
     class func getProjectsList(completion: @escaping ([Project], Error?) -> Void) {
-        taskForGETRequest(url: urlComponents(path: .projectsList), responseType: [Project].self) { (response, error) in
+        taskForGETRequest(url: urlComponents(path: .projectsList), responseType: [Project].self) { (response, httpResponse, error)  in
             if let response = response {
                 completion(response, nil)
             } else {
@@ -65,17 +65,17 @@ class SCClient {
         }
     }
     
-    class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
+    class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, HTTPURLResponse?, Error?) -> Void) -> URLSessionDataTask {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Basic \(Auth.authKey)", forHTTPHeaderField: "Authorization")
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            
+            let httpResponse = response as? HTTPURLResponse
             guard let data = data else {
                 DispatchQueue.main.async {
-                    print(error as Any)
-                    completion(nil, error)
+                    print(httpResponse as Any)
+                    completion(nil, httpResponse, error)
                 }
                 return
             }
@@ -86,12 +86,13 @@ class SCClient {
             do {
                 let responseObject = try decoder.decode(ResponseType.self, from: data)
                 DispatchQueue.main.async {
-                    completion(responseObject, nil)
+                    completion(responseObject, httpResponse, nil)
                 }
             } catch {
                 DispatchQueue.main.async {
                     print(error.localizedDescription)
-                    completion(nil, error)
+                    print(httpResponse as Any)
+                    completion(nil, httpResponse, error)
                 }
             }
         }

@@ -57,14 +57,25 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     @IBAction func loginTapped(_ sender: Any) {
         SCClient.Auth.accountId = accountIDTextfield.text!
         SCClient.Auth.apiKey = apiKeyTextfield.text!
-        SCClient.getAccountInfo(completion: handleGetAccountInfo(companyName:error:))
+        SCClient.getAccountInfo(completion: handleGetAccountInfo(companyName:statusCode:error:))
     }
     
-    func handleGetAccountInfo(companyName: String, error: Error?) {
-        //TO-DO: add error handling for wrong credentials, no internet connection etc.
-        SCClient.companyName = companyName
-        print(companyName)
-        SCClient.getProjectsList(completion: handleGetProjectsList(projects:error:))
+    func handleGetAccountInfo(companyName: String, statusCode: Int, error: Error?) {
+        print(statusCode)
+        let httpStatusCode = HTTPStatusCodes(rawValue: statusCode)!
+        switch httpStatusCode {
+        case .OK:
+            print(companyName)
+            SCClient.companyName = companyName
+            SCClient.getProjectsList(completion: handleGetProjectsList(projects:error:))
+        case .Unauthorized:
+            print("check your id and API key")
+        case .InternalServerError, .BadGateway, .ServiceUnavailable:
+            print("SmartCat is not responding, please try again later")
+        default:
+            print("Undefined error")
+        }
+        
     }
     
     func handleGetProjectsList(projects: [Project], error: Error?) {

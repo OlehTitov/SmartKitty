@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C46019E24E03B9C00CCDA63 /* HTTPStatusCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C46019D24E03B9C00CCDA63 /* HTTPStatusCodes.swift */; };
 		7CD6834624D8532E0091ED52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834524D8532E0091ED52 /* AppDelegate.swift */; };
 		7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834724D8532E0091ED52 /* SceneDelegate.swift */; };
 		7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834924D8532E0091ED52 /* LoginVC.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C46019D24E03B9C00CCDA63 /* HTTPStatusCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatusCodes.swift; sourceTree = "<group>"; };
 		7CD6834224D8532E0091ED52 /* SmartKitty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartKitty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD6834524D8532E0091ED52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CD6834724D8532E0091ED52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			children = (
 				7CD6836224D9CB090091ED52 /* AccountResponse.swift */,
 				7CD6836724DA63860091ED52 /* ProjectsListResponse.swift */,
+				7C46019D24E03B9C00CCDA63 /* HTTPStatusCodes.swift */,
 			);
 			path = "SC Responses";
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 			files = (
 				7CD6836624D9D1200091ED52 /* DismissKeyboardDelegate.swift in Sources */,
 				7CD6836E24DAC6490091ED52 /* SmartKitty.xcdatamodeld in Sources */,
+				7C46019E24E03B9C00CCDA63 /* HTTPStatusCodes.swift in Sources */,
 				7CD6837024DAFB670091ED52 /* AllProjectsVC.swift in Sources */,
 				7CD6836824DA63860091ED52 /* ProjectsListResponse.swift in Sources */,
 				7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */,
