@@ -29,7 +29,8 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         
         setupDelegates()
         setupFetchedResultsController()
-    
+    accountIDTextfield.text = "ef865f1e-88eb-4ba6-a499-7187db68abeb"
+    apiKeyTextfield.text = "3_whZ97K3h3VazSXhg5lD2F45O5"
     }
     
     //MARK: - VIEW WILL APPEAR
@@ -69,15 +70,21 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
             SCClient.companyName = companyName
             SCClient.getProjectsList(completion: handleGetProjectsList(projects:error:))
         case .Unauthorized:
-            print("check your id and API key")
+            showAlert(title: .authorizationFailed, message: .authorizationFailed)
         case .InternalServerError, .BadGateway, .ServiceUnavailable:
-            print("SmartCat is not responding, please try again later")
+            showAlert(title: .serverError, message: .serverError)
         default:
-            print("Undefined error")
+            showAlert(title: .undefinedError, message: .undefinedError)
         }
         
     }
     
+    func showAlert(title: AlertTitles, message: AlertMessages) {
+        let alert = Alerts.errorAlert(title: title.rawValue, message: message.rawValue)
+        present(alert, animated: true)
+    }
+    
+    //MARK: - GET PROJECTS FROM SMARTCAT SERVER
     func handleGetProjectsList(projects: [Project], error: Error?) {
         print(projects.count)
         for project in projects {

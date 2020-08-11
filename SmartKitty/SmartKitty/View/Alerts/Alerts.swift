@@ -11,11 +11,15 @@ import UIKit
 
 enum AlertTitles: String {
     case authorizationFailed = "Login failed"
+    case serverError = "SmartCat server error"
+    case undefinedError = "Something went wrong"
     
 }
 
 enum AlertMessages: String {
     case authorizationFailed = "Please check if your account ID and API key are entered correctly"
+    case serverError = "The SmartCat servers can't process our request. Please try again later"
+    case undefinedError = "We can't process your request. Please try again later"
 }
 
 struct Alerts {
