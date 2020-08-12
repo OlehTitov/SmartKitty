@@ -39,15 +39,47 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRr-K9-1Yj">
-                                <rect key="frame" x="20" y="563.5" width="374" height="30"/>
-                                <state key="normal" title="Login"/>
+                                <rect key="frame" x="20" y="539.5" width="374" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3AG-sX-OAe"/>
+                                </constraints>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="loginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0c1-aB-Ucs"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VJO-uN-Xsd">
-                                <rect key="frame" x="47" y="327.5" width="320" height="216"/>
+                                <rect key="frame" x="47" y="327.5" width="320" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="B3K-RF-DCK"/>
+                                </constraints>
                             </pickerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rdZ-mv-e8u">
+                                <rect key="frame" x="134" y="477.5" width="146" height="22"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1p-0Q-r7e" customClass="ToggleButton" customModule="SmartKitty" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="24" height="22"/>
+                                        <state key="normal" image="square" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                        <state key="selected" image="checkmark.square" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="rememberMeTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bQq-V3-6M2"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RSy-Xa-WUJ">
+                                        <rect key="frame" x="34" y="0.0" width="112" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -55,9 +87,11 @@
                             <constraint firstItem="gRr-K9-1Yj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="9xU-Uz-QfO"/>
                             <constraint firstAttribute="trailing" secondItem="ZAa-MP-Odu" secondAttribute="trailing" constant="20" id="A2r-XC-SCM"/>
                             <constraint firstItem="om3-i9-VYn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Jd1-9k-4Mt"/>
-                            <constraint firstItem="gRr-K9-1Yj" firstAttribute="top" secondItem="VJO-uN-Xsd" secondAttribute="bottom" constant="20" id="T8I-4I-J2o"/>
                             <constraint firstItem="fLB-DB-6IE" firstAttribute="top" secondItem="ZAa-MP-Odu" secondAttribute="bottom" constant="40" id="TSa-1S-pXJ"/>
+                            <constraint firstItem="gRr-K9-1Yj" firstAttribute="top" secondItem="rdZ-mv-e8u" secondAttribute="bottom" constant="40" id="Uxm-Dv-gM9"/>
                             <constraint firstItem="ter-Kl-dqr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="V5F-Xn-Wcs"/>
+                            <constraint firstItem="rdZ-mv-e8u" firstAttribute="top" secondItem="VJO-uN-Xsd" secondAttribute="bottom" constant="30" id="Zlc-fI-46Z"/>
+                            <constraint firstItem="rdZ-mv-e8u" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bKT-UN-neG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="om3-i9-VYn" secondAttribute="trailing" constant="20" id="bpW-MY-g4d"/>
                             <constraint firstItem="ZAa-MP-Odu" firstAttribute="top" secondItem="ter-Kl-dqr" secondAttribute="bottom" constant="20" id="eGe-dP-PqU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gRr-K9-1Yj" secondAttribute="trailing" constant="20" id="qmZ-mb-EET"/>
@@ -74,6 +108,7 @@
                     <connections>
                         <outlet property="accountIDTextfield" destination="fLB-DB-6IE" id="gBy-EB-TaP"/>
                         <outlet property="apiKeyTextfield" destination="om3-i9-VYn" id="SGf-tV-EBL"/>
+                        <outlet property="rememberMe" destination="Y1p-0Q-r7e" id="Nrf-td-itY"/>
                         <outlet property="serverPickerView" destination="VJO-uN-Xsd" id="x0q-H4-qoP"/>
                     </connections>
                 </viewController>
@@ -270,6 +305,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="jhP-XL-81J" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5jJ-aC-B8t">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -282,4 +318,8 @@
             <point key="canvasLocation" x="1997" y="139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="checkmark.square" catalog="system" width="128" height="114"/>
+        <image name="square" catalog="system" width="128" height="114"/>
+    </resources>
 </document>

@@ -22,6 +22,7 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var apiKeyTextfield: UITextField!
     @IBOutlet weak var serverPickerView: UIPickerView!
     
+    @IBOutlet weak var rememberMe: ToggleButton!
     
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
@@ -29,8 +30,7 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         
         setupDelegates()
         setupFetchedResultsController()
-    accountIDTextfield.text = "ef865f1e-88eb-4ba6-a499-7187db68abeb"
-    apiKeyTextfield.text = "3_whZ97K3h3VazSXhg5lD2F45O5"
+        autofillCredentials()
     }
     
     //MARK: - VIEW WILL APPEAR
@@ -54,6 +54,37 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         accountIDTextfield.delegate = dismissKeyboard
     }
 
+    //MARK: - REMEMBER ME
+    @IBAction func rememberMeTapped(_ sender: UIButton) {
+        if sender.isSelected {
+            print("Saving credentials is disabled")
+            UserDefaults.standard.set(false, forKey: "CredentialsAvailable")
+        } else {
+            print("Setting true for CredentialsAvailable")
+            UserDefaults.standard.set(true, forKey: "CredentialsAvailable")
+        }
+    }
+    
+    func saveCredentials() {
+        guard let accountId = accountIDTextfield.text, let apiKey = apiKeyTextfield.text else {
+            return
+        }
+        if rememberMe.isSelected {
+            print("Saving credentials")
+            UserDefaults.standard.set(accountId, forKey: "AccountId")
+            UserDefaults.standard.set(apiKey, forKey: "ApiKey")
+        }
+    }
+    
+    func autofillCredentials() {
+        if UserDefaults.standard.bool(forKey: "CredentialsAvailable") {
+            print("Trying to autofill the fields")
+            accountIDTextfield.text = (UserDefaults.standard.value(forKey: "AccountId") as! String)
+            apiKeyTextfield.text = (UserDefaults.standard.value(forKey: "ApiKey") as! String)
+            rememberMe.isSelected = true
+        }
+    }
+    
     //MARK: - LOGIN
     @IBAction func loginTapped(_ sender: Any) {
         SCClient.Auth.accountId = accountIDTextfield.text!
@@ -67,6 +98,7 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         switch httpStatusCode {
         case .OK:
             print(companyName)
+            saveCredentials()
             SCClient.companyName = companyName
             SCClient.getProjectsList(completion: handleGetProjectsList(projects:error:))
         case .Unauthorized:

@@ -79,8 +79,8 @@ class SCClient {
                 }
                 return
             }
-            let str = String(decoding: data, as: UTF8.self)
-            print(str)
+            //let str = String(decoding: data, as: UTF8.self)
+            //print(str)
             //print(request.allHTTPHeaderFields!)
             let decoder = JSONDecoder()
             do {

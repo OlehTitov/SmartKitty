@@ -27,6 +27,7 @@
 		7CD6837724DCF91B0091ED52 /* HomeHeaderElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837624DCF91B0091ED52 /* HomeHeaderElements.swift */; };
 		7CD6837A24DD34BB0091ED52 /* HomeHeaderTileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837924DD34BB0091ED52 /* HomeHeaderTileModel.swift */; };
 		7CD6837C24DD41230091ED52 /* TilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837B24DD41230091ED52 /* TilesCell.swift */; };
+		7CF4C4F824E3AD0D00F9FC02 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C4F724E3AD0D00F9FC02 /* ToggleButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		7CD6837624DCF91B0091ED52 /* HomeHeaderElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderElements.swift; sourceTree = "<group>"; };
 		7CD6837924DD34BB0091ED52 /* HomeHeaderTileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderTileModel.swift; sourceTree = "<group>"; };
 		7CD6837B24DD41230091ED52 /* TilesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesCell.swift; sourceTree = "<group>"; };
+		7CF4C4F724E3AD0D00F9FC02 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		7CD6835A24D86A800091ED52 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7CF4C4F624E3ACE700F9FC02 /* Toggle button */,
 				7C46019F24E054A200CCDA63 /* Alerts */,
 				7CD6836424D9D0FB0091ED52 /* Keyboard */,
 			);
@@ -187,6 +190,14 @@
 				7CD6837924DD34BB0091ED52 /* HomeHeaderTileModel.swift */,
 			);
 			path = HomeHeaderTile;
+			sourceTree = "<group>";
+		};
+		7CF4C4F624E3ACE700F9FC02 /* Toggle button */ = {
+			isa = PBXGroup;
+			children = (
+				7CF4C4F724E3AD0D00F9FC02 /* ToggleButton.swift */,
+			);
+			path = "Toggle button";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +284,7 @@
 				7C4601A124E054BA00CCDA63 /* Alerts.swift in Sources */,
 				7CD6837A24DD34BB0091ED52 /* HomeHeaderTileModel.swift in Sources */,
 				7CD6837524DC3B710091ED52 /* HomeVC.swift in Sources */,
+				7CF4C4F824E3AD0D00F9FC02 /* ToggleButton.swift in Sources */,
 				7CD6836024D96A810091ED52 /* SCClient.swift in Sources */,
 				7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */,
 				7CD6837C24DD41230091ED52 /* TilesCell.swift in Sources */,
