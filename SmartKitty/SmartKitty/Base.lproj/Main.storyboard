@@ -36,7 +36,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="API Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="om3-i9-VYn">
                                 <rect key="frame" x="20" y="283.5" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRr-K9-1Yj">
                                 <rect key="frame" x="20" y="539.5" width="374" height="50"/>
@@ -280,6 +280,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VRb-HE-sFP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3826.0869565217395" y="138.61607142857142"/>
+        </scene>
+        <!--Project DetailsVC-->
+        <scene sceneID="ebP-fP-eE1">
+            <objects>
+                <viewController storyboardIdentifier="ProjectDetailsVC" id="L9p-go-I79" customClass="ProjectDetailsVC" customModule="SmartKitty" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9EY-a4-nXW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZB-im-gUb">
+                                <rect key="frame" x="20" y="54" width="374" height="26.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="vZB-im-gUb" firstAttribute="leading" secondItem="hcR-tE-g93" secondAttribute="leading" constant="20" id="Vqz-dc-xaq"/>
+                            <constraint firstItem="vZB-im-gUb" firstAttribute="top" secondItem="hcR-tE-g93" secondAttribute="top" constant="10" id="k6T-YQ-BQO"/>
+                            <constraint firstItem="hcR-tE-g93" firstAttribute="trailing" secondItem="vZB-im-gUb" secondAttribute="trailing" constant="20" id="qBs-em-pdU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hcR-tE-g93"/>
+                    </view>
+                    <connections>
+                        <outlet property="projectTitle" destination="vZB-im-gUb" id="h2S-n2-Dh3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UMi-SJ-shJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4655" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NML-Oq-F8R">

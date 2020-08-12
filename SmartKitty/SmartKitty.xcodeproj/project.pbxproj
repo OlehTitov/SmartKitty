@@ -28,6 +28,7 @@
 		7CD6837A24DD34BB0091ED52 /* HomeHeaderTileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837924DD34BB0091ED52 /* HomeHeaderTileModel.swift */; };
 		7CD6837C24DD41230091ED52 /* TilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837B24DD41230091ED52 /* TilesCell.swift */; };
 		7CF4C4F824E3AD0D00F9FC02 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C4F724E3AD0D00F9FC02 /* ToggleButton.swift */; };
+		7CF4C4FA24E3F0C400F9FC02 /* ProjectDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C4F924E3F0C400F9FC02 /* ProjectDetailsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		7CD6837924DD34BB0091ED52 /* HomeHeaderTileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderTileModel.swift; sourceTree = "<group>"; };
 		7CD6837B24DD41230091ED52 /* TilesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesCell.swift; sourceTree = "<group>"; };
 		7CF4C4F724E3AD0D00F9FC02 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
+		7CF4C4F924E3F0C400F9FC02 /* ProjectDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				7CD6836F24DAFB670091ED52 /* AllProjectsVC.swift */,
 				7CD6837424DC3B710091ED52 /* HomeVC.swift */,
 				7CD6837B24DD41230091ED52 /* TilesCell.swift */,
+				7CF4C4F924E3F0C400F9FC02 /* ProjectDetailsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				7CD6837A24DD34BB0091ED52 /* HomeHeaderTileModel.swift in Sources */,
 				7CD6837524DC3B710091ED52 /* HomeVC.swift in Sources */,
 				7CF4C4F824E3AD0D00F9FC02 /* ToggleButton.swift in Sources */,
+				7CF4C4FA24E3F0C400F9FC02 /* ProjectDetailsVC.swift in Sources */,
 				7CD6836024D96A810091ED52 /* SCClient.swift in Sources */,
 				7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */,
 				7CD6837C24DD41230091ED52 /* TilesCell.swift in Sources */,

@@ -105,4 +105,12 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         setupSnapshot()
     }
+    
+    //MARK: - DID SELECT PROJECT
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedProject = fetchedResultsController.fetchedObjects![(indexPath as NSIndexPath).row]
+        let projectDetailsVC = self.storyboard?.instantiateViewController(identifier: "ProjectDetailsVC") as! ProjectDetailsVC
+        projectDetailsVC.selectedProject = selectedProject
+        self.navigationController?.pushViewController(projectDetailsVC, animated: true)
+    }
 }
