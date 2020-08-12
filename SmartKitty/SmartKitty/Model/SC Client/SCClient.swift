@@ -89,9 +89,10 @@ class SCClient {
                     completion(responseObject, httpResponse, nil)
                 }
             } catch {
+                let rawServerErrorResponse = String(decoding: data, as: UTF8.self)
+                let trimmedResponse = rawServerErrorResponse.trimmingCharacters(in: .whitespacesAndNewlines)
+                print(trimmedResponse)
                 DispatchQueue.main.async {
-                    print(error.localizedDescription)
-                    print(httpResponse as Any)
                     completion(nil, httpResponse, error)
                 }
             }

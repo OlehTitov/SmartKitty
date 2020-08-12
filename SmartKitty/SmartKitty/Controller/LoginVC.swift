@@ -169,6 +169,8 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         newProject.name = prj.name
         newProject.deadline = prj.deadline
         newProject.creationDate = prj.creationDate
+        newProject.status = prj.status
+        newProject.createdByUserEmail = prj.createdByUserEmail
         //Computed property for deadlineAsDate
         let RFC3339DateFormatter = DateFormatter()
         RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")

@@ -24,11 +24,12 @@
 		7CD6837024DAFB670091ED52 /* AllProjectsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6836F24DAFB670091ED52 /* AllProjectsVC.swift */; };
 		7CD6837324DB2AC00091ED52 /* SkProject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837224DB2AC00091ED52 /* SkProject+Extensions.swift */; };
 		7CD6837524DC3B710091ED52 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837424DC3B710091ED52 /* HomeVC.swift */; };
-		7CD6837724DCF91B0091ED52 /* HomeHeaderElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837624DCF91B0091ED52 /* HomeHeaderElements.swift */; };
 		7CD6837A24DD34BB0091ED52 /* HomeHeaderTileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837924DD34BB0091ED52 /* HomeHeaderTileModel.swift */; };
 		7CD6837C24DD41230091ED52 /* TilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837B24DD41230091ED52 /* TilesCell.swift */; };
 		7CF4C4F824E3AD0D00F9FC02 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C4F724E3AD0D00F9FC02 /* ToggleButton.swift */; };
 		7CF4C4FA24E3F0C400F9FC02 /* ProjectDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C4F924E3F0C400F9FC02 /* ProjectDetailsVC.swift */; };
+		7CF4C4FD24E43ACD00F9FC02 /* projectStatuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C4FC24E43ACD00F9FC02 /* projectStatuses.swift */; };
+		7CF4C50024E4405800F9FC02 /* ProjectStatusesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C4FF24E4405800F9FC02 /* ProjectStatusesData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,11 +52,12 @@
 		7CD6836F24DAFB670091ED52 /* AllProjectsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllProjectsVC.swift; sourceTree = "<group>"; };
 		7CD6837224DB2AC00091ED52 /* SkProject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SkProject+Extensions.swift"; sourceTree = "<group>"; };
 		7CD6837424DC3B710091ED52 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
-		7CD6837624DCF91B0091ED52 /* HomeHeaderElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderElements.swift; sourceTree = "<group>"; };
 		7CD6837924DD34BB0091ED52 /* HomeHeaderTileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderTileModel.swift; sourceTree = "<group>"; };
 		7CD6837B24DD41230091ED52 /* TilesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesCell.swift; sourceTree = "<group>"; };
 		7CF4C4F724E3AD0D00F9FC02 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		7CF4C4F924E3F0C400F9FC02 /* ProjectDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsVC.swift; sourceTree = "<group>"; };
+		7CF4C4FC24E43ACD00F9FC02 /* projectStatuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projectStatuses.swift; sourceTree = "<group>"; };
+		7CF4C4FF24E4405800F9FC02 /* ProjectStatusesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectStatusesData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,12 +136,13 @@
 		7CD6835B24D86A8D0091ED52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7CF4C4FE24E4403C00F9FC02 /* Data */,
+				7CF4C4FB24E43AA700F9FC02 /* SmartKitty Project */,
 				7CD6837824DD34830091ED52 /* HomeHeaderTile */,
 				7CD6837124DB2A8F0091ED52 /* Managed Objects Extensions */,
 				7CD6836924DAA9AD0091ED52 /* Core Data */,
 				7CD6836124D9CAE70091ED52 /* SC Responses */,
 				7CD6835C24D96A150091ED52 /* SC Client */,
-				7CD6837624DCF91B0091ED52 /* HomeHeaderElements.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,6 +204,22 @@
 				7CF4C4F724E3AD0D00F9FC02 /* ToggleButton.swift */,
 			);
 			path = "Toggle button";
+			sourceTree = "<group>";
+		};
+		7CF4C4FB24E43AA700F9FC02 /* SmartKitty Project */ = {
+			isa = PBXGroup;
+			children = (
+				7CF4C4FC24E43ACD00F9FC02 /* projectStatuses.swift */,
+			);
+			path = "SmartKitty Project";
+			sourceTree = "<group>";
+		};
+		7CF4C4FE24E4403C00F9FC02 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				7CF4C4FF24E4405800F9FC02 /* ProjectStatusesData.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +295,7 @@
 			files = (
 				7CD6836624D9D1200091ED52 /* DismissKeyboardDelegate.swift in Sources */,
 				7CD6836E24DAC6490091ED52 /* SmartKitty.xcdatamodeld in Sources */,
+				7CF4C4FD24E43ACD00F9FC02 /* projectStatuses.swift in Sources */,
 				7C46019E24E03B9C00CCDA63 /* HTTPStatusCodes.swift in Sources */,
 				7CD6837024DAFB670091ED52 /* AllProjectsVC.swift in Sources */,
 				7CD6836824DA63860091ED52 /* ProjectsListResponse.swift in Sources */,
@@ -290,9 +310,9 @@
 				7CF4C4F824E3AD0D00F9FC02 /* ToggleButton.swift in Sources */,
 				7CF4C4FA24E3F0C400F9FC02 /* ProjectDetailsVC.swift in Sources */,
 				7CD6836024D96A810091ED52 /* SCClient.swift in Sources */,
+				7CF4C50024E4405800F9FC02 /* ProjectStatusesData.swift in Sources */,
 				7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */,
 				7CD6837C24DD41230091ED52 /* TilesCell.swift in Sources */,
-				7CD6837724DCF91B0091ED52 /* HomeHeaderElements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

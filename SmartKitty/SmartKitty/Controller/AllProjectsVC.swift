@@ -51,24 +51,33 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate {
     private func setupTableView() {
         dataSource = UITableViewDiffableDataSource<Int, SkProject>(tableView: allProjectsTableView) { (tableView, indexPath, project) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "projectsCell", for: indexPath)
+            //Project status icon
+            if let status = project.status {
+                let projectStatus = ProjectStatuses(rawValue: status)
+                switch projectStatus {
+                case .created:
+                    cell.imageView?.image = UIImage(systemName: "circle")
+                case .inProgress:
+                    cell.imageView?.image = UIImage(systemName: "ellipsis.circle")
+                case .completed:
+                    cell.imageView?.image = UIImage(systemName: "checkmark.circle")
+                case .cancelled:
+                    cell.imageView?.image = UIImage(systemName: "xmark.circle")
+                case .none:
+                    cell.imageView?.image = UIImage(systemName: "circle")
+                }
+            }
+            //Project title
             let name = String(project.name ?? "")
             cell.textLabel?.text = name
+            cell.textLabel?.lineBreakMode = .byTruncatingMiddle
+            //Project deadline
             let deadlineAsDate = project.deadlineAsDate
-            //let dateString = project.deadline!
             let RFC3339DateFormatter = DateFormatter()
-            //RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
-            //RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-            //RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-            //let date = RFC3339DateFormatter.date(from: dateString)!
             RFC3339DateFormatter.dateStyle = .full
-            
-            //let df = DateFormatter()
-            //df.dateStyle = .long
-            //let date = df.date(from: dateString)
             if deadlineAsDate != nil {
                 cell.detailTextLabel?.text = RFC3339DateFormatter.string(from: deadlineAsDate!)
             }
-            print(project.isToday)
             return cell
         }
         setupSnapshot()
