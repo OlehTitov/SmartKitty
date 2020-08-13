@@ -79,10 +79,24 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
             cell.textLabel?.lineBreakMode = .byTruncatingMiddle
             //Project deadline
             let deadlineAsDate = project.deadlineAsDate
-            let RFC3339DateFormatter = DateFormatter()
-            RFC3339DateFormatter.dateStyle = .full
             if deadlineAsDate != nil {
-                cell.detailTextLabel?.text = RFC3339DateFormatter.string(from: deadlineAsDate!)
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateStyle = .full
+                let timeFormatter = DateFormatter()
+                timeFormatter.dateFormat = "hh:mm"
+                let timeSting = timeFormatter.string(from: deadlineAsDate!)
+                let dateString = dateFormatter.string(from: deadlineAsDate!)
+                let imageAttachment = NSTextAttachment()
+                let lightConfig = UIImage.SymbolConfiguration(weight: .thin)
+                imageAttachment.image = UIImage(systemName: "calendar", withConfiguration: lightConfig)?.withTintColor(.gray)
+                let imageString = NSAttributedString(attachment: imageAttachment)
+                let fullString = NSMutableAttributedString(string: "")
+                fullString.append(imageString)
+                fullString.append(NSAttributedString(string: "\(timeSting), \(dateString)"))
+                let range = NSMakeRange(0, fullString.length)
+                fullString.addAttribute(.foregroundColor, value: UIColor.gray, range: range)
+                //cell.detailTextLabel?.text = "\(timeSting), \(dateString)"
+                cell.detailTextLabel?.attributedText = fullString
             }
             return cell
         }
