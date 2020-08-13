@@ -59,6 +59,8 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
             let cell = tableView.dequeueReusableCell(withIdentifier: "projectsCell", for: indexPath)
             //Project status icon
             if let status = project.status {
+                self.configureStatusIcon(status: status, cell: cell)
+                /*
                 let projectStatus = ProjectStatuses(rawValue: status)
                 switch projectStatus {
                 case .created:
@@ -72,6 +74,8 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
                 case .none:
                     cell.imageView?.image = UIImage(systemName: "circle")
                 }
+                */
+                
             }
             //Project title
             let name = String(project.name ?? "")
@@ -83,7 +87,7 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateStyle = .full
                 let timeFormatter = DateFormatter()
-                timeFormatter.dateFormat = "hh:mm"
+                timeFormatter.dateFormat = "hh:mm a"
                 let timeSting = timeFormatter.string(from: deadlineAsDate!)
                 let dateString = dateFormatter.string(from: deadlineAsDate!)
                 let imageAttachment = NSTextAttachment()
@@ -92,16 +96,36 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
                 let imageString = NSAttributedString(attachment: imageAttachment)
                 let fullString = NSMutableAttributedString(string: "")
                 fullString.append(imageString)
-                fullString.append(NSAttributedString(string: "\(timeSting), \(dateString)"))
+                fullString.append(NSAttributedString(string: " \(timeSting) on \(dateString)"))
                 let range = NSMakeRange(0, fullString.length)
                 fullString.addAttribute(.foregroundColor, value: UIColor.gray, range: range)
                 //cell.detailTextLabel?.text = "\(timeSting), \(dateString)"
                 cell.detailTextLabel?.attributedText = fullString
+            } else {
+                cell.detailTextLabel?.text = "No deadline specified"
             }
             return cell
         }
         setupSnapshot()
     }
+    
+    ///Configure project status icon
+    private func configureStatusIcon(status: String, cell: UITableViewCell) {
+        let projectStatus = ProjectStatuses(rawValue: status)
+        switch projectStatus {
+        case .created:
+            cell.imageView?.image = UIImage(systemName: "circle")
+        case .inProgress:
+            cell.imageView?.image = UIImage(systemName: "ellipsis.circle")
+        case .completed:
+            cell.imageView?.image = UIImage(systemName: "checkmark.circle")
+        case .cancelled:
+            cell.imageView?.image = UIImage(systemName: "xmark.circle")
+        case .none:
+            cell.imageView?.image = UIImage(systemName: "circle")
+        }
+    }
+    
     
     private func setupSnapshot() {
         snapshot = NSDiffableDataSourceSnapshot<Int, SkProject>()
