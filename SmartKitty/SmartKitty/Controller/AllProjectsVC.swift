@@ -10,14 +10,19 @@ import Foundation
 import UIKit
 import CoreData
 
-class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate {
+class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+    
     
     //MARK: - PROPERTIES
     var fetchedResultsController: NSFetchedResultsController<SkProject>!
     var dataSource: UITableViewDiffableDataSource<Int, SkProject>?
     var snapshot = NSDiffableDataSourceSnapshot<Int, SkProject>()
     var attributeNameForPredicate: String = ""
-    
+    var searchText: String = ""
+    var projectTypesPredicate: NSPredicate!
+    var searchPredicate: NSPredicate!
+    var allPredicates: [NSPredicate] = []
+    var includeSearchPredicate: Bool = false
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateStyle = .medium
@@ -33,6 +38,7 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate {
         self.navigationController?.isNavigationBarHidden = false
         setupFetchedResultsController()
         setupTableView()
+        setupSearchController()
     }
     
     //MARK: - VIEW WILL APPEAR
@@ -96,9 +102,20 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate {
         let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         if attributeNameForPredicate != "ShowAllProjects" {
-            let predicate = NSPredicate(format: "\(attributeNameForPredicate) == YES")
-            fetchRequest.predicate = predicate
+            projectTypesPredicate = NSPredicate(format: "\(attributeNameForPredicate) == YES")
+            allPredicates.append(projectTypesPredicate)
         }
+        if !searchText.isEmpty {
+            searchPredicate = NSPredicate(format: "name CONTAINS[c] %@", searchText)
+            allPredicates.append(searchPredicate)
+        }
+        let andPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: allPredicates)
+        if searchText.isEmpty {
+            fetchRequest.predicate = projectTypesPredicate
+        } else {
+            fetchRequest.predicate = andPredicate
+        }
+        
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         do {
@@ -121,5 +138,36 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate {
         let projectDetailsVC = self.storyboard?.instantiateViewController(identifier: "ProjectDetailsVC") as! ProjectDetailsVC
         projectDetailsVC.selectedProject = selectedProject
         self.navigationController?.pushViewController(projectDetailsVC, animated: true)
+    }
+    
+    //MARK: - SEARCH
+    private func setupSearchController() {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search projects"
+        searchController.searchBar.searchBarStyle = .minimal
+        navigationItem.searchController = searchController
+        //navigationItem.titleView = searchController.searchBar
+        searchController.definesPresentationContext = true
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        includeSearchPredicate = true
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        searchText = text
+        setupFetchedResultsController()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        resignFirstResponder()
+        print("Clear the search")
+        searchText = ""
+        allPredicates.removeAll()
+        setupFetchedResultsController()
     }
 }

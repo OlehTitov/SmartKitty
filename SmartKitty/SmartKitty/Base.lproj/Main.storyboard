@@ -234,7 +234,7 @@
             </objects>
             <point key="canvasLocation" x="2881.1594202898555" y="138.61607142857142"/>
         </scene>
-        <!--All ProjectsVC-->
+        <!--Projects-->
         <scene sceneID="fao-QL-Nte">
             <objects>
                 <tableViewController storyboardIdentifier="AllProjectsVC" id="NsP-Cj-6Am" customClass="AllProjectsVC" customModule="SmartKitty" customModuleProvider="target" sceneMemberID="viewController">
@@ -273,6 +273,7 @@
                             <outlet property="delegate" destination="NsP-Cj-6Am" id="nRa-dp-evo"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Projects" id="ftS-M6-Qh7"/>
                     <connections>
                         <outlet property="allProjectsTableView" destination="Xle-AC-J4l" id="EiN-gE-Rts"/>
                     </connections>
