@@ -11,43 +11,25 @@ import CoreData
 
 extension SkProject {
     
+    //MARK: - UPDATE COMPUTED VALUES WITH EACH FETCH
     public override func awakeFromFetch() {
         super.awakeFromFetch()
         if deadlineAsDate != nil {
             isToday = compareDateIfToday(date: deadlineAsDate!)
+            isTomorrow = compareDateIfTomorrow(date: deadlineAsDate!)
         }
         
     }
     
+    //MARK: - CALCULATE THE VALUES WHEN SK PROJECT IS CREATED
     public override func awakeFromInsert() {
         super.awakeFromInsert()
         
-        dummyText = "Some smart text"
-        
-        //MARK: - DEADLINE AS DATE
-        //deadlineAsDate = convertStringToDate(str: deadline)
-        
-        
-        //MARK: - IS TODAY
         if deadlineAsDate != nil {
             isToday = compareDateIfToday(date: deadlineAsDate!)
+            isTomorrow = compareDateIfTomorrow(date: deadlineAsDate!)
         }
         
-        
-        //MARK: - IS TOMOROOW
-        var isTomorrow: Bool? {
-            return compareDateIfTomorrow(date: deadlineAsDate!)
-        }
-        
-    }
-    
-    func convertStringToDate(str: String?) -> Date {
-        let RFC3339DateFormatter = DateFormatter()
-        RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        let date = RFC3339DateFormatter.date(from: str!)!
-        return date
     }
     
     private func compareDateIfToday(date: Date) -> Bool {

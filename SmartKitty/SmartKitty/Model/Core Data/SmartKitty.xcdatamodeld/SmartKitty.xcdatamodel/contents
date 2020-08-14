@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="SkDocument" representedClassName="SkDocument" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" optional="YES" attributeType="String"/>
+        <attribute name="deadline" optional="YES" attributeType="String"/>
+        <attribute name="documentDisassemblingStatus" optional="YES" attributeType="String"/>
+        <attribute name="externalId" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="metaInfo" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="placeholdersAreEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="pretranslateCompleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="sourceLanguage" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="statusModificationDate" optional="YES" attributeType="String"/>
+        <attribute name="targetLanguage" optional="YES" attributeType="String"/>
+        <attribute name="wordsCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="SkProject" representedClassName="SkProject" syncable="YES" codeGenerationType="class">
         <attribute name="clientId" optional="YES" attributeType="String"/>
         <attribute name="createdByUserEmail" optional="YES" attributeType="String"/>
@@ -24,5 +40,6 @@
     </entity>
     <elements>
         <element name="SkProject" positionX="-45" positionY="0" width="128" height="343"/>
+        <element name="SkDocument" positionX="-45" positionY="153" width="128" height="253"/>
     </elements>
 </model>

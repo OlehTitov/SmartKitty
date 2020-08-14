@@ -60,22 +60,6 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
             //Project status icon
             if let status = project.status {
                 self.configureStatusIcon(status: status, cell: cell)
-                /*
-                let projectStatus = ProjectStatuses(rawValue: status)
-                switch projectStatus {
-                case .created:
-                    cell.imageView?.image = UIImage(systemName: "circle")
-                case .inProgress:
-                    cell.imageView?.image = UIImage(systemName: "ellipsis.circle")
-                case .completed:
-                    cell.imageView?.image = UIImage(systemName: "checkmark.circle")
-                case .cancelled:
-                    cell.imageView?.image = UIImage(systemName: "xmark.circle")
-                case .none:
-                    cell.imageView?.image = UIImage(systemName: "circle")
-                }
-                */
-                
             }
             //Project title
             let name = String(project.name ?? "")
