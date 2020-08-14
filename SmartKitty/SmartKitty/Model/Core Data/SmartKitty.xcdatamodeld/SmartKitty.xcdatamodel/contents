@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Entity" representedClassName="Entity" syncable="YES" codeGenerationType="class"/>
     <entity name="SkDocument" representedClassName="SkDocument" syncable="YES" codeGenerationType="class">
         <attribute name="creationDate" optional="YES" attributeType="String"/>
         <attribute name="deadline" optional="YES" attributeType="String"/>
@@ -47,10 +48,18 @@
         <attribute name="status" optional="YES" attributeType="String"/>
         <attribute name="statusModificationDate" optional="YES" attributeType="String"/>
         <relationship name="documents" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SkDocument" inverseName="project" inverseEntity="SkDocument"/>
+        <relationship name="projectWorkflow" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkProjectWorkflowStage" inverseName="project" inverseEntity="SkProjectWorkflowStage"/>
+    </entity>
+    <entity name="SkProjectWorkflowStage" representedClassName="SkProjectWorkflowStage" syncable="YES" codeGenerationType="class">
+        <attribute name="progress" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="stageType" optional="YES" attributeType="String"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkProject" inverseName="projectWorkflow" inverseEntity="SkProject"/>
     </entity>
     <elements>
         <element name="SkDocument" positionX="71.109375" positionY="64.11328125" width="128" height="283"/>
-        <element name="SkProject" positionX="-347.48046875" positionY="64.484375" width="218" height="358"/>
+        <element name="SkProject" positionX="-347.48046875" positionY="64.484375" width="218" height="373"/>
         <element name="SkDocumentWorkflowStage" positionX="-135" positionY="225" width="128" height="118"/>
+        <element name="Entity" positionX="-126" positionY="234" width="128" height="43"/>
+        <element name="SkProjectWorkflowStage" positionX="-117" positionY="243" width="128" height="88"/>
     </elements>
 </model>
