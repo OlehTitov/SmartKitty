@@ -296,16 +296,36 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9l-Zt-MLO">
+                                <rect key="frame" x="20" y="110.5" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZzW-9n-rGc">
+                                <rect key="frame" x="20" y="161.5" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="hcR-tE-g93" firstAttribute="trailing" secondItem="F9l-Zt-MLO" secondAttribute="trailing" constant="20" id="2EB-xp-Msg"/>
+                            <constraint firstItem="F9l-Zt-MLO" firstAttribute="top" secondItem="vZB-im-gUb" secondAttribute="bottom" constant="30" id="7Ci-SZ-Hec"/>
+                            <constraint firstItem="F9l-Zt-MLO" firstAttribute="leading" secondItem="hcR-tE-g93" secondAttribute="leading" constant="20" id="EW9-gx-VYS"/>
+                            <constraint firstItem="ZzW-9n-rGc" firstAttribute="leading" secondItem="hcR-tE-g93" secondAttribute="leading" constant="20" id="K8i-vP-2N1"/>
+                            <constraint firstItem="ZzW-9n-rGc" firstAttribute="top" secondItem="F9l-Zt-MLO" secondAttribute="bottom" constant="30" id="V9R-fi-1PY"/>
                             <constraint firstItem="vZB-im-gUb" firstAttribute="leading" secondItem="hcR-tE-g93" secondAttribute="leading" constant="20" id="Vqz-dc-xaq"/>
                             <constraint firstItem="vZB-im-gUb" firstAttribute="top" secondItem="hcR-tE-g93" secondAttribute="top" constant="10" id="k6T-YQ-BQO"/>
                             <constraint firstItem="hcR-tE-g93" firstAttribute="trailing" secondItem="vZB-im-gUb" secondAttribute="trailing" constant="20" id="qBs-em-pdU"/>
+                            <constraint firstItem="hcR-tE-g93" firstAttribute="trailing" secondItem="ZzW-9n-rGc" secondAttribute="trailing" constant="20" id="v7h-cD-7SQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hcR-tE-g93"/>
                     </view>
                     <connections>
+                        <outlet property="documentsCount" destination="F9l-Zt-MLO" id="QLm-iY-wOx"/>
+                        <outlet property="listOfDocuments" destination="ZzW-9n-rGc" id="G7f-Nu-qYN"/>
                         <outlet property="projectTitle" destination="vZB-im-gUb" id="h2S-n2-Dh3"/>
                     </connections>
                 </viewController>

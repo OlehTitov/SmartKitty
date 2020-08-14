@@ -187,7 +187,34 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
             let isTomorrow = calendar.isDateInTomorrow(date)
             newProject.isTomorrow = isTomorrow
         }
-        
+        //Create documents
+        guard let SCdocuments = prj.documents else {
+            return
+        }
+        for document in SCdocuments {
+            let doc = SkDocument(context: DataController.shared.viewContext)
+            doc.project = newProject
+            doc.id = document.id
+            doc.name = document.name
+            doc.creationDate = document.creationDate
+            doc.sourceLanguage = document.sourceLanguage
+            doc.documentDisassemblingStatus = document.documentDisassemblingStatus
+            doc.targetLanguage = document.targetLanguage
+            doc.status = document.status
+            if let count = document.wordsCount {
+                doc.wordsCount = String(count)
+            }
+            doc.statusModificationDate = document.statusModificationDate
+            if let pretranslateCompleted = document.pretranslateCompleted {
+                doc.pretranslateCompleted = pretranslateCompleted
+            }
+            doc.externalId = document.externalId
+            doc.metaInfo = document.metaInfo
+            if let placeholdersAreEnabled = document.placeholdersAreEnabled {
+                doc.placeholdersAreEnabled = placeholdersAreEnabled
+            }
+            
+        }
         
         
         

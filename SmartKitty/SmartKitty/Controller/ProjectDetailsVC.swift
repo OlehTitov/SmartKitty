@@ -18,6 +18,10 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate {
     
     //MARK: - OUTLETS
     @IBOutlet weak var projectTitle: UILabel!
+    @IBOutlet weak var documentsCount: UILabel!
+    
+    @IBOutlet weak var listOfDocuments: UILabel!
+    
     
     //MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +42,18 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate {
         guard let projects = fetchedResultsController.fetchedObjects else {
             return
         }
+        let selectedProject = projects[0]
+        let documents = selectedProject.documents
+        let docs = documents as? Set<SkDocument> ?? []
         projectTitle.text = projects[0].name
+        documentsCount.text = String(documents!.count)
+        var docNames: [String] = []
+        for doc in docs {
+            if let name = doc.name {
+                docNames.append(name)
+            }
+        }
+        listOfDocuments.text = docNames.joined(separator: ", ")
     }
     
     //MARK: - SETUP FRC
