@@ -31,6 +31,7 @@
 		7CF4C4FD24E43ACD00F9FC02 /* projectStatuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C4FC24E43ACD00F9FC02 /* projectStatuses.swift */; };
 		7CF4C50024E4405800F9FC02 /* ProjectStatusesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C4FF24E4405800F9FC02 /* ProjectStatusesData.swift */; };
 		7CF4C50224E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50124E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift */; };
+		7CF4C50524E7F60200F9FC02 /* ProjectDetailsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50424E7F60200F9FC02 /* ProjectDetailsRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		7CF4C4FC24E43ACD00F9FC02 /* projectStatuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projectStatuses.swift; sourceTree = "<group>"; };
 		7CF4C4FF24E4405800F9FC02 /* ProjectStatusesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectStatusesData.swift; sourceTree = "<group>"; };
 		7CF4C50124E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDetailsVC+ExtensionScrollView.swift"; sourceTree = "<group>"; };
+		7CF4C50424E7F60200F9FC02 /* ProjectDetailsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 		7CD6835B24D86A8D0091ED52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7CF4C50324E7F5DF00F9FC02 /* ProjectDetailRow */,
 				7CF4C4FE24E4403C00F9FC02 /* Data */,
 				7CF4C4FB24E43AA700F9FC02 /* SmartKitty Project */,
 				7CD6837824DD34830091ED52 /* HomeHeaderTile */,
@@ -223,6 +226,14 @@
 				7CF4C4FF24E4405800F9FC02 /* ProjectStatusesData.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		7CF4C50324E7F5DF00F9FC02 /* ProjectDetailRow */ = {
+			isa = PBXGroup;
+			children = (
+				7CF4C50424E7F60200F9FC02 /* ProjectDetailsRow.swift */,
+			);
+			path = ProjectDetailRow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +328,7 @@
 				7CF4C50024E4405800F9FC02 /* ProjectStatusesData.swift in Sources */,
 				7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */,
 				7CD6837C24DD41230091ED52 /* TilesCell.swift in Sources */,
+				7CF4C50524E7F60200F9FC02 /* ProjectDetailsRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,13 +10,16 @@ import Foundation
 import UIKit
 import CoreData
 
-class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate {
+class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDelegate {
     
     //MARK: - PROPERTIES
     var topViewMinHeight: CGFloat = 120
     var topViewMaxHeight: CGFloat = 400
     var selectedProject: SkProject!
     var fetchedResultsController: NSFetchedResultsController<SkProject>!
+    var dataSource: UITableViewDiffableDataSource<Int, ProjectDetailRow>?
+    var snapshot = NSDiffableDataSourceSnapshot<Int, ProjectDetailRow>()
+    var projectDetailRows: [ProjectDetailRow]!
     
     //MARK: - OUTLETS
     @IBOutlet weak var projectTitle: UILabel!
@@ -45,6 +48,9 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate {
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.projectDetailsTableView.delegate = self
+        setupProjectDetails()
+        setupTableView()
         projectTitle.text = selectedProject.name
         let documents = selectedProject.documents
         let docs = documents as? Set<SkDocument> ?? []
@@ -58,16 +64,39 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate {
         listOfDocuments.text = docNames.joined(separator: ", ")
         
         setupFetchedResultsController()
-        /*
-        guard let projects = fetchedResultsController.fetchedObjects else {
-            return
+        
+    }
+    
+    //MARK: - SETUP PROJECT DETAILS
+    func setupProjectDetails() {
+        projectDetailRows = [
+            ProjectDetailRow(title: "Source", desc: selectedProject.sourceLanguage ?? ""),
+            ProjectDetailRow(title: "Target", desc: "setup later"),
+            ProjectDetailRow(title: "Created", desc: selectedProject.creationDate ?? ""),
+            ProjectDetailRow(title: "Deadline", desc: selectedProject.deadline ?? ""),
+            ProjectDetailRow(title: "Documents", desc: "setup later")
+        ]
+    }
+    
+    
+    // MARK: - TABLE VIEW SETUP
+    private func setupTableView() {
+        dataSource = UITableViewDiffableDataSource<Int, ProjectDetailRow>(tableView: projectDetailsTableView) { (tableView, indexPath, detailRow) -> UITableViewCell? in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectDetailsCell", for: indexPath)
+            cell.textLabel?.text = detailRow.title
+            cell.detailTextLabel?.text = detailRow.desc
+            //cell.textLabel?.text = street
+            //cell.detailTextLabel?.text = "\(city), \(country)"
+            return cell
         }
- */
-        //let selectedProject = projects[0]
-        
-        
-        //projectTitle.text = projects[0].name
-        
+        setupSnapshot()
+    }
+    
+    private func setupSnapshot() {
+        snapshot = NSDiffableDataSourceSnapshot<Int, ProjectDetailRow>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(projectDetailRows)
+        dataSource?.apply(self.snapshot, animatingDifferences: true)
     }
     
     //MARK: - SETUP FRC
