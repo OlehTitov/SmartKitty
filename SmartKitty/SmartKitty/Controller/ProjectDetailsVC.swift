@@ -13,6 +13,8 @@ import CoreData
 class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate {
     
     //MARK: - PROPERTIES
+    var topViewMinHeight: CGFloat = 120
+    var topViewMaxHeight: CGFloat = 400
     var selectedProject: SkProject!
     var fetchedResultsController: NSFetchedResultsController<SkProject>!
     
@@ -20,7 +22,9 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var projectTitle: UILabel!
     @IBOutlet weak var projectProgressView: UIProgressView!
     @IBOutlet weak var deadlineInLabel: UILabel!
+    @IBOutlet weak var projectDetailsTableView: UITableView!
     
+    @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var documentsCount: UILabel!
     
     @IBOutlet weak var listOfDocuments: UILabel!
@@ -41,14 +45,9 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate {
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupFetchedResultsController()
-        guard let projects = fetchedResultsController.fetchedObjects else {
-            return
-        }
-        let selectedProject = projects[0]
+        projectTitle.text = selectedProject.name
         let documents = selectedProject.documents
         let docs = documents as? Set<SkDocument> ?? []
-        projectTitle.text = projects[0].name
         documentsCount.text = String(documents!.count)
         var docNames: [String] = []
         for doc in docs {
@@ -57,6 +56,18 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate {
             }
         }
         listOfDocuments.text = docNames.joined(separator: ", ")
+        
+        setupFetchedResultsController()
+        /*
+        guard let projects = fetchedResultsController.fetchedObjects else {
+            return
+        }
+ */
+        //let selectedProject = projects[0]
+        
+        
+        //projectTitle.text = projects[0].name
+        
     }
     
     //MARK: - SETUP FRC

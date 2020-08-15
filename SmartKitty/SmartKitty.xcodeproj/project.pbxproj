@@ -30,6 +30,7 @@
 		7CF4C4FA24E3F0C400F9FC02 /* ProjectDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C4F924E3F0C400F9FC02 /* ProjectDetailsVC.swift */; };
 		7CF4C4FD24E43ACD00F9FC02 /* projectStatuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C4FC24E43ACD00F9FC02 /* projectStatuses.swift */; };
 		7CF4C50024E4405800F9FC02 /* ProjectStatusesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C4FF24E4405800F9FC02 /* ProjectStatusesData.swift */; };
+		7CF4C50224E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50124E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		7CF4C4F924E3F0C400F9FC02 /* ProjectDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsVC.swift; sourceTree = "<group>"; };
 		7CF4C4FC24E43ACD00F9FC02 /* projectStatuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projectStatuses.swift; sourceTree = "<group>"; };
 		7CF4C4FF24E4405800F9FC02 /* ProjectStatusesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectStatusesData.swift; sourceTree = "<group>"; };
+		7CF4C50124E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDetailsVC+ExtensionScrollView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				7CD6837424DC3B710091ED52 /* HomeVC.swift */,
 				7CD6837B24DD41230091ED52 /* TilesCell.swift */,
 				7CF4C4F924E3F0C400F9FC02 /* ProjectDetailsVC.swift */,
+				7CF4C50124E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				7CD6836B24DAA9CE0091ED52 /* DataController.swift in Sources */,
 				7C4601A124E054BA00CCDA63 /* Alerts.swift in Sources */,
 				7CD6837A24DD34BB0091ED52 /* HomeHeaderTileModel.swift in Sources */,
+				7CF4C50224E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift in Sources */,
 				7CD6837524DC3B710091ED52 /* HomeVC.swift in Sources */,
 				7CF4C4F824E3AD0D00F9FC02 /* ToggleButton.swift in Sources */,
 				7CF4C4FA24E3F0C400F9FC02 /* ProjectDetailsVC.swift in Sources */,
