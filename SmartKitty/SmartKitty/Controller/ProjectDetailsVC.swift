@@ -18,6 +18,9 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate {
     
     //MARK: - OUTLETS
     @IBOutlet weak var projectTitle: UILabel!
+    @IBOutlet weak var projectProgressView: UIProgressView!
+    @IBOutlet weak var deadlineInLabel: UILabel!
+    
     @IBOutlet weak var documentsCount: UILabel!
     
     @IBOutlet weak var listOfDocuments: UILabel!

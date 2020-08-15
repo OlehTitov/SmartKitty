@@ -186,7 +186,7 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        resignFirstResponder()
+        //resignFirstResponder()
         print("Clear the search")
         searchText = ""
         allPredicates.removeAll()
