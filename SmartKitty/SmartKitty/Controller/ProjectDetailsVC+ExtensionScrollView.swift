@@ -11,6 +11,33 @@ import UIKit
 
 extension ProjectDetailsVC: UIScrollViewDelegate {
     
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            
+                if self.topViewHeightConstraint.constant != self.topViewMaxHeight || self.topViewHeightConstraint.constant != self.topViewMinHeight {
+                    if self.topViewHeightConstraint.constant >= 300 {
+                        UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveLinear, animations: {
+                            self.topViewHeightConstraint.constant = self.topViewMaxHeight
+                            self.deadlineInLabel.alpha = 1
+                            self.projectProgressView.alpha = 1
+                            self.projectProgressLabel.alpha = 1
+                        }, completion: nil)
+                        
+                    } else {
+                        UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveLinear, animations: {
+                            self.topViewHeightConstraint.constant = self.topViewMinHeight
+                            self.deadlineInLabel.alpha = 0
+                            self.projectProgressView.alpha = 0
+                            self.projectProgressLabel.alpha = 0
+                        }, completion: nil)
+                    }
+                }
+            
+            
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //Define the number by which the scroll view did changed
         let y: CGFloat = scrollView.contentOffset.y
@@ -21,40 +48,24 @@ extension ProjectDetailsVC: UIScrollViewDelegate {
         //Calculate the step
         let step = topViewMaxHeight - newTopViewHeight
         print("This is step: \(step)")
+        print("Height constraint is \(topViewHeightConstraint.constant)")
         
+        
+        //Increase speed
         if step >= 40 {
-            newTopViewHeight = topViewHeightConstraint.constant - y*2
+            newTopViewHeight = topViewHeightConstraint.constant - y * 2
         }
-        
-        
-        /*
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
-            if newTopViewHeight > self.topViewMaxHeight {
-                self.topViewHeightConstraint.constant = self.topViewMaxHeight
-            } else if newTopViewHeight < self.topViewMinHeight {
-                self.topViewHeightConstraint.constant = self.topViewMinHeight
-            } else {
-                self.topViewHeightConstraint.constant = newTopViewHeight
-                scrollView.contentOffset.y = 0
-            }
-        }, completion: nil)
-         
-         
-         
-         
-         
-         UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
-             
-         }, completion: nil)
-         
-        */
-        
         
         //Old simple working transition for top view
         if newTopViewHeight > topViewMaxHeight {
-            topViewHeightConstraint.constant = topViewMaxHeight
+            UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
+                self.topViewHeightConstraint.constant = self.topViewMaxHeight
+            }, completion: nil)
+            
         } else if newTopViewHeight < topViewMinHeight {
-            topViewHeightConstraint.constant = topViewMinHeight
+            UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
+                self.topViewHeightConstraint.constant = self.topViewMinHeight
+            }, completion: nil)
         } else {
             topViewHeightConstraint.constant = newTopViewHeight
             scrollView.contentOffset.y = 0
@@ -69,6 +80,10 @@ extension ProjectDetailsVC: UIScrollViewDelegate {
             projectTitleTopConstraint.constant = newProjectTitleTopConstraint
             scrollView.contentOffset.y = 0
         }
+        
+        
+        //Transition for progress block
+        progressBlockTopConstraint.constant = topViewHeightConstraint.constant / 9
         
         //Change opacity of elements in top view
         var alpha: CGFloat = 1

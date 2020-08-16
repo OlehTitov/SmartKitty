@@ -47,6 +47,8 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     @IBOutlet weak var listOfDocuments: UILabel!
     @IBOutlet weak var projectTitleTopConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var progressBlockTopConstraint: NSLayoutConstraint!
+    
     //MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -68,9 +70,13 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         //navigationController?.navigationBar.isTranslucent = true
         obtainValuesForProjectDetails()
         
+        //Setup progress bar
+        
+        
         self.projectDetailsTableView.delegate = self
         self.projectDetailsTableView.layer.cornerRadius = 10
         self.projectDetailsTableView.showsVerticalScrollIndicator = false
+        self.projectDetailsTableView.decelerationRate = .fast
         setupProjectDetails()
         setupTableView()
         
