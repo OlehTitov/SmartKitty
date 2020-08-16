@@ -13,10 +13,13 @@ class ProjectDetailRow: Hashable {
     var id = UUID()
     var title: String
     var desc: String
+    var link: String
     
-    init(title: String, desc: String) {
+    init(title: String, desc: String, link: String) {
         self.title = title
         self.desc = desc
+        self.link = link
+        
     }
     
     //Conform to Hashable Protocol

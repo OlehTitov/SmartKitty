@@ -13,10 +13,12 @@ import CoreData
 class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDelegate {
     
     //MARK: - PROPERTIES
-    var topViewMinHeight: CGFloat = 220
+    var topViewMinHeight: CGFloat = 200
     var topViewMaxHeight: CGFloat = 400
-    //var alpha: CGFloat = 1
+    let titleMinConstraint: CGFloat = 70
+    let titleMaxConstraint: CGFloat = 90
     var selectedProject: SkProject!
+    var documentCount: String?
     var fetchedResultsController: NSFetchedResultsController<SkProject>!
     var dataSource: UITableViewDiffableDataSource<Int, ProjectDetailRow>?
     var snapshot = NSDiffableDataSourceSnapshot<Int, ProjectDetailRow>()
@@ -26,16 +28,12 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     @IBOutlet weak var projectTitle: UILabel!
     @IBOutlet weak var projectProgressView: UIProgressView!
     @IBOutlet weak var deadlineInLabel: UILabel!
-    
     @IBOutlet weak var projectProgressLabel: UILabel!
-    
     @IBOutlet weak var projectDetailsTableView: UITableView!
-    
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var documentsCount: UILabel!
-    
     @IBOutlet weak var listOfDocuments: UILabel!
-    
+    @IBOutlet weak var projectTitleTopConstraint: NSLayoutConstraint!
     
     //MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
@@ -52,10 +50,19 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
-        deadlineInLabel.alpha = 1
+        // Make the navigation bar background clear
+        //navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        //navigationController?.navigationBar.shadowImage = UIImage()
+        //navigationController?.navigationBar.isTranslucent = true
+        obtainValuesForProjectDetails()
+        
         self.projectDetailsTableView.delegate = self
+        self.projectDetailsTableView.layer.cornerRadius = 10
+        self.projectDetailsTableView.showsVerticalScrollIndicator = false
         setupProjectDetails()
         setupTableView()
+        
+        
         projectTitle.text = selectedProject.name
         let documents = selectedProject.documents
         let docs = documents as? Set<SkDocument> ?? []
@@ -81,12 +88,18 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     //MARK: - SETUP PROJECT DETAILS
     func setupProjectDetails() {
         projectDetailRows = [
-            ProjectDetailRow(title: "Source", desc: selectedProject.sourceLanguage ?? ""),
-            ProjectDetailRow(title: "Target", desc: "setup later"),
-            ProjectDetailRow(title: "Created", desc: selectedProject.creationDate ?? ""),
-            ProjectDetailRow(title: "Deadline", desc: selectedProject.deadline ?? ""),
-            ProjectDetailRow(title: "Documents", desc: "setup later")
+            ProjectDetailRow(title: "Source", desc: selectedProject.sourceLanguage ?? "", link: ""),
+            ProjectDetailRow(title: "Target", desc: "setup later", link: ""),
+            ProjectDetailRow(title: "Created", desc: selectedProject.creationDate ?? "", link: ""),
+            ProjectDetailRow(title: "Deadline", desc: selectedProject.deadline ?? "", link: ""),
+            ProjectDetailRow(title: "Documents", desc: documentCount ?? "No documents yet", link: "some text")
         ]
+    }
+    
+    func obtainValuesForProjectDetails() {
+        let documents = selectedProject.documents
+        let docs = documents as? Set<SkDocument> ?? []
+        documentCount = String(docs.count)
     }
     
     
@@ -96,6 +109,9 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectDetailsCell", for: indexPath)
             cell.textLabel?.text = detailRow.title
             cell.detailTextLabel?.text = detailRow.desc
+            if !detailRow.link.isEmpty {
+                cell.accessoryType = .disclosureIndicator
+            }
             //cell.textLabel?.text = street
             //cell.detailTextLabel?.text = "\(city), \(country)"
             return cell
