@@ -13,8 +13,9 @@ import CoreData
 class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDelegate {
     
     //MARK: - PROPERTIES
-    var topViewMinHeight: CGFloat = 120
+    var topViewMinHeight: CGFloat = 220
     var topViewMaxHeight: CGFloat = 400
+    //var alpha: CGFloat = 1
     var selectedProject: SkProject!
     var fetchedResultsController: NSFetchedResultsController<SkProject>!
     var dataSource: UITableViewDiffableDataSource<Int, ProjectDetailRow>?
@@ -25,6 +26,9 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     @IBOutlet weak var projectTitle: UILabel!
     @IBOutlet weak var projectProgressView: UIProgressView!
     @IBOutlet weak var deadlineInLabel: UILabel!
+    
+    @IBOutlet weak var projectProgressLabel: UILabel!
+    
     @IBOutlet weak var projectDetailsTableView: UITableView!
     
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
@@ -48,6 +52,7 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
+        deadlineInLabel.alpha = 1
         self.projectDetailsTableView.delegate = self
         setupProjectDetails()
         setupTableView()
@@ -66,6 +71,12 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         setupFetchedResultsController()
         
     }
+    
+    //MARK: - SETUP TOP VIEW
+    func setupTopView() {
+        //deadlineInLabel.textColor = UIColor.black.withAlphaComponent(alpha)
+    }
+    
     
     //MARK: - SETUP PROJECT DETAILS
     func setupProjectDetails() {

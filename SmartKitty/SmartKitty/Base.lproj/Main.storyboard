@@ -300,16 +300,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deadline in 1 hour and 30 mins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emf-vB-AW0">
-                                        <rect key="frame" x="20" y="287" width="374" height="18"/>
+                                        <rect key="frame" x="20" y="204" width="374" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Rf1-la-o7b">
-                                        <rect key="frame" x="50" y="275" width="314" height="2"/>
+                                        <rect key="frame" x="50" y="192" width="314" height="2"/>
                                     </progressView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project progress" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAi-CW-u2k">
-                                        <rect key="frame" x="20" y="247" width="374" height="18"/>
+                                        <rect key="frame" x="20" y="164" width="374" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -341,11 +341,11 @@
                                     <constraint firstAttribute="trailing" secondItem="Rf1-la-o7b" secondAttribute="trailing" constant="50" id="a2x-oT-vUj"/>
                                     <constraint firstItem="emf-vB-AW0" firstAttribute="leading" secondItem="av8-Ad-Ojo" secondAttribute="leading" constant="20" id="aiI-IZ-EsS"/>
                                     <constraint firstAttribute="trailing" secondItem="F9l-Zt-MLO" secondAttribute="trailing" constant="20" id="auP-Qv-eJo"/>
-                                    <constraint firstAttribute="bottom" secondItem="emf-vB-AW0" secondAttribute="bottom" constant="95" id="cOh-w5-aew"/>
                                     <constraint firstItem="vZB-im-gUb" firstAttribute="top" secondItem="av8-Ad-Ojo" secondAttribute="top" constant="90" id="cWB-pA-hNs"/>
                                     <constraint firstItem="Rf1-la-o7b" firstAttribute="top" secondItem="JAi-CW-u2k" secondAttribute="bottom" constant="10" id="cdi-5t-ch6"/>
                                     <constraint firstAttribute="trailing" secondItem="JAi-CW-u2k" secondAttribute="trailing" constant="20" id="fzO-AS-Nv8"/>
                                     <constraint firstAttribute="trailing" secondItem="ZzW-9n-rGc" secondAttribute="trailing" constant="20" id="qGZ-ZO-cq3"/>
+                                    <constraint firstItem="JAi-CW-u2k" firstAttribute="top" secondItem="vZB-im-gUb" secondAttribute="bottom" constant="50" id="tzx-o7-ael"/>
                                     <constraint firstAttribute="height" constant="400" id="wza-WH-jX0"/>
                                     <constraint firstItem="JAi-CW-u2k" firstAttribute="leading" secondItem="av8-Ad-Ojo" secondAttribute="leading" constant="20" id="z16-nT-ePQ"/>
                                 </constraints>
@@ -398,6 +398,7 @@
                         <outlet property="documentsCount" destination="F9l-Zt-MLO" id="QLm-iY-wOx"/>
                         <outlet property="listOfDocuments" destination="ZzW-9n-rGc" id="G7f-Nu-qYN"/>
                         <outlet property="projectDetailsTableView" destination="NEd-f8-i6a" id="KCv-UN-qFG"/>
+                        <outlet property="projectProgressLabel" destination="JAi-CW-u2k" id="cus-Qa-bLg"/>
                         <outlet property="projectProgressView" destination="Rf1-la-o7b" id="Cp1-MQ-R2g"/>
                         <outlet property="projectTitle" destination="vZB-im-gUb" id="h2S-n2-Dh3"/>
                         <outlet property="topViewHeightConstraint" destination="wza-WH-jX0" id="r9Y-uH-uR4"/>
