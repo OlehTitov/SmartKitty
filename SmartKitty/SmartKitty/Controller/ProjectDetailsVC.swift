@@ -19,10 +19,22 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     let titleMaxConstraint: CGFloat = 90
     var selectedProject: SkProject!
     var documentCount: String?
+    var deadlineTimeString: String?
+    var deadlineDateString: String?
     var fetchedResultsController: NSFetchedResultsController<SkProject>!
     var dataSource: UITableViewDiffableDataSource<Int, ProjectDetailRow>?
     var snapshot = NSDiffableDataSourceSnapshot<Int, ProjectDetailRow>()
     var projectDetailRows: [ProjectDetailRow]!
+    let dateFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.dateStyle = .medium
+        return df
+    }()
+    let timeFormatter: DateFormatter = {
+        let tf = DateFormatter()
+        tf.dateFormat = "hh:mm a"
+        return tf
+    }()
     
     //MARK: - OUTLETS
     @IBOutlet weak var projectTitle: UILabel!
@@ -62,8 +74,8 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         setupProjectDetails()
         setupTableView()
         
-        
         projectTitle.text = selectedProject.name
+        
         let documents = selectedProject.documents
         let docs = documents as? Set<SkDocument> ?? []
         documentsCount.text = String(documents!.count)
@@ -90,16 +102,24 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         projectDetailRows = [
             ProjectDetailRow(title: "Source", desc: selectedProject.sourceLanguage ?? "", link: ""),
             ProjectDetailRow(title: "Target", desc: "setup later", link: ""),
+            ProjectDetailRow(title: "Client", desc: "setup later", link: ""),
             ProjectDetailRow(title: "Created", desc: selectedProject.creationDate ?? "", link: ""),
-            ProjectDetailRow(title: "Deadline", desc: selectedProject.deadline ?? "", link: ""),
+            ProjectDetailRow(title: "Deadline", desc: "\(deadlineTimeString ?? "-") \(deadlineDateString ?? "-")", link: ""),
             ProjectDetailRow(title: "Documents", desc: documentCount ?? "No documents yet", link: "some text")
         ]
     }
     
     func obtainValuesForProjectDetails() {
+        //Get number of documents
         let documents = selectedProject.documents
         let docs = documents as? Set<SkDocument> ?? []
         documentCount = String(docs.count)
+        //Get deadline
+        guard let deadline = selectedProject.deadlineAsDate else {
+            return
+        }
+        deadlineTimeString = timeFormatter.string(from: deadline)
+        deadlineDateString = dateFormatter.string(from: deadline)
     }
     
     
