@@ -11,33 +11,35 @@ import UIKit
 
 extension ProjectDetailsVC: UIScrollViewDelegate {
     
-    
+    ///Animate transition when user lift the finger from scroll view
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
-            
                 if self.topViewHeightConstraint.constant != self.topViewMaxHeight || self.topViewHeightConstraint.constant != self.topViewMinHeight {
                     if self.topViewHeightConstraint.constant >= 300 {
-                        UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveLinear, animations: {
+                        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                             self.topViewHeightConstraint.constant = self.topViewMaxHeight
                             self.deadlineInLabel.alpha = 1
                             self.projectProgressView.alpha = 1
                             self.projectProgressLabel.alpha = 1
+                            //Animations on constraints do not work without layoutIfNeeded()
+                            self.view.layoutIfNeeded()
                         }, completion: nil)
                         
                     } else {
-                        UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveLinear, animations: {
+                        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                             self.topViewHeightConstraint.constant = self.topViewMinHeight
                             self.deadlineInLabel.alpha = 0
                             self.projectProgressView.alpha = 0
                             self.projectProgressLabel.alpha = 0
+                            //Animations on constraints do not work without layoutIfNeeded()
+                            self.view.layoutIfNeeded()
                         }, completion: nil)
                     }
                 }
-            
-            
         }
     }
     
+    ///Transition logic
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //Define the number by which the scroll view did changed
         let y: CGFloat = scrollView.contentOffset.y
@@ -45,27 +47,20 @@ extension ProjectDetailsVC: UIScrollViewDelegate {
         //Setup new height for top view
         var newTopViewHeight: CGFloat = topViewHeightConstraint.constant - y
         let newProjectTitleTopConstraint = projectTitleTopConstraint.constant - y/2
+        
         //Calculate the step
         let step = topViewMaxHeight - newTopViewHeight
-        print("This is step: \(step)")
-        print("Height constraint is \(topViewHeightConstraint.constant)")
-        
         
         //Increase speed
         if step >= 40 {
             newTopViewHeight = topViewHeightConstraint.constant - y * 2
         }
         
-        //Old simple working transition for top view
+        //Transition for top view
         if newTopViewHeight > topViewMaxHeight {
-            UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
-                self.topViewHeightConstraint.constant = self.topViewMaxHeight
-            }, completion: nil)
-            
+            topViewHeightConstraint.constant = topViewMaxHeight
         } else if newTopViewHeight < topViewMinHeight {
-            UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
-                self.topViewHeightConstraint.constant = self.topViewMinHeight
-            }, completion: nil)
+            topViewHeightConstraint.constant = topViewMinHeight
         } else {
             topViewHeightConstraint.constant = newTopViewHeight
             scrollView.contentOffset.y = 0
@@ -82,7 +77,7 @@ extension ProjectDetailsVC: UIScrollViewDelegate {
         }
         
         
-        //Transition for progress block
+        //Transition for progress block which depends on the change of the top view constraint
         progressBlockTopConstraint.constant = topViewHeightConstraint.constant / 9
         
         //Change opacity of elements in top view
