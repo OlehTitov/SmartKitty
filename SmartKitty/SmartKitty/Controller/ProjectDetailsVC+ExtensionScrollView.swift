@@ -77,23 +77,36 @@ extension ProjectDetailsVC: UIScrollViewDelegate {
         }
         
         
-        //Transition for progress block which depends on the change of the top view constraint
-        progressBlockTopConstraint.constant = topViewHeightConstraint.constant / 9
+        //Transition for progress block  and buttons which depend on the change of the top view constraint
+        progressBlockTopConstraint.constant = topViewHeightConstraint.constant / 12
+        buttonsBlockTopConstraint.constant = topViewHeightConstraint.constant / 12
+        
+        if topViewHeightConstraint.constant <= 300 {
+            buttonsBlockTopConstraint.constant = 1
+        }
+        
+        if topViewHeightConstraint.constant <= 250 {
+            progressBlockTopConstraint.constant = 1
+        }
         
         //Change opacity of elements in top view
         var alpha: CGFloat = 1
+        var fastAlpha: CGFloat = 1
         if step > 0 {
-            alpha = 1 - step/100
+            alpha = 1 - step/150
+            fastAlpha = 1 - step/70
         }
         
         if alpha > 0 {
             deadlineInLabel.layer.opacity = Float(alpha)
             projectProgressView.alpha = alpha
             projectProgressLabel.alpha = alpha
+            actionButtonsCollection.alpha = fastAlpha
         } else if alpha < 0 {
             deadlineInLabel.layer.opacity = 0
             projectProgressView.alpha = 0
             projectProgressLabel.alpha = 0
+            actionButtonsCollection.alpha = 0
         }
        
         

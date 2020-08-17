@@ -13,18 +13,17 @@ import CoreData
 class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDelegate {
     
     //MARK: - PROPERTIES
+    //Layout properties
     var topViewMinHeight: CGFloat = 200
     var topViewMaxHeight: CGFloat = 400
     let titleMinConstraint: CGFloat = 70
     let titleMaxConstraint: CGFloat = 90
+    
+    //Project related properties
     var selectedProject: SkProject!
     var documentCount: String?
     var deadlineTimeString: String?
     var deadlineDateString: String?
-    var fetchedResultsController: NSFetchedResultsController<SkProject>!
-    var dataSource: UITableViewDiffableDataSource<Int, ProjectDetailRow>?
-    var snapshot = NSDiffableDataSourceSnapshot<Int, ProjectDetailRow>()
-    var projectDetailRows: [ProjectDetailRow]!
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateStyle = .medium
@@ -36,17 +35,31 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         return tf
     }()
     
+    //Core Data
+    var fetchedResultsController: NSFetchedResultsController<SkProject>!
+    
+    //Table view
+    var dataSource: UITableViewDiffableDataSource<Int, ProjectDetailRow>?
+    var snapshot = NSDiffableDataSourceSnapshot<Int, ProjectDetailRow>()
+    var projectDetailRows: [ProjectDetailRow]!
+    
+    //Collection view
+    var buttonsDataSource: UICollectionViewDiffableDataSource<Int, ActionButton>?
+    var buttonsSnapshot = NSDiffableDataSourceSnapshot<Int, ActionButton>()
+    var actionButtonsArray: [ActionButton]!
+    
     //MARK: - OUTLETS
     @IBOutlet weak var projectTitle: UILabel!
     @IBOutlet weak var projectProgressView: UIProgressView!
     @IBOutlet weak var deadlineInLabel: UILabel!
     @IBOutlet weak var projectProgressLabel: UILabel!
     @IBOutlet weak var projectDetailsTableView: UITableView!
+    
+    @IBOutlet weak var actionButtonsCollection: UICollectionView!
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var documentsCount: UILabel!
-    @IBOutlet weak var listOfDocuments: UILabel!
     @IBOutlet weak var projectTitleTopConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var buttonsBlockTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var progressBlockTopConstraint: NSLayoutConstraint!
     
     //MARK: - VIEW WILL APPEAR
@@ -68,20 +81,29 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         //navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         //navigationController?.navigationBar.shadowImage = UIImage()
         //navigationController?.navigationBar.isTranslucent = true
+        
+        //Setup action buttons
+        setupActionButtons()
+        configureActionButtonsDataSource()
+        configureLayout()
+        
         obtainValuesForProjectDetails()
         
         //Setup progress bar
         
-        
+        //Congigure table view
         self.projectDetailsTableView.delegate = self
-        self.projectDetailsTableView.layer.cornerRadius = 10
+        self.projectDetailsTableView.layer.cornerRadius = 18
         self.projectDetailsTableView.showsVerticalScrollIndicator = false
         self.projectDetailsTableView.decelerationRate = .fast
+        
         setupProjectDetails()
         setupTableView()
         
         projectTitle.text = selectedProject.name
         
+        //Old code to get documentsCount and documents names
+        /*
         let documents = selectedProject.documents
         let docs = documents as? Set<SkDocument> ?? []
         documentsCount.text = String(documents!.count)
@@ -92,6 +114,7 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
             }
         }
         listOfDocuments.text = docNames.joined(separator: ", ")
+ */
         
         setupFetchedResultsController()
         

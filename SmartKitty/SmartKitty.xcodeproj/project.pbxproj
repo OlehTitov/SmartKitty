@@ -32,6 +32,9 @@
 		7CF4C50024E4405800F9FC02 /* ProjectStatusesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C4FF24E4405800F9FC02 /* ProjectStatusesData.swift */; };
 		7CF4C50224E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50124E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift */; };
 		7CF4C50524E7F60200F9FC02 /* ProjectDetailsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50424E7F60200F9FC02 /* ProjectDetailsRow.swift */; };
+		7CF4C50724EA7FAB00F9FC02 /* ActionButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50624EA7FAB00F9FC02 /* ActionButtonCell.swift */; };
+		7CF4C50924EA822B00F9FC02 /* ProjectDetailsVC+ExtensionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50824EA822B00F9FC02 /* ProjectDetailsVC+ExtensionCollectionView.swift */; };
+		7CF4C50C24EA841000F9FC02 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50B24EA841000F9FC02 /* ActionButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +65,9 @@
 		7CF4C4FF24E4405800F9FC02 /* ProjectStatusesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectStatusesData.swift; sourceTree = "<group>"; };
 		7CF4C50124E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDetailsVC+ExtensionScrollView.swift"; sourceTree = "<group>"; };
 		7CF4C50424E7F60200F9FC02 /* ProjectDetailsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsRow.swift; sourceTree = "<group>"; };
+		7CF4C50624EA7FAB00F9FC02 /* ActionButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonCell.swift; sourceTree = "<group>"; };
+		7CF4C50824EA822B00F9FC02 /* ProjectDetailsVC+ExtensionCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDetailsVC+ExtensionCollectionView.swift"; sourceTree = "<group>"; };
+		7CF4C50B24EA841000F9FC02 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +130,8 @@
 				7CD6837B24DD41230091ED52 /* TilesCell.swift */,
 				7CF4C4F924E3F0C400F9FC02 /* ProjectDetailsVC.swift */,
 				7CF4C50124E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift */,
+				7CF4C50624EA7FAB00F9FC02 /* ActionButtonCell.swift */,
+				7CF4C50824EA822B00F9FC02 /* ProjectDetailsVC+ExtensionCollectionView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -141,6 +149,7 @@
 		7CD6835B24D86A8D0091ED52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7CF4C50A24EA83F400F9FC02 /* ActionButton */,
 				7CF4C50324E7F5DF00F9FC02 /* ProjectDetailRow */,
 				7CF4C4FE24E4403C00F9FC02 /* Data */,
 				7CF4C4FB24E43AA700F9FC02 /* SmartKitty Project */,
@@ -236,6 +245,14 @@
 			path = ProjectDetailRow;
 			sourceTree = "<group>";
 		};
+		7CF4C50A24EA83F400F9FC02 /* ActionButton */ = {
+			isa = PBXGroup;
+			children = (
+				7CF4C50B24EA841000F9FC02 /* ActionButton.swift */,
+			);
+			path = ActionButton;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -312,6 +329,7 @@
 				7CF4C4FD24E43ACD00F9FC02 /* projectStatuses.swift in Sources */,
 				7C46019E24E03B9C00CCDA63 /* HTTPStatusCodes.swift in Sources */,
 				7CD6837024DAFB670091ED52 /* AllProjectsVC.swift in Sources */,
+				7CF4C50724EA7FAB00F9FC02 /* ActionButtonCell.swift in Sources */,
 				7CD6836824DA63860091ED52 /* ProjectsListResponse.swift in Sources */,
 				7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */,
 				7CD6834624D8532E0091ED52 /* AppDelegate.swift in Sources */,
@@ -320,6 +338,7 @@
 				7CD6836B24DAA9CE0091ED52 /* DataController.swift in Sources */,
 				7C4601A124E054BA00CCDA63 /* Alerts.swift in Sources */,
 				7CD6837A24DD34BB0091ED52 /* HomeHeaderTileModel.swift in Sources */,
+				7CF4C50924EA822B00F9FC02 /* ProjectDetailsVC+ExtensionCollectionView.swift in Sources */,
 				7CF4C50224E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift in Sources */,
 				7CD6837524DC3B710091ED52 /* HomeVC.swift in Sources */,
 				7CF4C4F824E3AD0D00F9FC02 /* ToggleButton.swift in Sources */,
@@ -329,6 +348,7 @@
 				7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */,
 				7CD6837C24DD41230091ED52 /* TilesCell.swift in Sources */,
 				7CF4C50524E7F60200F9FC02 /* ProjectDetailsRow.swift in Sources */,
+				7CF4C50C24EA841000F9FC02 /* ActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
