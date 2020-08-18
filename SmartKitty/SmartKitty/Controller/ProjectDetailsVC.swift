@@ -143,12 +143,12 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         ]
         
         rowsForDeadline = [
-            ProjectDetailRow(title: "Deadline", desc: "\(deadlineTimeString ?? "") \(deadlineDateString ?? "Not specified")", link: "")
+            ProjectDetailRow(title: "\(deadlineTimeString ?? "") \(deadlineDateString ?? "Not specified")", desc: "", link: "")
         ]
         
         rowsForLanguages = [
-            ProjectDetailRow(title: "Source", desc: selectedProject.sourceLanguage ?? "", link: ""),
-            ProjectDetailRow(title: "Target", desc: "setup later", link: "")
+            ProjectDetailRow(title: "Source", desc: selectedProject.sourceLanguage?.capitalized ?? "", link: ""),
+            ProjectDetailRow(title: "Target", desc: selectedProject.targetLanguages?.joined(separator: ", ").capitalized  ?? "", link: "")
         ]
         
         rowsForDocuments = setupDocumentsRows()

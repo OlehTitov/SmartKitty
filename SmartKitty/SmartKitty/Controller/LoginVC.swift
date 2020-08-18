@@ -170,6 +170,7 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         newProject.clientId = prj.clientId
         
         newProject.sourceLanguage = prj.sourceLanguage
+        newProject.targetLanguages = prj.targetLanguages
         newProject.deadline = prj.deadline
         newProject.creationDate = prj.creationDate
         newProject.status = prj.status

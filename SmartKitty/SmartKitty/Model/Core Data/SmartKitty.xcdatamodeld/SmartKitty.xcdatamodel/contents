@@ -54,6 +54,7 @@
         <attribute name="sourceLanguage" optional="YES" attributeType="String"/>
         <attribute name="status" optional="YES" attributeType="String"/>
         <attribute name="statusModificationDate" optional="YES" attributeType="String"/>
+        <attribute name="targetLanguages" optional="YES" attributeType="Transformable" customClassName="[String]"/>
         <relationship name="documents" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SkDocument" inverseName="project" inverseEntity="SkDocument"/>
         <relationship name="projectWorkflow" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkProjectWorkflowStage" inverseName="project" inverseEntity="SkProjectWorkflowStage"/>
     </entity>
@@ -64,7 +65,7 @@
     </entity>
     <elements>
         <element name="SkDocument" positionX="71.109375" positionY="64.11328125" width="128" height="283"/>
-        <element name="SkProject" positionX="-347.48046875" positionY="64.484375" width="218" height="373"/>
+        <element name="SkProject" positionX="-347.48046875" positionY="64.484375" width="218" height="388"/>
         <element name="SkDocumentWorkflowStage" positionX="-135" positionY="225" width="128" height="133"/>
         <element name="SkAssignedExecutive" positionX="-126" positionY="234" width="128" height="118"/>
         <element name="SkProjectWorkflowStage" positionX="-117" positionY="243" width="128" height="88"/>
