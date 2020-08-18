@@ -21,7 +21,7 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     
     //Project related properties
     var selectedProject: SkProject!
-    var documentCount: String?
+    var projectDocuments: [SkDocument] = []
     var deadlineTimeString: String?
     var deadlineDateString: String?
     let dateFormatter: DateFormatter = {
@@ -128,7 +128,6 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         self.projectDetailsTableView.layer.cornerRadius = 18
         self.projectDetailsTableView.showsVerticalScrollIndicator = false
         self.projectDetailsTableView.decelerationRate = .fast
-        //self.projectDetailsTableView.estimatedSectionHeaderHeight = 60
     }
     
     //MARK: - SETUP TOP VIEW
@@ -139,16 +138,8 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     
     //MARK: - SETUP PROJECT DETAILS
     func setupProjectDetails() {
-        projectDetailRows = [
-            ProjectDetailRow(title: "Source", desc: selectedProject.sourceLanguage ?? "", link: ""),
-            ProjectDetailRow(title: "Target", desc: "setup later", link: ""),
-            ProjectDetailRow(title: "Client", desc: "setup later", link: ""),
-            ProjectDetailRow(title: "Created", desc: selectedProject.creationDate ?? "", link: ""),
-            ProjectDetailRow(title: "Deadline", desc: "\(deadlineTimeString ?? "-") \(deadlineDateString ?? "-")", link: ""),
-            ProjectDetailRow(title: "Documents", desc: documentCount ?? "No documents yet", link: "some text")
-        ]
         rowsForNotes = [
-            ProjectDetailRow(title: "This is the text of the future note", desc: "", link: "")
+            ProjectDetailRow(title: "This is the text of the future note. It is a long note. Really.", desc: "", link: "note")
         ]
         
         rowsForDeadline = [
@@ -160,9 +151,7 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
             ProjectDetailRow(title: "Target", desc: "setup later", link: "")
         ]
         
-        rowsForDocuments = [
-            //Create func to fill the array with list of documents
-        ]
+        rowsForDocuments = setupDocumentsRows()
         
         rowsForTeam = [
             //Create a func to fill the array of team with assigned linguists
@@ -173,12 +162,22 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
             ProjectDetailRow(title: "Created", desc: selectedProject.creationDate ?? "", link: "")
         ]
     }
-    
-    func obtainValuesForProjectDetails() {
-        //Get number of documents
+    func setupDocumentsRows() -> [ProjectDetailRow] {
+        var arrayOfDocuments: [ProjectDetailRow] = []
         let documents = selectedProject.documents
         let docs = documents as? Set<SkDocument> ?? []
-        documentCount = String(docs.count)
+        for doc in docs {
+            let dataForRow = ProjectDetailRow(title: doc.name ?? "", desc: "", link: "docs")
+            arrayOfDocuments.append(dataForRow)
+        }
+        return arrayOfDocuments
+    }
+    
+    func obtainValuesForProjectDetails() {
+        //Get array of documents
+        let documents = selectedProject.documents
+        let docs = documents as? Set<SkDocument> ?? []
+        projectDocuments.append(contentsOf: docs)
         //Get deadline
         guard let deadline = selectedProject.deadlineAsDate else {
             return
@@ -197,14 +196,18 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     private func setupTableView() {
         dataSource = ProjectDetailsDataSource(tableView: projectDetailsTableView) { (tableView, indexPath, detailRow) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectDetailsCell", for: indexPath)
-            
+            //Setup text labels
             cell.textLabel?.text = detailRow.title
             cell.detailTextLabel?.text = detailRow.desc
-            if !detailRow.link.isEmpty {
-                cell.accessoryType = .disclosureIndicator
+            //Dispay cells specially for different sections
+            if detailRow.link == "docs" {
+                cell.textLabel?.lineBreakMode = .byTruncatingMiddle
             }
-            //cell.textLabel?.text = street
-            //cell.detailTextLabel?.text = "\(city), \(country)"
+            if detailRow.link == "note" {
+                cell.textLabel?.numberOfLines = 0
+                cell.accessoryType = .none
+            }
+            
             return cell
         }
         setupSnapshot(with: detailsList)
