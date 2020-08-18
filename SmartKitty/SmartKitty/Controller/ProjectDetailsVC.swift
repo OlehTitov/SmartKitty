@@ -16,8 +16,8 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     //Layout properties
     var topViewMinHeight: CGFloat = 200
     var topViewMaxHeight: CGFloat = 400
-    let titleMinConstraint: CGFloat = 70
-    let titleMaxConstraint: CGFloat = 90
+    let titleMinConstraint: CGFloat = 80
+    let titleMaxConstraint: CGFloat = 110
     
     //Project related properties
     var selectedProject: SkProject!
@@ -39,9 +39,17 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     var fetchedResultsController: NSFetchedResultsController<SkProject>!
     
     //Table view
-    var dataSource: UITableViewDiffableDataSource<Int, ProjectDetailRow>?
-    var snapshot = NSDiffableDataSourceSnapshot<Int, ProjectDetailRow>()
+    //var dataSource: UITableViewDiffableDataSource<Section, ProjectDetailRow>?
+    var dataSource: ProjectDetailsDataSource?
+    var snapshot = NSDiffableDataSourceSnapshot<Section, ProjectDetailRow>()
     var projectDetailRows: [ProjectDetailRow]!
+    var rowsForNotes: [ProjectDetailRow]!
+    var rowsForDeadline: [ProjectDetailRow]!
+    var rowsForLanguages: [ProjectDetailRow]!
+    var rowsForDocuments: [ProjectDetailRow]!
+    var rowsForTeam: [ProjectDetailRow]!
+    var rowsForMisc: [ProjectDetailRow]!
+    var detailsList: DetailsList!
     
     //Collection view
     var buttonsDataSource: UICollectionViewDiffableDataSource<Int, ActionButton>?
@@ -77,6 +85,7 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTableView()
         // Make the navigation bar background clear
         //navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         //navigationController?.navigationBar.shadowImage = UIImage()
@@ -89,15 +98,8 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         
         obtainValuesForProjectDetails()
         
-        //Setup progress bar
-        
-        //Congigure table view
-        self.projectDetailsTableView.delegate = self
-        self.projectDetailsTableView.layer.cornerRadius = 18
-        self.projectDetailsTableView.showsVerticalScrollIndicator = false
-        self.projectDetailsTableView.decelerationRate = .fast
-        
         setupProjectDetails()
+        setupDetailsList()
         setupTableView()
         
         projectTitle.text = selectedProject.name
@@ -120,6 +122,15 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         
     }
     
+    //MARK: - CONFIGURE TABLE VIEW
+    func configureTableView() {
+        projectDetailsTableView.delegate = self
+        self.projectDetailsTableView.layer.cornerRadius = 18
+        self.projectDetailsTableView.showsVerticalScrollIndicator = false
+        self.projectDetailsTableView.decelerationRate = .fast
+        //self.projectDetailsTableView.estimatedSectionHeaderHeight = 60
+    }
+    
     //MARK: - SETUP TOP VIEW
     func setupTopView() {
         //deadlineInLabel.textColor = UIColor.black.withAlphaComponent(alpha)
@@ -136,6 +147,31 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
             ProjectDetailRow(title: "Deadline", desc: "\(deadlineTimeString ?? "-") \(deadlineDateString ?? "-")", link: ""),
             ProjectDetailRow(title: "Documents", desc: documentCount ?? "No documents yet", link: "some text")
         ]
+        rowsForNotes = [
+            ProjectDetailRow(title: "This is the text of the future note", desc: "", link: "")
+        ]
+        
+        rowsForDeadline = [
+            ProjectDetailRow(title: "Deadline", desc: "\(deadlineTimeString ?? "") \(deadlineDateString ?? "Not specified")", link: "")
+        ]
+        
+        rowsForLanguages = [
+            ProjectDetailRow(title: "Source", desc: selectedProject.sourceLanguage ?? "", link: ""),
+            ProjectDetailRow(title: "Target", desc: "setup later", link: "")
+        ]
+        
+        rowsForDocuments = [
+            //Create func to fill the array with list of documents
+        ]
+        
+        rowsForTeam = [
+            //Create a func to fill the array of team with assigned linguists
+        ]
+        
+        rowsForMisc = [
+            ProjectDetailRow(title: "Client", desc: "setup later", link: ""),
+            ProjectDetailRow(title: "Created", desc: selectedProject.creationDate ?? "", link: "")
+        ]
     }
     
     func obtainValuesForProjectDetails() {
@@ -151,11 +187,17 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         deadlineDateString = dateFormatter.string(from: deadline)
     }
     
+    //MARK: - SETUP SECTIONS LIST FROM ROWS
+    func setupDetailsList() {
+        detailsList = DetailsList(notes: rowsForNotes, deadline: rowsForDeadline, languages: rowsForLanguages, documents: rowsForDocuments, team: rowsForTeam, misc: rowsForMisc)
+    }
+    
     
     // MARK: - TABLE VIEW SETUP
     private func setupTableView() {
-        dataSource = UITableViewDiffableDataSource<Int, ProjectDetailRow>(tableView: projectDetailsTableView) { (tableView, indexPath, detailRow) -> UITableViewCell? in
+        dataSource = ProjectDetailsDataSource(tableView: projectDetailsTableView) { (tableView, indexPath, detailRow) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectDetailsCell", for: indexPath)
+            
             cell.textLabel?.text = detailRow.title
             cell.detailTextLabel?.text = detailRow.desc
             if !detailRow.link.isEmpty {
@@ -165,15 +207,23 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
             //cell.detailTextLabel?.text = "\(city), \(country)"
             return cell
         }
-        setupSnapshot()
+        setupSnapshot(with: detailsList)
     }
     
-    private func setupSnapshot() {
-        snapshot = NSDiffableDataSourceSnapshot<Int, ProjectDetailRow>()
-        snapshot.appendSections([0])
-        snapshot.appendItems(projectDetailRows)
+    
+    private func setupSnapshot(with list: DetailsList) {
+        snapshot = NSDiffableDataSourceSnapshot<Section, ProjectDetailRow>()
+        snapshot.appendSections(Section.allCases)
+        snapshot.appendItems(list.notes, toSection: .notes)
+        snapshot.appendItems(list.deadline, toSection: .deadline)
+        snapshot.appendItems(list.languages, toSection: .languages)
+        snapshot.appendItems(list.documents, toSection: .documents)
+        snapshot.appendItems(list.team, toSection: .team)
+        snapshot.appendItems(list.misc, toSection: .misc)
+        //snapshot.appendItems(projectDetailRows)
         dataSource?.apply(self.snapshot, animatingDifferences: true)
     }
+    
     
     //MARK: - SETUP FRC
     fileprivate func setupFetchedResultsController() {

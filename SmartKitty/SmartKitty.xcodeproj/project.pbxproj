@@ -35,6 +35,8 @@
 		7CF4C50724EA7FAB00F9FC02 /* ActionButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50624EA7FAB00F9FC02 /* ActionButtonCell.swift */; };
 		7CF4C50924EA822B00F9FC02 /* ProjectDetailsVC+ExtensionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50824EA822B00F9FC02 /* ProjectDetailsVC+ExtensionCollectionView.swift */; };
 		7CF4C50C24EA841000F9FC02 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50B24EA841000F9FC02 /* ActionButton.swift */; };
+		7CF4C50E24EB9BCA00F9FC02 /* ProjectDetailsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50D24EB9BCA00F9FC02 /* ProjectDetailsSections.swift */; };
+		7CF4C51024EBCD4E00F9FC02 /* ProjectDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50F24EBCD4E00F9FC02 /* ProjectDetailsDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		7CF4C50624EA7FAB00F9FC02 /* ActionButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonCell.swift; sourceTree = "<group>"; };
 		7CF4C50824EA822B00F9FC02 /* ProjectDetailsVC+ExtensionCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDetailsVC+ExtensionCollectionView.swift"; sourceTree = "<group>"; };
 		7CF4C50B24EA841000F9FC02 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		7CF4C50D24EB9BCA00F9FC02 /* ProjectDetailsSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsSections.swift; sourceTree = "<group>"; };
+		7CF4C50F24EBCD4E00F9FC02 /* ProjectDetailsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				7CF4C50424E7F60200F9FC02 /* ProjectDetailsRow.swift */,
+				7CF4C50D24EB9BCA00F9FC02 /* ProjectDetailsSections.swift */,
+				7CF4C50F24EBCD4E00F9FC02 /* ProjectDetailsDataSource.swift */,
 			);
 			path = ProjectDetailRow;
 			sourceTree = "<group>";
@@ -328,6 +334,7 @@
 				7CD6836E24DAC6490091ED52 /* SmartKitty.xcdatamodeld in Sources */,
 				7CF4C4FD24E43ACD00F9FC02 /* projectStatuses.swift in Sources */,
 				7C46019E24E03B9C00CCDA63 /* HTTPStatusCodes.swift in Sources */,
+				7CF4C51024EBCD4E00F9FC02 /* ProjectDetailsDataSource.swift in Sources */,
 				7CD6837024DAFB670091ED52 /* AllProjectsVC.swift in Sources */,
 				7CF4C50724EA7FAB00F9FC02 /* ActionButtonCell.swift in Sources */,
 				7CD6836824DA63860091ED52 /* ProjectsListResponse.swift in Sources */,
@@ -342,6 +349,7 @@
 				7CF4C50224E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift in Sources */,
 				7CD6837524DC3B710091ED52 /* HomeVC.swift in Sources */,
 				7CF4C4F824E3AD0D00F9FC02 /* ToggleButton.swift in Sources */,
+				7CF4C50E24EB9BCA00F9FC02 /* ProjectDetailsSections.swift in Sources */,
 				7CF4C4FA24E3F0C400F9FC02 /* ProjectDetailsVC.swift in Sources */,
 				7CD6836024D96A810091ED52 /* SCClient.swift in Sources */,
 				7CF4C50024E4405800F9FC02 /* ProjectStatusesData.swift in Sources */,

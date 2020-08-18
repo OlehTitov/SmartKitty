@@ -15,6 +15,6 @@ class ActionButtonCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        buttonWithImage.layer.cornerRadius = 30
+        buttonWithImage.layer.cornerRadius = 25
     }
 }

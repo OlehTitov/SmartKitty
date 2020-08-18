@@ -94,7 +94,7 @@ extension ProjectDetailsVC: UIScrollViewDelegate {
         var fastAlpha: CGFloat = 1
         if step > 0 {
             alpha = 1 - step/150
-            fastAlpha = 1 - step/70
+            fastAlpha = 1 - step/90
         }
         
         if alpha > 0 {
