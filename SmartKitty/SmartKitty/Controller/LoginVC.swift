@@ -162,13 +162,13 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
             }
         }
     }
-    
+    //MARK: - CREATE NEW PROJECT IN CORE DATA
     func createSkProject(prj: Project) {
+        ///Create new SkProject entity
         let newProject = SkProject(context: DataController.shared.viewContext)
         newProject.id = prj.id
         newProject.name = prj.name
         newProject.clientId = prj.clientId
-        
         newProject.sourceLanguage = prj.sourceLanguage
         newProject.targetLanguages = prj.targetLanguages
         newProject.deadline = prj.deadline
@@ -191,7 +191,18 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
             let isTomorrow = calendar.isDateInTomorrow(date)
             newProject.isTomorrow = isTomorrow
         }
-        //Create documents
+        
+        ///Create SkProjectWorkflowStage entities
+        if let projectWorkflowStages = prj.workflowStages {
+            for stage in projectWorkflowStages {
+                let projectStage = SkProjectWorkflowStage(context: DataController.shared.viewContext)
+                projectStage.stageType = stage.stageType
+                projectStage.progress = stage.progress ?? 0.0
+                projectStage.project = newProject
+            }
+        }
+        
+        ///Create SkDocument entities
         guard let SCdocuments = prj.documents else {
             return
         }
@@ -217,7 +228,6 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
             if let placeholdersAreEnabled = document.placeholdersAreEnabled {
                 doc.placeholdersAreEnabled = placeholdersAreEnabled
             }
-            
         }
         
         

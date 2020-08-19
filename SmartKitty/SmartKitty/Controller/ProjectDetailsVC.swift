@@ -141,22 +141,17 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         rowsForNotes = [
             ProjectDetailRow(title: "This is the text of the future note. It is a long note. Really.", desc: "", link: "note")
         ]
-        
         rowsForDeadline = [
             ProjectDetailRow(title: "\(deadlineTimeString ?? "") \(deadlineDateString ?? "Not specified")", desc: "", link: "")
         ]
-        
         rowsForLanguages = [
             ProjectDetailRow(title: "Source", desc: selectedProject.sourceLanguage?.capitalized ?? "", link: ""),
             ProjectDetailRow(title: "Target", desc: selectedProject.targetLanguages?.joined(separator: ", ").capitalized  ?? "", link: "")
         ]
-        
         rowsForDocuments = setupDocumentsRows()
-        
         rowsForTeam = [
             //Create a func to fill the array of team with assigned linguists
         ]
-        
         rowsForMisc = [
             ProjectDetailRow(title: "Client", desc: "setup later", link: ""),
             ProjectDetailRow(title: "Created", desc: selectedProject.creationDate ?? "", link: "")
@@ -184,6 +179,8 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         }
         deadlineTimeString = timeFormatter.string(from: deadline)
         deadlineDateString = dateFormatter.string(from: deadline)
+        //Get time to deadline
+        
     }
     
     //MARK: - SETUP SECTIONS LIST FROM ROWS
