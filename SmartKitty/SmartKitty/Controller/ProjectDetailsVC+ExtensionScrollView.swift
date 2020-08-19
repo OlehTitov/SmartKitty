@@ -18,9 +18,9 @@ extension ProjectDetailsVC: UIScrollViewDelegate {
                     if self.topViewHeightConstraint.constant >= 300 {
                         UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                             self.topViewHeightConstraint.constant = self.topViewMaxHeight
-                            self.deadlineInLabel.alpha = 1
-                            self.projectProgressView.alpha = 1
-                            self.projectProgressLabel.alpha = 1
+                            //self.deadlineInLabel.alpha = 1
+                            //self.projectProgressView.alpha = 1
+                            //self.projectProgressLabel.alpha = 1
                             //Animations on constraints do not work without layoutIfNeeded()
                             self.view.layoutIfNeeded()
                         }, completion: nil)
@@ -28,9 +28,9 @@ extension ProjectDetailsVC: UIScrollViewDelegate {
                     } else {
                         UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                             self.topViewHeightConstraint.constant = self.topViewMinHeight
-                            self.deadlineInLabel.alpha = 0
-                            self.projectProgressView.alpha = 0
-                            self.projectProgressLabel.alpha = 0
+                            //self.deadlineInLabel.alpha = 0
+                            //self.projectProgressView.alpha = 0
+                            //self.projectProgressLabel.alpha = 0
                             //Animations on constraints do not work without layoutIfNeeded()
                             self.view.layoutIfNeeded()
                         }, completion: nil)
@@ -78,15 +78,15 @@ extension ProjectDetailsVC: UIScrollViewDelegate {
         
         
         //Transition for progress block  and buttons which depend on the change of the top view constraint
-        progressBlockTopConstraint.constant = topViewHeightConstraint.constant / 12
-        buttonsBlockTopConstraint.constant = topViewHeightConstraint.constant / 12
+        //progressBlockTopConstraint.constant = topViewHeightConstraint.constant / 12
+        //buttonsBlockTopConstraint.constant = topViewHeightConstraint.constant / 12
         
         if topViewHeightConstraint.constant <= 300 {
-            buttonsBlockTopConstraint.constant = 1
+            //buttonsBlockTopConstraint.constant = 1
         }
         
         if topViewHeightConstraint.constant <= 250 {
-            progressBlockTopConstraint.constant = 1
+            //progressBlockTopConstraint.constant = 1
         }
         
         //Change opacity of elements in top view
@@ -98,14 +98,14 @@ extension ProjectDetailsVC: UIScrollViewDelegate {
         }
         
         if alpha > 0 {
-            deadlineInLabel.layer.opacity = Float(alpha)
-            projectProgressView.alpha = alpha
-            projectProgressLabel.alpha = alpha
+            //deadlineInLabel.layer.opacity = Float(alpha)
+            //projectProgressView.alpha = alpha
+            //projectProgressLabel.alpha = alpha
             actionButtonsCollection.alpha = fastAlpha
         } else if alpha < 0 {
-            deadlineInLabel.layer.opacity = 0
-            projectProgressView.alpha = 0
-            projectProgressLabel.alpha = 0
+            //deadlineInLabel.layer.opacity = 0
+            //projectProgressView.alpha = 0
+            //projectProgressLabel.alpha = 0
             actionButtonsCollection.alpha = 0
         }
        

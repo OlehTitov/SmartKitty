@@ -299,26 +299,19 @@
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deadline in 1 hour and 30 mins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emf-vB-AW0">
-                                        <rect key="frame" x="20" y="195" width="374" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Rf1-la-o7b">
-                                        <rect key="frame" x="50" y="187" width="314" height="2"/>
-                                        <color key="progressTintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="trackTintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </progressView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project progress" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAi-CW-u2k">
-                                        <rect key="frame" x="20" y="164" width="374" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u0G-Uv-jeS" customClass="MultiProgressView" customModule="MultiProgressView">
+                                        <rect key="frame" x="67" y="136" width="280" height="98"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="280" id="dA8-Ey-tby"/>
+                                        </constraints>
+                                    </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="W1Y-8r-pNG">
                                         <rect key="frame" x="20" y="242" width="374" height="158"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="158" id="pTC-Nc-tdX"/>
+                                        </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vAk-OI-pyR">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -372,21 +365,14 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="W1Y-8r-pNG" secondAttribute="bottom" id="1ah-Pj-9yh"/>
                                     <constraint firstItem="vZB-im-gUb" firstAttribute="left" secondItem="av8-Ad-Ojo" secondAttribute="left" constant="30" id="35R-OG-dYx"/>
-                                    <constraint firstItem="emf-vB-AW0" firstAttribute="top" secondItem="Rf1-la-o7b" secondAttribute="bottom" constant="6" id="5k4-lq-cbo"/>
-                                    <constraint firstItem="Rf1-la-o7b" firstAttribute="leading" secondItem="av8-Ad-Ojo" secondAttribute="leading" constant="50" id="8fk-TM-4Ir"/>
-                                    <constraint firstAttribute="trailing" secondItem="emf-vB-AW0" secondAttribute="trailing" constant="20" id="AYH-xe-HQ1"/>
+                                    <constraint firstItem="u0G-Uv-jeS" firstAttribute="centerX" secondItem="av8-Ad-Ojo" secondAttribute="centerX" id="59t-2K-2vb"/>
                                     <constraint firstAttribute="trailing" secondItem="W1Y-8r-pNG" secondAttribute="trailing" constant="20" id="AdR-VO-lcZ"/>
-                                    <constraint firstItem="W1Y-8r-pNG" firstAttribute="top" secondItem="emf-vB-AW0" secondAttribute="bottom" constant="30" id="GbN-nn-3DG"/>
+                                    <constraint firstItem="u0G-Uv-jeS" firstAttribute="top" secondItem="vZB-im-gUb" secondAttribute="bottom" constant="2" id="Da3-W7-vgQ"/>
                                     <constraint firstAttribute="trailing" secondItem="vZB-im-gUb" secondAttribute="trailing" constant="30" id="U3s-ce-PoN"/>
-                                    <constraint firstAttribute="trailing" secondItem="Rf1-la-o7b" secondAttribute="trailing" constant="50" id="a2x-oT-vUj"/>
-                                    <constraint firstItem="emf-vB-AW0" firstAttribute="leading" secondItem="av8-Ad-Ojo" secondAttribute="leading" constant="20" id="aiI-IZ-EsS"/>
+                                    <constraint firstItem="W1Y-8r-pNG" firstAttribute="top" secondItem="u0G-Uv-jeS" secondAttribute="bottom" constant="8" id="Ygt-fT-WVs"/>
                                     <constraint firstItem="vZB-im-gUb" firstAttribute="top" secondItem="av8-Ad-Ojo" secondAttribute="top" constant="110" id="cWB-pA-hNs"/>
-                                    <constraint firstItem="Rf1-la-o7b" firstAttribute="top" secondItem="JAi-CW-u2k" secondAttribute="bottom" constant="6" id="cdi-5t-ch6"/>
-                                    <constraint firstAttribute="trailing" secondItem="JAi-CW-u2k" secondAttribute="trailing" constant="20" id="fzO-AS-Nv8"/>
-                                    <constraint firstItem="JAi-CW-u2k" firstAttribute="top" secondItem="vZB-im-gUb" secondAttribute="bottom" constant="30" id="tzx-o7-ael"/>
                                     <constraint firstAttribute="height" constant="400" id="wza-WH-jX0"/>
                                     <constraint firstItem="W1Y-8r-pNG" firstAttribute="leading" secondItem="av8-Ad-Ojo" secondAttribute="leading" constant="20" id="xwe-Ch-Qya"/>
-                                    <constraint firstItem="JAi-CW-u2k" firstAttribute="leading" secondItem="av8-Ad-Ojo" secondAttribute="leading" constant="20" id="z16-nT-ePQ"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="NEd-f8-i6a">
@@ -434,20 +420,16 @@
                     </view>
                     <connections>
                         <outlet property="actionButtonsCollection" destination="W1Y-8r-pNG" id="M5f-YK-9KB"/>
-                        <outlet property="buttonsBlockTopConstraint" destination="GbN-nn-3DG" id="fJL-gJ-wb0"/>
-                        <outlet property="deadlineInLabel" destination="emf-vB-AW0" id="cTl-J0-aQc"/>
-                        <outlet property="progressBlockTopConstraint" destination="tzx-o7-ael" id="aZB-rf-RpG"/>
                         <outlet property="projectDetailsTableView" destination="NEd-f8-i6a" id="KCv-UN-qFG"/>
-                        <outlet property="projectProgressLabel" destination="JAi-CW-u2k" id="cus-Qa-bLg"/>
-                        <outlet property="projectProgressView" destination="Rf1-la-o7b" id="Cp1-MQ-R2g"/>
                         <outlet property="projectTitle" destination="vZB-im-gUb" id="h2S-n2-Dh3"/>
                         <outlet property="projectTitleTopConstraint" destination="cWB-pA-hNs" id="yvP-Z3-p6c"/>
+                        <outlet property="stagesProgressView" destination="u0G-Uv-jeS" id="HJi-7v-dpe"/>
                         <outlet property="topViewHeightConstraint" destination="wza-WH-jX0" id="r9Y-uH-uR4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UMi-SJ-shJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4653.623188405797" y="138.61607142857142"/>
+            <point key="canvasLocation" x="4652.1739130434789" y="138.61607142857142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NML-Oq-F8R">

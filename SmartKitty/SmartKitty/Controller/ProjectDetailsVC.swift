@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
+import MultiProgressView
 
 class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDelegate {
     
@@ -22,6 +23,7 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     //Project related properties
     var selectedProject: SkProject!
     var projectDocuments: [SkDocument] = []
+    var projectStages: [SkProjectWorkflowStage] = []
     var deadlineTimeString: String?
     var deadlineDateString: String?
     let dateFormatter: DateFormatter = {
@@ -58,17 +60,15 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     
     //MARK: - OUTLETS
     @IBOutlet weak var projectTitle: UILabel!
-    @IBOutlet weak var projectProgressView: UIProgressView!
-    @IBOutlet weak var deadlineInLabel: UILabel!
-    @IBOutlet weak var projectProgressLabel: UILabel!
+    
+    
+    @IBOutlet weak var stagesProgressView: MultiProgressView!
+    
     @IBOutlet weak var projectDetailsTableView: UITableView!
     
     @IBOutlet weak var actionButtonsCollection: UICollectionView!
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var projectTitleTopConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var buttonsBlockTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var progressBlockTopConstraint: NSLayoutConstraint!
     
     //MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
@@ -85,6 +85,9 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
+        getProjectStages()
+        setupProgressBar()
+        
         configureTableView()
         // Make the navigation bar background clear
         //navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -104,20 +107,6 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         
         projectTitle.text = selectedProject.name
         
-        //Old code to get documentsCount and documents names
-        /*
-        let documents = selectedProject.documents
-        let docs = documents as? Set<SkDocument> ?? []
-        documentsCount.text = String(documents!.count)
-        var docNames: [String] = []
-        for doc in docs {
-            if let name = doc.name {
-                docNames.append(name)
-            }
-        }
-        listOfDocuments.text = docNames.joined(separator: ", ")
- */
-        
         setupFetchedResultsController()
         
     }
@@ -130,9 +119,26 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         self.projectDetailsTableView.decelerationRate = .fast
     }
     
-    //MARK: - SETUP TOP VIEW
-    func setupTopView() {
-        //deadlineInLabel.textColor = UIColor.black.withAlphaComponent(alpha)
+    //MARK: - SETUP PROGRESS BAR
+    func setupProgressBar() {
+        self.stagesProgressView.dataSource = self
+        var sectionIndex: Int = 0
+        var allStagesProgressValues: Array<Float> = []
+        for stage in projectStages {
+            let progress = Float(stage.progress/100)
+            allStagesProgressValues.append(progress)
+            self.stagesProgressView.setProgress(section: sectionIndex, to: progress)
+            sectionIndex += 1
+        }
+        
+    }
+    
+    func getProjectStages() {
+        let rawStages = selectedProject.projectWorkflows as? Set<SkProjectWorkflowStage> ?? []
+        projectStages.append(contentsOf: rawStages)
+        for stage in projectStages {
+            print("Stage: \(stage.stageType ?? "empty"), progress: \(stage.progress)")
+        }
     }
     
     

@@ -10,6 +10,8 @@
 		7C46019E24E03B9C00CCDA63 /* HTTPStatusCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C46019D24E03B9C00CCDA63 /* HTTPStatusCodes.swift */; };
 		7C4601A124E054BA00CCDA63 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4601A024E054BA00CCDA63 /* Alerts.swift */; };
 		7C5756EB24ED273800346B1E /* MultiProgressView in Frameworks */ = {isa = PBXBuildFile; productRef = 7C5756EA24ED273800346B1E /* MultiProgressView */; };
+		7C5756ED24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */; };
+		7C5756EF24ED558F00346B1E /* projectStages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756EE24ED558F00346B1E /* projectStages.swift */; };
 		7CD6834624D8532E0091ED52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834524D8532E0091ED52 /* AppDelegate.swift */; };
 		7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834724D8532E0091ED52 /* SceneDelegate.swift */; };
 		7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834924D8532E0091ED52 /* LoginVC.swift */; };
@@ -43,6 +45,8 @@
 /* Begin PBXFileReference section */
 		7C46019D24E03B9C00CCDA63 /* HTTPStatusCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatusCodes.swift; sourceTree = "<group>"; };
 		7C4601A024E054BA00CCDA63 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDetailsVC+ExtensionMultiProgressView.swift"; sourceTree = "<group>"; };
+		7C5756EE24ED558F00346B1E /* projectStages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projectStages.swift; sourceTree = "<group>"; };
 		7CD6834224D8532E0091ED52 /* SmartKitty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartKitty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD6834524D8532E0091ED52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CD6834724D8532E0091ED52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 				7CF4C50124E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift */,
 				7CF4C50624EA7FAB00F9FC02 /* ActionButtonCell.swift */,
 				7CF4C50824EA822B00F9FC02 /* ProjectDetailsVC+ExtensionCollectionView.swift */,
+				7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				7CF4C4FC24E43ACD00F9FC02 /* projectStatuses.swift */,
+				7C5756EE24ED558F00346B1E /* projectStages.swift */,
 			);
 			path = "SmartKitty Project";
 			sourceTree = "<group>";
@@ -338,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C5756EF24ED558F00346B1E /* projectStages.swift in Sources */,
 				7CD6836624D9D1200091ED52 /* DismissKeyboardDelegate.swift in Sources */,
 				7CD6836E24DAC6490091ED52 /* SmartKitty.xcdatamodeld in Sources */,
 				7CF4C4FD24E43ACD00F9FC02 /* projectStatuses.swift in Sources */,
@@ -359,6 +366,7 @@
 				7CF4C4F824E3AD0D00F9FC02 /* ToggleButton.swift in Sources */,
 				7CF4C50E24EB9BCA00F9FC02 /* ProjectDetailsSections.swift in Sources */,
 				7CF4C4FA24E3F0C400F9FC02 /* ProjectDetailsVC.swift in Sources */,
+				7C5756ED24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift in Sources */,
 				7CD6836024D96A810091ED52 /* SCClient.swift in Sources */,
 				7CF4C50024E4405800F9FC02 /* ProjectStatusesData.swift in Sources */,
 				7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */,

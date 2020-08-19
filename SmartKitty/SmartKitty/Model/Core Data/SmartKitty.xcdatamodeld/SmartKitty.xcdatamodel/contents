@@ -56,18 +56,18 @@
         <attribute name="statusModificationDate" optional="YES" attributeType="String"/>
         <attribute name="targetLanguages" optional="YES" attributeType="Transformable" customClassName="[String]"/>
         <relationship name="documents" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SkDocument" inverseName="project" inverseEntity="SkDocument"/>
-        <relationship name="projectWorkflow" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkProjectWorkflowStage" inverseName="project" inverseEntity="SkProjectWorkflowStage"/>
+        <relationship name="projectWorkflows" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SkProjectWorkflowStage" inverseName="project" inverseEntity="SkProjectWorkflowStage"/>
     </entity>
     <entity name="SkProjectWorkflowStage" representedClassName="SkProjectWorkflowStage" syncable="YES" codeGenerationType="class">
         <attribute name="progress" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="stageType" optional="YES" attributeType="String"/>
-        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkProject" inverseName="projectWorkflow" inverseEntity="SkProject"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkProject" inverseName="projectWorkflows" inverseEntity="SkProject"/>
     </entity>
     <elements>
-        <element name="SkDocument" positionX="71.109375" positionY="64.11328125" width="128" height="283"/>
-        <element name="SkProject" positionX="-347.48046875" positionY="64.484375" width="218" height="388"/>
-        <element name="SkDocumentWorkflowStage" positionX="-135" positionY="225" width="128" height="133"/>
         <element name="SkAssignedExecutive" positionX="-126" positionY="234" width="128" height="118"/>
+        <element name="SkDocument" positionX="71.109375" positionY="64.11328125" width="128" height="283"/>
+        <element name="SkDocumentWorkflowStage" positionX="-135" positionY="225" width="128" height="133"/>
+        <element name="SkProject" positionX="-347.48046875" positionY="64.484375" width="218" height="388"/>
         <element name="SkProjectWorkflowStage" positionX="-117" positionY="243" width="128" height="88"/>
     </elements>
 </model>
