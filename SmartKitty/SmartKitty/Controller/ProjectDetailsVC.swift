@@ -71,6 +71,9 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var projectTitleTopConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var progressDescription: UILabel!
+    
+    
     //MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -89,6 +92,7 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         getProjectStages()
         configureProgressBar()
         setupProgressBar()
+        setupProgressFooter()
         
         configureTableView()
         // Make the navigation bar background clear
@@ -156,6 +160,26 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         for stage in projectStages {
             print("Stage: \(stage.stageType ?? "empty"), progress: \(stage.progress)")
         }
+    }
+    
+    func setupProgressFooter() {
+        //var subviews: [UIView] = []
+        let fullString = NSMutableAttributedString(string: "")
+        for stage in projectStages {
+            guard let stageName = stage.stageType else {
+                return
+            }
+            let progress = Int(round(stage.progress))
+            guard let stageAsEnum = ProjectStage(caseName: stageName) else {
+                return
+            }
+            let imageAttachment = NSTextAttachment()
+            let symbolConfig = UIImage.SymbolConfiguration(pointSize: 6)
+            imageAttachment.image = UIImage(systemName: "circle.fill", withConfiguration: symbolConfig)?.withTintColor(stageAsEnum.color)
+            fullString.append(NSAttributedString(attachment: imageAttachment))
+            fullString.append(NSAttributedString(string: " \(stageName) \(progress)% "))
+        }
+        progressDescription.attributedText = fullString
     }
     
     

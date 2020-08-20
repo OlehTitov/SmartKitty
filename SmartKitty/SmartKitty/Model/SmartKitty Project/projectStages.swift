@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum ProjectStage: Int {
+enum ProjectStage: Int, CaseIterable {
     case translation
     case editing
     case proofreading
@@ -70,4 +70,15 @@ enum ProjectStage: Int {
             return UIColor.darkGray
         }
     }
+    
+    //Add initializer based on case name
+    init?(caseName: String) {
+        for value in ProjectStage.allCases where "\(value)" == caseName {
+            self = value
+            return
+        }
+        
+        return nil
+    }
+    
 }
