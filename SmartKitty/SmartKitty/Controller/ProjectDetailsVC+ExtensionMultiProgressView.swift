@@ -19,18 +19,7 @@ extension ProjectDetailsVC: MultiProgressViewDataSource {
         let progressSection = ProgressViewSection()
         let stage = ProjectStage(rawValue: section)
         progressSection.backgroundColor = stage?.color
-        //Do I need switch at all?
-        /*
-        switch stage {
-        case .translation:
-            progressSection.backgroundColor = stage?.color
-        case 1:
-            progressSection.backgroundColor = UIColor.red
-        default:
-            break
-        }
- */
- 
+        progressSection.layer.cornerRadius = 3
         return progressSection
     }
     

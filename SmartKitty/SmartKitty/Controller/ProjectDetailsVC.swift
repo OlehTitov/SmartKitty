@@ -24,6 +24,7 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     var selectedProject: SkProject!
     var projectDocuments: [SkDocument] = []
     var projectStages: [SkProjectWorkflowStage] = []
+    var allStagesProgressValues: Array<Float> = []
     var deadlineTimeString: String?
     var deadlineDateString: String?
     let dateFormatter: DateFormatter = {
@@ -86,6 +87,7 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         getProjectStages()
+        configureProgressBar()
         setupProgressBar()
         
         configureTableView()
@@ -120,17 +122,32 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     }
     
     //MARK: - SETUP PROGRESS BAR
-    func setupProgressBar() {
+    func configureProgressBar() {
         self.stagesProgressView.dataSource = self
+        self.stagesProgressView.lineCap = .round
+        //self.stagesProgressView.borderWidth = 2
+        //self.stagesProgressView.borderColor = UIColor.darkGray
+    }
+    
+    func setupProgressBar() {
         var sectionIndex: Int = 0
-        var allStagesProgressValues: Array<Float> = []
         for stage in projectStages {
             let progress = Float(stage.progress/100)
-            allStagesProgressValues.append(progress)
-            self.stagesProgressView.setProgress(section: sectionIndex, to: progress)
+            let progressToTotal = progress/Float(projectStages.count)
+            allStagesProgressValues.append(progressToTotal)
+            UIView.animate(
+                withDuration: 0.4,
+                delay: 0.4,
+                //usingSpringWithDamping: 0.8,
+                //initialSpringVelocity: 0,
+                options: .curveEaseOut,
+                animations: {
+                    self.stagesProgressView.setProgress(section: sectionIndex, to: progressToTotal)
+            },
+                completion: nil)
+        
             sectionIndex += 1
         }
-        
     }
     
     func getProjectStages() {

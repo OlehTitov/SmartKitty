@@ -294,17 +294,23 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZB-im-gUb">
-                                        <rect key="frame" x="30" y="110" width="354" height="24"/>
+                                        <rect key="frame" x="30" y="110" width="354" height="104"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u0G-Uv-jeS" customClass="MultiProgressView" customModule="MultiProgressView">
-                                        <rect key="frame" x="67" y="136" width="280" height="98"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <rect key="frame" x="67" y="216" width="280" height="6"/>
+                                        <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="6" id="5Iy-wV-LLZ"/>
                                             <constraint firstAttribute="width" constant="280" id="dA8-Ey-tby"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="W1Y-8r-pNG">
                                         <rect key="frame" x="20" y="242" width="374" height="158"/>
@@ -369,7 +375,7 @@
                                     <constraint firstAttribute="trailing" secondItem="W1Y-8r-pNG" secondAttribute="trailing" constant="20" id="AdR-VO-lcZ"/>
                                     <constraint firstItem="u0G-Uv-jeS" firstAttribute="top" secondItem="vZB-im-gUb" secondAttribute="bottom" constant="2" id="Da3-W7-vgQ"/>
                                     <constraint firstAttribute="trailing" secondItem="vZB-im-gUb" secondAttribute="trailing" constant="30" id="U3s-ce-PoN"/>
-                                    <constraint firstItem="W1Y-8r-pNG" firstAttribute="top" secondItem="u0G-Uv-jeS" secondAttribute="bottom" constant="8" id="Ygt-fT-WVs"/>
+                                    <constraint firstItem="W1Y-8r-pNG" firstAttribute="top" secondItem="u0G-Uv-jeS" secondAttribute="bottom" constant="20" id="Ygt-fT-WVs"/>
                                     <constraint firstItem="vZB-im-gUb" firstAttribute="top" secondItem="av8-Ad-Ojo" secondAttribute="top" constant="110" id="cWB-pA-hNs"/>
                                     <constraint firstAttribute="height" constant="400" id="wza-WH-jX0"/>
                                     <constraint firstItem="W1Y-8r-pNG" firstAttribute="leading" secondItem="av8-Ad-Ojo" secondAttribute="leading" constant="20" id="xwe-Ch-Qya"/>
