@@ -12,6 +12,8 @@
 		7C5756EB24ED273800346B1E /* MultiProgressView in Frameworks */ = {isa = PBXBuildFile; productRef = 7C5756EA24ED273800346B1E /* MultiProgressView */; };
 		7C5756ED24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */; };
 		7C5756EF24ED558F00346B1E /* projectStages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756EE24ED558F00346B1E /* projectStages.swift */; };
+		7C5756F124EE9A6800346B1E /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756F024EE9A6800346B1E /* TabBarVC.swift */; };
+		7C5756F424EED38300346B1E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756F324EED38300346B1E /* Colors.swift */; };
 		7CD6834624D8532E0091ED52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834524D8532E0091ED52 /* AppDelegate.swift */; };
 		7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834724D8532E0091ED52 /* SceneDelegate.swift */; };
 		7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834924D8532E0091ED52 /* LoginVC.swift */; };
@@ -47,6 +49,8 @@
 		7C4601A024E054BA00CCDA63 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDetailsVC+ExtensionMultiProgressView.swift"; sourceTree = "<group>"; };
 		7C5756EE24ED558F00346B1E /* projectStages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projectStages.swift; sourceTree = "<group>"; };
+		7C5756F024EE9A6800346B1E /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		7C5756F324EED38300346B1E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7CD6834224D8532E0091ED52 /* SmartKitty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartKitty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD6834524D8532E0091ED52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CD6834724D8532E0091ED52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +103,14 @@
 			path = Alerts;
 			sourceTree = "<group>";
 		};
+		7C5756F224EED36100346B1E /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				7C5756F324EED38300346B1E /* Colors.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
 		7CD6833924D8532E0091ED52 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +155,7 @@
 				7CF4C50624EA7FAB00F9FC02 /* ActionButtonCell.swift */,
 				7CF4C50824EA822B00F9FC02 /* ProjectDetailsVC+ExtensionCollectionView.swift */,
 				7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */,
+				7C5756F024EE9A6800346B1E /* TabBarVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -150,6 +163,7 @@
 		7CD6835A24D86A800091ED52 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7C5756F224EED36100346B1E /* Colors */,
 				7CF4C4F624E3ACE700F9FC02 /* Toggle button */,
 				7C46019F24E054A200CCDA63 /* Alerts */,
 				7CD6836424D9D0FB0091ED52 /* Keyboard */,
@@ -349,6 +363,7 @@
 				7CD6836E24DAC6490091ED52 /* SmartKitty.xcdatamodeld in Sources */,
 				7CF4C4FD24E43ACD00F9FC02 /* projectStatuses.swift in Sources */,
 				7C46019E24E03B9C00CCDA63 /* HTTPStatusCodes.swift in Sources */,
+				7C5756F424EED38300346B1E /* Colors.swift in Sources */,
 				7CF4C51024EBCD4E00F9FC02 /* ProjectDetailsDataSource.swift in Sources */,
 				7CD6837024DAFB670091ED52 /* AllProjectsVC.swift in Sources */,
 				7CF4C50724EA7FAB00F9FC02 /* ActionButtonCell.swift in Sources */,
@@ -366,6 +381,7 @@
 				7CF4C4F824E3AD0D00F9FC02 /* ToggleButton.swift in Sources */,
 				7CF4C50E24EB9BCA00F9FC02 /* ProjectDetailsSections.swift in Sources */,
 				7CF4C4FA24E3F0C400F9FC02 /* ProjectDetailsVC.swift in Sources */,
+				7C5756F124EE9A6800346B1E /* TabBarVC.swift in Sources */,
 				7C5756ED24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift in Sources */,
 				7CD6836024D96A810091ED52 /* SCClient.swift in Sources */,
 				7CF4C50024E4405800F9FC02 /* ProjectStatusesData.swift in Sources */,

@@ -241,10 +241,10 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     
     func goToNextVC() {
         
-        //let allProjectsVC = self.storyboard?.instantiateViewController(identifier: "AllProjectsVC") as! AllProjectsVC
-        //self.navigationController?.pushViewController(allProjectsVC, animated: true)
-        let homeVC = self.storyboard?.instantiateViewController(identifier: "HomeVC") as! HomeVC
-        self.navigationController?.pushViewController(homeVC, animated: true)
+        let tabBarVC = self.storyboard?.instantiateViewController(identifier: "TabBarVC") as! TabBarVC
+        self.navigationController?.pushViewController(tabBarVC, animated: true)
+        //let homeVC = self.storyboard?.instantiateViewController(identifier: "HomeVC") as! HomeVC
+        //self.navigationController?.pushViewController(homeVC, animated: true)
     }
     
     //MARK: - SETUP FRC

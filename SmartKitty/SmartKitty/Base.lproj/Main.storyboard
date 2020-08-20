@@ -110,13 +110,14 @@
                         <outlet property="apiKeyTextfield" destination="om3-i9-VYn" id="SGf-tV-EBL"/>
                         <outlet property="rememberMe" destination="Y1p-0Q-r7e" id="Nrf-td-itY"/>
                         <outlet property="serverPickerView" destination="VJO-uN-Xsd" id="x0q-H4-qoP"/>
+                        <segue destination="jhP-XL-81J" kind="show" id="Oiz-dE-Qay"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="138.61607142857142"/>
         </scene>
-        <!--Home-->
+        <!--Projects-->
         <scene sceneID="hBc-cw-oOl">
             <objects>
                 <viewController storyboardIdentifier="HomeVC" id="z5m-y1-KKd" customClass="HomeVC" customModule="SmartKitty" customModuleProvider="target" sceneMemberID="viewController">
@@ -125,19 +126,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQp-pO-Koc">
-                                <rect key="frame" x="10" y="54" width="394" height="40"/>
+                                <rect key="frame" x="10" y="98" width="394" height="40"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xi2-0R-m5o">
-                                <rect key="frame" x="10" y="104" width="394" height="18"/>
+                                <rect key="frame" x="10" y="148" width="394" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oSd-Dh-NWx">
-                                <rect key="frame" x="10" y="152" width="394" height="250"/>
+                                <rect key="frame" x="10" y="196" width="394" height="250"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="pse-R9-LeN"/>
@@ -224,10 +225,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xwF-e9-mzQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="6fd-jS-JWA"/>
+                    <tabBarItem key="tabBarItem" title="Projects" id="6fd-jS-JWA"/>
                     <connections>
                         <outlet property="companyName" destination="xi2-0R-m5o" id="fvT-fc-XfJ"/>
                         <outlet property="tilesCollectionView" destination="oSd-Dh-NWx" id="NO5-s9-4C2"/>
+                        <segue destination="NsP-Cj-6Am" kind="show" id="1BV-Rf-6Ks"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RLR-MC-JP0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -474,11 +476,12 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab BarVC-->
         <scene sceneID="szk-5S-TDZ">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="jhP-XL-81J" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarVC" automaticallyAdjustsScrollViewInsets="NO" id="jhP-XL-81J" customClass="TabBarVC" customModule="SmartKitty" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="hWN-E4-9Zj"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5jJ-aC-B8t">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>

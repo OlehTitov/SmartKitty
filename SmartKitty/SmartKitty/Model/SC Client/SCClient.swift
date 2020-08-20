@@ -45,7 +45,7 @@ class SCClient {
     }
     
     class func getAccountInfo(completion: @escaping (String, Int, Error?) -> Void) {
-        taskForGETRequest(url: urlComponents(path: .account), responseType: AccountResponse.self) { (response, httpResponse, error) in
+        _ = taskForGETRequest(url: urlComponents(path: .account), responseType: AccountResponse.self) { (response, httpResponse, error) in
             if let response = response {
                 completion(response.name, httpResponse!.statusCode, nil)
             } else {
@@ -55,7 +55,7 @@ class SCClient {
     }
     
     class func getProjectsList(completion: @escaping ([Project], Error?) -> Void) {
-        taskForGETRequest(url: urlComponents(path: .projectsList), responseType: [Project].self) { (response, httpResponse, error)  in
+        _ = taskForGETRequest(url: urlComponents(path: .projectsList), responseType: [Project].self) { (response, httpResponse, error)  in
             if let response = response {
                 completion(response, nil)
             } else {
