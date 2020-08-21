@@ -14,6 +14,8 @@
 		7C5756EF24ED558F00346B1E /* projectStages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756EE24ED558F00346B1E /* projectStages.swift */; };
 		7C5756F124EE9A6800346B1E /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756F024EE9A6800346B1E /* TabBarVC.swift */; };
 		7C5756F424EED38300346B1E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756F324EED38300346B1E /* Colors.swift */; };
+		7C5756F724EED4BC00346B1E /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756F624EED4BC00346B1E /* PrimaryButton.swift */; };
+		7C5756FA24EEDF8500346B1E /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756F924EEDF8500346B1E /* TextField.swift */; };
 		7CD6834624D8532E0091ED52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834524D8532E0091ED52 /* AppDelegate.swift */; };
 		7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834724D8532E0091ED52 /* SceneDelegate.swift */; };
 		7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834924D8532E0091ED52 /* LoginVC.swift */; };
@@ -51,6 +53,8 @@
 		7C5756EE24ED558F00346B1E /* projectStages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projectStages.swift; sourceTree = "<group>"; };
 		7C5756F024EE9A6800346B1E /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		7C5756F324EED38300346B1E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		7C5756F624EED4BC00346B1E /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		7C5756F924EEDF8500346B1E /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		7CD6834224D8532E0091ED52 /* SmartKitty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartKitty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD6834524D8532E0091ED52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CD6834724D8532E0091ED52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +115,22 @@
 			path = Colors;
 			sourceTree = "<group>";
 		};
+		7C5756F524EED49A00346B1E /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				7C5756F624EED4BC00346B1E /* PrimaryButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		7C5756F824EEDF7300346B1E /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				7C5756F924EEDF8500346B1E /* TextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
 		7CD6833924D8532E0091ED52 = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +183,8 @@
 		7CD6835A24D86A800091ED52 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7C5756F824EEDF7300346B1E /* TextField */,
+				7C5756F524EED49A00346B1E /* Buttons */,
 				7C5756F224EED36100346B1E /* Colors */,
 				7CF4C4F624E3ACE700F9FC02 /* Toggle button */,
 				7C46019F24E054A200CCDA63 /* Alerts */,
@@ -370,8 +392,10 @@
 				7CD6836824DA63860091ED52 /* ProjectsListResponse.swift in Sources */,
 				7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */,
 				7CD6834624D8532E0091ED52 /* AppDelegate.swift in Sources */,
+				7C5756FA24EEDF8500346B1E /* TextField.swift in Sources */,
 				7CD6837324DB2AC00091ED52 /* SkProject+Extensions.swift in Sources */,
 				7CD6836324D9CB090091ED52 /* AccountResponse.swift in Sources */,
+				7C5756F724EED4BC00346B1E /* PrimaryButton.swift in Sources */,
 				7CD6836B24DAA9CE0091ED52 /* DataController.swift in Sources */,
 				7C4601A124E054BA00CCDA63 /* Alerts.swift in Sources */,
 				7CD6837A24DD34BB0091ED52 /* HomeHeaderTileModel.swift in Sources */,

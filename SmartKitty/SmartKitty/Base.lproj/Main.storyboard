@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,35 +17,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SmartKitty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ter-Kl-dqr">
-                                <rect key="frame" x="129.5" y="108" width="155" height="41"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ter-Kl-dqr">
+                                <rect key="frame" x="153.5" y="128" width="107" height="41"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                <color key="textColor" name="DarkPrimary"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to your SmartCat account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAa-MP-Odu">
-                                <rect key="frame" x="20" y="169" width="374" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Account ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fLB-DB-6IE">
-                                <rect key="frame" x="20" y="229.5" width="374" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Account ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fLB-DB-6IE" customClass="TextField" customModule="SmartKitty" customModuleProvider="target">
+                                <rect key="frame" x="25" y="353" width="364" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YHt-pU-EWf"/>
+                                </constraints>
+                                <color key="textColor" name="DarkPrimary"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="API Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="om3-i9-VYn">
-                                <rect key="frame" x="20" y="283.5" width="374" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="API Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="om3-i9-VYn" customClass="TextField" customModule="SmartKitty" customModuleProvider="target">
+                                <rect key="frame" x="25" y="423" width="364" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="UYt-4K-cME"/>
+                                </constraints>
+                                <color key="textColor" name="DarkPrimary"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="password"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRr-K9-1Yj">
-                                <rect key="frame" x="20" y="539.5" width="374" height="50"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRr-K9-1Yj" customClass="PrimaryButton" customModule="SmartKitty" customModuleProvider="target">
+                                <rect key="frame" x="132" y="782" width="150" height="50"/>
+                                <color key="backgroundColor" name="Primary"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="3AG-sX-OAe"/>
+                                    <constraint firstAttribute="height" constant="50" id="0hJ-Np-eN5"/>
+                                    <constraint firstAttribute="width" constant="150" id="Fae-2a-k1P"/>
                                 </constraints>
-                                <state key="normal" title="Login">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Sign in">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -52,16 +57,17 @@
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VJO-uN-Xsd">
-                                <rect key="frame" x="47" y="327.5" width="320" height="120"/>
+                                <rect key="frame" x="47" y="473" width="320" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="B3K-RF-DCK"/>
+                                    <constraint firstAttribute="height" constant="100" id="B3K-RF-DCK"/>
                                 </constraints>
                             </pickerView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rdZ-mv-e8u">
-                                <rect key="frame" x="134" y="477.5" width="146" height="22"/>
+                                <rect key="frame" x="134" y="573" width="146" height="22"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1p-0Q-r7e" customClass="ToggleButton" customModule="SmartKitty" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="24" height="22"/>
+                                        <color key="tintColor" name="Primary"/>
                                         <state key="normal" image="square" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                         </state>
@@ -75,32 +81,37 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RSy-Xa-WUJ">
                                         <rect key="frame" x="34" y="0.0" width="112" height="22"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="DarkPrimary"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please sign in with your SmartCat account ID and API keys" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eul-mZ-HS6">
+                                <rect key="frame" x="25" y="189" width="364" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" name="LightPrimary"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="VJO-uN-Xsd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9Yk-iJ-Sh6"/>
-                            <constraint firstItem="gRr-K9-1Yj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="9xU-Uz-QfO"/>
-                            <constraint firstAttribute="trailing" secondItem="ZAa-MP-Odu" secondAttribute="trailing" constant="20" id="A2r-XC-SCM"/>
-                            <constraint firstItem="om3-i9-VYn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Jd1-9k-4Mt"/>
-                            <constraint firstItem="fLB-DB-6IE" firstAttribute="top" secondItem="ZAa-MP-Odu" secondAttribute="bottom" constant="40" id="TSa-1S-pXJ"/>
-                            <constraint firstItem="gRr-K9-1Yj" firstAttribute="top" secondItem="rdZ-mv-e8u" secondAttribute="bottom" constant="40" id="Uxm-Dv-gM9"/>
-                            <constraint firstItem="ter-Kl-dqr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="V5F-Xn-Wcs"/>
-                            <constraint firstItem="rdZ-mv-e8u" firstAttribute="top" secondItem="VJO-uN-Xsd" secondAttribute="bottom" constant="30" id="Zlc-fI-46Z"/>
+                            <constraint firstItem="om3-i9-VYn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="Jd1-9k-4Mt"/>
+                            <constraint firstItem="om3-i9-VYn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="KIQ-cu-yNi"/>
+                            <constraint firstItem="Eul-mZ-HS6" firstAttribute="top" secondItem="ter-Kl-dqr" secondAttribute="bottom" constant="20" id="U2c-Q7-A9V"/>
+                            <constraint firstItem="ter-Kl-dqr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="V5F-Xn-Wcs"/>
+                            <constraint firstItem="rdZ-mv-e8u" firstAttribute="top" secondItem="VJO-uN-Xsd" secondAttribute="bottom" id="Zlc-fI-46Z"/>
                             <constraint firstItem="rdZ-mv-e8u" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bKT-UN-neG"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="om3-i9-VYn" secondAttribute="trailing" constant="20" id="bpW-MY-g4d"/>
-                            <constraint firstItem="ZAa-MP-Odu" firstAttribute="top" secondItem="ter-Kl-dqr" secondAttribute="bottom" constant="20" id="eGe-dP-PqU"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gRr-K9-1Yj" secondAttribute="trailing" constant="20" id="qmZ-mb-EET"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fLB-DB-6IE" secondAttribute="trailing" constant="20" id="s7X-uR-m5U"/>
-                            <constraint firstItem="VJO-uN-Xsd" firstAttribute="top" secondItem="om3-i9-VYn" secondAttribute="bottom" constant="10" id="sWV-Gb-IJy"/>
-                            <constraint firstItem="fLB-DB-6IE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="trS-nP-uut"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="om3-i9-VYn" secondAttribute="trailing" constant="25" id="bpW-MY-g4d"/>
+                            <constraint firstAttribute="trailing" secondItem="Eul-mZ-HS6" secondAttribute="trailing" constant="25" id="dwu-lW-8MR"/>
+                            <constraint firstItem="gRr-K9-1Yj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fU1-d7-81V"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fLB-DB-6IE" secondAttribute="trailing" constant="25" id="s7X-uR-m5U"/>
+                            <constraint firstItem="VJO-uN-Xsd" firstAttribute="top" secondItem="om3-i9-VYn" secondAttribute="bottom" id="sWV-Gb-IJy"/>
+                            <constraint firstItem="fLB-DB-6IE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="trS-nP-uut"/>
+                            <constraint firstItem="Eul-mZ-HS6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="txD-Um-zRO"/>
                             <constraint firstItem="om3-i9-VYn" firstAttribute="top" secondItem="fLB-DB-6IE" secondAttribute="bottom" constant="20" id="vRF-Mz-lGy"/>
                             <constraint firstItem="ter-Kl-dqr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xKa-5L-ZWo"/>
-                            <constraint firstItem="ZAa-MP-Odu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="xRS-md-sBb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gRr-K9-1Yj" secondAttribute="bottom" constant="30" id="ySf-vE-wTU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -499,5 +510,14 @@
     <resources>
         <image name="checkmark.square" catalog="system" width="128" height="114"/>
         <image name="square" catalog="system" width="128" height="114"/>
+        <namedColor name="DarkPrimary">
+            <color red="0.26666666666666666" green="0.13333333333333333" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightPrimary">
+            <color red="0.60784313725490191" green="0.52941176470588236" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Primary">
+            <color red="0.53333333333333333" green="0.32549019607843138" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

@@ -27,7 +27,7 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        serverPickerView.tintColor = UIColor.darkPrimary
         setupDelegates()
         setupFetchedResultsController()
         autofillCredentials()
@@ -277,6 +277,11 @@ extension LoginVC: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerArray[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let attributedSting = NSAttributedString(string: pickerArray[row], attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkPrimary])
+        return attributedSting
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

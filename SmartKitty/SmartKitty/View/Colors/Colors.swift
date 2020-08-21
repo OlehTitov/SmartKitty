@@ -16,5 +16,6 @@ extension UIColor {
     static let darkPrimary = UIColor(named: "DarkPrimary")!
     static let secondary = UIColor(named: "Secondary")!
     static let background = UIColor(named: "Background")!
+    static let whisper = UIColor(named: "Whisper")!
 }
 
