@@ -241,10 +241,10 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     
     func goToNextVC() {
         
-        let tabBarVC = self.storyboard?.instantiateViewController(identifier: "TabBarVC") as! TabBarVC
-        self.navigationController?.pushViewController(tabBarVC, animated: true)
-        //let homeVC = self.storyboard?.instantiateViewController(identifier: "HomeVC") as! HomeVC
-        //self.navigationController?.pushViewController(homeVC, animated: true)
+        //let tabBarVC = self.storyboard?.instantiateViewController(identifier: "TabBarVC") as! TabBarVC
+        //self.navigationController?.pushViewController(tabBarVC, animated: true)
+        let animationVC = self.storyboard?.instantiateViewController(identifier: "LoginAnimationVC") as! LoginAnimationVC
+        self.navigationController?.pushViewController(animationVC, animated: true)
     }
     
     //MARK: - SETUP FRC
