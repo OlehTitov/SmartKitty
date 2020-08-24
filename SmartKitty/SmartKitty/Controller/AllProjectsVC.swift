@@ -36,6 +36,8 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.navigationBar.tintColor = .darkPrimary
+        self.navigationController?.navigationBar.standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.darkPrimary]
         setupFetchedResultsController()
         setupTableView()
         setupSearchController()
@@ -76,13 +78,13 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
                 let dateString = dateFormatter.string(from: deadlineAsDate!)
                 let imageAttachment = NSTextAttachment()
                 let lightConfig = UIImage.SymbolConfiguration(weight: .thin)
-                imageAttachment.image = UIImage(systemName: "calendar", withConfiguration: lightConfig)?.withTintColor(.gray)
+                imageAttachment.image = UIImage(systemName: "calendar", withConfiguration: lightConfig)?.withTintColor(.lightPrimary)
                 let imageString = NSAttributedString(attachment: imageAttachment)
                 let fullString = NSMutableAttributedString(string: "")
                 fullString.append(imageString)
                 fullString.append(NSAttributedString(string: " \(timeSting) on \(dateString)"))
                 let range = NSMakeRange(0, fullString.length)
-                fullString.addAttribute(.foregroundColor, value: UIColor.gray, range: range)
+                fullString.addAttribute(.foregroundColor, value: UIColor.lightPrimary, range: range)
                 //cell.detailTextLabel?.text = "\(timeSting), \(dateString)"
                 cell.detailTextLabel?.attributedText = fullString
             } else {

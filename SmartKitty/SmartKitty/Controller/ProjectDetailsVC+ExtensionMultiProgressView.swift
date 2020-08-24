@@ -19,7 +19,7 @@ extension ProjectDetailsVC: MultiProgressViewDataSource {
         let progressSection = ProgressViewSection()
         let stage = ProjectStage(rawValue: section)
         progressSection.backgroundColor = stage?.color
-        progressSection.layer.cornerRadius = 3
+        //progressSection.layer.cornerRadius = 3
         return progressSection
     }
     

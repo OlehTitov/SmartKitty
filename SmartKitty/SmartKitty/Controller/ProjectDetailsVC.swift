@@ -24,6 +24,8 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     var selectedProject: SkProject!
     var projectDocuments: [SkDocument] = []
     var projectStages: [SkProjectWorkflowStage] = []
+    var assignedExecutives: [SkAssignedExecutive] = []
+    var freelancersFullNames: [String] = []
     var allStagesProgressValues: Array<Float> = []
     var deadlineTimeString: String?
     var deadlineDateString: String?
@@ -84,6 +86,7 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         fetchedResultsController = nil
+        
     }
     
     //MARK: - VIEW DID LOAD
@@ -107,6 +110,9 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         
         obtainValuesForProjectDetails()
         
+        getFreelancerId()
+        getFreelancersNames()
+        
         setupProjectDetails()
         setupDetailsList()
         setupTableView()
@@ -115,7 +121,50 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         
         setupFetchedResultsController()
         
+        
+        
+        
     }
+    //MARK: - GET FREELANCERS ID TO PASS INTO 'GetTeamMemberInfo'
+    func getFreelancerId() {
+        //Access SkDocument entity, loop over stages and loop over all executives
+        for document in projectDocuments {
+            guard let stages = document.workflows else {
+                return
+            }
+            let stagesSet = stages as? Set<SkDocumentWorkflowStage> ?? []
+            for stage in stagesSet {
+                let executives = stage.executives
+                guard let executivesSet = executives as? Set<SkAssignedExecutive> else {
+                    return
+                }
+                for executive in executivesSet {
+                    print("Executive ID is: \(executive.id ?? "")")
+                    assignedExecutives.append(executive)
+                }
+            }
+        }
+    }
+    
+    //MARK: - GET FREELANCERS NAMES
+    func getFreelancersNames() {
+        for executive in assignedExecutives {
+            if let id = executive.id {
+               print("trying to get from SmartCat name of freelancer")
+                SCClient.getTeamMemberInfo(userId: id, completion: handleGetTeamMemberInfo(freelancerName:error:))
+            }
+        }
+        
+    }
+    
+    //MARK: - HANDLE GET TEAM MEMBER INFO
+    func handleGetTeamMemberInfo(freelancerName: String, error: Error?) {
+        print(freelancerName)
+        let dataForRow = ProjectDetailRow(title: freelancerName, desc: "", link: "freelancer")
+        rowsForTeam.append(dataForRow)
+        //setupSnapshot(with: detailsList)
+    }
+    
     
     //MARK: - CONFIGURE TABLE VIEW
     func configureTableView() {
@@ -137,8 +186,10 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         var sectionIndex: Int = 0
         for stage in projectStages {
             let progress = Float(stage.progress/100)
+            //Progress values of all stages constitute the general progress
             let progressToTotal = progress/Float(projectStages.count)
-            allStagesProgressValues.append(progressToTotal)
+            allStagesProgressValues.insert(progressToTotal, at: sectionIndex)
+            //allStagesProgressValues.append(progressToTotal)
             UIView.animate(
                 withDuration: 0.4,
                 delay: 0.4,
@@ -149,22 +200,27 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
                     self.stagesProgressView.setProgress(section: sectionIndex, to: progressToTotal)
             },
                 completion: nil)
-        
+            print("Inserted \(progressToTotal) into section \(sectionIndex) named \(stage.stageType ?? "")")
             sectionIndex += 1
         }
+        print("And the sectionIndex is: \(sectionIndex)")
     }
     
     func getProjectStages() {
         let rawStages = selectedProject.projectWorkflows as? Set<SkProjectWorkflowStage> ?? []
-        projectStages.append(contentsOf: rawStages)
+        
+        //projectStages.append(contentsOf: rawStages)
+        projectStages.insert(contentsOf: rawStages, at: 0)
         for stage in projectStages {
             print("Stage: \(stage.stageType ?? "empty"), progress: \(stage.progress)")
         }
+        print("Array with project stages has \(projectStages.count) item(s)")
     }
     
     func setupProgressFooter() {
         //var subviews: [UIView] = []
         let fullString = NSMutableAttributedString(string: "")
+        var stageIndex = 0
         for stage in projectStages {
             guard let stageName = stage.stageType else {
                 return
@@ -174,11 +230,19 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
                 return
             }
             let imageAttachment = NSTextAttachment()
-            let symbolConfig = UIImage.SymbolConfiguration(pointSize: 6)
-            imageAttachment.image = UIImage(systemName: "circle.fill", withConfiguration: symbolConfig)?.withTintColor(stageAsEnum.color)
-            fullString.append(NSAttributedString(attachment: imageAttachment))
-            fullString.append(NSAttributedString(string: " \(stageName) \(progress)% "))
+            let symbolConfig = UIImage.SymbolConfiguration(pointSize: 10)
+            imageAttachment.image = UIImage(systemName: "square.fill", withConfiguration: symbolConfig)?.withTintColor(stageAsEnum.color)
+            fullString.insert(NSAttributedString(attachment: imageAttachment), at: stageIndex)
+            stageIndex += 1
+            fullString.insert(NSAttributedString(string: " \(stageName) \(progress)% "), at: stageIndex)
+            stageIndex += 1
+            //fullString.append(NSAttributedString(attachment: imageAttachment))
+            //fullString.append(NSAttributedString(string: " \(stageName) \(progress)% "))
+            //let range = NSMakeRange(0, fullString.length)
+            //fullString.addAttribute(.foregroundColor, value: UIColor.white, range: range)
         }
+        let range = NSMakeRange(0, fullString.length)
+        fullString.addAttribute(.foregroundColor, value: UIColor.white, range: range)
         progressDescription.attributedText = fullString
     }
     
@@ -215,6 +279,8 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         return arrayOfDocuments
     }
     
+    
+    
     func obtainValuesForProjectDetails() {
         //Get array of documents
         let documents = selectedProject.documents
@@ -237,7 +303,7 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     
     
     // MARK: - TABLE VIEW SETUP
-    private func setupTableView() {
+    func setupTableView() {
         dataSource = ProjectDetailsDataSource(tableView: projectDetailsTableView) { (tableView, indexPath, detailRow) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectDetailsCell", for: indexPath)
             //Setup text labels
@@ -258,7 +324,7 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
     }
     
     
-    private func setupSnapshot(with list: DetailsList) {
+    func setupSnapshot(with list: DetailsList) {
         snapshot = NSDiffableDataSourceSnapshot<Section, ProjectDetailRow>()
         snapshot.appendSections(Section.allCases)
         snapshot.appendItems(list.notes, toSection: .notes)
@@ -269,6 +335,13 @@ class ProjectDetailsVC: UIViewController, NSFetchedResultsControllerDelegate, UI
         snapshot.appendItems(list.misc, toSection: .misc)
         //snapshot.appendItems(projectDetailRows)
         dataSource?.apply(self.snapshot, animatingDifferences: true)
+    }
+    
+    //Configure the color of the section header title
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.textLabel?.textColor = .lightPrimary
+        }
     }
     
     

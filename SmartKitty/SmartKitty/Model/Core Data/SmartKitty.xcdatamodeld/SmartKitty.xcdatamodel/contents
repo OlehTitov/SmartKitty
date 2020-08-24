@@ -23,14 +23,14 @@
         <attribute name="targetLanguage" optional="YES" attributeType="String"/>
         <attribute name="wordsCount" optional="YES" attributeType="String"/>
         <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkProject" inverseName="documents" inverseEntity="SkProject"/>
-        <relationship name="workflow" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkDocumentWorkflowStage" inverseName="document" inverseEntity="SkDocumentWorkflowStage"/>
+        <relationship name="workflows" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SkDocumentWorkflowStage" inverseName="document" inverseEntity="SkDocumentWorkflowStage"/>
     </entity>
     <entity name="SkDocumentWorkflowStage" representedClassName="SkDocumentWorkflowStage" syncable="YES" codeGenerationType="class">
         <attribute name="progress" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="status" optional="YES" attributeType="String"/>
         <attribute name="unassignedWordsCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="wordsTranslated" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="document" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkDocument" inverseName="workflow" inverseEntity="SkDocument"/>
+        <relationship name="document" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkDocument" inverseName="workflows" inverseEntity="SkDocument"/>
         <relationship name="executives" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SkAssignedExecutive" inverseName="documentWorkflow" inverseEntity="SkAssignedExecutive"/>
     </entity>
     <entity name="SkProject" representedClassName="SkProject" syncable="YES" codeGenerationType="class">

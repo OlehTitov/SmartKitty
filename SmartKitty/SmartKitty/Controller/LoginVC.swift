@@ -69,11 +69,11 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         guard let accountId = accountIDTextfield.text, let apiKey = apiKeyTextfield.text else {
             return
         }
-        if rememberMe.isSelected {
-            print("Saving credentials")
-            UserDefaults.standard.set(accountId, forKey: "AccountId")
-            UserDefaults.standard.set(apiKey, forKey: "ApiKey")
-        }
+        print("Saving credentials")
+        UserDefaults.standard.set(accountId, forKey: "AccountId")
+        UserDefaults.standard.set(apiKey, forKey: "ApiKey")
+        UserDefaults.standard.set(true, forKey: "CredentialsAvailable")
+        
     }
     
     func autofillCredentials() {
@@ -81,7 +81,7 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
             print("Trying to autofill the fields")
             accountIDTextfield.text = (UserDefaults.standard.value(forKey: "AccountId") as! String)
             apiKeyTextfield.text = (UserDefaults.standard.value(forKey: "ApiKey") as! String)
-            rememberMe.isSelected = true
+            //rememberMe.isSelected = true
         }
     }
     
@@ -228,6 +228,38 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
             if let placeholdersAreEnabled = document.placeholdersAreEnabled {
                 doc.placeholdersAreEnabled = placeholdersAreEnabled
             }
+            ///Create SkDocumentWorkflowStage
+            guard let docStages = document.workflowStages else {
+                return
+            }
+            for stage in docStages {
+                let docWorkflowStage = SkDocumentWorkflowStage(context: DataController.shared.viewContext)
+                docWorkflowStage.document = doc
+                if let stageProgress = stage.progress {
+                    docWorkflowStage.progress = stageProgress
+                }
+                docWorkflowStage.status = stage.status
+                if let wordsTranslated = stage.wordsTranslated {
+                    docWorkflowStage.wordsTranslated = Int64(wordsTranslated)
+                }
+                if let unassignedwordsCount = stage.unassignedWordsCount {
+                    docWorkflowStage.unassignedWordsCount = Int64(unassignedwordsCount)
+                }
+                ///Create SkAssignedExecutive
+                guard let assignedExecutives = stage.executives else {
+                    return
+                }
+                for executive in assignedExecutives {
+                    let freelancer = SkAssignedExecutive(context: DataController.shared.viewContext)
+                    freelancer.documentWorkflow = docWorkflowStage
+                    freelancer.id = executive.id
+                }
+                
+                 
+            }
+            
+            
+            
         }
         
         

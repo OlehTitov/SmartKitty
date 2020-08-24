@@ -16,5 +16,9 @@ class ActionButtonCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         buttonWithImage.layer.cornerRadius = 25
+        buttonWithImage.layer.shadowColor = UIColor.darkPrimary.cgColor
+        buttonWithImage.layer.shadowOpacity = 0.5
+        buttonWithImage.layer.shadowRadius = 7
+        buttonWithImage.layer.shadowOffset = CGSize(width: 0, height: 5)
     }
 }

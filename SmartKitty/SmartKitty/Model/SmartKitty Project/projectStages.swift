@@ -49,9 +49,9 @@ enum ProjectStage: Int, CaseIterable {
     var color: UIColor {
         switch self {
         case .translation:
-            return UIColor.green
+            return .secondary
         case .editing:
-            return UIColor.blue
+            return .secondary700
         case .proofreading:
             return UIColor.orange
         case .postediting:

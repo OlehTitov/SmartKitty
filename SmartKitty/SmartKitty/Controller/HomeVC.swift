@@ -42,8 +42,7 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
     //MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationController?.isNavigationBarHidden = true
+        setupNavBars()
         setupFetchedResultsController()
     }
     
@@ -53,6 +52,13 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
         fetchedResultsController = nil
     }
     
+    //MARK: - SETUP NAVIGATION BARS
+    func setupNavBars() {
+        self.tabBarController?.tabBar.tintColor = .primary
+        self.tabBarController?.tabBar.isTranslucent = false
+        self.tabBarController?.tabBar.backgroundColor = .white
+        self.navigationController?.isNavigationBarHidden = true
+    }
     
     //MARK: - SETUP FRC
     fileprivate func setupFetchedResultsController() {
@@ -91,30 +97,31 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
     func setupHeaderTiles() {
         headerTiles = [
         HomeHeaderTile(
-            title: "Today",
+            title: "Deadline Today",
             image: UIImage(systemName: "timer")!,
-            color: .red,
+            color: .secondary,
             projectsCount: numberOfProjectsForToday,
             link: "isToday"
         ),
         HomeHeaderTile(
-            title: "Tomorrow",
+            title: "Deadline Tomorrow",
             image: UIImage(systemName: "calendar")!,
-            color: .systemBlue,
+            color: .primary,
             projectsCount: numberOfProjectsForTomorrow,
             link: "isTomorrow"
         ),
         HomeHeaderTile(
             title: "Starred",
             image: UIImage(systemName: "star.fill")!,
-            color: .yellow,
+            color: .darkPrimary,
             projectsCount: numberOfStarredProjects,
             link: "isStarred"
         ),
         HomeHeaderTile(
             title: "All",
             image: UIImage(systemName: "archivebox.fill")!,
-            color: .gray, projectsCount: numberOfAllProjects,
+            color: .gray,
+            projectsCount: numberOfAllProjects,
             link: "ShowAllProjects"
         )
         ]
@@ -129,7 +136,13 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "TilesCellIdentifier",
                 for: indexPath) as? TilesCell else { fatalError("Cannot create new cell") }
-            cell.layer.cornerRadius = 8
+            cell.layer.cornerRadius = 15
+            cell.layer.shadowRadius = 7
+            cell.layer.shadowColor = tile.color.cgColor
+            cell.layer.shadowOpacity = 0.5
+            cell.layer.shadowOffset = CGSize(width: 0, height: 8)
+            cell.layer.masksToBounds = false
+            cell.backgroundColor = tile.color
             cell.tileTitle.text = tile.title
             cell.iconContainer.backgroundColor = tile.color
             cell.iconContainer.layer.cornerRadius = 17.5
@@ -179,18 +192,18 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
       
       let itemSize = NSCollectionLayoutSize(
         widthDimension: .fractionalWidth(1.0),
-        heightDimension: .fractionalHeight(1.0))
+        heightDimension: .fractionalHeight(7/8))
       let fullPhotoItem = NSCollectionLayoutItem(layoutSize: itemSize)
       
         fullPhotoItem.contentInsets = NSDirectionalEdgeInsets(
-            top: 4,
-            leading: 4,
-            bottom: 4,
-            trailing: 4)
+            top: 6,
+            leading: 14,
+            bottom: 6,
+            trailing: 0)
         
       let groupSize = NSCollectionLayoutSize(
-        widthDimension: .fractionalWidth(1.0),
-        heightDimension: .fractionalWidth(1/3))
+        widthDimension: .fractionalWidth(0.9),
+        heightDimension: .fractionalWidth(2/3))
       let group = NSCollectionLayoutGroup.horizontal(
         layoutSize: groupSize,
         subitem: fullPhotoItem,
@@ -198,6 +211,7 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
       )
       
       let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
       let layout = UICollectionViewCompositionalLayout(section: section)
       return layout
     }

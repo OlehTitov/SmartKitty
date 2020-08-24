@@ -33,6 +33,7 @@ class SCClient {
     enum Path: String {
         case account = "/api/integration/v1/account/"
         case projectsList = "/api/integration/v1/project/list"
+        case teamMember = "/api/integration/v1/account/myTeam"
     }
     
     class func urlComponents(path: Path) -> URL {
@@ -61,6 +62,23 @@ class SCClient {
             } else {
                 print("Can't decode the projects")
                 completion([], error)
+            }
+        }
+    }
+    
+    class func getTeamMemberInfo(userId: String, completion: @escaping (String, Error?) -> Void) {
+        let baseUrl = urlComponents(path: .teamMember)
+        let completeUrl = baseUrl.appendingPathComponent(userId)
+        _ = taskForGETRequest(url: completeUrl, responseType: MyTeam.self) { (response, httpresponse, error) in
+            if let response = response {
+                let name = response.firstName ?? ""
+                let lastName = response.lastName ?? ""
+                let fullName = name + lastName
+                completion(fullName, nil)
+            } else {
+                print("Can't decode freelancer name")
+                print(error)
+                completion("", error)
             }
         }
     }

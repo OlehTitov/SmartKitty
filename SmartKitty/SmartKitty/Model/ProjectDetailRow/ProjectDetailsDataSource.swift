@@ -27,6 +27,9 @@ class ProjectDetailsDataSource: UITableViewDiffableDataSource<Section, ProjectDe
         case .misc:
             headerName = "Additional information"
         }
+        
         return headerName
     }
+    
+    
 }

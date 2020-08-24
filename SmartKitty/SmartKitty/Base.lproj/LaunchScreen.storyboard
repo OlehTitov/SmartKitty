@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,17 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SmartKitty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Dc-AL-Qjl">
-                                <rect key="frame" x="143" y="431.5" width="128" height="33.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whiteCatOutline" translatesAutoresizingMaskIntoConstraints="NO" id="cGa-0S-gxf">
+                                <rect key="frame" x="162" y="403" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="lju-Qw-INr"/>
+                                    <constraint firstAttribute="height" constant="90" id="qT3-dl-yNQ"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="LightPrimary"/>
                         <constraints>
-                            <constraint firstItem="9Dc-AL-Qjl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fJ6-eM-i5T"/>
-                            <constraint firstItem="9Dc-AL-Qjl" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="qYt-CR-cRW"/>
+                            <constraint firstItem="cGa-0S-gxf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="LKT-3t-PXO"/>
+                            <constraint firstItem="cGa-0S-gxf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="VOb-vh-U5K"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -35,4 +37,10 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="whiteCatOutline" width="90" height="90"/>
+        <namedColor name="LightPrimary">
+            <color red="0.60784313725490191" green="0.52941176470588236" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
