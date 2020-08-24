@@ -14,4 +14,11 @@ class ProjectStagesCell: UICollectionViewCell {
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var stageProgressView: UIProgressView!
     
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        //configure outlets
+        progressLabel.textAlignment = .right
+    }
+    
 }

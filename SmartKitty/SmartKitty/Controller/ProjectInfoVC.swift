@@ -20,6 +20,10 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     var documentFRC: NSFetchedResultsController<SkDocument>!
     var stageFRC: NSFetchedResultsController<SkProjectWorkflowStage>!
     
+    //Project stage
+    var stageDataSource: UICollectionViewDiffableDataSource<Int, SkProjectWorkflowStage>?
+    var stagesSnapshot = NSDiffableDataSourceSnapshot<Int, SkProjectWorkflowStage>()
+    
     //Date
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -47,11 +51,16 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupStageFRC()
+        
         projectTitle.text = selectedProject.name
         projectStatus.text = selectedProject.status
+        projectProgress.text = getTotalProgressString()
         projectDeadline.text = getStringFromDeadlineDate()
         projectNotes.text = selectedProject.desc
         
+        configureStagesDataSource()
+        configureStagesLayout()
         
     }
     
@@ -64,6 +73,22 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
            fullDeadlineString = deadlineTimeString + deadlineDateString
         }
          return fullDeadlineString
+    }
+    
+    //Get total progress
+    func getTotalProgressString() -> String {
+        var totalProgress = 0
+        var sumOfAllStagesProgresses = 0
+        var stagesCount = 0
+        let stages = stageFRC.fetchedObjects ?? []
+        for stage in stages {
+            print(stage.progress)
+            sumOfAllStagesProgresses += Int(floor(stage.progress))
+            stagesCount += 1
+        }
+        totalProgress = sumOfAllStagesProgresses/stagesCount
+        let progressString = "\(totalProgress)%"
+        return progressString
     }
     
     //MARK: - SETUP STAGE FRC

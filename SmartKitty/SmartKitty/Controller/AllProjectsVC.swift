@@ -159,9 +159,14 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
     //MARK: - DID SELECT PROJECT
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedProject = fetchedResultsController.fetchedObjects![(indexPath as NSIndexPath).row]
-        let projectDetailsVC = self.storyboard?.instantiateViewController(identifier: "ProjectDetailsVC") as! ProjectDetailsVC
-        projectDetailsVC.selectedProject = selectedProject
-        self.navigationController?.pushViewController(projectDetailsVC, animated: true)
+        let projectInfoVC = self.storyboard?.instantiateViewController(identifier: "ProjectInfoVC") as! ProjectInfoVC
+        projectInfoVC.selectedProject = selectedProject
+        self.navigationController?.pushViewController(projectInfoVC, animated: true)
+        
+        
+        //let projectDetailsVC = self.storyboard?.instantiateViewController(identifier: "ProjectDetailsVC") as! ProjectDetailsVC
+        //projectDetailsVC.selectedProject = selectedProject
+        //self.navigationController?.pushViewController(projectDetailsVC, animated: true)
     }
     
     //MARK: - SEARCH

@@ -77,7 +77,7 @@ class SCClient {
                 completion(fullName, nil)
             } else {
                 print("Can't decode freelancer name")
-                print(error)
+                print(error as Any)
                 completion("", error)
             }
         }
