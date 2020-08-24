@@ -698,13 +698,66 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MlH-Nk-n5g">
-                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MlH-Nk-n5g" customClass="ProjectDocumentsCell" customModule="SmartKitty" customModuleProvider="target">
+                                                        <rect key="frame" x="58" y="0.0" width="298" height="121.5"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dcI-4H-ziK">
-                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="298" height="121.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSn-D7-Lec">
+                                                                    <rect key="frame" x="20" y="20" width="258" height="81.5"/>
+                                                                    <subviews>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc.text.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DyL-tp-Dvo">
+                                                                            <rect key="frame" x="0.0" y="-3" width="80" height="88"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="80" id="iIi-2X-SxJ"/>
+                                                                            </constraints>
+                                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large" weight="ultraLight"/>
+                                                                        </imageView>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jVJ-s3-ZNw">
+                                                                            <rect key="frame" x="80" y="0.0" width="178" height="81.5"/>
+                                                                            <subviews>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wZ-aQ-36W">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="178" height="61"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                    <nil key="textColor"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JBf-Kp-iA3">
+                                                                                    <rect key="frame" x="0.0" y="61" width="178" height="20.5"/>
+                                                                                    <subviews>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAM-Am-K3o">
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="89" height="20.5"/>
+                                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTZ-QX-WfM">
+                                                                                            <rect key="frame" x="89" y="0.0" width="89" height="20.5"/>
+                                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                    </subviews>
+                                                                                </stackView>
+                                                                            </subviews>
+                                                                        </stackView>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="gSn-D7-Lec" secondAttribute="bottom" constant="20" id="SJG-nq-0aF"/>
+                                                                <constraint firstItem="gSn-D7-Lec" firstAttribute="leading" secondItem="dcI-4H-ziK" secondAttribute="leading" constant="20" id="VJC-wg-ryK"/>
+                                                                <constraint firstItem="gSn-D7-Lec" firstAttribute="top" secondItem="dcI-4H-ziK" secondAttribute="top" constant="20" id="fNL-vJ-XiB"/>
+                                                                <constraint firstAttribute="trailing" secondItem="gSn-D7-Lec" secondAttribute="trailing" constant="20" id="lrk-lo-zF9"/>
+                                                            </constraints>
                                                         </collectionViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="documentIcon" destination="DyL-tp-Dvo" id="DLQ-2K-JZq"/>
+                                                            <outlet property="documentTitle" destination="4wZ-aQ-36W" id="9q5-Md-xZM"/>
+                                                            <outlet property="documentWordCount" destination="YTZ-QX-WfM" id="vl9-PH-dMV"/>
+                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
@@ -850,6 +903,7 @@
     </scenes>
     <resources>
         <image name="Smarty" width="50" height="40"/>
+        <image name="doc.text.fill" catalog="system" width="115" height="128"/>
         <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
         <image name="whiteCatOutline" width="90" height="90"/>
         <namedColor name="Background">

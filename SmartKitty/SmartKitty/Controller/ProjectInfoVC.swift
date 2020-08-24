@@ -24,6 +24,10 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     var stageDataSource: UICollectionViewDiffableDataSource<Int, SkProjectWorkflowStage>?
     var stagesSnapshot = NSDiffableDataSourceSnapshot<Int, SkProjectWorkflowStage>()
     
+    //Project document
+    var documentsDataSource: UICollectionViewDiffableDataSource<Int, SkDocument>?
+    var documentsSnapshot = NSDiffableDataSourceSnapshot<Int, SkDocument>()
+    
     //Date
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -107,6 +111,20 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
            }
        }
     
-    
+    //MARK: - SETUP DOCUMENT FRC
+    fileprivate func setupDocumentFRC() {
+        let documentFetchRequest: NSFetchRequest<SkDocument> = SkDocument.fetchRequest()
+        documentFetchRequest.sortDescriptors = []
+        let docPredicate = NSPredicate(format: "project == %@", selectedProject)
+        documentFetchRequest.predicate = docPredicate
+        documentFRC = NSFetchedResultsController(fetchRequest: documentFetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        documentFRC.delegate = self
+        do {
+            try documentFRC.performFetch()
+            //setupSnapshot()
+        } catch {
+            fatalError("The fetch for project documents could not be performed: \(error.localizedDescription)")
+        }
+    }
     
 }
