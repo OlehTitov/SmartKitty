@@ -56,9 +56,9 @@ extension ProjectInfoVC: UICollectionViewDelegate {
           let fullPhotoItem = NSCollectionLayoutItem(layoutSize: itemSize)
           
             fullPhotoItem.contentInsets = NSDirectionalEdgeInsets(
-                top: 1,
+                top: 0,
                 leading: 14,
-                bottom: 1,
+                bottom: 0,
                 trailing: 0)
             
           let groupSize = NSCollectionLayoutSize(
@@ -77,5 +77,70 @@ extension ProjectInfoVC: UICollectionViewDelegate {
           return layout
         }
 
+    
+    //MARK: - PROJECT DOCUMENTS DIFFABLE DATA SOURCE
+    
+    func configureDocumentsDataSource() {
+        documentsDataSource = UICollectionViewDiffableDataSource<Int, SkDocument>(collectionView: projectDocumentsCollectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, document: SkDocument) -> UICollectionViewCell? in
+            // Create cell
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: "ProjectDocumentsCell",
+                for: indexPath) as? ProjectDocumentsCell else { fatalError("Cannot create new cell") }
+            
+            //Setup cell data
+            cell.documentTitle.text = document.name
+            cell.documentWordCount.text = document.wordsCount
+            
+            //Setup cell appearance
+            cell.layer.borderColor = UIColor.systemBlue.cgColor
+            cell.layer.borderWidth = 1
+            return cell
+        }
+        setupDocumentsSnapshot()
+    }
+    
+    private func setupDocumentsSnapshot() {
+        documentsSnapshot = NSDiffableDataSourceSnapshot<Int, SkDocument>()
+        documentsSnapshot.appendSections([0])
+        documentsSnapshot.appendItems(documentFRC.fetchedObjects ?? [])
+        documentsDataSource?.apply(self.documentsSnapshot, animatingDifferences: true)
+    }
+    
+    
+    //MARK: - CONFIGURE DOCUMENTS LAYOUT
+    func configureDocumentsLayout() {
+        projectDocumentsCollectionView.collectionViewLayout = generateDocumentsLayout()
+    }
+    
+    func generateDocumentsLayout() -> UICollectionViewLayout {
+      
+      let itemSize = NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
+        //heightDimension: .fractionalHeight(1.0))
+        heightDimension: .estimated(160.0))
+      let fullPhotoItem = NSCollectionLayoutItem(layoutSize: itemSize)
+      
+        fullPhotoItem.contentInsets = NSDirectionalEdgeInsets(
+            top: 0,
+            leading: 14,
+            bottom: 0,
+            trailing: 0)
+        
+      let groupSize = NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(0.9),
+        //heightDimension: .fractionalWidth(3/4))
+        heightDimension: .estimated(160.0))
+      let group = NSCollectionLayoutGroup.horizontal(
+        layoutSize: groupSize,
+        subitem: fullPhotoItem,
+        count: 1
+      )
+      
+      let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+      let layout = UICollectionViewCompositionalLayout(section: section)
+      return layout
+    }
     
 }

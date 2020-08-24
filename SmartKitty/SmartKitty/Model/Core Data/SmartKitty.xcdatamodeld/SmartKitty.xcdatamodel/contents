@@ -54,7 +54,7 @@
         <attribute name="sourceLanguage" optional="YES" attributeType="String"/>
         <attribute name="status" optional="YES" attributeType="String"/>
         <attribute name="statusModificationDate" optional="YES" attributeType="String"/>
-        <attribute name="targetLanguages" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="targetLanguages" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <relationship name="documents" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SkDocument" inverseName="project" inverseEntity="SkDocument"/>
         <relationship name="projectWorkflows" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SkProjectWorkflowStage" inverseName="project" inverseEntity="SkProjectWorkflowStage"/>
     </entity>

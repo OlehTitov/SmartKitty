@@ -56,6 +56,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         super.viewDidLoad()
         
         setupStageFRC()
+        setupDocumentFRC()
         
         projectTitle.text = selectedProject.name
         projectStatus.text = selectedProject.status
@@ -65,6 +66,8 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         
         configureStagesDataSource()
         configureStagesLayout()
+        configureDocumentsDataSource()
+        configureDocumentsLayout()
         
     }
     
@@ -74,7 +77,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         if let deadline = selectedProject.deadlineAsDate {
            let deadlineTimeString = timeFormatter.string(from: deadline)
            let deadlineDateString = dateFormatter.string(from: deadline)
-           fullDeadlineString = deadlineTimeString + deadlineDateString
+           fullDeadlineString = "🗓 \(deadlineTimeString) \(deadlineDateString)"
         }
          return fullDeadlineString
     }
