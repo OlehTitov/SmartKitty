@@ -10,6 +10,8 @@
 		7C46019E24E03B9C00CCDA63 /* HTTPStatusCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C46019D24E03B9C00CCDA63 /* HTTPStatusCodes.swift */; };
 		7C4601A124E054BA00CCDA63 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4601A024E054BA00CCDA63 /* Alerts.swift */; };
 		7C48D9F424F3BAE40020D447 /* ProjectInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48D9F324F3BAE40020D447 /* ProjectInfoVC.swift */; };
+		7C48D9F624F3CB4A0020D447 /* ProjectInfoVC+ExtensionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48D9F524F3CB4A0020D447 /* ProjectInfoVC+ExtensionCollectionView.swift */; };
+		7C48D9F824F3CBBF0020D447 /* ProjectStagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48D9F724F3CBBF0020D447 /* ProjectStagesCell.swift */; };
 		7C5756EB24ED273800346B1E /* MultiProgressView in Frameworks */ = {isa = PBXBuildFile; productRef = 7C5756EA24ED273800346B1E /* MultiProgressView */; };
 		7C5756ED24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */; };
 		7C5756EF24ED558F00346B1E /* projectStages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756EE24ED558F00346B1E /* projectStages.swift */; };
@@ -53,6 +55,8 @@
 		7C46019D24E03B9C00CCDA63 /* HTTPStatusCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatusCodes.swift; sourceTree = "<group>"; };
 		7C4601A024E054BA00CCDA63 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		7C48D9F324F3BAE40020D447 /* ProjectInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfoVC.swift; sourceTree = "<group>"; };
+		7C48D9F524F3CB4A0020D447 /* ProjectInfoVC+ExtensionCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectInfoVC+ExtensionCollectionView.swift"; sourceTree = "<group>"; };
+		7C48D9F724F3CBBF0020D447 /* ProjectStagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectStagesCell.swift; sourceTree = "<group>"; };
 		7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDetailsVC+ExtensionMultiProgressView.swift"; sourceTree = "<group>"; };
 		7C5756EE24ED558F00346B1E /* projectStages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projectStages.swift; sourceTree = "<group>"; };
 		7C5756F024EE9A6800346B1E /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 				7C5756F024EE9A6800346B1E /* TabBarVC.swift */,
 				7C5756FB24EF8B1800346B1E /* LoginAnimationVC.swift */,
 				7C48D9F324F3BAE40020D447 /* ProjectInfoVC.swift */,
+				7C48D9F524F3CB4A0020D447 /* ProjectInfoVC+ExtensionCollectionView.swift */,
+				7C48D9F724F3CBBF0020D447 /* ProjectStagesCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -410,6 +416,7 @@
 				7C4601A124E054BA00CCDA63 /* Alerts.swift in Sources */,
 				7CD6837A24DD34BB0091ED52 /* HomeHeaderTileModel.swift in Sources */,
 				7C5756FC24EF8B1800346B1E /* LoginAnimationVC.swift in Sources */,
+				7C48D9F624F3CB4A0020D447 /* ProjectInfoVC+ExtensionCollectionView.swift in Sources */,
 				7CF4C50924EA822B00F9FC02 /* ProjectDetailsVC+ExtensionCollectionView.swift in Sources */,
 				7CF4C50224E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift in Sources */,
 				7CD6837524DC3B710091ED52 /* HomeVC.swift in Sources */,
@@ -418,6 +425,7 @@
 				7CF4C4FA24E3F0C400F9FC02 /* ProjectDetailsVC.swift in Sources */,
 				7C5756F124EE9A6800346B1E /* TabBarVC.swift in Sources */,
 				7C5756ED24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift in Sources */,
+				7C48D9F824F3CBBF0020D447 /* ProjectStagesCell.swift in Sources */,
 				7CD6836024D96A810091ED52 /* SCClient.swift in Sources */,
 				7CF4C50024E4405800F9FC02 /* ProjectStatusesData.swift in Sources */,
 				7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */,
