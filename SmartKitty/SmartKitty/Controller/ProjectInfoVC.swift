@@ -47,6 +47,10 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var projectProgress: UILabel!
     @IBOutlet weak var projectStatus: UILabel!
     @IBOutlet weak var projectDeadline: UILabel!
+    @IBOutlet weak var sourceLang: UILabel!
+    @IBOutlet weak var targetLang: UILabel!
+    @IBOutlet weak var createdBy: UILabel!
+    @IBOutlet weak var client: UILabel!
     @IBOutlet weak var projectNotes: UILabel!
     @IBOutlet weak var projectStagesCollectionView: UICollectionView!
     @IBOutlet weak var projectDocumentsCollectionView: UICollectionView!
@@ -54,16 +58,12 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //Perform fetch requests
         setupStageFRC()
         setupDocumentFRC()
-        
-        projectTitle.text = selectedProject.name
-        projectStatus.text = selectedProject.status
-        projectProgress.text = getTotalProgressString()
-        projectDeadline.text = getStringFromDeadlineDate()
-        projectNotes.text = selectedProject.desc
-        
+        //Setup general information
+        setupGeneralProjectDetails()
+        //Prepare data source and layout for collection views
         configureStagesDataSource()
         configureStagesLayout()
         configureDocumentsDataSource()
@@ -77,7 +77,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         if let deadline = selectedProject.deadlineAsDate {
            let deadlineTimeString = timeFormatter.string(from: deadline)
            let deadlineDateString = dateFormatter.string(from: deadline)
-           fullDeadlineString = "🗓 \(deadlineTimeString) \(deadlineDateString)"
+           fullDeadlineString = "📦 \(deadlineTimeString) \(deadlineDateString)"
         }
          return fullDeadlineString
     }
@@ -96,6 +96,21 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         totalProgress = sumOfAllStagesProgresses/stagesCount
         let progressString = "\(totalProgress)%"
         return progressString
+    }
+    
+    //Display general project details
+    func setupGeneralProjectDetails() {
+        projectTitle.text = selectedProject.name
+        projectStatus.text = selectedProject.status
+        projectProgress.text = getTotalProgressString()
+        projectDeadline.text = getStringFromDeadlineDate()
+        let source = selectedProject.sourceLanguage ?? ""
+        sourceLang.text = "Source: \(source)"
+        let target = selectedProject.targetLanguages?.joined(separator: ", ") ?? ""
+        targetLang.text = "Target: \(target)"
+        let author = selectedProject.createdByUserEmail ?? ""
+        createdBy.text = "Created by: \(author)"
+        projectNotes.text = "Notes: \(selectedProject.desc ?? "")"
     }
     
     //MARK: - SETUP STAGE FRC
