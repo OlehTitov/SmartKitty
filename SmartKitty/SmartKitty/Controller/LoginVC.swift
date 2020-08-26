@@ -168,6 +168,7 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         let newProject = SkProject(context: DataController.shared.viewContext)
         newProject.id = prj.id
         newProject.name = prj.name
+        newProject.desc = prj.description
         newProject.clientId = prj.clientId
         newProject.sourceLanguage = prj.sourceLanguage
         newProject.targetLanguages = prj.targetLanguages

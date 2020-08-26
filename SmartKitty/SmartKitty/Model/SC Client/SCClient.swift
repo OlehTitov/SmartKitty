@@ -34,6 +34,7 @@ class SCClient {
         case account = "/api/integration/v1/account/"
         case projectsList = "/api/integration/v1/project/list"
         case teamMember = "/api/integration/v1/account/myTeam"
+        case project = "/api/integration/v1/project"
     }
     
     class func urlComponents(path: Path) -> URL {
@@ -83,6 +84,22 @@ class SCClient {
         }
     }
     
+    class func addProjectNote(projectId: String, method: String, note: ProjectNote, completion: @escaping (Bool, Error?) -> Void) {
+        let baseUrl = urlComponents(path: .project)
+        let completeUrl = baseUrl.appendingPathComponent(projectId)
+        print(completeUrl)
+        taskForPostRequest(url: completeUrl, body: note, method: method) { (data, response, error) in
+            if let response = response {
+                let success: Bool = response.statusCode == 204
+                print(response.statusCode)
+                completion(success, nil)
+            } else {
+                completion(false, error)
+            }
+            
+        }
+    }
+    
     class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, HTTPURLResponse?, Error?) -> Void) -> URLSessionDataTask {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -118,6 +135,32 @@ class SCClient {
         task.resume()
         
         return task
+    }
+    
+    class func taskForPostRequest<RequestType: Encodable>(url: URL, body: RequestType, method: String, completion: @escaping (String?, HTTPURLResponse?, Error?) -> Void) {
+        var request = URLRequest(url: url)
+        request.httpMethod = method
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Basic \(Auth.authKey)", forHTTPHeaderField: "Authorization")
+        let body = body
+        request.httpBody = try! JSONEncoder().encode(body)
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let httpResponse = response as? HTTPURLResponse
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    print(httpResponse ?? "")
+                    completion(nil, httpResponse, error)
+                }
+                return
+            }
+            let rawServerResponse = String(decoding: data, as: UTF8.self)
+            print(rawServerResponse)
+            DispatchQueue.main.async {
+                completion(rawServerResponse, httpResponse, nil)
+            }
+            
+        }
+        task.resume()
     }
     
 }

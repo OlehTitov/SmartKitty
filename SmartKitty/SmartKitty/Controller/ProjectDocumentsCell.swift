@@ -10,8 +10,7 @@ import UIKit
 
 class ProjectDocumentsCell: UICollectionViewCell {
    
-    
-    @IBOutlet weak var documentIcon: UIImageView!
+    @IBOutlet weak var docStatus: UILabel!
     @IBOutlet weak var documentTitle: UILabel!
     @IBOutlet weak var documentWordCount: UILabel!
     

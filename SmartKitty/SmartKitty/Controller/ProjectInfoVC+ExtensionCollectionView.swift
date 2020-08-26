@@ -99,10 +99,12 @@ extension ProjectInfoVC: UICollectionViewDelegate {
             //Setup cell data
             cell.documentTitle.text = document.name
             cell.documentWordCount.text = document.wordsCount
+            cell.docStatus.text = document.status
             
             //Setup cell appearance
-            cell.layer.borderColor = UIColor.systemBlue.cgColor
-            cell.layer.borderWidth = 1
+            cell.layer.cornerRadius = 10
+            //cell.layer.borderColor = UIColor.systemBlue.cgColor
+            //cell.layer.borderWidth = 1
             return cell
         }
         setupDocumentsSnapshot()
@@ -126,7 +128,7 @@ extension ProjectInfoVC: UICollectionViewDelegate {
       let itemSize = NSCollectionLayoutSize(
         widthDimension: .fractionalWidth(1.0),
         //heightDimension: .fractionalHeight(1.0))
-        heightDimension: .estimated(160.0))
+        heightDimension: .estimated(200.0))
       let fullPhotoItem = NSCollectionLayoutItem(layoutSize: itemSize)
       
         fullPhotoItem.contentInsets = NSDirectionalEdgeInsets(
@@ -136,13 +138,13 @@ extension ProjectInfoVC: UICollectionViewDelegate {
             trailing: 0)
         
       let groupSize = NSCollectionLayoutSize(
-        widthDimension: .fractionalWidth(0.9),
+        widthDimension: .fractionalWidth(0.93),
         //heightDimension: .fractionalWidth(3/4))
-        heightDimension: .estimated(160.0))
+        heightDimension: .estimated(200.0))
       let group = NSCollectionLayoutGroup.horizontal(
         layoutSize: groupSize,
         subitem: fullPhotoItem,
-        count: 1
+        count: 2
       )
       
       let section = NSCollectionLayoutSection(group: group)

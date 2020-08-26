@@ -71,6 +71,18 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         
     }
     
+    //MARK: - ADD A NOTE
+    
+    @IBAction func addANoteTapped(_ sender: Any) {
+        let addNoteVC = self.storyboard?.instantiateViewController(identifier: "AddNote") as! AddNote
+        addNoteVC.selectedProject = selectedProject
+        addNoteVC.modalPresentationStyle = .overCurrentContext
+        addNoteVC.modalTransitionStyle = .coverVertical
+        
+        present(addNoteVC, animated: true, completion: nil)
+    }
+    
+    
     //Get deadline
     func getStringFromDeadlineDate() -> String {
         var fullDeadlineString = "No deadline specified"
