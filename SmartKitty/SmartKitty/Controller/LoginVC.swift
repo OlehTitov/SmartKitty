@@ -99,25 +99,34 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     
     func handleGetAccountInfo(companyName: String, statusCode: Int, error: Error?) {
         print(statusCode)
-        if statusCode == 0 {
-            print("-- Status code: \(statusCode)")
-            print("-- Do you want to browse online?")
-        }
         let httpStatusCode = HTTPStatusCodes(rawValue: statusCode)!
         switch httpStatusCode {
         case .OK:
             print(companyName)
             saveCredentials()
             SCClient.companyName = companyName
-            SCClient.getProjectsList(completion: handleGetProjectsList(projects:error:))
+            goToNextVC()
+            //SCClient.getProjectsList(completion: handleGetProjectsList(projects:error:))
         case .Unauthorized:
-            showAlert(title: .authorizationFailed, message: .authorizationFailed)
+            showAlert(
+                title: .authorizationFailed,
+                message: .authorizationFailed
+            )
         case .InternalServerError, .BadGateway, .ServiceUnavailable:
-            showAlert(title: .serverError, message: .serverError)
+            showAlert(
+                title: .serverError,
+                message: .serverError
+            )
         case .NotConnected:
-            showAlert(title: .notConnected, message: .notConnected)
+            showAlert(
+                title: .notConnected,
+                message: .notConnected
+            )
         default:
-            showAlert(title: .undefinedError, message: .undefinedError)
+            showAlert(
+                title: .undefinedError,
+                message: .undefinedError
+            )
         }
         
     }
@@ -270,14 +279,7 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
                  
             }
             
-            
-            
         }
-        
-        
-        
-        
-        
         
         try? DataController.shared.viewContext.save()
         setupFetchedResultsController()
@@ -288,7 +290,10 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         //let tabBarVC = self.storyboard?.instantiateViewController(identifier: "TabBarVC") as! TabBarVC
         //self.navigationController?.pushViewController(tabBarVC, animated: true)
         let animationVC = self.storyboard?.instantiateViewController(identifier: "LoginAnimationVC") as! LoginAnimationVC
-        self.navigationController?.pushViewController(animationVC, animated: true)
+        animationVC.modalPresentationStyle = .fullScreen
+        animationVC.modalTransitionStyle = .crossDissolve
+        present(animationVC, animated: true, completion: nil)
+        //self.navigationController?.pushViewController(animationVC, animated: true)
     }
     
     //MARK: - SETUP FRC

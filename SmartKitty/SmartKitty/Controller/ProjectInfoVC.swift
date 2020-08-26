@@ -82,6 +82,18 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         present(addNoteVC, animated: true, completion: nil)
     }
     
+    @IBAction func shareButtonTapped(_ sender: Any) {
+        guard let id = selectedProject.id else {
+            return
+        }
+        let baseURL = SCClient.urlComponents(path: .project)
+        let fullURL = baseURL.appendingPathComponent(id)
+        let items = [fullURL]
+        let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(activityController, animated: true)
+    }
+    
+    
     
     //Get deadline
     func getStringFromDeadlineDate() -> String {

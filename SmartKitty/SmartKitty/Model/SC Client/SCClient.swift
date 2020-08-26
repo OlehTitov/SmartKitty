@@ -113,13 +113,13 @@ class SCClient {
         request.setValue("Basic \(Auth.authKey)", forHTTPHeaderField: "Authorization")
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             let httpResponse = response as? HTTPURLResponse
+            print("-- HTTP RESPONSE: \(httpResponse?.statusCode ?? 0)")
             if let err = error as? URLError, err.code == URLError.Code.notConnectedToInternet {
                 print("-- No Internet Connection")
                 print("-- Error Code: \(err.code)")
                 DispatchQueue.main.async {
                     completion(nil, nil, error)
                 }
-                
             }
             
             guard let data = data else {
@@ -129,8 +129,8 @@ class SCClient {
                 }
                 return
             }
-            //let str = String(decoding: data, as: UTF8.self)
-            //print(str)
+            let str = String(decoding: data, as: UTF8.self)
+            print(str)
             //print(request.allHTTPHeaderFields!)
             let decoder = JSONDecoder()
             do {
