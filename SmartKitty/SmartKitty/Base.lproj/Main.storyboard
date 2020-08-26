@@ -708,13 +708,13 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Words" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAM-Am-K3o">
-                                                                    <rect key="frame" x="15" y="82" width="49.5" height="20.5"/>
+                                                                    <rect key="frame" x="15" y="82" width="61.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgM-HO-Xte">
-                                                                    <rect key="frame" x="15" y="15" width="37.5" height="18"/>
+                                                                    <rect key="frame" x="15" y="15" width="61.5" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -737,9 +737,11 @@
                                                                 <constraint firstAttribute="trailing" secondItem="YTZ-QX-WfM" secondAttribute="trailing" constant="15" id="9ep-4x-q03"/>
                                                                 <constraint firstAttribute="trailing" secondItem="4wZ-aQ-36W" secondAttribute="trailing" constant="15" id="AhP-pi-4aJ"/>
                                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4wZ-aQ-36W" secondAttribute="bottom" constant="15" id="Bsj-qD-6UI"/>
+                                                                <constraint firstAttribute="trailing" secondItem="sAM-Am-K3o" secondAttribute="trailing" constant="15" id="ESC-J1-Gzu"/>
                                                                 <constraint firstItem="4wZ-aQ-36W" firstAttribute="leading" secondItem="dcI-4H-ziK" secondAttribute="leading" constant="15" id="N5W-TS-xk2"/>
                                                                 <constraint firstItem="4wZ-aQ-36W" firstAttribute="top" secondItem="sAM-Am-K3o" secondAttribute="bottom" constant="20" id="fGa-gg-Gdl"/>
                                                                 <constraint firstItem="sAM-Am-K3o" firstAttribute="leading" secondItem="dcI-4H-ziK" secondAttribute="leading" constant="15" id="iRq-sb-Hyk"/>
+                                                                <constraint firstAttribute="trailing" secondItem="OgM-HO-Xte" secondAttribute="trailing" constant="15" id="okO-rx-r9g"/>
                                                                 <constraint firstItem="OgM-HO-Xte" firstAttribute="top" secondItem="dcI-4H-ziK" secondAttribute="top" constant="15" id="r2l-yH-h46"/>
                                                                 <constraint firstItem="YTZ-QX-WfM" firstAttribute="leading" secondItem="dcI-4H-ziK" secondAttribute="leading" constant="15" id="wWZ-lS-dV8"/>
                                                                 <constraint firstItem="sAM-Am-K3o" firstAttribute="top" secondItem="YTZ-QX-WfM" secondAttribute="bottom" constant="5" id="wvs-1z-nLN"/>

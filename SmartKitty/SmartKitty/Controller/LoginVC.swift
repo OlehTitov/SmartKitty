@@ -14,15 +14,17 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     //MARK: - PROPERTIES
     var fetchedResultsController: NSFetchedResultsController<SkProject>!
     let dismissKeyboard = DismissKeyboardDelegate()
-    let pickerArray = [SCClient.Servers.europe.rawValue, SCClient.Servers.america.rawValue, SCClient.Servers.asia.rawValue]
+    let pickerArray = [
+        SCClient.Servers.europe.rawValue,
+        SCClient.Servers.america.rawValue,
+        SCClient.Servers.asia.rawValue
+    ]
     
     //MARK: - OUTLETS
     
     @IBOutlet weak var accountIDTextfield: UITextField!
     @IBOutlet weak var apiKeyTextfield: UITextField!
     @IBOutlet weak var serverPickerView: UIPickerView!
-    
-    @IBOutlet weak var rememberMe: ToggleButton!
     
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
@@ -36,7 +38,6 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     //MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.navigationController?.isNavigationBarHidden = true
         setupFetchedResultsController()
     }
@@ -87,6 +88,10 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     
     //MARK: - LOGIN
     @IBAction func loginTapped(_ sender: Any) {
+        //Login logic is here
+        
+        
+        
         SCClient.Auth.accountId = accountIDTextfield.text!
         SCClient.Auth.apiKey = apiKeyTextfield.text!
         SCClient.getAccountInfo(completion: handleGetAccountInfo(companyName:statusCode:error:))
@@ -94,6 +99,10 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     
     func handleGetAccountInfo(companyName: String, statusCode: Int, error: Error?) {
         print(statusCode)
+        if statusCode == 0 {
+            print("-- Status code: \(statusCode)")
+            print("-- Do you want to browse online?")
+        }
         let httpStatusCode = HTTPStatusCodes(rawValue: statusCode)!
         switch httpStatusCode {
         case .OK:
@@ -105,6 +114,8 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
             showAlert(title: .authorizationFailed, message: .authorizationFailed)
         case .InternalServerError, .BadGateway, .ServiceUnavailable:
             showAlert(title: .serverError, message: .serverError)
+        case .NotConnected:
+            showAlert(title: .notConnected, message: .notConnected)
         default:
             showAlert(title: .undefinedError, message: .undefinedError)
         }

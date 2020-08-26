@@ -15,6 +15,8 @@
 		7C48D9FA24F3FB010020D447 /* ProjectDocumentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48D9F924F3FB010020D447 /* ProjectDocumentsCell.swift */; };
 		7C48D9FF24F51FAF0020D447 /* ProjectNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48D9FE24F51FAF0020D447 /* ProjectNote.swift */; };
 		7C48DA0124F523280020D447 /* AddNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0024F523280020D447 /* AddNote.swift */; };
+		7C48DA0324F662100020D447 /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0224F662100020D447 /* UserType.swift */; };
+		7C48DA0524F662820020D447 /* InternetStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0424F662820020D447 /* InternetStatus.swift */; };
 		7C5756EB24ED273800346B1E /* MultiProgressView in Frameworks */ = {isa = PBXBuildFile; productRef = 7C5756EA24ED273800346B1E /* MultiProgressView */; };
 		7C5756ED24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */; };
 		7C5756EF24ED558F00346B1E /* projectStages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756EE24ED558F00346B1E /* projectStages.swift */; };
@@ -63,6 +65,8 @@
 		7C48D9F924F3FB010020D447 /* ProjectDocumentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDocumentsCell.swift; sourceTree = "<group>"; };
 		7C48D9FE24F51FAF0020D447 /* ProjectNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectNote.swift; sourceTree = "<group>"; };
 		7C48DA0024F523280020D447 /* AddNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNote.swift; sourceTree = "<group>"; };
+		7C48DA0224F662100020D447 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
+		7C48DA0424F662820020D447 /* InternetStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetStatus.swift; sourceTree = "<group>"; };
 		7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDetailsVC+ExtensionMultiProgressView.swift"; sourceTree = "<group>"; };
 		7C5756EE24ED558F00346B1E /* projectStages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projectStages.swift; sourceTree = "<group>"; };
 		7C5756F024EE9A6800346B1E /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
@@ -305,6 +309,8 @@
 			children = (
 				7CF4C4FC24E43ACD00F9FC02 /* projectStatuses.swift */,
 				7C5756EE24ED558F00346B1E /* projectStages.swift */,
+				7C48DA0224F662100020D447 /* UserType.swift */,
+				7C48DA0424F662820020D447 /* InternetStatus.swift */,
 			);
 			path = "SmartKitty Project";
 			sourceTree = "<group>";
@@ -414,6 +420,7 @@
 			files = (
 				7C5756EF24ED558F00346B1E /* projectStages.swift in Sources */,
 				7CD6836624D9D1200091ED52 /* DismissKeyboardDelegate.swift in Sources */,
+				7C48DA0324F662100020D447 /* UserType.swift in Sources */,
 				7CD6836E24DAC6490091ED52 /* SmartKitty.xcdatamodeld in Sources */,
 				7CF4C4FD24E43ACD00F9FC02 /* projectStatuses.swift in Sources */,
 				7C46019E24E03B9C00CCDA63 /* HTTPStatusCodes.swift in Sources */,
@@ -429,6 +436,7 @@
 				7CD6837324DB2AC00091ED52 /* SkProject+Extensions.swift in Sources */,
 				7CD6836324D9CB090091ED52 /* AccountResponse.swift in Sources */,
 				7C5756F724EED4BC00346B1E /* PrimaryButton.swift in Sources */,
+				7C48DA0524F662820020D447 /* InternetStatus.swift in Sources */,
 				7CD6836B24DAA9CE0091ED52 /* DataController.swift in Sources */,
 				7C4601A124E054BA00CCDA63 /* Alerts.swift in Sources */,
 				7CD6837A24DD34BB0091ED52 /* HomeHeaderTileModel.swift in Sources */,

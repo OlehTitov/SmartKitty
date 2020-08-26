@@ -9,6 +9,8 @@
 import Foundation
 
 enum HTTPStatusCodes: Int {
+    //Custom handling of notConnectedToInternet
+    case NotConnected = 0
     // 100 Informational
     case Continue = 100
     case SwitchingProtocols

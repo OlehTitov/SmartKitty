@@ -27,7 +27,10 @@ class LoginAnimationVC: UIViewController {
             self.catImage.transform = CGAffineTransform(scaleX: 20, y: 20)
         }, completion: { (true) in
             let tabBarVC = self.storyboard?.instantiateViewController(identifier: "TabBarVC") as! TabBarVC
-            self.navigationController?.pushViewController(tabBarVC, animated: true)
+            tabBarVC.modalPresentationStyle = .fullScreen
+            tabBarVC.modalTransitionStyle = .crossDissolve
+            self.present(tabBarVC, animated: true, completion: nil)
+            //self.navigationController?.pushViewController(tabBarVC, animated: true)
         })
     }
     

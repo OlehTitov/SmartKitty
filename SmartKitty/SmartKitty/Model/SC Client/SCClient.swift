@@ -48,6 +48,12 @@ class SCClient {
     
     class func getAccountInfo(completion: @escaping (String, Int, Error?) -> Void) {
         _ = taskForGETRequest(url: urlComponents(path: .account), responseType: AccountResponse.self) { (response, httpResponse, error) in
+            if let err = error as? URLError, err.code == URLError.Code.notConnectedToInternet {
+                print("-- Not connected to internet")
+                completion("", 0, error)
+            }
+            
+            
             if let response = response {
                 completion(response.name, httpResponse!.statusCode, nil)
             } else {
@@ -107,9 +113,18 @@ class SCClient {
         request.setValue("Basic \(Auth.authKey)", forHTTPHeaderField: "Authorization")
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             let httpResponse = response as? HTTPURLResponse
+            if let err = error as? URLError, err.code == URLError.Code.notConnectedToInternet {
+                print("-- No Internet Connection")
+                print("-- Error Code: \(err.code)")
+                DispatchQueue.main.async {
+                    completion(nil, nil, error)
+                }
+                
+            }
+            
             guard let data = data else {
                 DispatchQueue.main.async {
-                    print(httpResponse as Any)
+                    print(httpResponse ?? "")
                     completion(nil, httpResponse, error)
                 }
                 return
