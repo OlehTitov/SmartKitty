@@ -15,12 +15,36 @@ class AddNote: UIViewController {
     var selectedProject: SkProject!
     let dismissKeyboard = DismissKeyboardDelegate()
     
+    
+    
+    @IBOutlet weak var saveButton: PrimaryButton!
     @IBOutlet weak var noteTextField: UITextField!
     
+    @IBOutlet weak var textfieldHeight: NSLayoutConstraint!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tabBarController?.tabBar.isTranslucent = true
+         tabBarController?.tabBar.isHidden = true
+        subscribeToKeyboardNotifications()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        noteTextField.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        tabBarController?.tabBar.isTranslucent = false
+         tabBarController?.tabBar.isHidden = false
+        unsubscribeFromKeyboardNotifications()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         noteTextField.delegate = dismissKeyboard
+        
     }
     
     

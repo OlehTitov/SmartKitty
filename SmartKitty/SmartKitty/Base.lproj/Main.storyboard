@@ -384,7 +384,7 @@
                                             <fragment content="Label">
                                                 <attributes>
                                                     <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                    <font key="NSFont" metaFont="message" size="11"/>
+                                                    <font key="NSFont" metaFont="controlContent" size="11"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
@@ -907,17 +907,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CNA-Gl-W7R">
-                                <rect key="frame" x="20" y="240" width="374" height="522"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Text for note" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CNA-Gl-W7R">
+                                <rect key="frame" x="20" y="133" width="374" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="i4k-6Y-oWG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a note" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frL-zb-Ozc">
-                                <rect key="frame" x="20" y="181" width="374" height="29"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ny3-yp-ebO" customClass="PrimaryButton" customModule="SmartKitty" customModuleProvider="target">
                                 <rect key="frame" x="20" y="782" width="374" height="60"/>
                                 <constraints>
@@ -928,29 +925,36 @@
                                     <action selector="saveButtonTapped:" destination="WQk-ah-VgP" eventType="touchUpInside" id="R29-N0-Jy3"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📝 Add a note" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frL-zb-Ozc">
+                                <rect key="frame" x="20" y="84" width="374" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="K93-bh-Lfm" firstAttribute="trailing" secondItem="Ny3-yp-ebO" secondAttribute="trailing" constant="20" id="6ix-CA-N2U"/>
-                            <constraint firstItem="CNA-Gl-W7R" firstAttribute="leading" secondItem="K93-bh-Lfm" secondAttribute="leading" constant="20" id="9vd-6y-ZfG"/>
-                            <constraint firstItem="Ny3-yp-ebO" firstAttribute="top" secondItem="CNA-Gl-W7R" secondAttribute="bottom" constant="20" id="B4G-kW-WS8"/>
-                            <constraint firstItem="K93-bh-Lfm" firstAttribute="bottom" secondItem="Ny3-yp-ebO" secondAttribute="bottom" constant="20" id="Gac-3q-Xcf"/>
-                            <constraint firstItem="K93-bh-Lfm" firstAttribute="trailing" secondItem="CNA-Gl-W7R" secondAttribute="trailing" constant="20" id="PiN-b7-4c8"/>
-                            <constraint firstItem="frL-zb-Ozc" firstAttribute="leading" secondItem="K93-bh-Lfm" secondAttribute="leading" constant="20" id="QLp-i6-bss"/>
-                            <constraint firstItem="K93-bh-Lfm" firstAttribute="trailing" secondItem="frL-zb-Ozc" secondAttribute="trailing" constant="20" id="R2O-7k-rA1"/>
-                            <constraint firstItem="Ny3-yp-ebO" firstAttribute="leading" secondItem="K93-bh-Lfm" secondAttribute="leading" constant="20" id="saj-77-8pu"/>
-                            <constraint firstItem="frL-zb-Ozc" firstAttribute="top" secondItem="K93-bh-Lfm" secondAttribute="top" constant="137" id="xta-6T-MvQ"/>
-                            <constraint firstItem="CNA-Gl-W7R" firstAttribute="top" secondItem="frL-zb-Ozc" secondAttribute="bottom" constant="30" id="zsd-PC-oXp"/>
+                            <constraint firstItem="frL-zb-Ozc" firstAttribute="top" secondItem="K93-bh-Lfm" secondAttribute="top" constant="40" id="5ZF-hX-HsG"/>
+                            <constraint firstItem="CNA-Gl-W7R" firstAttribute="leading" secondItem="K93-bh-Lfm" secondAttribute="leading" constant="20" id="CjA-2f-GJt"/>
+                            <constraint firstItem="K93-bh-Lfm" firstAttribute="trailing" secondItem="CNA-Gl-W7R" secondAttribute="trailing" constant="20" id="EI7-RL-HsW"/>
+                            <constraint firstItem="K93-bh-Lfm" firstAttribute="trailing" secondItem="frL-zb-Ozc" secondAttribute="trailing" constant="20" id="GWg-xj-DNj"/>
+                            <constraint firstItem="frL-zb-Ozc" firstAttribute="leading" secondItem="K93-bh-Lfm" secondAttribute="leading" constant="20" id="Q9u-w5-LiW"/>
+                            <constraint firstItem="Ny3-yp-ebO" firstAttribute="leading" secondItem="K93-bh-Lfm" secondAttribute="leading" constant="20" id="cDV-t5-ayw"/>
+                            <constraint firstItem="K93-bh-Lfm" firstAttribute="bottom" secondItem="Ny3-yp-ebO" secondAttribute="bottom" constant="20" id="hrm-35-wmt"/>
+                            <constraint firstItem="CNA-Gl-W7R" firstAttribute="top" secondItem="frL-zb-Ozc" secondAttribute="bottom" constant="20" id="sFL-3e-7Y6"/>
+                            <constraint firstItem="K93-bh-Lfm" firstAttribute="trailing" secondItem="Ny3-yp-ebO" secondAttribute="trailing" constant="20" id="uez-XG-xwG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K93-bh-Lfm"/>
                     </view>
                     <connections>
                         <outlet property="noteTextField" destination="CNA-Gl-W7R" id="nkH-Oo-3eQ"/>
+                        <outlet property="saveButton" destination="Ny3-yp-ebO" id="kdY-HG-MTe"/>
+                        <outlet property="textfieldHeight" destination="i4k-6Y-oWG" id="80y-R9-iOc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mrE-3U-kUk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6264" y="847"/>
+            <point key="canvasLocation" x="6263.7681159420299" y="846.42857142857144"/>
         </scene>
         <!--Login AnimationVC-->
         <scene sceneID="AmW-1i-6oQ">

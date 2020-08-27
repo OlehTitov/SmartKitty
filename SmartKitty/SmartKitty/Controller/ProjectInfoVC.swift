@@ -81,6 +81,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         addNoteVC.modalTransitionStyle = .coverVertical
         
         present(addNoteVC, animated: true, completion: nil)
+        
     }
     
     //MARK: - SHARE PROJECT LINK

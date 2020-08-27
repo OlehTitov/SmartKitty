@@ -18,6 +18,7 @@
 		7C48DA0324F662100020D447 /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0224F662100020D447 /* UserType.swift */; };
 		7C48DA0524F662820020D447 /* InternetStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0424F662820020D447 /* InternetStatus.swift */; };
 		7C48DA0724F768100020D447 /* ProjectInfoVC+ExtensionGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0624F768100020D447 /* ProjectInfoVC+ExtensionGestureRecognizer.swift */; };
+		7C48DA0924F7D61A0020D447 /* AddNote+ExtensionKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0824F7D61A0020D447 /* AddNote+ExtensionKeyboard.swift */; };
 		7C5756EB24ED273800346B1E /* MultiProgressView in Frameworks */ = {isa = PBXBuildFile; productRef = 7C5756EA24ED273800346B1E /* MultiProgressView */; };
 		7C5756ED24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */; };
 		7C5756EF24ED558F00346B1E /* projectStages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756EE24ED558F00346B1E /* projectStages.swift */; };
@@ -69,6 +70,7 @@
 		7C48DA0224F662100020D447 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
 		7C48DA0424F662820020D447 /* InternetStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetStatus.swift; sourceTree = "<group>"; };
 		7C48DA0624F768100020D447 /* ProjectInfoVC+ExtensionGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectInfoVC+ExtensionGestureRecognizer.swift"; sourceTree = "<group>"; };
+		7C48DA0824F7D61A0020D447 /* AddNote+ExtensionKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddNote+ExtensionKeyboard.swift"; sourceTree = "<group>"; };
 		7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDetailsVC+ExtensionMultiProgressView.swift"; sourceTree = "<group>"; };
 		7C5756EE24ED558F00346B1E /* projectStages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projectStages.swift; sourceTree = "<group>"; };
 		7C5756F024EE9A6800346B1E /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				7C48D9F924F3FB010020D447 /* ProjectDocumentsCell.swift */,
 				7C48DA0024F523280020D447 /* AddNote.swift */,
 				7C48DA0624F768100020D447 /* ProjectInfoVC+ExtensionGestureRecognizer.swift */,
+				7C48DA0824F7D61A0020D447 /* AddNote+ExtensionKeyboard.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				7C5756FC24EF8B1800346B1E /* LoginAnimationVC.swift in Sources */,
 				7C48D9F624F3CB4A0020D447 /* ProjectInfoVC+ExtensionCollectionView.swift in Sources */,
 				7C48DA0124F523280020D447 /* AddNote.swift in Sources */,
+				7C48DA0924F7D61A0020D447 /* AddNote+ExtensionKeyboard.swift in Sources */,
 				7CF4C50924EA822B00F9FC02 /* ProjectDetailsVC+ExtensionCollectionView.swift in Sources */,
 				7CF4C50224E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift in Sources */,
 				7CD6837524DC3B710091ED52 /* HomeVC.swift in Sources */,
