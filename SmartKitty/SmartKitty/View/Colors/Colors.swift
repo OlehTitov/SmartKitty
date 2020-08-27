@@ -11,7 +11,7 @@ import UIKit
 
 extension UIColor {
     
-    static let primary = UIColor(named: "Primary")!
+    static let primary = UIColor(named: "Malibu")!
     static let lightPrimary = UIColor(named: "LightPrimary")!
     static let darkPrimary = UIColor(named: "DarkPrimary")!
     static let secondary = UIColor(named: "Secondary")!

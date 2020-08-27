@@ -17,6 +17,7 @@
 		7C48DA0124F523280020D447 /* AddNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0024F523280020D447 /* AddNote.swift */; };
 		7C48DA0324F662100020D447 /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0224F662100020D447 /* UserType.swift */; };
 		7C48DA0524F662820020D447 /* InternetStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0424F662820020D447 /* InternetStatus.swift */; };
+		7C48DA0724F768100020D447 /* ProjectInfoVC+ExtensionGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0624F768100020D447 /* ProjectInfoVC+ExtensionGestureRecognizer.swift */; };
 		7C5756EB24ED273800346B1E /* MultiProgressView in Frameworks */ = {isa = PBXBuildFile; productRef = 7C5756EA24ED273800346B1E /* MultiProgressView */; };
 		7C5756ED24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */; };
 		7C5756EF24ED558F00346B1E /* projectStages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756EE24ED558F00346B1E /* projectStages.swift */; };
@@ -67,6 +68,7 @@
 		7C48DA0024F523280020D447 /* AddNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNote.swift; sourceTree = "<group>"; };
 		7C48DA0224F662100020D447 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
 		7C48DA0424F662820020D447 /* InternetStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetStatus.swift; sourceTree = "<group>"; };
+		7C48DA0624F768100020D447 /* ProjectInfoVC+ExtensionGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectInfoVC+ExtensionGestureRecognizer.swift"; sourceTree = "<group>"; };
 		7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDetailsVC+ExtensionMultiProgressView.swift"; sourceTree = "<group>"; };
 		7C5756EE24ED558F00346B1E /* projectStages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projectStages.swift; sourceTree = "<group>"; };
 		7C5756F024EE9A6800346B1E /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				7C48D9F724F3CBBF0020D447 /* ProjectStagesCell.swift */,
 				7C48D9F924F3FB010020D447 /* ProjectDocumentsCell.swift */,
 				7C48DA0024F523280020D447 /* AddNote.swift */,
+				7C48DA0624F768100020D447 /* ProjectInfoVC+ExtensionGestureRecognizer.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				7CD6834624D8532E0091ED52 /* AppDelegate.swift in Sources */,
 				7C5756FA24EEDF8500346B1E /* TextField.swift in Sources */,
 				7CD6837324DB2AC00091ED52 /* SkProject+Extensions.swift in Sources */,
+				7C48DA0724F768100020D447 /* ProjectInfoVC+ExtensionGestureRecognizer.swift in Sources */,
 				7CD6836324D9CB090091ED52 /* AccountResponse.swift in Sources */,
 				7C5756F724EED4BC00346B1E /* PrimaryButton.swift in Sources */,
 				7C48DA0524F662820020D447 /* InternetStatus.swift in Sources */,

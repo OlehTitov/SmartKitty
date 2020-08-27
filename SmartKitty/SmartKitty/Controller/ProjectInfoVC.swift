@@ -68,11 +68,12 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         configureStagesLayout()
         configureDocumentsDataSource()
         configureDocumentsLayout()
+        //Gesture recognizer to copy text into clipboard
+        configureGestureRecognizer()
         
     }
     
     //MARK: - ADD A NOTE
-    
     @IBAction func addANoteTapped(_ sender: Any) {
         let addNoteVC = self.storyboard?.instantiateViewController(identifier: "AddNote") as! AddNote
         addNoteVC.selectedProject = selectedProject
@@ -82,17 +83,22 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         present(addNoteVC, animated: true, completion: nil)
     }
     
+    //MARK: - SHARE PROJECT LINK
     @IBAction func shareButtonTapped(_ sender: Any) {
         guard let id = selectedProject.id else {
             return
         }
-        let baseURL = SCClient.urlComponents(path: .project)
-        let fullURL = baseURL.appendingPathComponent(id)
-        let items = [fullURL]
+        
+        let projectURL = URL(string: "https://\(SCClient.selectedServer)/projects/\(id)")!
+        let items = [projectURL]
         let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(activityController, animated: true)
     }
     
+    //MARK: - MAKE PROJECT FAVOURITE
+    @IBAction func favouriteButtonTapped(_ sender: Any) {
+        
+    }
     
     
     //Get deadline
