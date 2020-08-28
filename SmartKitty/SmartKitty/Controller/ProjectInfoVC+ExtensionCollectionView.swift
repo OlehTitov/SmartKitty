@@ -37,7 +37,7 @@ extension ProjectInfoVC: UICollectionViewDelegate {
         setupStagesSnapshot()
     }
     
-    private func setupStagesSnapshot() {
+    func setupStagesSnapshot() {
         stagesSnapshot = NSDiffableDataSourceSnapshot<Int, SkProjectWorkflowStage>()
         stagesSnapshot.appendSections([0])
         stagesSnapshot.appendItems(stageFRC.fetchedObjects ?? [])
@@ -110,7 +110,7 @@ extension ProjectInfoVC: UICollectionViewDelegate {
         setupDocumentsSnapshot()
     }
     
-    private func setupDocumentsSnapshot() {
+    func setupDocumentsSnapshot() {
         documentsSnapshot = NSDiffableDataSourceSnapshot<Int, SkDocument>()
         documentsSnapshot.appendSections([0])
         documentsSnapshot.appendItems(documentFRC.fetchedObjects ?? [])

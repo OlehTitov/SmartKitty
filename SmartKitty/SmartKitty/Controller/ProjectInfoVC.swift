@@ -55,6 +55,20 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var projectStagesCollectionView: UICollectionView!
     @IBOutlet weak var projectDocumentsCollectionView: UICollectionView!
     
+    //MARK: - VIEW WILL APPEAR
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupStageFRC()
+        setupDocumentFRC()
+    }
+    
+    //MARK: - VIEW DID DISAPPEAR
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        stageFRC = nil
+        documentFRC = nil
+    }
+    
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -174,6 +188,13 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         } catch {
             fatalError("The fetch for project documents could not be performed: \(error.localizedDescription)")
         }
+    }
+    
+    //MARK: - FRC DELEGATE
+    // Whenever the content changes it updates the snapshot
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        setupStagesSnapshot()
+        setupDocumentsSnapshot()
     }
     
 }

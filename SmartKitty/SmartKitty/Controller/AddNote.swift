@@ -17,11 +17,11 @@ class AddNote: UIViewController {
     
     
     
+    @IBOutlet weak var saveBottomContstraint: NSLayoutConstraint!
     @IBOutlet weak var saveButton: PrimaryButton!
     @IBOutlet weak var noteTextField: UITextField!
     
-    @IBOutlet weak var textfieldHeight: NSLayoutConstraint!
-    
+    //MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tabBarController?.tabBar.isTranslucent = true
@@ -29,11 +29,13 @@ class AddNote: UIViewController {
         subscribeToKeyboardNotifications()
     }
     
+    //MARK: - VIEW DID APPEAR
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         noteTextField.becomeFirstResponder()
     }
     
+    //MARK: - VIEW WILL DISAPPEAR
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         tabBarController?.tabBar.isTranslucent = false
@@ -41,6 +43,7 @@ class AddNote: UIViewController {
         unsubscribeFromKeyboardNotifications()
     }
     
+    //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
         noteTextField.delegate = dismissKeyboard
@@ -50,43 +53,13 @@ class AddNote: UIViewController {
     
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        guard let textForNote = noteTextField.text else {
-            // TO DO - Display alert
-            return
-        }
-        print(textForNote)
-        guard let projectId = selectedProject.id else {
-            return
-        }
-        print(projectId)
-        let note = ProjectNote(name: "", description: textForNote, deadline: "", clientId: "", domainId: 0, vendorAccountIds: [""], externalTag: "", specializations: [""], workflowStages: [""])
+        //Save note text
+        selectedProject.desc = noteTextField.text
+        try? DataController.shared.viewContext.save()
         
-        //Check json
-        let jsonEncoder = JSONEncoder()
-        let jsonData = try! jsonEncoder.encode(note)
-        let jsonString = String(data: jsonData, encoding: .utf8)
-        print("JSON String : " + jsonString!)
-        
-        
-        SCClient.addProjectNote(projectId: projectId, method: "PUT", note: note, completion: handleAddNoteRequest(success:error:))
-        
-        
-    }
-    
-    func handleAddNoteRequest(success: Bool, error: Error?) {
-        //Check if successfull request
-        if success {
-            print("Yay, you've added a note")
-            //Save note to Core Data
-            selectedProject.desc = noteTextField.text
-            try? DataController.shared.viewContext.save()
-        } else {
-            print(error as Any)
-            //Display alert
-        }
-    
         //Dismiss the popup controller
         dismiss(animated: true, completion: nil)
+        
     }
     
     
