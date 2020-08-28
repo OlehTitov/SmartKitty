@@ -53,6 +53,7 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         fetchedResultsController = nil
+        allPredicates = []
     }
     
     // MARK: - TABLE VIEW SETUP

@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 import CoreData
 
-class AddNote: UIViewController {
+class AddNote: UIViewController, UITextFieldDelegate {
     
+    //MARK: - PROPERTIES
     var selectedProject: SkProject!
     let dismissKeyboard = DismissKeyboardDelegate()
     
-    
-    
+    //MARK: - OUTLETS
     @IBOutlet weak var saveBottomContstraint: NSLayoutConstraint!
     @IBOutlet weak var saveButton: PrimaryButton!
     @IBOutlet weak var noteTextField: UITextField!
@@ -26,6 +26,7 @@ class AddNote: UIViewController {
         super.viewWillAppear(true)
         tabBarController?.tabBar.isTranslucent = true
          tabBarController?.tabBar.isHidden = true
+        
         subscribeToKeyboardNotifications()
     }
     
@@ -46,10 +47,9 @@ class AddNote: UIViewController {
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
-        noteTextField.delegate = dismissKeyboard
-        
+        noteTextField.delegate = self
+        saveButton.isEnabled = false
     }
-    
     
     
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -60,6 +60,24 @@ class AddNote: UIViewController {
         //Dismiss the popup controller
         dismiss(animated: true, completion: nil)
         
+    }
+    
+    //MARK: - DISABLE BUTTON WHEN THERE IS NO TEXT
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        
+        if !text.isEmpty {
+            saveButton.isEnabled = true
+        } else {
+            saveButton.isEnabled = false
+        }
+        return true
+    }
+    
+    //Hide keyboard when return is pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     
