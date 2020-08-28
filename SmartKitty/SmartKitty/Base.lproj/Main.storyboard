@@ -384,7 +384,7 @@
                                             <fragment content="Label">
                                                 <attributes>
                                                     <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                    <font key="NSFont" metaFont="controlContent" size="11"/>
+                                                    <font key="NSFont" metaFont="label" size="11"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
@@ -594,7 +594,7 @@
                                                             <action selector="addANoteTapped:" destination="FZa-MA-gxW" eventType="touchUpInside" id="Aww-ar-9Tq"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9P-hl-bv4">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9P-hl-bv4" customClass="ToggleButton" customModule="SmartKitty" customModuleProvider="target">
                                                         <rect key="frame" x="140.5" y="0.0" width="133" height="80"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -604,6 +604,10 @@
                                                             <color key="titleColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="light"/>
                                                         </state>
+                                                        <state key="selected" image="star.fill" catalog="system"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="highlightedSelectedImage" value="star.fill" catalog="system"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="favouriteButtonTapped:" destination="FZa-MA-gxW" eventType="touchUpInside" id="nGs-tn-qgS"/>
                                                         </connections>
@@ -613,7 +617,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <inset key="titleEdgeInsets" minX="-10" minY="30" maxX="10" maxY="-30"/>
-                                                        <inset key="imageEdgeInsets" minX="30" minY="0.0" maxX="-30" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="-20" maxY="0.0"/>
                                                         <state key="normal" title="Share" image="arrowshape.turn.up.right" catalog="system">
                                                             <color key="titleColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="light"/>
@@ -884,6 +888,7 @@
                     <connections>
                         <outlet property="client" destination="uYK-4s-Cjg" id="GmF-0Z-YaD"/>
                         <outlet property="createdBy" destination="jj7-LP-F4W" id="UWr-OA-gVN"/>
+                        <outlet property="favButton" destination="c9P-hl-bv4" id="hp6-Ra-xS7"/>
                         <outlet property="projectDeadline" destination="pun-8x-mtv" id="ESv-0n-BkF"/>
                         <outlet property="projectDocumentsCollectionView" destination="pow-Ca-Zru" id="97j-cQ-XeB"/>
                         <outlet property="projectNotes" destination="uFD-Oa-vrY" id="atG-xK-shN"/>
@@ -1015,6 +1020,7 @@
         <image name="projectFolder" width="471" height="345"/>
         <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
         <image name="star" catalog="system" width="128" height="116"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="whiteCatOutline" width="90" height="90"/>
         <namedColor name="Background">
             <color red="0.94901960784313721" green="0.92549019607843142" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

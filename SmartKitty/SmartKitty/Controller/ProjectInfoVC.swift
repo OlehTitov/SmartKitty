@@ -55,6 +55,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var projectNotes: UILabel!
     @IBOutlet weak var projectStagesCollectionView: UICollectionView!
     @IBOutlet weak var projectDocumentsCollectionView: UICollectionView!
+    @IBOutlet weak var favButton: ToggleButton!
     
     //MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
@@ -85,6 +86,8 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         configureDocumentsLayout()
         //Gesture recognizer to copy text into clipboard
         configureGestureRecognizer()
+        //Favourite button
+        configureFavButton()
         
     }
     
@@ -112,8 +115,22 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     }
     
     //MARK: - MAKE PROJECT FAVOURITE
-    @IBAction func favouriteButtonTapped(_ sender: Any) {
-        
+    @IBAction func favouriteButtonTapped(_ sender: UIButton) {
+        if sender.isSelected {
+            selectedProject.isStarred = false
+            try? DataController.shared.viewContext.save()
+            print("Project is not favourite anymore")
+        } else {
+            selectedProject.isStarred = true
+            try? DataController.shared.viewContext.save()
+            print("Marked as favourite")
+        }
+    }
+    
+    func configureFavButton() {
+        if selectedProject.isStarred {
+            favButton.isSelected = true
+        }
     }
     
     
