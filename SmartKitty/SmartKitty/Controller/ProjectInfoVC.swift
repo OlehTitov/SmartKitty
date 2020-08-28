@@ -17,6 +17,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     var selectedProject: SkProject!
     
     //Core Data
+    var projectFRC: NSFetchedResultsController<SkProject>!
     var documentFRC: NSFetchedResultsController<SkDocument>!
     var stageFRC: NSFetchedResultsController<SkProjectWorkflowStage>!
     
@@ -176,15 +177,25 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     
     //MARK: - SETUP DOCUMENT FRC
     fileprivate func setupDocumentFRC() {
+        let projectFetchRequest: NSFetchRequest<SkProject> = SkProject.fetchRequest()
+        projectFetchRequest.sortDescriptors = []
+        let projectPredicate = NSPredicate(format: "id == %@", selectedProject.id!)
+        projectFetchRequest.predicate = projectPredicate
+        projectFRC = NSFetchedResultsController(fetchRequest: projectFetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        projectFRC.delegate = self
+        
+        
         let documentFetchRequest: NSFetchRequest<SkDocument> = SkDocument.fetchRequest()
         documentFetchRequest.sortDescriptors = []
         let docPredicate = NSPredicate(format: "project == %@", selectedProject)
         documentFetchRequest.predicate = docPredicate
         documentFRC = NSFetchedResultsController(fetchRequest: documentFetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         documentFRC.delegate = self
+        
         do {
             try documentFRC.performFetch()
-            //setupSnapshot()
+            try projectFRC.performFetch()
+            
         } catch {
             fatalError("The fetch for project documents could not be performed: \(error.localizedDescription)")
         }
@@ -195,6 +206,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         setupStagesSnapshot()
         setupDocumentsSnapshot()
+        setupGeneralProjectDetails()
     }
     
 }
