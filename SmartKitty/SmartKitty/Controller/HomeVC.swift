@@ -20,6 +20,10 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
     var numberOfProjectsForTomorrow = 0
     var numberOfAllProjects = 0
     var numberOfStarredProjects = 0
+    var today: HomeHeaderTile!
+    var tomorrow: HomeHeaderTile!
+    var favourite: HomeHeaderTile!
+    var all: HomeHeaderTile!
     var headerTiles: [HomeHeaderTile]!
     
     //MARK: - OUTLETS
@@ -32,11 +36,11 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
         super.viewDidLoad()
         tilesCollectionView.delegate = self
         companyName.text = SCClient.companyName
-        setupFetchedResultsController()
-        calculateNumberOfProjects()
         setupHeaderTiles()
         configureTilesDataSource()
+        setupFetchedResultsController()
         configureTilesLayout()
+        print("--Number of Favourite projects: \(numberOfStarredProjects)")
     }
     
     //MARK: - VIEW WILL APPEAR
@@ -50,6 +54,7 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         fetchedResultsController = nil
+        resetProjectsCount()
     }
     
     //MARK: - SETUP NAVIGATION BARS
@@ -68,7 +73,10 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
         fetchedResultsController.delegate = self
         do {
             try fetchedResultsController.performFetch()
-            //setupSnapshot()
+            calculateNumberOfProjects()
+            updateProjectsCount()
+            setupHeaderTiles()
+            setupTilesSnapshot()
         } catch {
             fatalError("The fetch could not be performed: \(error.localizedDescription)")
         }
@@ -93,38 +101,51 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
         }
     }
     
+    func resetProjectsCount() {
+        numberOfProjectsForToday = 0
+        numberOfProjectsForTomorrow = 0
+        numberOfAllProjects = 0
+        numberOfStarredProjects = 0
+    }
+    
     //MARK: - SETUP HEADER TILES
     func setupHeaderTiles() {
-        headerTiles = [
-        HomeHeaderTile(
+        today = HomeHeaderTile(
             title: "Deadline Today",
             image: UIImage(systemName: "timer")!,
             color: .secondary,
             projectsCount: numberOfProjectsForToday,
             link: "isToday"
-        ),
-        HomeHeaderTile(
+        )
+        tomorrow = HomeHeaderTile(
             title: "Deadline Tomorrow",
             image: UIImage(systemName: "calendar")!,
             color: .primary,
             projectsCount: numberOfProjectsForTomorrow,
             link: "isTomorrow"
-        ),
-        HomeHeaderTile(
-            title: "Starred",
+        )
+        favourite = HomeHeaderTile(
+            title: "Favourite",
             image: UIImage(systemName: "star.fill")!,
             color: .darkPrimary,
             projectsCount: numberOfStarredProjects,
             link: "isStarred"
-        ),
-        HomeHeaderTile(
+        )
+        all = HomeHeaderTile(
             title: "All",
             image: UIImage(systemName: "archivebox.fill")!,
             color: .gray,
             projectsCount: numberOfAllProjects,
             link: "ShowAllProjects"
         )
-        ]
+        headerTiles = [today, tomorrow, favourite, all]
+    }
+    
+    func updateProjectsCount() {
+        today.projectsCount = numberOfProjectsForToday
+        tomorrow.projectsCount = numberOfProjectsForTomorrow
+        favourite.projectsCount = numberOfStarredProjects
+        all.projectsCount = numberOfAllProjects
     }
     
     //MARK: - COLLECTION VIEW DIFFABLE DATA SOURCE
@@ -159,6 +180,15 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
         tilesSnapshot.appendSections([0])
         tilesSnapshot.appendItems(headerTiles)
         tilesDataSource.apply(self.tilesSnapshot, animatingDifferences: true)
+    }
+    
+    //MARK: - FRC DELEGATE
+    // Whenever the content changes it updates the snapshot
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        calculateNumberOfProjects()
+        updateProjectsCount()
+        setupTilesSnapshot()
+        
     }
     
     //MARK: - COLLECTION VIEW DELEGATE
