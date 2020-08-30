@@ -89,7 +89,12 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
         //Handle projects download
         case .connected:
             for project in projects {
+                //If the project is new just create new one in Core Data
                 if !isExisting(project: project) {
+                    createSkProject(prj: project)
+                } else {
+                //If the project exists, delete it and then create new one to reflect all possible changes in the project
+                    deleteExisting(project: project)
                     createSkProject(prj: project)
                 }
             }
@@ -143,6 +148,16 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
         }
         
         return result
+    }
+    
+    func deleteExisting(project: Project) {
+        if let existingProjects = fetchedResultsController.fetchedObjects {
+            for existingProject in existingProjects where project.id == existingProject.id {
+                DataController.shared.viewContext.delete(existingProject)
+                try? DataController.shared.viewContext.save()
+            }
+        }
+        
     }
     
     //MARK: - CREATE NEW PROJECT IN CORE DATA
