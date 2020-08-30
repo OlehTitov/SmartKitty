@@ -38,16 +38,17 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
         companyName.text = SCClient.companyName
         setupHeaderTiles()
         configureTilesDataSource()
-        setupFetchedResultsController()
+        setupFetchedResultsController(calculateProjects: false)
         configureTilesLayout()
-        print("--Number of Favourite projects: \(numberOfStarredProjects)")
+        print("--VIEW DID LOAD Number of Favourite projects: \(numberOfStarredProjects)")
     }
     
     //MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavBars()
-        setupFetchedResultsController()
+        setupFetchedResultsController(calculateProjects: true)
+        print("--VIEW WILL APPEAR Number of Favourite projects: \(numberOfStarredProjects)")
     }
     
     //MARK: - VIEW DID DISAPPEAR
@@ -66,14 +67,16 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
     }
     
     //MARK: - SETUP FRC
-    fileprivate func setupFetchedResultsController() {
+    fileprivate func setupFetchedResultsController(calculateProjects: Bool) {
         let fetchRequest: NSFetchRequest<SkProject> = SkProject.fetchRequest()
         fetchRequest.sortDescriptors = []
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         do {
             try fetchedResultsController.performFetch()
-            calculateNumberOfProjects()
+            if calculateProjects {
+                calculateNumberOfProjects()
+            }
             updateProjectsCount()
             setupHeaderTiles()
             setupTilesSnapshot()

@@ -9,6 +9,6 @@
 import Foundation
 
 enum UserType {
-    case unauthorized
-    case loggedIn
+    case newcomer
+    case returning
 }

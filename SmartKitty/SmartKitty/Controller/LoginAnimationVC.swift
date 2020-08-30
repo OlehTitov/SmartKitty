@@ -17,6 +17,7 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
     //MARK: - PROPERTIES
     var fetchedResultsController: NSFetchedResultsController<SkProject>!
     var userType: UserType!
+    var internetStatus = InternetStatus.connected
     
     //MARK: - OUTLETS
     @IBOutlet weak var catImage: UIImageView!
@@ -27,7 +28,7 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
         setupFetchedResultsController()
         SCClient.Auth.accountId = (UserDefaults.standard.value(forKey: "AccountId") as! String)
         SCClient.Auth.apiKey = (UserDefaults.standard.value(forKey: "ApiKey") as! String)
-        SCClient.getProjectsList(completion: handleGetProjectsList(projects:error:))
+        SCClient.getProjectsList(completion: handleReturningUsersProjectsList(projects:error:))
     }
     
     //MARK: - VIEW WILL APPEAR
@@ -40,12 +41,6 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         fetchedResultsController = nil
-    }
-    
-    func downloadProjects() {
-        if UserDefaults.standard.bool(forKey: "SomeProjectsExist") {
-            userType = .loggedIn
-        }
     }
     
     //MARK: - ANIMATE TRANSITION TO NEXT VC
@@ -67,21 +62,72 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
         })
     }
     
-    //MARK: - HANDLE GET PROJECTS LIST
-    func handleGetProjectsList(projects: [Project], error: Error?) {
-        print(projects.count)
-        for project in projects {
-            if isExisting(project: project) {
-                updateSkProject(prj: project)
-                print("Updating project")
-            } else {
-                createSkProject(prj: project)
-                UserDefaults.standard.set(true, forKey: "SomeProjectsExist")
-                print("Creating project")
-            }
+    
+    //MARK: - HANDLE GET PROJECTS LIST FOR RETURNING USERS
+    func handleReturningUsersProjectsList(projects: [Project], error: Error?) {
+        //Check what type of user
+        if UserDefaults.standard.bool(forKey: "SomeProjectsExist") {
+            userType = .returning
+        } else {
+            userType = .newcomer
         }
-        animateCatAndGoToNextVC()
+        guard let user = userType else {
+            return
+        }
+        //Check internet connection
+        if let err = error as? URLError, err.code == URLError.Code.notConnectedToInternet {
+            internetStatus = .notConnected
+        }
+        switch internetStatus {
+        case .notConnected:
+            switch user {
+            case .returning:
+                showAlertAndProceed()
+            case .newcomer:
+                showAlertAndBackToLogin()
+            }
+        //Handle projects download
+        case .connected:
+            for project in projects {
+                if !isExisting(project: project) {
+                    createSkProject(prj: project)
+                }
+            }
+            UserDefaults.standard.set(true, forKey: "SomeProjectsExist")
+            animateCatAndGoToNextVC()
+        }
     }
+    
+    func showAlertAndProceed() {
+        let alert = Alerts.errorAlert(
+                title: AlertTitles.notConnected.rawValue,
+                message: AlertMessages.notConnected.rawValue,
+                cancelButton: false
+        ) {
+            self.animateCatAndGoToNextVC()
+        }
+        present(alert, animated: true)
+    }
+    
+    func showAlertAndBackToLogin() {
+        let alert = Alerts.errorAlert(
+                title: AlertTitles.notConnected.rawValue,
+                message: AlertMessages.notConnected.rawValue,
+                cancelButton: false
+        ) {
+            let loginVC = self.storyboard?.instantiateViewController(identifier: "LoginVC") as! LoginVC
+            loginVC.modalPresentationStyle = .fullScreen
+            loginVC.modalTransitionStyle = .crossDissolve
+            self.present(loginVC, animated: true, completion: nil)
+        }
+        present(alert, animated: true)
+    }
+    
+    func showAlert(title: AlertTitles, message: AlertMessages) {
+        let alert = Alerts.errorAlert(title: title.rawValue, message: message.rawValue)
+        present(alert, animated: true)
+    }
+    
     
     //MARK: - CHECK IF PROJECT IS EXISTING
     func isExisting(project: Project) -> Bool {
@@ -98,24 +144,6 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
         
         return result
     }
-    
-    //MARK: - UPDATE PROJECT IN CORE DATA
-    func updateSkProject(prj: Project) {
-        //First, find appropriate project to update
-        var projectToUpdate: SkProject!
-        guard let existingProjects = fetchedResultsController.fetchedObjects else { return }
-        for existingProject in existingProjects where prj.id == existingProject.id {
-            projectToUpdate = existingProject
-        }
-        //Set new values that were obtained from server
-        if projectToUpdate.name != prj.name {
-            for key in projectToUpdate.entity.attributesByName.keys {
-                let value: Any? = projectToUpdate.value(forKey: key)
-                print("\(key) = \(String(describing: value))")
-            }
-        }
-    }
-    
     
     //MARK: - CREATE NEW PROJECT IN CORE DATA
     func createSkProject(prj: Project) {
@@ -210,21 +238,14 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
                     freelancer.documentWorkflow = docWorkflowStage
                     freelancer.id = executive.id
                 }
-                
-                 
             }
-            
+          
         }
-        
         try? DataController.shared.viewContext.save()
         setupFetchedResultsController()
     }
     
-    
-    
-    
     //MARK: - SETUP FRC
-    
     fileprivate func setupFetchedResultsController() {
         let fetchRequest: NSFetchRequest<SkProject> = SkProject.fetchRequest()
         fetchRequest.sortDescriptors = []

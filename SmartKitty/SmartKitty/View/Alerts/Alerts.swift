@@ -22,6 +22,7 @@ enum AlertMessages: String {
     case serverError = "The SmartCat servers can't process our request. Please try again later"
     case undefinedError = "We can't process your request. Please try again later"
     case notConnected = "You can still browse your projects in an offline mode"
+    case notConnectedNewcomer = "Please try again later"
 }
 
 struct Alerts {
