@@ -976,16 +976,33 @@
                                     <constraint firstAttribute="height" constant="90" id="qip-Hv-RCC"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="bEX-8w-LMn">
+                                <rect key="frame" x="197" y="734" width="20" height="20"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8D-0N-eOU">
+                                <rect key="frame" x="20" y="774" width="374" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="LightPrimary"/>
                         <constraints>
                             <constraint firstItem="0DE-jZ-nPl" firstAttribute="centerY" secondItem="uEh-Ew-cLn" secondAttribute="centerY" id="2tA-Bm-XVx"/>
+                            <constraint firstItem="xaQ-Ny-E2C" firstAttribute="trailing" secondItem="N8D-0N-eOU" secondAttribute="trailing" constant="20" id="De3-d0-skd"/>
                             <constraint firstItem="0DE-jZ-nPl" firstAttribute="centerX" secondItem="uEh-Ew-cLn" secondAttribute="centerX" id="eu9-uw-HP7"/>
+                            <constraint firstItem="bEX-8w-LMn" firstAttribute="centerX" secondItem="uEh-Ew-cLn" secondAttribute="centerX" id="jsg-b7-b5k"/>
+                            <constraint firstItem="N8D-0N-eOU" firstAttribute="top" secondItem="bEX-8w-LMn" secondAttribute="bottom" constant="20" id="nv5-dN-1N8"/>
+                            <constraint firstItem="N8D-0N-eOU" firstAttribute="leading" secondItem="xaQ-Ny-E2C" secondAttribute="leading" constant="20" id="oZ6-FK-ujp"/>
+                            <constraint firstItem="xaQ-Ny-E2C" firstAttribute="bottom" secondItem="N8D-0N-eOU" secondAttribute="bottom" constant="70" id="sPL-ER-d3o"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xaQ-Ny-E2C"/>
                     </view>
                     <connections>
                         <outlet property="catImage" destination="0DE-jZ-nPl" id="iFC-yv-HRB"/>
+                        <outlet property="loadingLabel" destination="N8D-0N-eOU" id="XP9-sb-t5M"/>
+                        <outlet property="networkActivityIndicator" destination="bEX-8w-LMn" id="7Dv-QE-dwJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tzA-Lf-30u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

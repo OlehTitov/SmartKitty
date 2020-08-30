@@ -22,9 +22,14 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
     //MARK: - OUTLETS
     @IBOutlet weak var catImage: UIImageView!
     
+    @IBOutlet weak var networkActivityIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak var loadingLabel: UILabel!
+    
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideActivityIndicatorElements(hide: false)
         setupFetchedResultsController()
         SCClient.Auth.accountId = (UserDefaults.standard.value(forKey: "AccountId") as! String)
         SCClient.Auth.apiKey = (UserDefaults.standard.value(forKey: "ApiKey") as! String)
@@ -41,6 +46,17 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         fetchedResultsController = nil
+    }
+    
+    //MARK: - ACTIVITY INDICATOR
+    
+    func hideActivityIndicatorElements(hide: Bool) {
+        loadingLabel.isHidden = hide
+        networkActivityIndicator.isHidden = hide
+        if !hide {
+            networkActivityIndicator.startAnimating()
+        }
+        
     }
     
     //MARK: - ANIMATE TRANSITION TO NEXT VC
@@ -65,6 +81,7 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
     
     //MARK: - HANDLE GET PROJECTS LIST FOR RETURNING USERS
     func handleReturningUsersProjectsList(projects: [Project], error: Error?) {
+        
         //Check what type of user
         if UserDefaults.standard.bool(forKey: "SomeProjectsExist") {
             userType = .returning
@@ -82,8 +99,10 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
         case .notConnected:
             switch user {
             case .returning:
+                hideActivityIndicatorElements(hide: true)
                 showAlertAndProceed()
             case .newcomer:
+                hideActivityIndicatorElements(hide: true)
                 showAlertAndBackToLogin()
             }
         //Handle projects download
@@ -91,14 +110,16 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
             for project in projects {
                 //If the project is new just create new one in Core Data
                 if !isExisting(project: project) {
-                    createSkProject(prj: project)
+                    createSkProject(prj: project, isFav: nil, note: nil)
                 } else {
                 //If the project exists, delete it and then create new one to reflect all possible changes in the project
-                    deleteExisting(project: project)
-                    createSkProject(prj: project)
+                    //deleteExisting(project: project)
+                    let result = deleteExisting(project: project)
+                    createSkProject(prj: project, isFav: result.isFav, note: result.note)
                 }
             }
             UserDefaults.standard.set(true, forKey: "SomeProjectsExist")
+            hideActivityIndicatorElements(hide: true)
             animateCatAndGoToNextVC()
         }
     }
@@ -150,23 +171,33 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
         return result
     }
     
-    func deleteExisting(project: Project) {
+    func deleteExisting(project: Project) -> (isFav: Bool, note: String?) {
+        var isFavourite = false
+        var note = ""
         if let existingProjects = fetchedResultsController.fetchedObjects {
             for existingProject in existingProjects where project.id == existingProject.id {
+                isFavourite = existingProject.isStarred
+                note = existingProject.desc ?? ""
+                
                 DataController.shared.viewContext.delete(existingProject)
                 try? DataController.shared.viewContext.save()
             }
         }
-        
+        return(isFavourite, note)
     }
     
     //MARK: - CREATE NEW PROJECT IN CORE DATA
-    func createSkProject(prj: Project) {
+    func createSkProject(prj: Project, isFav: Bool?, note: String?) {
         ///Create new SkProject entity
         let newProject = SkProject(context: DataController.shared.viewContext)
         newProject.id = prj.id
         newProject.name = prj.name
-        newProject.desc = prj.description
+        if let isFav = isFav {
+            newProject.isStarred = isFav
+        }
+        if let note = note {
+            newProject.desc = "\(note) \n\(prj.description ?? "")"
+        }
         newProject.clientId = prj.clientId
         newProject.sourceLanguage = prj.sourceLanguage
         newProject.targetLanguages = prj.targetLanguages
