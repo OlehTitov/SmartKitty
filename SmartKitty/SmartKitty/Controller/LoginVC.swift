@@ -7,12 +7,10 @@
 //
 import Foundation
 import UIKit
-import CoreData
 
-class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
+class LoginVC: UIViewController {
 
     //MARK: - PROPERTIES
-    var fetchedResultsController: NSFetchedResultsController<SkProject>!
     let dismissKeyboard = DismissKeyboardDelegate()
     let pickerArray = [
         SCClient.Servers.europe.rawValue,
@@ -31,7 +29,6 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         super.viewDidLoad()
         serverPickerView.tintColor = UIColor.darkPrimary
         setupDelegates()
-        setupFetchedResultsController()
         autofillCredentials()
     }
     
@@ -39,13 +36,6 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
-        setupFetchedResultsController()
-    }
-    
-    //MARK: - VIEW DID DISAPPEAR
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        fetchedResultsController = nil
     }
     
     //MARK: - SETUP DELEGATES
@@ -55,17 +45,7 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         accountIDTextfield.delegate = dismissKeyboard
     }
 
-    //MARK: - REMEMBER ME
-    @IBAction func rememberMeTapped(_ sender: UIButton) {
-        if sender.isSelected {
-            print("Saving credentials is disabled")
-            UserDefaults.standard.set(false, forKey: "CredentialsAvailable")
-        } else {
-            print("Setting true for CredentialsAvailable")
-            UserDefaults.standard.set(true, forKey: "CredentialsAvailable")
-        }
-    }
-    
+    //MARK: - HANDLE CREDENTIALS
     func saveCredentials() {
         guard let accountId = accountIDTextfield.text, let apiKey = apiKeyTextfield.text else {
             return
@@ -74,7 +54,10 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         UserDefaults.standard.set(accountId, forKey: "AccountId")
         UserDefaults.standard.set(apiKey, forKey: "ApiKey")
         UserDefaults.standard.set(true, forKey: "CredentialsAvailable")
-        
+    }
+    
+    func saveCompanyName(name: String) {
+        UserDefaults.standard.set(name, forKey: "CompanyName")
     }
     
     func autofillCredentials() {
@@ -88,15 +71,12 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
     
     //MARK: - LOGIN
     @IBAction func loginTapped(_ sender: Any) {
-        //Login logic is here
-        
-        
-        
         SCClient.Auth.accountId = accountIDTextfield.text!
         SCClient.Auth.apiKey = apiKeyTextfield.text!
         SCClient.getAccountInfo(completion: handleGetAccountInfo(companyName:statusCode:error:))
     }
     
+    //MARK: - HANDLE LOGIN
     func handleGetAccountInfo(companyName: String, statusCode: Int, error: Error?) {
         print(statusCode)
         let httpStatusCode = HTTPStatusCodes(rawValue: statusCode)!
@@ -104,9 +84,8 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         case .OK:
             print(companyName)
             saveCredentials()
-            SCClient.companyName = companyName
+            saveCompanyName(name: companyName)
             goToNextVC()
-            //SCClient.getProjectsList(completion: handleGetProjectsList(projects:error:))
         case .Unauthorized:
             showAlert(
                 title: .authorizationFailed,
@@ -136,181 +115,13 @@ class LoginVC: UIViewController, NSFetchedResultsControllerDelegate {
         present(alert, animated: true)
     }
     
-    //MARK: - GET PROJECTS FROM SMARTCAT SERVER
-    func handleGetProjectsList(projects: [Project], error: Error?) {
-        print(projects.count)
-        for project in projects {
-            if isExisting(project: project) {
-                updateSkProject(prj: project)
-                print("Updating project")
-            } else {
-                createSkProject(prj: project)
-                UserDefaults.standard.set(true, forKey: "SomeProjectsExist")
-                print("Creating project")
-            }
-        }
-        goToNextVC()
-    }
-    
-    func isExisting(project: Project) -> Bool {
-        var result = false
-        if UserDefaults.standard.bool(forKey: "SomeProjectsExist") {
-            if let existingProjects = fetchedResultsController.fetchedObjects {
-               for existingProject in existingProjects where project.id == existingProject.id {
-                    result = true
-                }
-            }
-        } else {
-            result = false
-        }
-        
-        return result
-    }
-    
-    func updateSkProject(prj: Project) {
-        //First, find appropriate project to update
-        var projectToUpdate: SkProject!
-        guard let existingProjects = fetchedResultsController.fetchedObjects else { return }
-        for existingProject in existingProjects where prj.id == existingProject.id {
-            projectToUpdate = existingProject
-        }
-        //Set new values that were obtained from server
-        if projectToUpdate.name != prj.name {
-            for key in projectToUpdate.entity.attributesByName.keys {
-                let value: Any? = projectToUpdate.value(forKey: key)
-                print("\(key) = \(String(describing: value))")
-            }
-        }
-    }
-    //MARK: - CREATE NEW PROJECT IN CORE DATA
-    func createSkProject(prj: Project) {
-        ///Create new SkProject entity
-        let newProject = SkProject(context: DataController.shared.viewContext)
-        newProject.id = prj.id
-        newProject.name = prj.name
-        newProject.desc = prj.description
-        newProject.clientId = prj.clientId
-        newProject.sourceLanguage = prj.sourceLanguage
-        newProject.targetLanguages = prj.targetLanguages
-        newProject.deadline = prj.deadline
-        newProject.creationDate = prj.creationDate
-        newProject.status = prj.status
-        newProject.createdByUserEmail = prj.createdByUserEmail
-        //Computed property for deadlineAsDate
-        let RFC3339DateFormatter = DateFormatter()
-        RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        if let deadline = prj.deadline {
-            let date = RFC3339DateFormatter.date(from: deadline)!
-            newProject.deadlineAsDate = date
-            //Computed property for isToday
-            let calendar = NSCalendar.current
-            let isToday = calendar.isDateInToday(date)
-            newProject.isToday = isToday
-            //Computed property for isTomorrow
-            let isTomorrow = calendar.isDateInTomorrow(date)
-            newProject.isTomorrow = isTomorrow
-        }
-        
-        ///Create SkProjectWorkflowStage entities
-        if let projectWorkflowStages = prj.workflowStages {
-            for stage in projectWorkflowStages {
-                let projectStage = SkProjectWorkflowStage(context: DataController.shared.viewContext)
-                projectStage.stageType = stage.stageType
-                projectStage.progress = stage.progress ?? 0.0
-                projectStage.project = newProject
-            }
-        }
-        
-        ///Create SkDocument entities
-        guard let SCdocuments = prj.documents else {
-            return
-        }
-        for document in SCdocuments {
-            let doc = SkDocument(context: DataController.shared.viewContext)
-            doc.project = newProject
-            doc.id = document.id
-            doc.name = document.name
-            doc.creationDate = document.creationDate
-            doc.sourceLanguage = document.sourceLanguage
-            doc.documentDisassemblingStatus = document.documentDisassemblingStatus
-            doc.targetLanguage = document.targetLanguage
-            doc.status = document.status
-            if let count = document.wordsCount {
-                doc.wordsCount = String(count)
-            }
-            doc.statusModificationDate = document.statusModificationDate
-            if let pretranslateCompleted = document.pretranslateCompleted {
-                doc.pretranslateCompleted = pretranslateCompleted
-            }
-            doc.externalId = document.externalId
-            doc.metaInfo = document.metaInfo
-            if let placeholdersAreEnabled = document.placeholdersAreEnabled {
-                doc.placeholdersAreEnabled = placeholdersAreEnabled
-            }
-            ///Create SkDocumentWorkflowStage
-            guard let docStages = document.workflowStages else {
-                return
-            }
-            for stage in docStages {
-                let docWorkflowStage = SkDocumentWorkflowStage(context: DataController.shared.viewContext)
-                docWorkflowStage.document = doc
-                if let stageProgress = stage.progress {
-                    docWorkflowStage.progress = stageProgress
-                }
-                docWorkflowStage.status = stage.status
-                if let wordsTranslated = stage.wordsTranslated {
-                    docWorkflowStage.wordsTranslated = Int64(wordsTranslated)
-                }
-                if let unassignedwordsCount = stage.unassignedWordsCount {
-                    docWorkflowStage.unassignedWordsCount = Int64(unassignedwordsCount)
-                }
-                ///Create SkAssignedExecutive
-                guard let assignedExecutives = stage.executives else {
-                    return
-                }
-                for executive in assignedExecutives {
-                    let freelancer = SkAssignedExecutive(context: DataController.shared.viewContext)
-                    freelancer.documentWorkflow = docWorkflowStage
-                    freelancer.id = executive.id
-                }
-                
-                 
-            }
-            
-        }
-        
-        try? DataController.shared.viewContext.save()
-        setupFetchedResultsController()
-    }
-    
     func goToNextVC() {
-        
-        //let tabBarVC = self.storyboard?.instantiateViewController(identifier: "TabBarVC") as! TabBarVC
-        //self.navigationController?.pushViewController(tabBarVC, animated: true)
         let animationVC = self.storyboard?.instantiateViewController(identifier: "LoginAnimationVC") as! LoginAnimationVC
         animationVC.modalPresentationStyle = .fullScreen
         animationVC.modalTransitionStyle = .crossDissolve
         present(animationVC, animated: true, completion: nil)
-        //self.navigationController?.pushViewController(animationVC, animated: true)
-    }
-    
-    //MARK: - SETUP FRC
-    
-    fileprivate func setupFetchedResultsController() {
-        let fetchRequest: NSFetchRequest<SkProject> = SkProject.fetchRequest()
-        fetchRequest.sortDescriptors = []
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            fatalError("The fetch could not be performed: \(error.localizedDescription)")
-        }
     }
  
-    
 }
 
 //MARK: - EXTENSION: PICKER VIEW DELEGATE
