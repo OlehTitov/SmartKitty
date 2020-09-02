@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TpR-wt-Zni">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -10,10 +10,76 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--WelcomeVC-->
+        <scene sceneID="3Sq-IC-w4S">
+            <objects>
+                <viewController id="TpR-wt-Zni" customClass="WelcomeVC" customModule="SmartKitty" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="deO-8K-vNh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meet a dashboard for your SmartCat account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tD-u7-0xF">
+                                <rect key="frame" x="20" y="395" width="374" height="53"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SmartKitty is your small assistant to track your projects' deadlines, statuses, documents and assigned linguists" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xz0-sP-SgD">
+                                <rect key="frame" x="40" y="468" width="334" height="54"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2H6-4Z-O9e" customClass="PrimaryButton" customModule="SmartKitty" customModuleProvider="target">
+                                <rect key="frame" x="20" y="782" width="374" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Nbo-uV-VBI"/>
+                                </constraints>
+                                <state key="normal" title="Get started!">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInTapped:" destination="TpR-wt-Zni" eventType="touchUpInside" id="JQg-BB-MzX"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smarty2" translatesAutoresizingMaskIntoConstraints="NO" id="ZW3-iz-9yD">
+                                <rect key="frame" x="40" y="65" width="334" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="afL-kt-Ik8"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Xz0-sP-SgD" secondAttribute="trailing" constant="40" id="3AK-Ne-B7O"/>
+                            <constraint firstItem="Bm8-g3-vTW" firstAttribute="trailing" secondItem="2H6-4Z-O9e" secondAttribute="trailing" constant="20" id="EoV-Tw-gcW"/>
+                            <constraint firstItem="Bm8-g3-vTW" firstAttribute="bottom" secondItem="2H6-4Z-O9e" secondAttribute="bottom" constant="20" id="MwH-qG-qQq"/>
+                            <constraint firstItem="0tD-u7-0xF" firstAttribute="top" secondItem="ZW3-iz-9yD" secondAttribute="bottom" constant="30" id="UQy-cV-Ir3"/>
+                            <constraint firstItem="ZW3-iz-9yD" firstAttribute="top" secondItem="Bm8-g3-vTW" secondAttribute="top" constant="21" id="b31-z1-NqT"/>
+                            <constraint firstItem="Bm8-g3-vTW" firstAttribute="trailing" secondItem="0tD-u7-0xF" secondAttribute="trailing" constant="20" id="cDq-dC-9jQ"/>
+                            <constraint firstItem="ZW3-iz-9yD" firstAttribute="leading" secondItem="deO-8K-vNh" secondAttribute="leading" constant="40" id="dvc-hZ-zQs"/>
+                            <constraint firstItem="0tD-u7-0xF" firstAttribute="leading" secondItem="Bm8-g3-vTW" secondAttribute="leading" constant="20" id="gmq-pz-AIz"/>
+                            <constraint firstItem="Xz0-sP-SgD" firstAttribute="leading" secondItem="deO-8K-vNh" secondAttribute="leading" constant="40" id="pR6-ir-BWy"/>
+                            <constraint firstAttribute="trailing" secondItem="ZW3-iz-9yD" secondAttribute="trailing" constant="40" id="pbs-PF-1DN"/>
+                            <constraint firstItem="2H6-4Z-O9e" firstAttribute="leading" secondItem="Bm8-g3-vTW" secondAttribute="leading" constant="20" id="ssM-jB-3z2"/>
+                            <constraint firstItem="Xz0-sP-SgD" firstAttribute="top" secondItem="0tD-u7-0xF" secondAttribute="bottom" constant="20" id="zV4-d7-zwg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Bm8-g3-vTW"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="Xz0-sP-SgD" id="nDn-YA-Y8G"/>
+                        <outlet property="imageHeight" destination="afL-kt-Ik8" id="5vh-Gm-ZrZ"/>
+                        <outlet property="signInButton" destination="2H6-4Z-O9e" id="3xp-2C-fF4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5ZC-ca-qQx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="211.59420289855075" y="138.61607142857142"/>
+        </scene>
         <!--LoginVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginVC" customModule="SmartKitty" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="BYZ-38-t0r" customClass="LoginVC" customModule="SmartKitty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +87,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ter-Kl-dqr">
                                 <rect key="frame" x="25" y="231" width="364" height="41"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
-                                <color key="textColor" name="DarkPrimary"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQe-j8-dEc">
@@ -66,29 +131,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please sign in with your SmartCat account ID and API keys" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eul-mZ-HS6">
                                 <rect key="frame" x="25" y="292" width="364" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" name="LightPrimary"/>
+                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6nV-EB-cws">
-                                <rect key="frame" x="35" y="812" width="344" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have a SmartCat account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oU9-sI-edY">
-                                        <rect key="frame" x="0.0" y="0.0" width="221" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" name="LightPrimary"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjq-QS-0b7">
-                                        <rect key="frame" x="296" y="0.0" width="48" height="30"/>
-                                        <color key="tintColor" name="Primary"/>
-                                        <state key="normal" title="Signup">
-                                            <color key="titleColor" name="Primary"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRr-K9-1Yj" customClass="PrimaryButton" customModule="SmartKitty" customModuleProvider="target">
-                                <rect key="frame" x="25" y="732" width="364" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRr-K9-1Yj" customClass="BlackButton" customModule="SmartKitty" customModuleProvider="target">
+                                <rect key="frame" x="25" y="748" width="364" height="50"/>
                                 <color key="backgroundColor" name="Primary"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0hJ-Np-eN5"/>
@@ -101,29 +148,39 @@
                                     <action selector="loginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0c1-aB-Ucs"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjq-QS-0b7">
+                                <rect key="frame" x="20" y="818" width="374" height="30"/>
+                                <color key="tintColor" name="Primary"/>
+                                <state key="normal" title="Signup">
+                                    <color key="titleColor" name="Primary"/>
+                                </state>
+                                <connections>
+                                    <action selector="signupTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f9h-Ux-e0H"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ter-Kl-dqr" secondAttribute="trailing" constant="25" id="4j7-5y-tOB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gRr-K9-1Yj" secondAttribute="trailing" constant="25" id="8TT-99-buA"/>
                             <constraint firstItem="VJO-uN-Xsd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9Yk-iJ-Sh6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xjq-QS-0b7" secondAttribute="bottom" constant="14" id="B4b-MG-nl1"/>
                             <constraint firstItem="hQe-j8-dEc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="BtN-Jb-mgD"/>
+                            <constraint firstItem="xjq-QS-0b7" firstAttribute="top" secondItem="gRr-K9-1Yj" secondAttribute="bottom" constant="20" id="CCt-zC-Vuc"/>
                             <constraint firstItem="hQe-j8-dEc" firstAttribute="top" secondItem="Eul-mZ-HS6" secondAttribute="bottom" constant="60" id="E55-WT-0GW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hQe-j8-dEc" secondAttribute="trailing" id="Fi7-uP-SC0"/>
                             <constraint firstItem="hQe-j8-dEc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PfA-yV-F4G"/>
                             <constraint firstItem="Eul-mZ-HS6" firstAttribute="top" secondItem="ter-Kl-dqr" secondAttribute="bottom" constant="20" id="U2c-Q7-A9V"/>
-                            <constraint firstItem="6nV-EB-cws" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="Yiw-v6-N0c"/>
                             <constraint firstItem="hQe-j8-dEc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZDz-fT-St0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xjq-QS-0b7" secondAttribute="trailing" constant="20" id="ZsR-Xm-Yl3"/>
                             <constraint firstItem="gRr-K9-1Yj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="a5W-Lm-iWS"/>
                             <constraint firstAttribute="trailing" secondItem="Eul-mZ-HS6" secondAttribute="trailing" constant="25" id="dwu-lW-8MR"/>
                             <constraint firstItem="gRr-K9-1Yj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fU1-d7-81V"/>
-                            <constraint firstItem="6nV-EB-cws" firstAttribute="top" secondItem="gRr-K9-1Yj" secondAttribute="bottom" constant="30" id="jc8-zZ-ik0"/>
+                            <constraint firstItem="xjq-QS-0b7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="pI9-ry-PVW"/>
                             <constraint firstItem="VJO-uN-Xsd" firstAttribute="top" secondItem="hQe-j8-dEc" secondAttribute="bottom" id="sZB-o7-FGb"/>
                             <constraint firstItem="ter-Kl-dqr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="thK-RM-Eh2"/>
                             <constraint firstItem="Eul-mZ-HS6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="txD-Um-zRO"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6nV-EB-cws" secondAttribute="trailing" constant="35" id="ufC-9B-7cX"/>
                             <constraint firstItem="ter-Kl-dqr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xKa-5L-ZWo"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6nV-EB-cws" secondAttribute="bottom" constant="20" id="xsi-wo-wts"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -384,7 +441,7 @@
                                             <fragment content="Label">
                                                 <attributes>
                                                     <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                    <font key="NSFont" metaFont="label" size="11"/>
+                                                    <font key="NSFont" metaFont="message" size="11"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
@@ -1035,6 +1092,7 @@
         <image name="person.2" catalog="system" width="128" height="81"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="projectFolder" width="471" height="345"/>
+        <image name="smarty2" width="428" height="349"/>
         <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>

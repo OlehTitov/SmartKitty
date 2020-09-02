@@ -19,6 +19,8 @@
 		7C48DA0524F662820020D447 /* InternetStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0424F662820020D447 /* InternetStatus.swift */; };
 		7C48DA0724F768100020D447 /* ProjectInfoVC+ExtensionGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0624F768100020D447 /* ProjectInfoVC+ExtensionGestureRecognizer.swift */; };
 		7C48DA0924F7D61A0020D447 /* AddNote+ExtensionKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0824F7D61A0020D447 /* AddNote+ExtensionKeyboard.swift */; };
+		7C48DA0B24FCFF050020D447 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0A24FCFF040020D447 /* WelcomeVC.swift */; };
+		7C48DA0D24FCFFA10020D447 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0C24FCFFA10020D447 /* SecondaryButton.swift */; };
 		7C5756EB24ED273800346B1E /* MultiProgressView in Frameworks */ = {isa = PBXBuildFile; productRef = 7C5756EA24ED273800346B1E /* MultiProgressView */; };
 		7C5756ED24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */; };
 		7C5756EF24ED558F00346B1E /* projectStages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756EE24ED558F00346B1E /* projectStages.swift */; };
@@ -28,6 +30,7 @@
 		7C5756FA24EEDF8500346B1E /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756F924EEDF8500346B1E /* TextField.swift */; };
 		7C5756FC24EF8B1800346B1E /* LoginAnimationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756FB24EF8B1800346B1E /* LoginAnimationVC.swift */; };
 		7C5756FE24F1222300346B1E /* MyTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756FD24F1222300346B1E /* MyTeam.swift */; };
+		7C6B29A624FEEDEC00284E4B /* BlackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6B29A524FEEDEC00284E4B /* BlackButton.swift */; };
 		7CD6834624D8532E0091ED52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834524D8532E0091ED52 /* AppDelegate.swift */; };
 		7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834724D8532E0091ED52 /* SceneDelegate.swift */; };
 		7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834924D8532E0091ED52 /* LoginVC.swift */; };
@@ -71,6 +74,8 @@
 		7C48DA0424F662820020D447 /* InternetStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetStatus.swift; sourceTree = "<group>"; };
 		7C48DA0624F768100020D447 /* ProjectInfoVC+ExtensionGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectInfoVC+ExtensionGestureRecognizer.swift"; sourceTree = "<group>"; };
 		7C48DA0824F7D61A0020D447 /* AddNote+ExtensionKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddNote+ExtensionKeyboard.swift"; sourceTree = "<group>"; };
+		7C48DA0A24FCFF040020D447 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
+		7C48DA0C24FCFFA10020D447 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDetailsVC+ExtensionMultiProgressView.swift"; sourceTree = "<group>"; };
 		7C5756EE24ED558F00346B1E /* projectStages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projectStages.swift; sourceTree = "<group>"; };
 		7C5756F024EE9A6800346B1E /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
@@ -79,6 +84,7 @@
 		7C5756F924EEDF8500346B1E /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		7C5756FB24EF8B1800346B1E /* LoginAnimationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAnimationVC.swift; sourceTree = "<group>"; };
 		7C5756FD24F1222300346B1E /* MyTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeam.swift; sourceTree = "<group>"; };
+		7C6B29A524FEEDEC00284E4B /* BlackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackButton.swift; sourceTree = "<group>"; };
 		7CD6834224D8532E0091ED52 /* SmartKitty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartKitty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD6834524D8532E0091ED52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CD6834724D8532E0091ED52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				7C5756F624EED4BC00346B1E /* PrimaryButton.swift */,
+				7C48DA0C24FCFFA10020D447 /* SecondaryButton.swift */,
+				7C6B29A524FEEDEC00284E4B /* BlackButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -216,6 +224,7 @@
 				7C48DA0024F523280020D447 /* AddNote.swift */,
 				7C48DA0624F768100020D447 /* ProjectInfoVC+ExtensionGestureRecognizer.swift */,
 				7C48DA0824F7D61A0020D447 /* AddNote+ExtensionKeyboard.swift */,
+				7C48DA0A24FCFF040020D447 /* WelcomeVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -431,6 +440,7 @@
 				7CF4C4FD24E43ACD00F9FC02 /* projectStatuses.swift in Sources */,
 				7C46019E24E03B9C00CCDA63 /* HTTPStatusCodes.swift in Sources */,
 				7C5756F424EED38300346B1E /* Colors.swift in Sources */,
+				7C48DA0B24FCFF050020D447 /* WelcomeVC.swift in Sources */,
 				7C48D9F424F3BAE40020D447 /* ProjectInfoVC.swift in Sources */,
 				7CF4C51024EBCD4E00F9FC02 /* ProjectDetailsDataSource.swift in Sources */,
 				7CD6837024DAFB670091ED52 /* AllProjectsVC.swift in Sources */,
@@ -444,8 +454,10 @@
 				7CD6836324D9CB090091ED52 /* AccountResponse.swift in Sources */,
 				7C5756F724EED4BC00346B1E /* PrimaryButton.swift in Sources */,
 				7C48DA0524F662820020D447 /* InternetStatus.swift in Sources */,
+				7C6B29A624FEEDEC00284E4B /* BlackButton.swift in Sources */,
 				7CD6836B24DAA9CE0091ED52 /* DataController.swift in Sources */,
 				7C4601A124E054BA00CCDA63 /* Alerts.swift in Sources */,
+				7C48DA0D24FCFFA10020D447 /* SecondaryButton.swift in Sources */,
 				7CD6837A24DD34BB0091ED52 /* HomeHeaderTileModel.swift in Sources */,
 				7C5756FC24EF8B1800346B1E /* LoginAnimationVC.swift in Sources */,
 				7C48D9F624F3CB4A0020D447 /* ProjectInfoVC+ExtensionCollectionView.swift in Sources */,

@@ -17,6 +17,7 @@ class LoginVC: UIViewController {
         SCClient.Servers.america.rawValue,
         SCClient.Servers.asia.rawValue
     ]
+    let signupURL = "https://smartcat.ai"
     
     //MARK: - OUTLETS
     
@@ -122,6 +123,12 @@ class LoginVC: UIViewController {
         present(animationVC, animated: true, completion: nil)
     }
  
+    
+    @IBAction func signupTapped(_ sender: Any) {
+        let url = URL(string: signupURL)
+        UIApplication.shared.open(url!, options: [ : ], completionHandler: nil)
+    }
+    
 }
 
 //MARK: - EXTENSION: PICKER VIEW DELEGATE

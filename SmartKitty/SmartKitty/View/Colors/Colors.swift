@@ -11,7 +11,7 @@ import UIKit
 
 extension UIColor {
     
-    static let primary = UIColor(named: "Malibu")!
+    static let primary = UIColor(named: "Melrose")!
     static let lightPrimary = UIColor(named: "LightPrimary")!
     static let darkPrimary = UIColor(named: "DarkPrimary")!
     static let secondary = UIColor(named: "Secondary")!
@@ -20,5 +20,8 @@ extension UIColor {
     static let secondary700 = UIColor(named: "Secondary700")!
     static let background = UIColor(named: "Background")!
     static let whisper = UIColor(named: "Whisper")!
+    static let cloudBurst = UIColor(named: "CloudBurst")!
+    static let antiqueFuchsia = UIColor(named: "AntiqueFuchsia")!
+    static let coldPurple = UIColor(named: "ColdPurple")!
 }
 
