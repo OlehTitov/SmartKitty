@@ -59,7 +59,7 @@
                             <constraint firstItem="Bm8-g3-vTW" firstAttribute="trailing" secondItem="0tD-u7-0xF" secondAttribute="trailing" constant="20" id="cDq-dC-9jQ"/>
                             <constraint firstItem="ZW3-iz-9yD" firstAttribute="leading" secondItem="deO-8K-vNh" secondAttribute="leading" constant="40" id="dvc-hZ-zQs"/>
                             <constraint firstItem="0tD-u7-0xF" firstAttribute="leading" secondItem="Bm8-g3-vTW" secondAttribute="leading" constant="20" id="gmq-pz-AIz"/>
-                            <constraint firstItem="Xz0-sP-SgD" firstAttribute="leading" secondItem="deO-8K-vNh" secondAttribute="leading" constant="40" id="pR6-ir-BWy"/>
+                            <constraint firstItem="Xz0-sP-SgD" firstAttribute="left" secondItem="deO-8K-vNh" secondAttribute="left" constant="40" id="pR6-ir-BWy"/>
                             <constraint firstAttribute="trailing" secondItem="ZW3-iz-9yD" secondAttribute="trailing" constant="40" id="pbs-PF-1DN"/>
                             <constraint firstItem="2H6-4Z-O9e" firstAttribute="leading" secondItem="Bm8-g3-vTW" secondAttribute="leading" constant="20" id="ssM-jB-3z2"/>
                             <constraint firstItem="Xz0-sP-SgD" firstAttribute="top" secondItem="0tD-u7-0xF" secondAttribute="bottom" constant="20" id="zV4-d7-zwg"/>
@@ -67,14 +67,13 @@
                         <viewLayoutGuide key="safeArea" id="Bm8-g3-vTW"/>
                     </view>
                     <connections>
-                        <outlet property="descriptionLabel" destination="Xz0-sP-SgD" id="nDn-YA-Y8G"/>
                         <outlet property="imageHeight" destination="afL-kt-Ik8" id="5vh-Gm-ZrZ"/>
                         <outlet property="signInButton" destination="2H6-4Z-O9e" id="3xp-2C-fF4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ZC-ca-qQx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="211.59420289855075" y="138.61607142857142"/>
+            <point key="canvasLocation" x="-503" y="139"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="tne-QT-ifu">
@@ -173,12 +172,12 @@
                             <constraint firstItem="Eul-mZ-HS6" firstAttribute="top" secondItem="ter-Kl-dqr" secondAttribute="bottom" constant="20" id="U2c-Q7-A9V"/>
                             <constraint firstItem="hQe-j8-dEc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZDz-fT-St0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xjq-QS-0b7" secondAttribute="trailing" constant="20" id="ZsR-Xm-Yl3"/>
-                            <constraint firstItem="gRr-K9-1Yj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="a5W-Lm-iWS"/>
+                            <constraint firstItem="gRr-K9-1Yj" firstAttribute="left" secondItem="6Tk-OE-BBY" secondAttribute="left" constant="25" id="a5W-Lm-iWS"/>
                             <constraint firstAttribute="trailing" secondItem="Eul-mZ-HS6" secondAttribute="trailing" constant="25" id="dwu-lW-8MR"/>
                             <constraint firstItem="gRr-K9-1Yj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fU1-d7-81V"/>
                             <constraint firstItem="xjq-QS-0b7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="pI9-ry-PVW"/>
                             <constraint firstItem="VJO-uN-Xsd" firstAttribute="top" secondItem="hQe-j8-dEc" secondAttribute="bottom" id="sZB-o7-FGb"/>
-                            <constraint firstItem="ter-Kl-dqr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="thK-RM-Eh2"/>
+                            <constraint firstItem="ter-Kl-dqr" firstAttribute="left" secondItem="6Tk-OE-BBY" secondAttribute="left" constant="25" id="thK-RM-Eh2"/>
                             <constraint firstItem="Eul-mZ-HS6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="txD-Um-zRO"/>
                             <constraint firstItem="ter-Kl-dqr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xKa-5L-ZWo"/>
                         </constraints>
@@ -1084,6 +1083,89 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rL0-gg-vVy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1997" y="139"/>
+        </scene>
+        <!--InstructionVC-->
+        <scene sceneID="rIQ-x5-LC8">
+            <objects>
+                <viewController storyboardIdentifier="InstructionVC" id="ssP-8o-19m" customClass="InstructionVC" customModule="SmartKitty" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G2N-K4-abA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YjW-v6-KxA" customClass="PrimaryButton" customModule="SmartKitty" customModuleProvider="target">
+                                <rect key="frame" x="20" y="746" width="374" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="aS9-Ac-MhM"/>
+                                </constraints>
+                                <state key="normal" title="Sign in">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInTapped:" destination="ssP-8o-19m" eventType="touchUpInside" id="XHz-3y-hSe"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="API Credentials" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5b-0q-fhZ">
+                                <rect key="frame" x="20" y="84" width="374" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smartcat API is available for companies and not available for freelance accounts." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gmf-ge-6bL">
+                                <rect key="frame" x="30" y="150.5" width="354" height="36"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To get your API credentials, go to the Settings → API." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxG-H8-dUX">
+                                <rect key="frame" x="30" y="226.5" width="354" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tu2-aF-5dt">
+                                <rect key="frame" x="30" y="302.5" width="354" height="54"/>
+                                <string key="text">Generate an API key (you can create multiple keys) and use it (as a password) with your account ID (as a user name) to access the API.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kB5-df-4Ag">
+                                <rect key="frame" x="20" y="836" width="374" height="30"/>
+                                <state key="normal" title="Create SmartCat account">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="createAccountTapped:" destination="ssP-8o-19m" eventType="touchUpInside" id="qdr-gL-N0J"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YjW-v6-KxA" firstAttribute="leading" secondItem="gDz-Vx-hgm" secondAttribute="leading" constant="20" id="004-l7-7lB"/>
+                            <constraint firstItem="gDz-Vx-hgm" firstAttribute="trailing" secondItem="Gmf-ge-6bL" secondAttribute="trailing" constant="30" id="230-zK-CRL"/>
+                            <constraint firstAttribute="trailing" secondItem="Tu2-aF-5dt" secondAttribute="trailing" constant="30" id="26R-p0-cBg"/>
+                            <constraint firstItem="LxG-H8-dUX" firstAttribute="leading" secondItem="gDz-Vx-hgm" secondAttribute="leading" constant="30" id="3f0-jw-6ng"/>
+                            <constraint firstItem="Tu2-aF-5dt" firstAttribute="leading" secondItem="gDz-Vx-hgm" secondAttribute="leading" constant="30" id="5m2-3s-7xq"/>
+                            <constraint firstItem="gDz-Vx-hgm" firstAttribute="trailing" secondItem="T5b-0q-fhZ" secondAttribute="trailing" constant="20" id="5rs-UZ-Hnz"/>
+                            <constraint firstItem="kB5-df-4Ag" firstAttribute="top" secondItem="YjW-v6-KxA" secondAttribute="bottom" constant="30" id="7Rn-vb-HJ4"/>
+                            <constraint firstItem="Gmf-ge-6bL" firstAttribute="leading" secondItem="gDz-Vx-hgm" secondAttribute="leading" constant="30" id="AHz-l4-A52"/>
+                            <constraint firstItem="T5b-0q-fhZ" firstAttribute="leading" secondItem="gDz-Vx-hgm" secondAttribute="leading" constant="20" id="C0L-QY-yf9"/>
+                            <constraint firstItem="gDz-Vx-hgm" firstAttribute="trailing" secondItem="YjW-v6-KxA" secondAttribute="trailing" constant="20" id="FsK-7u-gU8"/>
+                            <constraint firstItem="Tu2-aF-5dt" firstAttribute="top" secondItem="LxG-H8-dUX" secondAttribute="bottom" constant="40" id="XSU-sK-6Qv"/>
+                            <constraint firstItem="kB5-df-4Ag" firstAttribute="leading" secondItem="gDz-Vx-hgm" secondAttribute="leading" constant="20" id="a1f-kA-6ab"/>
+                            <constraint firstItem="gDz-Vx-hgm" firstAttribute="trailing" secondItem="LxG-H8-dUX" secondAttribute="trailing" constant="30" id="bAY-4n-N1D"/>
+                            <constraint firstItem="gDz-Vx-hgm" firstAttribute="trailing" secondItem="kB5-df-4Ag" secondAttribute="trailing" constant="20" id="cAK-B6-DWB"/>
+                            <constraint firstItem="T5b-0q-fhZ" firstAttribute="top" secondItem="gDz-Vx-hgm" secondAttribute="top" constant="40" id="sA1-oD-D47"/>
+                            <constraint firstAttribute="bottom" secondItem="kB5-df-4Ag" secondAttribute="bottom" constant="30" id="sZh-8w-Sw5"/>
+                            <constraint firstItem="LxG-H8-dUX" firstAttribute="top" secondItem="Gmf-ge-6bL" secondAttribute="bottom" constant="40" id="txN-V2-nGv"/>
+                            <constraint firstItem="Gmf-ge-6bL" firstAttribute="top" secondItem="T5b-0q-fhZ" secondAttribute="bottom" constant="40" id="xfT-SM-hpt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gDz-Vx-hgm"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3xq-hs-AkN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="259" y="139"/>
         </scene>
     </scenes>
     <resources>

@@ -31,6 +31,7 @@
 		7C5756FC24EF8B1800346B1E /* LoginAnimationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756FB24EF8B1800346B1E /* LoginAnimationVC.swift */; };
 		7C5756FE24F1222300346B1E /* MyTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756FD24F1222300346B1E /* MyTeam.swift */; };
 		7C6B29A624FEEDEC00284E4B /* BlackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6B29A524FEEDEC00284E4B /* BlackButton.swift */; };
+		7C6B29A824FF595800284E4B /* InstructionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6B29A724FF595800284E4B /* InstructionsVC.swift */; };
 		7CD6834624D8532E0091ED52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834524D8532E0091ED52 /* AppDelegate.swift */; };
 		7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834724D8532E0091ED52 /* SceneDelegate.swift */; };
 		7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834924D8532E0091ED52 /* LoginVC.swift */; };
@@ -85,6 +86,7 @@
 		7C5756FB24EF8B1800346B1E /* LoginAnimationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAnimationVC.swift; sourceTree = "<group>"; };
 		7C5756FD24F1222300346B1E /* MyTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeam.swift; sourceTree = "<group>"; };
 		7C6B29A524FEEDEC00284E4B /* BlackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackButton.swift; sourceTree = "<group>"; };
+		7C6B29A724FF595800284E4B /* InstructionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsVC.swift; sourceTree = "<group>"; };
 		7CD6834224D8532E0091ED52 /* SmartKitty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartKitty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD6834524D8532E0091ED52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CD6834724D8532E0091ED52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				7C48DA0624F768100020D447 /* ProjectInfoVC+ExtensionGestureRecognizer.swift */,
 				7C48DA0824F7D61A0020D447 /* AddNote+ExtensionKeyboard.swift */,
 				7C48DA0A24FCFF040020D447 /* WelcomeVC.swift */,
+				7C6B29A724FF595800284E4B /* InstructionsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				7CF4C4FA24E3F0C400F9FC02 /* ProjectDetailsVC.swift in Sources */,
 				7C5756F124EE9A6800346B1E /* TabBarVC.swift in Sources */,
 				7C5756ED24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift in Sources */,
+				7C6B29A824FF595800284E4B /* InstructionsVC.swift in Sources */,
 				7C48D9F824F3CBBF0020D447 /* ProjectStagesCell.swift in Sources */,
 				7CD6836024D96A810091ED52 /* SCClient.swift in Sources */,
 				7C48D9FF24F51FAF0020D447 /* ProjectNote.swift in Sources */,
