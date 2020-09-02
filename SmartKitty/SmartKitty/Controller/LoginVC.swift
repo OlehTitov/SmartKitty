@@ -21,6 +21,7 @@ class LoginVC: UIViewController {
     
     //MARK: - OUTLETS
     
+    @IBOutlet weak var imageContainer: UIView!
     @IBOutlet weak var accountIDTextfield: UITextField!
     @IBOutlet weak var apiKeyTextfield: UITextField!
     @IBOutlet weak var serverPickerView: UIPickerView!
@@ -31,12 +32,26 @@ class LoginVC: UIViewController {
         serverPickerView.tintColor = UIColor.darkPrimary
         setupDelegates()
         autofillCredentials()
+        configureImage()
     }
+    
+    
     
     //MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    func configureImage() {
+        imageContainer.layer.cornerRadius = 45
+        let colorTop =  UIColor.coldPurple.cgColor
+        let colorBottom = UIColor.cloudBurst.cgColor
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.frame = self.view.bounds
+        imageContainer.layer.insertSublayer(gradientLayer, at:0)
+        imageContainer.clipsToBounds = true
     }
     
     //MARK: - SETUP DELEGATES
@@ -124,11 +139,6 @@ class LoginVC: UIViewController {
     }
  
     
-    @IBAction func signupTapped(_ sender: Any) {
-        let url = URL(string: signupURL)
-        UIApplication.shared.open(url!, options: [ : ], completionHandler: nil)
-    }
-    
 }
 
 //MARK: - EXTENSION: PICKER VIEW DELEGATE
@@ -146,10 +156,12 @@ extension LoginVC: UIPickerViewDataSource, UIPickerViewDelegate {
         return pickerArray[row]
     }
     
+    /*
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let attributedSting = NSAttributedString(string: pickerArray[row], attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkPrimary])
         return attributedSting
     }
+ */
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         SCClient.selectedServer = pickerArray[row]

@@ -18,13 +18,14 @@ extension ProjectInfoVC: UIGestureRecognizerDelegate {
         gestureRecognizer.delegate = self
         projectTitle.isUserInteractionEnabled = true
         projectTitle.addGestureRecognizer(gestureRecognizer)
-        gestureRecognizer.minimumPressDuration = 0.7
+        gestureRecognizer.minimumPressDuration = 0.5
         gestureRecognizer.numberOfTapsRequired = 0
     }
     
     @objc func handleTap(sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             self.becomeFirstResponder()
+            showConfirmation()
             makeHapticFeedback()
             if let text = projectTitle.text {
                 copyTextToClipBoard(source: text)
@@ -44,4 +45,17 @@ extension ProjectInfoVC: UIGestureRecognizerDelegate {
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
     }
+    
+    func showConfirmation() {
+        self.copyToClipboardConfirmation.alpha = 0.0
+        self.copyToClipboardConfirmation.isHidden = false
+        UIView.animate(withDuration: 1, animations: {
+            self.copyToClipboardConfirmation.alpha = 1.0
+        }) { (true) in
+            UIView.animate(withDuration: 1) {
+                self.copyToClipboardConfirmation.alpha = 0.0
+            }
+        }
+    }
+    
 }

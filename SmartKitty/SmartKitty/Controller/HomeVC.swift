@@ -40,6 +40,7 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
         configureTilesDataSource()
         setupFetchedResultsController(calculateProjects: false)
         configureTilesLayout()
+        
         print("--VIEW DID LOAD Number of Favourite projects: \(numberOfStarredProjects)")
     }
     
@@ -65,6 +66,7 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
         self.tabBarController?.tabBar.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = true
     }
+    
     
     //MARK: - SETUP FRC
     fileprivate func setupFetchedResultsController(calculateProjects: Bool) {
@@ -116,28 +118,28 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
         today = HomeHeaderTile(
             title: "Deadline Today",
             image: UIImage(systemName: "timer")!,
-            color: .secondary,
+            color: .deepCarminePink,
             projectsCount: numberOfProjectsForToday,
             link: "isToday"
         )
         tomorrow = HomeHeaderTile(
             title: "Deadline Tomorrow",
             image: UIImage(systemName: "calendar")!,
-            color: .primary,
+            color: .mediumSlateBlue,
             projectsCount: numberOfProjectsForTomorrow,
             link: "isTomorrow"
         )
         favourite = HomeHeaderTile(
             title: "Favourite",
             image: UIImage(systemName: "star.fill")!,
-            color: .darkPrimary,
+            color: .harvestGold,
             projectsCount: numberOfStarredProjects,
             link: "isStarred"
         )
         all = HomeHeaderTile(
             title: "All",
             image: UIImage(systemName: "archivebox.fill")!,
-            color: .gray,
+            color: .coldPurple,
             projectsCount: numberOfAllProjects,
             link: "ShowAllProjects"
         )
@@ -161,15 +163,15 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
                 withReuseIdentifier: "TilesCellIdentifier",
                 for: indexPath) as? TilesCell else { fatalError("Cannot create new cell") }
             cell.layer.cornerRadius = 15
-            cell.layer.shadowRadius = 7
-            cell.layer.shadowColor = tile.color.cgColor
-            cell.layer.shadowOpacity = 0.5
-            cell.layer.shadowOffset = CGSize(width: 0, height: 8)
-            cell.layer.masksToBounds = false
-            cell.backgroundColor = tile.color
+            //cell.layer.shadowRadius = 7
+            //cell.layer.shadowColor = tile.color.cgColor
+            //cell.layer.shadowOpacity = 0.5
+           // cell.layer.shadowOffset = CGSize(width: 0, height: 8)
+            //cell.layer.masksToBounds = false
+            //cell.backgroundColor = tile.color
             cell.tileTitle.text = tile.title
             cell.iconContainer.backgroundColor = tile.color
-            cell.iconContainer.layer.cornerRadius = 17.5
+            cell.iconContainer.layer.cornerRadius = 20
             cell.tileImageView.image = tile.image
             cell.tileImageView.tintColor = UIColor.white
             cell.projectsCount.text = String(tile.projectsCount)
@@ -225,23 +227,27 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
       
       let itemSize = NSCollectionLayoutSize(
         widthDimension: .fractionalWidth(1.0),
-        heightDimension: .fractionalHeight(7/8))
+        heightDimension: .estimated(220))
       let fullPhotoItem = NSCollectionLayoutItem(layoutSize: itemSize)
       
         fullPhotoItem.contentInsets = NSDirectionalEdgeInsets(
-            top: 6,
-            leading: 14,
-            bottom: 6,
-            trailing: 0)
+            top: 0,
+            leading: 7,
+            bottom: 0,
+            trailing: 3)
         
       let groupSize = NSCollectionLayoutSize(
         widthDimension: .fractionalWidth(0.9),
-        heightDimension: .fractionalWidth(2/3))
+        heightDimension: .estimated(220))
       let group = NSCollectionLayoutGroup.horizontal(
         layoutSize: groupSize,
         subitem: fullPhotoItem,
         count: 2
       )
+        //Spacing between items
+        let spacing = NSCollectionLayoutSpacing.flexible(0)
+        group.interItemSpacing = spacing
+        
       
       let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging

@@ -11,7 +11,7 @@ import Foundation
 class SCClient {
     
     static var selectedServer = Servers.europe.rawValue
-    static var companyName = ""
+    static var companyName: String = UserDefaults.standard.object(forKey: "CompanyName") as! String
     
     struct Auth {
         static var accountId: String = ""

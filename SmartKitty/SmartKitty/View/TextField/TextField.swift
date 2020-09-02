@@ -18,7 +18,7 @@ class TextField: UITextField {
         
         layer.cornerRadius = 15
         layer.masksToBounds = true
-        tintColor = UIColor.white
+        tintColor = UIColor.black
         backgroundColor = UIColor.whisper
     }
     

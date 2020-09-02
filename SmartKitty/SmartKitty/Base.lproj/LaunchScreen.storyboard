@@ -24,7 +24,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" name="LightPrimary"/>
+                        <color key="backgroundColor" name="CloudBurst"/>
                         <constraints>
                             <constraint firstItem="cGa-0S-gxf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="LKT-3t-PXO"/>
                             <constraint firstItem="cGa-0S-gxf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="VOb-vh-U5K"/>
@@ -39,8 +39,8 @@
     </scenes>
     <resources>
         <image name="whiteCatOutline" width="90" height="90"/>
-        <namedColor name="LightPrimary">
-            <color red="0.60784313725490191" green="0.52941176470588236" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="CloudBurst">
+            <color red="0.20784313725490197" green="0.22352941176470589" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

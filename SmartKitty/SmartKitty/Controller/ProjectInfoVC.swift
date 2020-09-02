@@ -57,6 +57,8 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var projectDocumentsCollectionView: UICollectionView!
     @IBOutlet weak var favButton: ToggleButton!
     
+    @IBOutlet weak var copyToClipboardConfirmation: UIView!
+    
     //MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -88,6 +90,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         configureGestureRecognizer()
         //Favourite button
         configureFavButton()
+        copyToClipboardConfirmation.isHidden = true
         
     }
     

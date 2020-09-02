@@ -23,5 +23,8 @@ extension UIColor {
     static let cloudBurst = UIColor(named: "CloudBurst")!
     static let antiqueFuchsia = UIColor(named: "AntiqueFuchsia")!
     static let coldPurple = UIColor(named: "ColdPurple")!
+    static let mediumSlateBlue = UIColor(named: "MediumSlateBlue")!
+    static let deepCarminePink = UIColor(named: "DeepCarminePink")!
+    static let harvestGold = UIColor(named: "HarvestGold")!
 }
 

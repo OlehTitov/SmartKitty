@@ -36,8 +36,8 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.navigationBar.tintColor = .darkPrimary
-        self.navigationController?.navigationBar.standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.darkPrimary]
+        self.navigationController?.navigationBar.tintColor = .mediumSlateBlue
+        self.navigationController?.navigationBar.standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.mediumSlateBlue]
         setupFetchedResultsController()
         setupTableView()
         setupSearchController()
@@ -79,13 +79,13 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
                 let dateString = dateFormatter.string(from: deadlineAsDate!)
                 let imageAttachment = NSTextAttachment()
                 let lightConfig = UIImage.SymbolConfiguration(weight: .thin)
-                imageAttachment.image = UIImage(systemName: "calendar", withConfiguration: lightConfig)?.withTintColor(.lightPrimary)
+                imageAttachment.image = UIImage(systemName: "calendar", withConfiguration: lightConfig)?.withTintColor(.secondaryLabel)
                 let imageString = NSAttributedString(attachment: imageAttachment)
                 let fullString = NSMutableAttributedString(string: "")
                 fullString.append(imageString)
                 fullString.append(NSAttributedString(string: " \(timeSting) on \(dateString)"))
                 let range = NSMakeRange(0, fullString.length)
-                fullString.addAttribute(.foregroundColor, value: UIColor.lightPrimary, range: range)
+                fullString.addAttribute(.foregroundColor, value: UIColor.secondaryLabel, range: range)
                 //cell.detailTextLabel?.text = "\(timeSting), \(dateString)"
                 cell.detailTextLabel?.attributedText = fullString
             } else {
@@ -164,10 +164,6 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
         projectInfoVC.selectedProject = selectedProject
         self.navigationController?.pushViewController(projectInfoVC, animated: true)
         
-        
-        //let projectDetailsVC = self.storyboard?.instantiateViewController(identifier: "ProjectDetailsVC") as! ProjectDetailsVC
-        //projectDetailsVC.selectedProject = selectedProject
-        //self.navigationController?.pushViewController(projectDetailsVC, animated: true)
     }
     
     //MARK: - SEARCH
