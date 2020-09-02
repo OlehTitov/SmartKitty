@@ -32,6 +32,7 @@
 		7C5756FE24F1222300346B1E /* MyTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756FD24F1222300346B1E /* MyTeam.swift */; };
 		7C6B29A624FEEDEC00284E4B /* BlackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6B29A524FEEDEC00284E4B /* BlackButton.swift */; };
 		7C6B29A824FF595800284E4B /* InstructionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6B29A724FF595800284E4B /* InstructionsVC.swift */; };
+		7C6B29AC2500229F00284E4B /* ClientResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6B29AB2500229F00284E4B /* ClientResponse.swift */; };
 		7CD6834624D8532E0091ED52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834524D8532E0091ED52 /* AppDelegate.swift */; };
 		7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834724D8532E0091ED52 /* SceneDelegate.swift */; };
 		7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834924D8532E0091ED52 /* LoginVC.swift */; };
@@ -87,6 +88,7 @@
 		7C5756FD24F1222300346B1E /* MyTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeam.swift; sourceTree = "<group>"; };
 		7C6B29A524FEEDEC00284E4B /* BlackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackButton.swift; sourceTree = "<group>"; };
 		7C6B29A724FF595800284E4B /* InstructionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsVC.swift; sourceTree = "<group>"; };
+		7C6B29AB2500229F00284E4B /* ClientResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientResponse.swift; sourceTree = "<group>"; };
 		7CD6834224D8532E0091ED52 /* SmartKitty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartKitty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD6834524D8532E0091ED52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CD6834724D8532E0091ED52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				7CD6836724DA63860091ED52 /* ProjectsListResponse.swift */,
 				7C46019D24E03B9C00CCDA63 /* HTTPStatusCodes.swift */,
 				7C5756FD24F1222300346B1E /* MyTeam.swift */,
+				7C6B29AB2500229F00284E4B /* ClientResponse.swift */,
 			);
 			path = "SC Responses";
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				7CD6836B24DAA9CE0091ED52 /* DataController.swift in Sources */,
 				7C4601A124E054BA00CCDA63 /* Alerts.swift in Sources */,
 				7C48DA0D24FCFFA10020D447 /* SecondaryButton.swift in Sources */,
+				7C6B29AC2500229F00284E4B /* ClientResponse.swift in Sources */,
 				7CD6837A24DD34BB0091ED52 /* HomeHeaderTileModel.swift in Sources */,
 				7C5756FC24EF8B1800346B1E /* LoginAnimationVC.swift in Sources */,
 				7C48D9F624F3CB4A0020D447 /* ProjectInfoVC+ExtensionCollectionView.swift in Sources */,

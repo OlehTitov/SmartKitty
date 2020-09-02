@@ -35,6 +35,7 @@ class SCClient {
         case projectsList = "/api/integration/v1/project/list"
         case teamMember = "/api/integration/v1/account/myTeam"
         case project = "/api/integration/v1/project"
+        case client = "/api/integration/v2/client"
     }
     
     class func urlComponents(path: Path) -> URL {
@@ -71,6 +72,21 @@ class SCClient {
                 completion([], error)
             }
         }
+    }
+    
+    class func getClientInfo(clientId: String, completion: @escaping (Client?, Error?) -> Void) {
+        let baseUrl = urlComponents(path: .client)
+        let completeUrl = baseUrl.appendingPathComponent(clientId)
+        print(completeUrl)
+        print(Auth.accountId)
+        print(Auth.apiKey)
+        _ = taskForGETRequest(url: completeUrl, responseType: Client.self, completion: { (response, httpResponse, error) in
+            if let response = response {
+                completion(response, nil)
+            } else {
+                completion(nil, error)
+            }
+        })
     }
     
     class func getTeamMemberInfo(userId: String, completion: @escaping (String, Error?) -> Void) {
@@ -124,7 +140,7 @@ class SCClient {
             
             guard let data = data else {
                 DispatchQueue.main.async {
-                    print(httpResponse ?? "")
+                    //print(httpResponse ?? "")
                     completion(nil, httpResponse, error)
                 }
                 return

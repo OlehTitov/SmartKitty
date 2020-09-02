@@ -37,7 +37,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     }()
     let timeFormatter: DateFormatter = {
         let tf = DateFormatter()
-        tf.dateFormat = "hh:mm a"
+        tf.dateFormat = "HH:mm"
         return tf
     }()
     
@@ -58,6 +58,8 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var favButton: ToggleButton!
     
     @IBOutlet weak var copyToClipboardConfirmation: UIView!
+    
+    @IBOutlet weak var deadlineContainer: UIView!
     
     //MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
@@ -90,7 +92,10 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         configureGestureRecognizer()
         //Favourite button
         configureFavButton()
+        //Get client info
+        getClientInformation()
         copyToClipboardConfirmation.isHidden = true
+        deadlineContainer.layer.cornerRadius = 20
         
     }
     
@@ -110,7 +115,6 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         guard let id = selectedProject.id else {
             return
         }
-        
         let projectURL = URL(string: "https://\(SCClient.selectedServer)/projects/\(id)")!
         let items = [projectURL]
         let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
@@ -119,6 +123,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     
     //MARK: - MAKE PROJECT FAVOURITE
     @IBAction func favouriteButtonTapped(_ sender: UIButton) {
+        makeHapticFeedback()
         if sender.isSelected {
             selectedProject.isStarred = false
             try? DataController.shared.viewContext.save()
@@ -136,14 +141,14 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         }
     }
     
-    
+    //MARK: - SETUP PROJECT DETAILS
     //Get deadline
     func getStringFromDeadlineDate() -> String {
         var fullDeadlineString = "No deadline specified"
         if let deadline = selectedProject.deadlineAsDate {
            let deadlineTimeString = timeFormatter.string(from: deadline)
            let deadlineDateString = dateFormatter.string(from: deadline)
-           fullDeadlineString = "📦 \(deadlineTimeString) \(deadlineDateString)"
+           fullDeadlineString = "📦 \(deadlineTimeString), \(deadlineDateString)"
         }
          return fullDeadlineString
     }
@@ -177,6 +182,21 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         let author = selectedProject.createdByUserEmail ?? ""
         createdBy.text = "Created by: \(author)"
         projectNotes.text = "Notes: \(selectedProject.desc ?? "")"
+    }
+    
+    //Get client info
+    func getClientInformation() {
+        guard let id = selectedProject.clientId else {
+            return
+        }
+        SCClient.getClientInfo(clientId: id, completion: handleGetClientInfo(client:error:))
+    }
+    
+    func handleGetClientInfo(client: Client?, error: Error?) {
+        guard let client = client?.name else {
+            return
+        }
+        self.client.text = "Client: \(client)"
     }
     
     //MARK: - SETUP STAGE FRC

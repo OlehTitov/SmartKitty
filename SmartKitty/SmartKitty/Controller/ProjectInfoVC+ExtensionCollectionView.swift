@@ -128,7 +128,7 @@ extension ProjectInfoVC: UICollectionViewDelegate {
       let itemSize = NSCollectionLayoutSize(
         widthDimension: .fractionalWidth(1.0),
         //heightDimension: .fractionalHeight(1.0))
-        heightDimension: .estimated(200.0))
+        heightDimension: .estimated(220.0))
       let fullPhotoItem = NSCollectionLayoutItem(layoutSize: itemSize)
       
         fullPhotoItem.contentInsets = NSDirectionalEdgeInsets(
@@ -140,7 +140,7 @@ extension ProjectInfoVC: UICollectionViewDelegate {
       let groupSize = NSCollectionLayoutSize(
         widthDimension: .fractionalWidth(0.93),
         //heightDimension: .fractionalWidth(3/4))
-        heightDimension: .estimated(200.0))
+        heightDimension: .estimated(220.0))
       let group = NSCollectionLayoutGroup.horizontal(
         layoutSize: groupSize,
         subitem: fullPhotoItem,
