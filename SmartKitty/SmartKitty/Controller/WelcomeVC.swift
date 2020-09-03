@@ -11,9 +11,6 @@ import UIKit
 
 class WelcomeVC: UIViewController {
     
-    //MARK: - PROPERTIES
-    let signupURL = "https://smartcat.ai"
-    
     //MARK: - OUTLETS
     @IBOutlet weak var signInButton: PrimaryButton!
     @IBOutlet weak var imageHeight: NSLayoutConstraint!
@@ -25,6 +22,7 @@ class WelcomeVC: UIViewController {
         setGradientBackground()
     }
    
+    //MARK: - SETUP VIEW
     func setImageHeight() {
         let viewHeigh = view.frame.size.height
         imageHeight.constant = viewHeigh * 0.3
@@ -39,13 +37,9 @@ class WelcomeVC: UIViewController {
         self.view.layer.insertSublayer(gradientLayer, at:0)
     }
     
+    //MARK: - GET STARTED TAPPED
     @IBAction func signInTapped(_ sender: Any) {
         goToNextVC()
-    }
-    
-    @IBAction func createAccountTapped(_ sender: Any) {
-        let url = URL(string: signupURL)
-        UIApplication.shared.open(url!, options: [ : ], completionHandler: nil)
     }
     
     func goToNextVC() {

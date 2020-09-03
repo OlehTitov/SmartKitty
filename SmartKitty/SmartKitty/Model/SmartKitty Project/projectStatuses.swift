@@ -14,6 +14,15 @@ enum ProjectStatuses: String {
     case inProgress = "inProgress"
     case completed = "completed"
     case cancelled = "cancelled"
+    
+    var icon: UIImage {
+        switch self {
+        case .created: return UIImage(systemName: "circle")!
+        case .inProgress: return UIImage(systemName: "ellipsis.circle")!
+        case .completed: return UIImage(systemName: "checkmark.circle")!
+        case .cancelled: return UIImage(systemName: "xmark.circle")!
+        }
+    }
 }
 
 struct ProjectStatus: Equatable {

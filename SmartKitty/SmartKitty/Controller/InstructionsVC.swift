@@ -11,13 +11,16 @@ import UIKit
 
 class InstructionVC: UIViewController {
     
+    //MARK: - PROPERTIES
     let signupURL = "https://smartcat.ai"
     
+    //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
         setGradientBackground()
     }
     
+    //MARK: - SETUP VIEW
     func setGradientBackground() {
         let colorTop =  UIColor.antiqueFuchsia.cgColor
         let colorBottom = UIColor.cloudBurst.cgColor
@@ -27,14 +30,9 @@ class InstructionVC: UIViewController {
         self.view.layer.insertSublayer(gradientLayer, at:0)
     }
     
+    //MARK: - SIGN IN TAPPED
     @IBAction func signInTapped(_ sender: Any) {
         goToNextVC()
-    }
-    
-    
-    @IBAction func createAccountTapped(_ sender: Any) {
-        let url = URL(string: signupURL)
-        UIApplication.shared.open(url!, options: [ : ], completionHandler: nil)
     }
     
     func goToNextVC() {
@@ -42,6 +40,12 @@ class InstructionVC: UIViewController {
         loginVC.modalPresentationStyle = .fullScreen
         loginVC.modalTransitionStyle = .crossDissolve
         present(loginVC, animated: true, completion: nil)
+    }
+    
+    //MARK: - CREATE ACCOUNT TAPPED
+    @IBAction func createAccountTapped(_ sender: Any) {
+        let url = URL(string: signupURL)
+        UIApplication.shared.open(url!, options: [ : ], completionHandler: nil)
     }
     
 }

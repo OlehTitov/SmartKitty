@@ -12,7 +12,6 @@ import CoreData
 
 class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     
-    
     //MARK: - PROPERTIES
     var fetchedResultsController: NSFetchedResultsController<SkProject>!
     var dataSource: UITableViewDiffableDataSource<Int, SkProject>?
@@ -62,7 +61,8 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
             let cell = tableView.dequeueReusableCell(withIdentifier: "projectsCell", for: indexPath)
             //Project status icon
             if let status = project.status {
-                self.configureStatusIcon(status: status, cell: cell)
+                let projectStatus = ProjectStatuses(rawValue: status)
+                cell.imageView?.image = projectStatus?.icon
             }
             //Project title
             let name = String(project.name ?? "")
@@ -74,7 +74,7 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateStyle = .full
                 let timeFormatter = DateFormatter()
-                timeFormatter.dateFormat = "hh:mm a"
+                timeFormatter.dateFormat = "HH:mm"
                 let timeSting = timeFormatter.string(from: deadlineAsDate!)
                 let dateString = dateFormatter.string(from: deadlineAsDate!)
                 let imageAttachment = NSTextAttachment()
@@ -95,24 +95,6 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
         }
         setupSnapshot()
     }
-    
-    ///Configure project status icon
-    private func configureStatusIcon(status: String, cell: UITableViewCell) {
-        let projectStatus = ProjectStatuses(rawValue: status)
-        switch projectStatus {
-        case .created:
-            cell.imageView?.image = UIImage(systemName: "circle")
-        case .inProgress:
-            cell.imageView?.image = UIImage(systemName: "ellipsis.circle")
-        case .completed:
-            cell.imageView?.image = UIImage(systemName: "checkmark.circle")
-        case .cancelled:
-            cell.imageView?.image = UIImage(systemName: "xmark.circle")
-        case .none:
-            cell.imageView?.image = UIImage(systemName: "circle")
-        }
-    }
-    
     
     private func setupSnapshot() {
         snapshot = NSDiffableDataSourceSnapshot<Int, SkProject>()

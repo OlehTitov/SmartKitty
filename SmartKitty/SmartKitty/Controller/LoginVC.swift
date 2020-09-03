@@ -17,10 +17,8 @@ class LoginVC: UIViewController {
         SCClient.Servers.america.rawValue,
         SCClient.Servers.asia.rawValue
     ]
-    let signupURL = "https://smartcat.ai"
     
     //MARK: - OUTLETS
-    
     @IBOutlet weak var imageContainer: UIView!
     @IBOutlet weak var accountIDTextfield: UITextField!
     @IBOutlet weak var apiKeyTextfield: UITextField!
@@ -35,14 +33,13 @@ class LoginVC: UIViewController {
         configureImage()
     }
     
-    
-    
     //MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
     }
     
+    //MARK: - SETUP VIEW
     func configureImage() {
         imageContainer.layer.cornerRadius = 45
         let colorTop =  UIColor.coldPurple.cgColor
@@ -54,7 +51,6 @@ class LoginVC: UIViewController {
         imageContainer.clipsToBounds = true
     }
     
-    //MARK: - SETUP DELEGATES
     func setupDelegates() {
         serverPickerView.delegate = self
         apiKeyTextfield.delegate = dismissKeyboard
@@ -66,7 +62,6 @@ class LoginVC: UIViewController {
         guard let accountId = accountIDTextfield.text, let apiKey = apiKeyTextfield.text else {
             return
         }
-        print("Saving credentials")
         UserDefaults.standard.set(accountId, forKey: "AccountId")
         UserDefaults.standard.set(apiKey, forKey: "ApiKey")
         UserDefaults.standard.set(true, forKey: "CredentialsAvailable")
@@ -78,10 +73,8 @@ class LoginVC: UIViewController {
     
     func autofillCredentials() {
         if UserDefaults.standard.bool(forKey: "CredentialsAvailable") {
-            print("Trying to autofill the fields")
             accountIDTextfield.text = (UserDefaults.standard.value(forKey: "AccountId") as! String)
             apiKeyTextfield.text = (UserDefaults.standard.value(forKey: "ApiKey") as! String)
-            //rememberMe.isSelected = true
         }
     }
     
@@ -138,7 +131,6 @@ class LoginVC: UIViewController {
         present(animationVC, animated: true, completion: nil)
     }
  
-    
 }
 
 //MARK: - EXTENSION: PICKER VIEW DELEGATE
@@ -155,13 +147,6 @@ extension LoginVC: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerArray[row]
     }
-    
-    /*
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let attributedSting = NSAttributedString(string: pickerArray[row], attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkPrimary])
-        return attributedSting
-    }
- */
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         SCClient.selectedServer = pickerArray[row]
