@@ -426,7 +426,7 @@
                                             <fragment content="Label">
                                                 <attributes>
                                                     <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                    <font key="NSFont" metaFont="message" size="11"/>
+                                                    <font key="NSFont" metaFont="label" size="11"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
@@ -948,6 +948,7 @@
                         <outlet property="copyToClipboardConfirmation" destination="06q-rC-xZX" id="6EA-qU-9aK"/>
                         <outlet property="createdBy" destination="jj7-LP-F4W" id="UWr-OA-gVN"/>
                         <outlet property="deadlineContainer" destination="P23-Zs-q8K" id="RHk-b5-abk"/>
+                        <outlet property="documentsTitle" destination="Puf-cO-haf" id="mwl-mg-to2"/>
                         <outlet property="favButton" destination="c9P-hl-bv4" id="hp6-Ra-xS7"/>
                         <outlet property="projectDeadline" destination="pun-8x-mtv" id="ESv-0n-BkF"/>
                         <outlet property="projectDocumentsCollectionView" destination="pow-Ca-Zru" id="97j-cQ-XeB"/>

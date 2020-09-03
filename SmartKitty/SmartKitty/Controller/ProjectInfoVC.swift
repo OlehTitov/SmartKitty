@@ -61,6 +61,8 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var deadlineContainer: UIView!
     
+    @IBOutlet weak var documentsTitle: UILabel!
+    
     //MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -182,6 +184,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         let author = selectedProject.createdByUserEmail ?? ""
         createdBy.text = "Created by: \(author)"
         projectNotes.text = "Notes: \(selectedProject.desc ?? "")"
+        documentsTitle.text = "Documents: \(documentFRC.fetchedObjects?.count ?? 0)"
     }
     
     //Get client info
