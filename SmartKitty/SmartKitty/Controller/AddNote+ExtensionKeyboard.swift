@@ -25,17 +25,18 @@ extension AddNote {
         NotificationCenter.default.removeObserver(self)
     }
     
+    //Increase bottom constraint of the buttons to avoid them being covered by keyboard
+    //Add extra 10 points to let the buttons stand out above the keyboard
     @objc func keyboardWillShow(_ notification:Notification) {
-        if noteTextField.isEditing && saveBottomContstraint.constant == 50 {
-            saveBottomContstraint.constant += getKeyboardHeight(notification)
+        if noteTextField.isEditing && buttonsBlockBottomConstraint.constant == 50 {
+            buttonsBlockBottomConstraint.constant = getKeyboardHeight(notification) + 10
         }
     }
     
     
     @objc func keyboardWillHide(_ notification:Notification) {
         //Return button to its normal place
-        //saveButton.frame.origin.y = 0
-        saveBottomContstraint.constant = 50
+        buttonsBlockBottomConstraint.constant = 50
     }
     
     @objc func appResignActive(_ notification:Notification) {

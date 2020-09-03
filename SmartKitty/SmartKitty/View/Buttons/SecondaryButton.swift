@@ -15,7 +15,7 @@ class SecondaryButton: UIButton {
         super.awakeFromNib()
         tintColor = UIColor.label
         layer.cornerRadius = 15
-        layer.borderWidth = 2
+        layer.borderWidth = 1
         layer.borderColor = UIColor.label.cgColor
         backgroundColor = .clear
         

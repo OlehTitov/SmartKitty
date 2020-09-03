@@ -33,6 +33,7 @@
 		7C6B29A624FEEDEC00284E4B /* BlackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6B29A524FEEDEC00284E4B /* BlackButton.swift */; };
 		7C6B29A824FF595800284E4B /* InstructionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6B29A724FF595800284E4B /* InstructionsVC.swift */; };
 		7C6B29AC2500229F00284E4B /* ClientResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6B29AB2500229F00284E4B /* ClientResponse.swift */; };
+		7C6B29AE2500A40B00284E4B /* ConfirmationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6B29AD2500A40B00284E4B /* ConfirmationButton.swift */; };
 		7CD6834624D8532E0091ED52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834524D8532E0091ED52 /* AppDelegate.swift */; };
 		7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834724D8532E0091ED52 /* SceneDelegate.swift */; };
 		7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6834924D8532E0091ED52 /* LoginVC.swift */; };
@@ -89,6 +90,7 @@
 		7C6B29A524FEEDEC00284E4B /* BlackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackButton.swift; sourceTree = "<group>"; };
 		7C6B29A724FF595800284E4B /* InstructionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsVC.swift; sourceTree = "<group>"; };
 		7C6B29AB2500229F00284E4B /* ClientResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientResponse.swift; sourceTree = "<group>"; };
+		7C6B29AD2500A40B00284E4B /* ConfirmationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationButton.swift; sourceTree = "<group>"; };
 		7CD6834224D8532E0091ED52 /* SmartKitty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartKitty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD6834524D8532E0091ED52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CD6834724D8532E0091ED52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				7C5756F624EED4BC00346B1E /* PrimaryButton.swift */,
 				7C48DA0C24FCFFA10020D447 /* SecondaryButton.swift */,
 				7C6B29A524FEEDEC00284E4B /* BlackButton.swift */,
+				7C6B29AD2500A40B00284E4B /* ConfirmationButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				7CD6837024DAFB670091ED52 /* AllProjectsVC.swift in Sources */,
 				7CF4C50724EA7FAB00F9FC02 /* ActionButtonCell.swift in Sources */,
 				7CD6836824DA63860091ED52 /* ProjectsListResponse.swift in Sources */,
+				7C6B29AE2500A40B00284E4B /* ConfirmationButton.swift in Sources */,
 				7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */,
 				7CD6834624D8532E0091ED52 /* AppDelegate.swift in Sources */,
 				7C5756FA24EEDF8500346B1E /* TextField.swift in Sources */,

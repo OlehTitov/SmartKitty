@@ -18,6 +18,8 @@ class AddNote: UIViewController, UITextFieldDelegate {
     
     //MARK: - OUTLETS
     @IBOutlet weak var saveBottomContstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var buttonsBlockBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var saveButton: PrimaryButton!
     @IBOutlet weak var noteTextField: UITextField!
     
@@ -51,7 +53,7 @@ class AddNote: UIViewController, UITextFieldDelegate {
         saveButton.isEnabled = false
     }
     
-    
+    //MARK: - SAVE BUTTON TAPPED
     @IBAction func saveButtonTapped(_ sender: Any) {
         //Save note text
         selectedProject.desc = noteTextField.text
@@ -59,8 +61,15 @@ class AddNote: UIViewController, UITextFieldDelegate {
         
         //Dismiss the popup controller
         dismiss(animated: true, completion: nil)
-        
     }
+    
+    //MARK: - CANCEL BUTTON TAPPED
+    @IBAction func cancelTapped(_ sender: Any) {
+        //Dismiss the popup controller
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     
     //MARK: - DISABLE BUTTON WHEN THERE IS NO TEXT
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

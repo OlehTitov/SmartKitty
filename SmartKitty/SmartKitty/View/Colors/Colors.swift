@@ -26,5 +26,7 @@ extension UIColor {
     static let mediumSlateBlue = UIColor(named: "MediumSlateBlue")!
     static let deepCarminePink = UIColor(named: "DeepCarminePink")!
     static let harvestGold = UIColor(named: "HarvestGold")!
+    static let caribbeanGreen = UIColor(named: "CaribbeanGreen")!
+    
 }
 
