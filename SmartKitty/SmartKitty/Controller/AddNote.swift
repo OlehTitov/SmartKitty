@@ -55,8 +55,13 @@ class AddNote: UIViewController, UITextFieldDelegate {
     
     //MARK: - SAVE BUTTON TAPPED
     @IBAction func saveButtonTapped(_ sender: Any) {
+        //Keep old notes
+        let oldNotes = selectedProject.desc ?? ""
         //Save note text
-        selectedProject.desc = noteTextField.text
+        guard let text = noteTextField.text else {
+            return
+        }
+        selectedProject.desc = "\(text) \n\(oldNotes)"
         try? DataController.shared.viewContext.save()
         
         //Dismiss the popup controller
