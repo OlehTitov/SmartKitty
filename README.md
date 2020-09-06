@@ -7,11 +7,11 @@
 
 SmartKitty is a free third-party app for [SmartCat](https://smartcat.ai) translation platform. It’s built for translation project managers to help them search and navigate the projects, get project details, share project link with colleagues and never miss the deadline. 
 
-##Usage
+## Usage
 
 To login and use the app users are required to have a LSP account at [SmartCat](https://smartcat.ai). Company account ID is used as a username and API key is used as a password. Users can generate the API key in their Smartcat account under Settings -> API.
 
-##📱 Features
+## 📱 Features
 
 Straight from app’s homescreen users can jump into 4 categories: projects with deadline due today, tomorrow, favourite projects or browse all projects.
 
@@ -26,8 +26,7 @@ Users can mark any project as a favourite and access it right from app’s homes
 Sharing project’s link to a colleague has never been easier - just tapping on a Share button will bring iOS share sheet, so users can choose sharing via mail, messages, AirDrop or any other installed app.
 
 Offline mode enables users to browse projects when there is no internet connection.
-
-##🛠 Implementation details
+## 🛠 Implementation details
 
 ### 🧭 Navigation
 The app is built using classic scheme: *UINavigationController* embedded in *UITabBarController*. 
@@ -48,7 +47,11 @@ All possible request errors are handled using *HTTPStatusCodes* enum holding all
 Smartcat API endpoints are constructed with the help of *URLComponents* struct.
 
 ### 🗄 Data Persistence
-Users data is saved on the device using *Core Data* framework. *Core Data* stack is built using singleton pattern and encapsulated in a separate class.
+Users data is saved on the device using *Core Data* framework. *Core Data* stack is built using singleton pattern and encapsulated in a separate class. 
+
+There are 5 entities in the data model. SkProject is the main object and others objects are complementing it.
+![Core Data Entities](https://github.com/OlehTitov/SmartKitty/blob/master/images/coreDataDiagram.png)
+
 ### 🖼 Collection Views
 
 ### 🛣 Roadmap
