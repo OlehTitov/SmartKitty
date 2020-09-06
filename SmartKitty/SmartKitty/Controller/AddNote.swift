@@ -17,8 +17,6 @@ class AddNote: UIViewController, UITextFieldDelegate {
     let dismissKeyboard = DismissKeyboardDelegate()
     
     //MARK: - OUTLETS
-    @IBOutlet weak var saveBottomContstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var buttonsBlockBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var saveButton: PrimaryButton!
     @IBOutlet weak var noteTextField: UITextField!
@@ -26,9 +24,7 @@ class AddNote: UIViewController, UITextFieldDelegate {
     //MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        tabBarController?.tabBar.isTranslucent = true
-         tabBarController?.tabBar.isHidden = true
-        
+        hideNavBar(true)
         subscribeToKeyboardNotifications()
     }
     
@@ -41,9 +37,13 @@ class AddNote: UIViewController, UITextFieldDelegate {
     //MARK: - VIEW WILL DISAPPEAR
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-        tabBarController?.tabBar.isTranslucent = false
-         tabBarController?.tabBar.isHidden = false
+        hideNavBar(false)
         unsubscribeFromKeyboardNotifications()
+    }
+    
+    func hideNavBar(_ hidden: Bool) {
+        tabBarController?.tabBar.isTranslucent = hidden
+        tabBarController?.tabBar.isHidden = hidden
     }
     
     //MARK: - VIEW DID LOAD
@@ -74,8 +74,6 @@ class AddNote: UIViewController, UITextFieldDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-    
-    
     //MARK: - DISABLE BUTTON WHEN THERE IS NO TEXT
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
@@ -88,12 +86,12 @@ class AddNote: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    //MARK: - HIDE KEYBOARD
     //Hide keyboard when return is pressed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    
     
 }
 

@@ -19,6 +19,7 @@ class ProjectStagesCell: UICollectionViewCell {
         super.awakeFromNib()
         //configure outlets
         progressLabel.textAlignment = .right
+        //Rounded corners for ProgressView
         stageProgressView.layer.cornerRadius = 4
         stageProgressView.clipsToBounds = true
         stageProgressView.layer.sublayers![1].cornerRadius = 4

@@ -28,7 +28,6 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
     
     //MARK: - OUTLETS
     @IBOutlet weak var companyName: UILabel!
-    
     @IBOutlet weak var tilesCollectionView: UICollectionView!
     
     //MARK: - VIEW DID LOAD
@@ -40,8 +39,6 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
         configureTilesDataSource()
         setupFetchedResultsController(calculateProjects: false)
         configureTilesLayout()
-        
-        print("--VIEW DID LOAD Number of Favourite projects: \(numberOfStarredProjects)")
     }
     
     //MARK: - VIEW WILL APPEAR
@@ -49,7 +46,6 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
         super.viewWillAppear(animated)
         setupNavBars()
         setupFetchedResultsController(calculateProjects: true)
-        print("--VIEW WILL APPEAR Number of Favourite projects: \(numberOfStarredProjects)")
     }
     
     //MARK: - VIEW DID DISAPPEAR
@@ -163,12 +159,6 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
                 withReuseIdentifier: "TilesCellIdentifier",
                 for: indexPath) as? TilesCell else { fatalError("Cannot create new cell") }
             cell.layer.cornerRadius = 15
-            //cell.layer.shadowRadius = 7
-            //cell.layer.shadowColor = tile.color.cgColor
-            //cell.layer.shadowOpacity = 0.5
-           // cell.layer.shadowOffset = CGSize(width: 0, height: 8)
-            //cell.layer.masksToBounds = false
-            //cell.backgroundColor = tile.color
             cell.tileTitle.text = tile.title
             cell.iconContainer.backgroundColor = tile.color
             cell.iconContainer.layer.cornerRadius = 20
@@ -193,7 +183,6 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
         calculateNumberOfProjects()
         updateProjectsCount()
         setupTilesSnapshot()
-        
     }
     
     //MARK: - COLLECTION VIEW DELEGATE
@@ -210,7 +199,7 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
             cell.contentView.backgroundColor = selectedTile.color
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) {
             cell.contentView.backgroundColor = nil
@@ -220,38 +209,36 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
     //MARK: - CONFIGURE COLLECTION VIEW LAYOUT
     func configureTilesLayout() {
         tilesCollectionView.collectionViewLayout = generateTilesLayout()
-        //photoCollection.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
     
     func generateTilesLayout() -> UICollectionViewLayout {
-      
-      let itemSize = NSCollectionLayoutSize(
-        widthDimension: .fractionalWidth(1.0),
-        heightDimension: .estimated(220))
-      let fullPhotoItem = NSCollectionLayoutItem(layoutSize: itemSize)
-      
+        
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .estimated(220))
+        let fullPhotoItem = NSCollectionLayoutItem(layoutSize: itemSize)
+        
         fullPhotoItem.contentInsets = NSDirectionalEdgeInsets(
             top: 0,
             leading: 7,
             bottom: 0,
             trailing: 3)
         
-      let groupSize = NSCollectionLayoutSize(
-        widthDimension: .fractionalWidth(0.9),
-        heightDimension: .estimated(220))
-      let group = NSCollectionLayoutGroup.horizontal(
-        layoutSize: groupSize,
-        subitem: fullPhotoItem,
-        count: 2
-      )
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(0.9),
+            heightDimension: .estimated(220))
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitem: fullPhotoItem,
+            count: 2
+        )
         //Spacing between items
         let spacing = NSCollectionLayoutSpacing.flexible(0)
         group.interItemSpacing = spacing
         
-      
-      let section = NSCollectionLayoutSection(group: group)
+        let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
-      let layout = UICollectionViewCompositionalLayout(section: section)
-      return layout
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
     }
 }

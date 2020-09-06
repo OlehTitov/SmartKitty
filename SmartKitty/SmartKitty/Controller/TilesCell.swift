@@ -11,10 +11,7 @@ import UIKit
 class TilesCell: UICollectionViewCell {
     
     @IBOutlet weak var tileTitle: UILabel!
-    
     @IBOutlet weak var projectsCount: UILabel!
-    
     @IBOutlet weak var tileImageView: UIImageView!
-    
     @IBOutlet weak var iconContainer: UIView!
 }

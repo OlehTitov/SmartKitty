@@ -33,17 +33,11 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateStyle = .medium
+        df.timeStyle = .short
         return df
     }()
-    let timeFormatter: DateFormatter = {
-        let tf = DateFormatter()
-        tf.dateFormat = "HH:mm"
-        return tf
-    }()
-    
     
     //MARK: - OUTLETS
-    
     @IBOutlet weak var projectTitle: UILabel!
     @IBOutlet weak var projectProgress: UILabel!
     @IBOutlet weak var projectStatus: UILabel!
@@ -56,11 +50,8 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var projectStagesCollectionView: UICollectionView!
     @IBOutlet weak var projectDocumentsCollectionView: UICollectionView!
     @IBOutlet weak var favButton: ToggleButton!
-    
     @IBOutlet weak var copyToClipboardConfirmation: UIView!
-    
     @IBOutlet weak var deadlineContainer: UIView!
-    
     @IBOutlet weak var documentsTitle: UILabel!
     
     //MARK: - VIEW WILL APPEAR
@@ -96,9 +87,9 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         configureFavButton()
         //Get client info
         getClientInformation()
+        //Misc setup
         copyToClipboardConfirmation.isHidden = true
         deadlineContainer.layer.cornerRadius = 20
-        
     }
     
     //MARK: - ADD A NOTE
@@ -107,9 +98,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         addNoteVC.selectedProject = selectedProject
         addNoteVC.modalPresentationStyle = .overCurrentContext
         addNoteVC.modalTransitionStyle = .coverVertical
-        
         present(addNoteVC, animated: true, completion: nil)
-        
     }
     
     //MARK: - SHARE PROJECT LINK
@@ -148,9 +137,8 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     func getStringFromDeadlineDate() -> String {
         var fullDeadlineString = "No deadline specified"
         if let deadline = selectedProject.deadlineAsDate {
-           let deadlineTimeString = timeFormatter.string(from: deadline)
            let deadlineDateString = dateFormatter.string(from: deadline)
-           fullDeadlineString = "📦 \(deadlineTimeString), \(deadlineDateString)"
+           fullDeadlineString = "📦 \(deadlineDateString)"
         }
          return fullDeadlineString
     }
@@ -220,14 +208,6 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     
     //MARK: - SETUP DOCUMENT FRC
     fileprivate func setupDocumentFRC() {
-        let projectFetchRequest: NSFetchRequest<SkProject> = SkProject.fetchRequest()
-        projectFetchRequest.sortDescriptors = []
-        let projectPredicate = NSPredicate(format: "id == %@", selectedProject.id!)
-        projectFetchRequest.predicate = projectPredicate
-        projectFRC = NSFetchedResultsController(fetchRequest: projectFetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        projectFRC.delegate = self
-        
-        
         let documentFetchRequest: NSFetchRequest<SkDocument> = SkDocument.fetchRequest()
         documentFetchRequest.sortDescriptors = []
         let docPredicate = NSPredicate(format: "project == %@", selectedProject)
@@ -237,8 +217,6 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         
         do {
             try documentFRC.performFetch()
-            try projectFRC.performFetch()
-            
         } catch {
             fatalError("The fetch for project documents could not be performed: \(error.localizedDescription)")
         }

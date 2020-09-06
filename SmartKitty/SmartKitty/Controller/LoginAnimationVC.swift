@@ -13,7 +13,6 @@ import CoreData
 
 class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
     
-    
     //MARK: - PROPERTIES
     var fetchedResultsController: NSFetchedResultsController<SkProject>!
     var userType: UserType!
@@ -21,9 +20,7 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
     
     //MARK: - OUTLETS
     @IBOutlet weak var catImage: UIImageView!
-    
     @IBOutlet weak var networkActivityIndicator: UIActivityIndicatorView!
-    
     @IBOutlet weak var loadingLabel: UILabel!
     
     //MARK: - VIEW DID LOAD
@@ -49,14 +46,12 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
     }
     
     //MARK: - ACTIVITY INDICATOR
-    
     func hideActivityIndicatorElements(hide: Bool) {
         loadingLabel.isHidden = hide
         networkActivityIndicator.isHidden = hide
         if !hide {
             networkActivityIndicator.startAnimating()
         }
-        
     }
     
     //MARK: - ANIMATE TRANSITION TO NEXT VC
@@ -74,14 +69,11 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
             tabBarVC.modalPresentationStyle = .fullScreen
             tabBarVC.modalTransitionStyle = .crossDissolve
             self.present(tabBarVC, animated: true, completion: nil)
-            //self.navigationController?.pushViewController(tabBarVC, animated: true)
         })
     }
     
-    
     //MARK: - HANDLE GET PROJECTS LIST FOR RETURNING USERS
     func handleReturningUsersProjectsList(projects: [Project], error: Error?) {
-        
         //Check what type of user
         if UserDefaults.standard.bool(forKey: "SomeProjectsExist") {
             userType = .returning
@@ -113,7 +105,6 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
                     createSkProject(prj: project, isFav: nil, note: nil)
                 } else {
                 //If the project exists, delete it and then create new one to reflect all possible changes in the project
-                    //deleteExisting(project: project)
                     let result = deleteExisting(project: project)
                     createSkProject(prj: project, isFav: result.isFav, note: result.note)
                 }
@@ -124,6 +115,7 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
         }
     }
     
+    //Alert for returning users
     func showAlertAndProceed() {
         let alert = Alerts.errorAlert(
                 title: AlertTitles.notConnected.rawValue,
@@ -135,6 +127,7 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
         present(alert, animated: true)
     }
     
+    //Alert for new users
     func showAlertAndBackToLogin() {
         let alert = Alerts.errorAlert(
                 title: AlertTitles.notConnected.rawValue,
@@ -149,12 +142,6 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
         present(alert, animated: true)
     }
     
-    func showAlert(title: AlertTitles, message: AlertMessages) {
-        let alert = Alerts.errorAlert(title: title.rawValue, message: message.rawValue)
-        present(alert, animated: true)
-    }
-    
-    
     //MARK: - CHECK IF PROJECT IS EXISTING
     func isExisting(project: Project) -> Bool {
         var result = false
@@ -167,10 +154,10 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
         } else {
             result = false
         }
-        
         return result
     }
     
+    //Delete existing project, but pass some of its properties to include in newly created project
     func deleteExisting(project: Project) -> (isFav: Bool, note: String?) {
         var isFavourite = false
         var note = ""

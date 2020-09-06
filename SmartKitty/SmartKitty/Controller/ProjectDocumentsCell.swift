@@ -14,5 +14,4 @@ class ProjectDocumentsCell: UICollectionViewCell {
     @IBOutlet weak var documentTitle: UILabel!
     @IBOutlet weak var documentWordCount: UILabel!
     
-    
 }

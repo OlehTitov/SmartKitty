@@ -21,8 +21,6 @@
 		7C48DA0924F7D61A0020D447 /* AddNote+ExtensionKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0824F7D61A0020D447 /* AddNote+ExtensionKeyboard.swift */; };
 		7C48DA0B24FCFF050020D447 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0A24FCFF040020D447 /* WelcomeVC.swift */; };
 		7C48DA0D24FCFFA10020D447 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0C24FCFFA10020D447 /* SecondaryButton.swift */; };
-		7C5756EB24ED273800346B1E /* MultiProgressView in Frameworks */ = {isa = PBXBuildFile; productRef = 7C5756EA24ED273800346B1E /* MultiProgressView */; };
-		7C5756ED24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */; };
 		7C5756EF24ED558F00346B1E /* projectStages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756EE24ED558F00346B1E /* projectStages.swift */; };
 		7C5756F124EE9A6800346B1E /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756F024EE9A6800346B1E /* TabBarVC.swift */; };
 		7C5756F424EED38300346B1E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756F324EED38300346B1E /* Colors.swift */; };
@@ -52,13 +50,9 @@
 		7CD6837A24DD34BB0091ED52 /* HomeHeaderTileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837924DD34BB0091ED52 /* HomeHeaderTileModel.swift */; };
 		7CD6837C24DD41230091ED52 /* TilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6837B24DD41230091ED52 /* TilesCell.swift */; };
 		7CF4C4F824E3AD0D00F9FC02 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C4F724E3AD0D00F9FC02 /* ToggleButton.swift */; };
-		7CF4C4FA24E3F0C400F9FC02 /* ProjectDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C4F924E3F0C400F9FC02 /* ProjectDetailsVC.swift */; };
 		7CF4C4FD24E43ACD00F9FC02 /* projectStatuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C4FC24E43ACD00F9FC02 /* projectStatuses.swift */; };
 		7CF4C50024E4405800F9FC02 /* ProjectStatusesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C4FF24E4405800F9FC02 /* ProjectStatusesData.swift */; };
-		7CF4C50224E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50124E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift */; };
 		7CF4C50524E7F60200F9FC02 /* ProjectDetailsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50424E7F60200F9FC02 /* ProjectDetailsRow.swift */; };
-		7CF4C50724EA7FAB00F9FC02 /* ActionButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50624EA7FAB00F9FC02 /* ActionButtonCell.swift */; };
-		7CF4C50924EA822B00F9FC02 /* ProjectDetailsVC+ExtensionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50824EA822B00F9FC02 /* ProjectDetailsVC+ExtensionCollectionView.swift */; };
 		7CF4C50C24EA841000F9FC02 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50B24EA841000F9FC02 /* ActionButton.swift */; };
 		7CF4C50E24EB9BCA00F9FC02 /* ProjectDetailsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50D24EB9BCA00F9FC02 /* ProjectDetailsSections.swift */; };
 		7CF4C51024EBCD4E00F9FC02 /* ProjectDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF4C50F24EBCD4E00F9FC02 /* ProjectDetailsDataSource.swift */; };
@@ -79,7 +73,6 @@
 		7C48DA0824F7D61A0020D447 /* AddNote+ExtensionKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddNote+ExtensionKeyboard.swift"; sourceTree = "<group>"; };
 		7C48DA0A24FCFF040020D447 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		7C48DA0C24FCFFA10020D447 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
-		7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDetailsVC+ExtensionMultiProgressView.swift"; sourceTree = "<group>"; };
 		7C5756EE24ED558F00346B1E /* projectStages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projectStages.swift; sourceTree = "<group>"; };
 		7C5756F024EE9A6800346B1E /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		7C5756F324EED38300346B1E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -111,13 +104,9 @@
 		7CD6837924DD34BB0091ED52 /* HomeHeaderTileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderTileModel.swift; sourceTree = "<group>"; };
 		7CD6837B24DD41230091ED52 /* TilesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesCell.swift; sourceTree = "<group>"; };
 		7CF4C4F724E3AD0D00F9FC02 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
-		7CF4C4F924E3F0C400F9FC02 /* ProjectDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsVC.swift; sourceTree = "<group>"; };
 		7CF4C4FC24E43ACD00F9FC02 /* projectStatuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projectStatuses.swift; sourceTree = "<group>"; };
 		7CF4C4FF24E4405800F9FC02 /* ProjectStatusesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectStatusesData.swift; sourceTree = "<group>"; };
-		7CF4C50124E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDetailsVC+ExtensionScrollView.swift"; sourceTree = "<group>"; };
 		7CF4C50424E7F60200F9FC02 /* ProjectDetailsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsRow.swift; sourceTree = "<group>"; };
-		7CF4C50624EA7FAB00F9FC02 /* ActionButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonCell.swift; sourceTree = "<group>"; };
-		7CF4C50824EA822B00F9FC02 /* ProjectDetailsVC+ExtensionCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDetailsVC+ExtensionCollectionView.swift"; sourceTree = "<group>"; };
 		7CF4C50B24EA841000F9FC02 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		7CF4C50D24EB9BCA00F9FC02 /* ProjectDetailsSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsSections.swift; sourceTree = "<group>"; };
 		7CF4C50F24EBCD4E00F9FC02 /* ProjectDetailsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsDataSource.swift; sourceTree = "<group>"; };
@@ -128,7 +117,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C5756EB24ED273800346B1E /* MultiProgressView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,11 +205,6 @@
 				7CD6836F24DAFB670091ED52 /* AllProjectsVC.swift */,
 				7CD6837424DC3B710091ED52 /* HomeVC.swift */,
 				7CD6837B24DD41230091ED52 /* TilesCell.swift */,
-				7CF4C4F924E3F0C400F9FC02 /* ProjectDetailsVC.swift */,
-				7CF4C50124E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift */,
-				7CF4C50624EA7FAB00F9FC02 /* ActionButtonCell.swift */,
-				7CF4C50824EA822B00F9FC02 /* ProjectDetailsVC+ExtensionCollectionView.swift */,
-				7C5756EC24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift */,
 				7C5756F024EE9A6800346B1E /* TabBarVC.swift */,
 				7C5756FB24EF8B1800346B1E /* LoginAnimationVC.swift */,
 				7C48D9F324F3BAE40020D447 /* ProjectInfoVC.swift */,
@@ -382,7 +365,6 @@
 			);
 			name = SmartKitty;
 			packageProductDependencies = (
-				7C5756EA24ED273800346B1E /* MultiProgressView */,
 			);
 			productName = SmartKitty;
 			productReference = 7CD6834224D8532E0091ED52 /* SmartKitty.app */;
@@ -453,7 +435,6 @@
 				7C48D9F424F3BAE40020D447 /* ProjectInfoVC.swift in Sources */,
 				7CF4C51024EBCD4E00F9FC02 /* ProjectDetailsDataSource.swift in Sources */,
 				7CD6837024DAFB670091ED52 /* AllProjectsVC.swift in Sources */,
-				7CF4C50724EA7FAB00F9FC02 /* ActionButtonCell.swift in Sources */,
 				7CD6836824DA63860091ED52 /* ProjectsListResponse.swift in Sources */,
 				7C6B29AE2500A40B00284E4B /* ConfirmationButton.swift in Sources */,
 				7CD6834A24D8532E0091ED52 /* LoginVC.swift in Sources */,
@@ -474,15 +455,11 @@
 				7C48D9F624F3CB4A0020D447 /* ProjectInfoVC+ExtensionCollectionView.swift in Sources */,
 				7C48DA0124F523280020D447 /* AddNote.swift in Sources */,
 				7C48DA0924F7D61A0020D447 /* AddNote+ExtensionKeyboard.swift in Sources */,
-				7CF4C50924EA822B00F9FC02 /* ProjectDetailsVC+ExtensionCollectionView.swift in Sources */,
-				7CF4C50224E7E47500F9FC02 /* ProjectDetailsVC+ExtensionScrollView.swift in Sources */,
 				7CD6837524DC3B710091ED52 /* HomeVC.swift in Sources */,
 				7CF4C4F824E3AD0D00F9FC02 /* ToggleButton.swift in Sources */,
 				7C48D9FA24F3FB010020D447 /* ProjectDocumentsCell.swift in Sources */,
 				7CF4C50E24EB9BCA00F9FC02 /* ProjectDetailsSections.swift in Sources */,
-				7CF4C4FA24E3F0C400F9FC02 /* ProjectDetailsVC.swift in Sources */,
 				7C5756F124EE9A6800346B1E /* TabBarVC.swift in Sources */,
-				7C5756ED24ED2C4400346B1E /* ProjectDetailsVC+ExtensionMultiProgressView.swift in Sources */,
 				7C6B29A824FF595800284E4B /* InstructionsVC.swift in Sources */,
 				7C48D9F824F3CBBF0020D447 /* ProjectStagesCell.swift in Sources */,
 				7CD6836024D96A810091ED52 /* SCClient.swift in Sources */,
@@ -703,14 +680,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		7C5756EA24ED273800346B1E /* MultiProgressView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7C5756E924ED273800346B1E /* XCRemoteSwiftPackageReference "MultiProgressView" */;
-			productName = MultiProgressView;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		7CD6836C24DAC6490091ED52 /* SmartKitty.xcdatamodeld */ = {

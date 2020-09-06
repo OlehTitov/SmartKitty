@@ -12,7 +12,6 @@ import UIKit
 extension ProjectInfoVC: UIGestureRecognizerDelegate {
     
     //MARK: - TAP AND HOLD TO COPY TEXT FROM LABEL INTO CLIPBOARD
-    
     func configureGestureRecognizer() {
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleTap))
         gestureRecognizer.delegate = self

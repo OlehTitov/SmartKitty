@@ -25,6 +25,7 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateStyle = .medium
+        df.timeStyle = .short
         return df
     }()
     
@@ -34,9 +35,7 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.navigationBar.tintColor = .mediumSlateBlue
-        self.navigationController?.navigationBar.standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.mediumSlateBlue]
+        setupNavbar()
         setupFetchedResultsController()
         setupTableView()
         setupSearchController()
@@ -55,6 +54,13 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
         allPredicates = []
     }
     
+    //MARK: - SETUP VIEW
+    func setupNavbar() {
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.navigationBar.tintColor = .mediumSlateBlue
+        self.navigationController?.navigationBar.standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.mediumSlateBlue]
+    }
+    
     // MARK: - TABLE VIEW SETUP
     private func setupTableView() {
         dataSource = UITableViewDiffableDataSource<Int, SkProject>(tableView: allProjectsTableView) { (tableView, indexPath, project) -> UITableViewCell? in
@@ -68,26 +74,11 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
             let name = String(project.name ?? "")
             cell.textLabel?.text = name
             cell.textLabel?.lineBreakMode = .byTruncatingMiddle
-            //Project deadline
+            //Project deadline with calendar icon as attributed string
             let deadlineAsDate = project.deadlineAsDate
             if deadlineAsDate != nil {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateStyle = .full
-                let timeFormatter = DateFormatter()
-                timeFormatter.dateFormat = "HH:mm"
-                let timeSting = timeFormatter.string(from: deadlineAsDate!)
-                let dateString = dateFormatter.string(from: deadlineAsDate!)
-                let imageAttachment = NSTextAttachment()
-                let lightConfig = UIImage.SymbolConfiguration(weight: .thin)
-                imageAttachment.image = UIImage(systemName: "calendar", withConfiguration: lightConfig)?.withTintColor(.secondaryLabel)
-                let imageString = NSAttributedString(attachment: imageAttachment)
-                let fullString = NSMutableAttributedString(string: "")
-                fullString.append(imageString)
-                fullString.append(NSAttributedString(string: " \(timeSting) on \(dateString)"))
-                let range = NSMakeRange(0, fullString.length)
-                fullString.addAttribute(.foregroundColor, value: UIColor.secondaryLabel, range: range)
-                //cell.detailTextLabel?.text = "\(timeSting), \(dateString)"
-                cell.detailTextLabel?.attributedText = fullString
+                let attributedString = self.createAttributedString(date: deadlineAsDate!, icon: "calendar")
+                cell.detailTextLabel?.attributedText = attributedString
             } else {
                 cell.detailTextLabel?.text = "No deadline specified"
             }
@@ -101,6 +92,20 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
         snapshot.appendSections([0])
         snapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
         dataSource?.apply(self.snapshot, animatingDifferences: false)
+    }
+    
+    private func createAttributedString(date: Date, icon: String) -> NSAttributedString {
+        let dateString = self.dateFormatter.string(from: date)
+        let imageAttachment = NSTextAttachment()
+        let lightConfig = UIImage.SymbolConfiguration(weight: .thin)
+        imageAttachment.image = UIImage(systemName: icon, withConfiguration: lightConfig)?.withTintColor(.secondaryLabel)
+        let imageString = NSAttributedString(attachment: imageAttachment)
+        let fullString = NSMutableAttributedString(string: "")
+        fullString.append(imageString)
+        fullString.append(NSAttributedString(string: " \(dateString)"))
+        let range = NSMakeRange(0, fullString.length)
+        fullString.addAttribute(.foregroundColor, value: UIColor.secondaryLabel, range: range)
+        return fullString
     }
     
     //MARK: - SETUP FRC
@@ -145,7 +150,6 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
         let projectInfoVC = self.storyboard?.instantiateViewController(identifier: "ProjectInfoVC") as! ProjectInfoVC
         projectInfoVC.selectedProject = selectedProject
         self.navigationController?.pushViewController(projectInfoVC, animated: true)
-        
     }
     
     //MARK: - SEARCH

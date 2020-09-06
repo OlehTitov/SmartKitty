@@ -23,6 +23,15 @@ enum ProjectStatuses: String {
         case .cancelled: return UIImage(systemName: "xmark.circle")!
         }
     }
+    
+    var readableName: String {
+        switch self {
+        case .created: return "Created"
+        case .inProgress: return "In progress"
+        case .completed: return "Completed"
+        case .cancelled: return "Cancelled"
+        }
+    }
 }
 
 struct ProjectStatus: Equatable {
