@@ -53,9 +53,13 @@ There are 5 entities in the data model. SkProject is the main object and others 
 ![Core Data Entities](https://github.com/OlehTitov/SmartKitty/blob/master/images/coreDataDiagram.png)
 
 ### 🖼 Collection Views
-
+All collection views are built with modern approach using  *UICollectionViewDiffableDataSource* and *NSDiffableDataSourceSnapshot*. This allows to avoid manual coordination of updates and makes it possible to apply more complex layout.
 ### 🛣 Roadmap
 
+Please see the list of upcoming updates in the [Issues] (https://github.com/OlehTitov/SmartKitty/issues) section.
+
+## Thank you for your interest!
+This app is made within my **Udacity iOS Developer Nanodegree** learning path. If you have any ideas or suggestions you can open an issue or simply contact me in [Twitter] (https://twitter.com/olegTitov81)  😊
 
 
 
