@@ -5,11 +5,13 @@
 <img src="https://img.shields.io/badge/platform-iOS-000000.svg?style=flat" />
 </p>
 
-SmartKitty is a free third-party app for [SmartCat](https://smartcat.ai) translation platform. It’s built for translation project managers to help them search and navigate the projects, get project details, share project link with colleagues and never miss the deadline. 
+SmartKitty is a free third-party app for [Smartcat](https://smartcat.ai) translation platform. It’s built for translation project managers to help them search and navigate the projects, get project details, share project link with colleagues and never miss the deadline. 
+
+Smartcat is a cloud-based translation platform that connects businesses, translators, and translation agencies in a single "Connected Translation" delivery loop.
 
 ## Usage
 
-To login and use the app users are required to have a LSP account at [SmartCat](https://smartcat.ai). Company account ID is used as a username and API key is used as a password. Users can generate the API key in their Smartcat account under Settings -> API.
+To login and use the app users are required to have a LSP account at [Smartcat](https://smartcat.ai). Company account ID is used as a username and API key is used as a password. Users can generate the API key in their Smartcat account under Settings -> API.
 
 ## 📱 Features
 
@@ -46,7 +48,11 @@ All possible request errors are handled using *HTTPStatusCodes* enum holding all
 
 Smartcat API endpoints are constructed with the help of *URLComponents* struct.
 
+All Smartcat API methods are listed [here](https://smartcat.ai/api/methods/).
+
 ### 🗄 Data Persistence
+Simple persistence (*User Defaults*) is used to handle launching logic: if the user is a returning or a new one, if there is an internet connection or not etc. For new users there is a welcome screen and login screen. Returning users go directly to their projects.
+
 Users data is saved on the device using *Core Data* framework. *Core Data* stack is built using singleton pattern and encapsulated in a separate class. 
 
 There are 5 entities in the data model. SkProject is the main object and others objects are complementing it.
