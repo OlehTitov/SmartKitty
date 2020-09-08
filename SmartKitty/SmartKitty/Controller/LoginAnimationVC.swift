@@ -198,6 +198,7 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
         RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         if let deadline = prj.deadline {
+            print(deadline)
             let date = RFC3339DateFormatter.date(from: deadline)!
             newProject.deadlineAsDate = date
             //Computed property for isToday

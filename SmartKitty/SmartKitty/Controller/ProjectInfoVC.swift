@@ -57,6 +57,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     //MARK: - VIEW WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupProjectFRC()
         setupStageFRC()
         setupDocumentFRC()
     }
@@ -66,12 +67,14 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         super.viewDidDisappear(animated)
         stageFRC = nil
         documentFRC = nil
+        projectFRC = nil
     }
     
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
         //Perform fetch requests
+        setupProjectFRC()
         setupStageFRC()
         setupDocumentFRC()
         //Setup general information
@@ -162,7 +165,9 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     //Display general project details
     func setupGeneralProjectDetails() {
         projectTitle.text = selectedProject.name
-        projectStatus.text = selectedProject.status
+        let status = ProjectStatuses(rawValue: selectedProject.status!)
+        projectStatus.text = status?.readableName
+        //projectStatus.text = selectedProject.status
         projectProgress.text = getTotalProgressString()
         projectDeadline.text = getStringFromDeadlineDate()
         let source = selectedProject.sourceLanguage ?? ""
@@ -205,6 +210,21 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
                fatalError("The fetch for project stages could not be performed: \(error.localizedDescription)")
            }
        }
+    
+    //MARK: - SETUP PROJECT FRC
+    fileprivate func setupProjectFRC() {
+        let projectFetchRequest: NSFetchRequest<SkProject> = SkProject.fetchRequest()
+        projectFetchRequest.sortDescriptors = []
+        let projectPredicate = NSPredicate(format: "id == %@", selectedProject.id!)
+        projectFetchRequest.predicate = projectPredicate
+        projectFRC = NSFetchedResultsController(fetchRequest: projectFetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        projectFRC.delegate = self
+        do {
+            try projectFRC.performFetch()
+        } catch {
+            fatalError("The fetch for project could not be performed: \(error.localizedDescription)")
+        }
+    }
     
     //MARK: - SETUP DOCUMENT FRC
     fileprivate func setupDocumentFRC() {

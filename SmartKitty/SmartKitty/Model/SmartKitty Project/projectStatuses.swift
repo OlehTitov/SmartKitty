@@ -32,6 +32,15 @@ enum ProjectStatuses: String {
         case .cancelled: return "Cancelled"
         }
     }
+    
+    var color: UIColor {
+        switch self {
+        case .created: return UIColor.gray
+        case .inProgress: return UIColor.systemBlue
+        case .completed: return UIColor.green
+        case .cancelled: return UIColor.red
+        }
+    }
 }
 
 struct ProjectStatus: Equatable {

@@ -69,6 +69,7 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
             if let status = project.status {
                 let projectStatus = ProjectStatuses(rawValue: status)
                 cell.imageView?.image = projectStatus?.icon
+                cell.imageView?.tintColor = projectStatus?.color
             }
             //Project title
             let name = String(project.name ?? "")
