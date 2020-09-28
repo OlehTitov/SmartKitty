@@ -16,7 +16,7 @@ class TextField: UITextField {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        layer.cornerRadius = 15
+        layer.cornerRadius = 10
         layer.masksToBounds = true
         tintColor = UIColor.black
         backgroundColor = UIColor.whisper

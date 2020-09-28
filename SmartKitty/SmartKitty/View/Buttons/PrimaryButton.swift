@@ -13,13 +13,13 @@ class PrimaryButton: UIButton {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        tintColor = UIColor.black
-        layer.cornerRadius = 15
+        tintColor = UIColor.white
+        layer.cornerRadius = 10
         //layer.shadowColor = UIColor.primary.cgColor
         //layer.shadowOpacity = 0.5
         //layer.shadowOffset = CGSize(width: 0, height: 5)
         //layer.shadowRadius = 15
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.mediumSlateBlue
         
     }
     

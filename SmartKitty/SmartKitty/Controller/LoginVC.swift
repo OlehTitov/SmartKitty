@@ -30,7 +30,7 @@ class LoginVC: UIViewController {
         serverPickerView.tintColor = UIColor.darkPrimary
         setupDelegates()
         autofillCredentials()
-        configureImage()
+        
     }
     
     //MARK: - VIEW WILL APPEAR

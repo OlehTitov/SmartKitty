@@ -17,7 +17,7 @@ class InstructionVC: UIViewController {
     //MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
-        setGradientBackground()
+        
     }
     
     //MARK: - SETUP VIEW
