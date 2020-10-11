@@ -14,12 +14,12 @@ class BlackButton: UIButton {
     override func awakeFromNib() {
         super.awakeFromNib()
         tintColor = UIColor.white
-        layer.cornerRadius = 15
+        layer.cornerRadius = 10
         //layer.shadowColor = UIColor.primary.cgColor
         //layer.shadowOpacity = 0.5
         //layer.shadowOffset = CGSize(width: 0, height: 5)
         //layer.shadowRadius = 15
-        backgroundColor = UIColor.label
+        layer.borderColor = UIColor.systemGray3.cgColor
         
     }
     

@@ -57,8 +57,8 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
     //MARK: - SETUP VIEW
     func setupNavbar() {
         self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.navigationBar.tintColor = .mediumSlateBlue
-        self.navigationController?.navigationBar.standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.mediumSlateBlue]
+        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]
     }
     
     // MARK: - TABLE VIEW SETUP
@@ -66,11 +66,13 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
         dataSource = UITableViewDiffableDataSource<Int, SkProject>(tableView: allProjectsTableView) { (tableView, indexPath, project) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "projectsCell", for: indexPath)
             //Project status icon
+            /*
             if let status = project.status {
                 let projectStatus = ProjectStatuses(rawValue: status)
                 cell.imageView?.image = projectStatus?.icon
                 cell.imageView?.tintColor = projectStatus?.color
             }
+            */
             //Project title
             let name = String(project.name ?? "")
             cell.textLabel?.text = name
@@ -78,8 +80,12 @@ class AllProjectsVC: UITableViewController, NSFetchedResultsControllerDelegate, 
             //Project deadline with calendar icon as attributed string
             let deadlineAsDate = project.deadlineAsDate
             if deadlineAsDate != nil {
+                /*
                 let attributedString = self.createAttributedString(date: deadlineAsDate!, icon: "calendar")
                 cell.detailTextLabel?.attributedText = attributedString
+                 */
+                let dateString = self.dateFormatter.string(from: deadlineAsDate!)
+                cell.detailTextLabel?.text = "Due on \(dateString)"
             } else {
                 cell.detailTextLabel?.text = "No deadline specified"
             }

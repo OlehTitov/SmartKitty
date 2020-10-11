@@ -63,7 +63,7 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
             initialSpringVelocity: 0,
             options: .curveEaseIn,
             animations: {
-            self.catImage.transform = CGAffineTransform(scaleX: 20, y: 20)
+            self.catImage.transform = CGAffineTransform(scaleX: 150, y: 150)
         }, completion: { (true) in
             let tabBarVC = self.storyboard?.instantiateViewController(identifier: "TabBarVC") as! TabBarVC
             tabBarVC.modalPresentationStyle = .fullScreen

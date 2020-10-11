@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 import CoreData
 
-class AddNote: UIViewController, UITextFieldDelegate {
+class AddNote: UIViewController, UITextFieldDelegate, NSFetchedResultsControllerDelegate {
     
     //MARK: - PROPERTIES
     var selectedProject: SkProject!
+    var projectFRC: NSFetchedResultsController<SkProject>!
     let dismissKeyboard = DismissKeyboardDelegate()
     
     //MARK: - OUTLETS
@@ -66,6 +67,7 @@ class AddNote: UIViewController, UITextFieldDelegate {
         
         //Dismiss the popup controller
         dismiss(animated: true, completion: nil)
+        //setupProjectFRC()
     }
     
     //MARK: - CANCEL BUTTON TAPPED
@@ -91,6 +93,21 @@ class AddNote: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    //MARK: - SETUP PROJECT FRC
+    fileprivate func setupProjectFRC() {
+        let projectFetchRequest: NSFetchRequest<SkProject> = SkProject.fetchRequest()
+        projectFetchRequest.sortDescriptors = []
+        let projectPredicate = NSPredicate(format: "id == %@", selectedProject.id!)
+        projectFetchRequest.predicate = projectPredicate
+        projectFRC = NSFetchedResultsController(fetchRequest: projectFetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        projectFRC.delegate = self
+        do {
+            try projectFRC.performFetch()
+        } catch {
+            fatalError("The fetch for project could not be performed: \(error.localizedDescription)")
+        }
     }
     
 }

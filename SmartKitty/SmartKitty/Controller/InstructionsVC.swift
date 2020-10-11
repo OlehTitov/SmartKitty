@@ -42,10 +42,5 @@ class InstructionVC: UIViewController {
         present(loginVC, animated: true, completion: nil)
     }
     
-    //MARK: - CREATE ACCOUNT TAPPED
-    @IBAction func createAccountTapped(_ sender: Any) {
-        let url = URL(string: signupURL)
-        UIApplication.shared.open(url!, options: [ : ], completionHandler: nil)
-    }
     
 }

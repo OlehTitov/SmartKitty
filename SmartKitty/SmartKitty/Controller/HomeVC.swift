@@ -57,9 +57,9 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
     
     //MARK: - SETUP NAVIGATION BARS
     func setupNavBars() {
-        self.tabBarController?.tabBar.tintColor = .primary
-        self.tabBarController?.tabBar.isTranslucent = false
-        self.tabBarController?.tabBar.backgroundColor = .white
+        //self.tabBarController?.tabBar.tintColor = .mediumSlateBlue
+        //self.tabBarController?.tabBar.isTranslucent = false
+        //self.tabBarController?.tabBar.backgroundColor = .mediumSlateBlue
         self.navigationController?.isNavigationBarHidden = true
     }
     
@@ -158,7 +158,9 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "TilesCellIdentifier",
                 for: indexPath) as? TilesCell else { fatalError("Cannot create new cell") }
-            cell.layer.cornerRadius = 15
+            cell.layer.cornerRadius = 10
+            cell.layer.borderWidth = 1
+            cell.layer.borderColor = UIColor.systemGray3.cgColor
             cell.tileTitle.text = tile.title
             cell.iconContainer.backgroundColor = tile.color
             cell.iconContainer.layer.cornerRadius = 20
@@ -238,6 +240,7 @@ class HomeVC: UIViewController, NSFetchedResultsControllerDelegate, UICollection
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }

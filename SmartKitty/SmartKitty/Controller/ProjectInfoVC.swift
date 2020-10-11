@@ -41,17 +41,21 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var projectTitle: UILabel!
     @IBOutlet weak var projectProgress: UILabel!
     @IBOutlet weak var projectStatus: UILabel!
-    @IBOutlet weak var projectDeadline: UILabel!
-    @IBOutlet weak var sourceLang: UILabel!
-    @IBOutlet weak var targetLang: UILabel!
-    @IBOutlet weak var createdBy: UILabel!
-    @IBOutlet weak var client: UILabel!
-    @IBOutlet weak var projectNotes: UILabel!
+    @IBOutlet weak var deadline: UILabel!
+    @IBOutlet weak var source: UILabel!
+    @IBOutlet weak var target: UILabel!
+    @IBOutlet weak var projectClient: UILabel!
+    @IBOutlet weak var totalWordsCount: UILabel!
+    @IBOutlet weak var notesContainer: Outlined!
+    @IBOutlet weak var notes: UILabel!
+    
+    @IBOutlet weak var manager: UILabel!
+    
     @IBOutlet weak var projectStagesCollectionView: UICollectionView!
     @IBOutlet weak var projectDocumentsCollectionView: UICollectionView!
     @IBOutlet weak var favButton: ToggleButton!
     @IBOutlet weak var copyToClipboardConfirmation: UIView!
-    @IBOutlet weak var deadlineContainer: UIView!
+    
     @IBOutlet weak var documentsTitle: UILabel!
     
     //MARK: - VIEW WILL APPEAR
@@ -60,6 +64,14 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         setupProjectFRC()
         setupStageFRC()
         setupDocumentFRC()
+        displayNotesContainer()
+    }
+    
+    //MARK: - VIEW DID APPEAR
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupProjectFRC()
+        displayNotesContainer()
     }
     
     //MARK: - VIEW DID DISAPPEAR
@@ -92,7 +104,8 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         getClientInformation()
         //Misc setup
         copyToClipboardConfirmation.isHidden = true
-        deadlineContainer.layer.cornerRadius = 20
+        displayNotesContainer()
+        addAssignButton()
     }
     
     //MARK: - ADD A NOTE
@@ -101,7 +114,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         addNoteVC.selectedProject = selectedProject
         addNoteVC.modalPresentationStyle = .overCurrentContext
         addNoteVC.modalTransitionStyle = .coverVertical
-        present(addNoteVC, animated: true, completion: nil)
+        present(addNoteVC, animated: true, completion: setupProjectFRC)
     }
     
     //MARK: - SHARE PROJECT LINK
@@ -135,15 +148,39 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         }
     }
     
+    //MARK: - ADD ASSIGN BUTTON
+    func addAssignButton() {
+        let assignButton = UIBarButtonItem(title: "Assign", style: .plain, target: self, action: #selector(assignTapped))
+        self.navigationItem.rightBarButtonItem = assignButton
+    }
+    
+    @objc func assignTapped() {
+        print("assign button tapped")
+    }
+    
     //MARK: - SETUP PROJECT DETAILS
     //Get deadline
     func getStringFromDeadlineDate() -> String {
-        var fullDeadlineString = "No deadline specified"
-        if let deadline = selectedProject.deadlineAsDate {
-           let deadlineDateString = dateFormatter.string(from: deadline)
-           fullDeadlineString = "📦 \(deadlineDateString)"
+        guard let str = selectedProject.deadlineAsDate else {
+            return "No deadline specified"
         }
-         return fullDeadlineString
+        let dateAsString = dateFormatter.string(from: str)
+        return dateAsString
+    }
+    
+    //Display notes container
+    func displayNotesContainer() {
+        let text = notes.text
+        let trimmedText = text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        if trimmedText == "" {
+            notesContainer.isHidden = true
+        } else {
+            notesContainer.isHidden = false
+        }
+    }
+    
+    func displayNotesContainerAfterAddingANote() {
+        
     }
     
     //Get total progress
@@ -162,21 +199,38 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         return progressString
     }
     
+    //Get total words count
+    func getTotalWordsCount() -> Int {
+        guard let documents = documentFRC.fetchedObjects else {
+            return 0
+        }
+        var wordsCountArray = [0]
+        for doc in documents {
+            if let wordsCount = doc.wordsCount {
+                let wordsCountInt = Int(wordsCount)
+                wordsCountArray.append(wordsCountInt!)
+            }
+        }
+        let total = wordsCountArray.reduce(0,+)
+        return total
+    }
+    
     //Display general project details
     func setupGeneralProjectDetails() {
         projectTitle.text = selectedProject.name
         let status = ProjectStatuses(rawValue: selectedProject.status!)
-        projectStatus.text = status?.readableName
-        //projectStatus.text = selectedProject.status
+        projectStatus.text = status?.readableName.uppercased()
+        let wc = getTotalWordsCount()
+        totalWordsCount.text = String(wc)
         projectProgress.text = getTotalProgressString()
-        projectDeadline.text = getStringFromDeadlineDate()
-        let source = selectedProject.sourceLanguage ?? ""
-        sourceLang.text = "Source: \(source)"
-        let target = selectedProject.targetLanguages?.joined(separator: ", ") ?? ""
-        targetLang.text = "Target: \(target)"
+        deadline.text = getStringFromDeadlineDate()
+        source.text = selectedProject.sourceLanguage ?? "No language specified"
+        target.text = selectedProject.targetLanguages?.joined(separator: ", ") ?? "No language specified"
         let author = selectedProject.createdByUserEmail ?? ""
-        createdBy.text = "Created by: \(author)"
-        projectNotes.text = "Notes: \(selectedProject.desc ?? "")"
+        manager.text = author
+        let projectDesc = selectedProject.desc ?? ""
+        let trimmedDesc = projectDesc.trimmingCharacters(in: .whitespacesAndNewlines)
+        notes.text = trimmedDesc
         documentsTitle.text = "Documents: \(documentFRC.fetchedObjects?.count ?? 0)"
     }
     
@@ -192,7 +246,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         guard let client = client?.name else {
             return
         }
-        self.client.text = "Client: \(client)"
+        self.projectClient.text = client
     }
     
     //MARK: - SETUP STAGE FRC
@@ -221,6 +275,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         projectFRC.delegate = self
         do {
             try projectFRC.performFetch()
+            
         } catch {
             fatalError("The fetch for project could not be performed: \(error.localizedDescription)")
         }
@@ -248,6 +303,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         setupStagesSnapshot()
         setupDocumentsSnapshot()
         setupGeneralProjectDetails()
+        displayNotesContainer()
     }
     
 }

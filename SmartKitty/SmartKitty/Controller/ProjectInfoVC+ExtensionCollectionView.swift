@@ -27,6 +27,8 @@ extension ProjectInfoVC: UICollectionViewDelegate {
             cell.progressLabel.text = String(roundedProgress) + "%"
             cell.stageProgressView.progress = Float(stage.progress)/100
             cell.layer.cornerRadius = 10
+            cell.layer.borderWidth = 1
+            cell.layer.borderColor = UIColor.systemGray3.cgColor
             return cell
         }
         setupStagesSnapshot()
@@ -59,7 +61,7 @@ extension ProjectInfoVC: UICollectionViewDelegate {
             trailing: 1)
         
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.93),
+            widthDimension: .fractionalWidth(0.83),
             heightDimension: .estimated(120.0))
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
@@ -74,6 +76,7 @@ extension ProjectInfoVC: UICollectionViewDelegate {
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12)
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
@@ -95,6 +98,8 @@ extension ProjectInfoVC: UICollectionViewDelegate {
             
             //Setup cell appearance
             cell.layer.cornerRadius = 10
+            cell.layer.borderWidth = 1
+            cell.layer.borderColor = UIColor.systemGray3.cgColor
             return cell
         }
         setupDocumentsSnapshot()
@@ -121,12 +126,12 @@ extension ProjectInfoVC: UICollectionViewDelegate {
         
         fullPhotoItem.contentInsets = NSDirectionalEdgeInsets(
             top: 0,
-            leading: 14,
+            leading: 10,
             bottom: 0,
-            trailing: 0)
+            trailing: 5)
         
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.93),
+            widthDimension: .fractionalWidth(0.83),
             heightDimension: .estimated(220.0))
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
@@ -134,8 +139,10 @@ extension ProjectInfoVC: UICollectionViewDelegate {
             count: 2
         )
         
+        
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12)
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
