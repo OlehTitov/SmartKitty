@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="SkAssignedExecutive" representedClassName="SkAssignedExecutive" syncable="YES" codeGenerationType="class">
+        <attribute name="assignedWordsCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="progress" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="supplierType" optional="YES" attributeType="String"/>
+        <relationship name="documentWorkflow" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkDocumentWorkflowStage" inverseName="executives" inverseEntity="SkDocumentWorkflowStage"/>
+    </entity>
+    <entity name="SkDocument" representedClassName="SkDocument" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" optional="YES" attributeType="String"/>
+        <attribute name="deadline" optional="YES" attributeType="String"/>
+        <attribute name="documentDisassemblingStatus" optional="YES" attributeType="String"/>
+        <attribute name="externalId" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="metaInfo" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="placeholdersAreEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="pretranslateCompleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="sourceLanguage" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="statusModificationDate" optional="YES" attributeType="String"/>
+        <attribute name="targetLanguage" optional="YES" attributeType="String"/>
+        <attribute name="wordsCount" optional="YES" attributeType="String"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkProject" inverseName="documents" inverseEntity="SkProject"/>
+        <relationship name="workflows" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SkDocumentWorkflowStage" inverseName="document" inverseEntity="SkDocumentWorkflowStage"/>
+    </entity>
+    <entity name="SkDocumentWorkflowStage" representedClassName="SkDocumentWorkflowStage" syncable="YES" codeGenerationType="class">
+        <attribute name="progress" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="unassignedWordsCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="wordsTranslated" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="document" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkDocument" inverseName="workflows" inverseEntity="SkDocument"/>
+        <relationship name="executives" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SkAssignedExecutive" inverseName="documentWorkflow" inverseEntity="SkAssignedExecutive"/>
+    </entity>
+    <entity name="SkProject" representedClassName="SkProject" syncable="YES" codeGenerationType="class">
+        <attribute name="clientId" optional="YES" attributeType="String"/>
+        <attribute name="createdByUserEmail" optional="YES" attributeType="String"/>
+        <attribute name="createdByUserId" optional="YES" attributeType="String"/>
+        <attribute name="creationDate" optional="YES" attributeType="String"/>
+        <attribute name="deadline" optional="YES" attributeType="String"/>
+        <attribute name="deadlineAsDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="domainId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dummyText" optional="YES" attributeType="String"/>
+        <attribute name="externalTag" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="isStarred" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isToday" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isTomorrow" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="modificationDate" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="number" optional="YES" attributeType="String"/>
+        <attribute name="sourceLanguage" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="statusModificationDate" optional="YES" attributeType="String"/>
+        <attribute name="targetLanguages" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <relationship name="documents" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SkDocument" inverseName="project" inverseEntity="SkDocument"/>
+        <relationship name="projectWorkflows" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SkProjectWorkflowStage" inverseName="project" inverseEntity="SkProjectWorkflowStage"/>
+    </entity>
+    <entity name="SkProjectWorkflowStage" representedClassName="SkProjectWorkflowStage" syncable="YES" codeGenerationType="class">
+        <attribute name="progress" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="stageNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="stageType" optional="YES" attributeType="String"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkProject" inverseName="projectWorkflows" inverseEntity="SkProject"/>
+    </entity>
+    <elements>
+        <element name="SkAssignedExecutive" positionX="-126" positionY="234" width="128" height="118"/>
+        <element name="SkDocument" positionX="71.109375" positionY="64.11328125" width="128" height="283"/>
+        <element name="SkDocumentWorkflowStage" positionX="-135" positionY="225" width="128" height="133"/>
+        <element name="SkProject" positionX="-347.48046875" positionY="64.484375" width="218" height="388"/>
+        <element name="SkProjectWorkflowStage" positionX="-117" positionY="243" width="128" height="103"/>
+    </elements>
+</model>

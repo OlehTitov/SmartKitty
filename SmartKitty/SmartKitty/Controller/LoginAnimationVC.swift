@@ -212,12 +212,16 @@ class LoginAnimationVC: UIViewController, NSFetchedResultsControllerDelegate {
         
         ///Create SkProjectWorkflowStage entities
         if let projectWorkflowStages = prj.workflowStages {
+            var index = 0
             for stage in projectWorkflowStages {
                 let projectStage = SkProjectWorkflowStage(context: DataController.shared.viewContext)
                 projectStage.stageType = stage.stageType
                 projectStage.progress = stage.progress ?? 0.0
                 projectStage.project = newProject
+                index += 1
+                projectStage.stageNumber = Int64(index)
             }
+            index = 0
         }
         
         ///Create SkDocument entities

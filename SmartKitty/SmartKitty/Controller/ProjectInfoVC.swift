@@ -156,6 +156,10 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     
     @objc func assignTapped() {
         print("assign button tapped")
+        let nextVC = AssignProjectStage()
+        nextVC.selectedProject = selectedProject
+        //self.navigationController?.pushViewController(nextVC, animated: true)
+        present(nextVC, animated: true, completion: nil)
     }
     
     //MARK: - SETUP PROJECT DETAILS
@@ -252,7 +256,8 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     //MARK: - SETUP STAGE FRC
        fileprivate func setupStageFRC() {
            let stageFetchRequest: NSFetchRequest<SkProjectWorkflowStage> = SkProjectWorkflowStage.fetchRequest()
-           stageFetchRequest.sortDescriptors = []
+        let sortDescriptor = NSSortDescriptor(key: "stageNumber", ascending: true)
+        stageFetchRequest.sortDescriptors = [sortDescriptor]
            let stagePredicate = NSPredicate(format: "project == %@", selectedProject)
            stageFetchRequest.predicate = stagePredicate
            stageFRC = NSFetchedResultsController(fetchRequest: stageFetchRequest, managedObjectContext: DataController.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
