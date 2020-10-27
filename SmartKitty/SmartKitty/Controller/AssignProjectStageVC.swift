@@ -142,7 +142,16 @@ class AssignProjectStage: UIViewController, NSFetchedResultsControllerDelegate {
     @objc func nextButtonTapped() {
         
         if stageIsSelected == true {
-            self.dismiss(animated: false, completion: nil)
+            //Access presenting VC and store selected stage
+            let parentVC = self.presentingViewController as! TabBarVC
+            let childOfTab = parentVC.children[0]
+            let childrenOfNav = childOfTab.children
+            let projectInfoVC = childrenOfNav[2] as! ProjectInfoVC
+            projectInfoVC.selectedStage = self.stageNumber
+            //Dismiss current VC and post Notification to present next VC
+            self.dismiss(animated: true) {
+                NotificationCenter.default.post(name: .didSelectedProjectStageForAssignment, object: nil)
+            }
         } else {
             let alert = Alerts.errorAlert(title: "No stage is selected", message: "Please select a stage")
             present(alert, animated: true)

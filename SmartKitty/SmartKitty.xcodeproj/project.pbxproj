@@ -24,6 +24,9 @@
 		7C48DA0D24FCFFA10020D447 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48DA0C24FCFFA10020D447 /* SecondaryButton.swift */; };
 		7C4D9EE02541A0F0009867BA /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D9EDF2541A0F0009867BA /* NextButton.swift */; };
 		7C4D9EE225428DEE009867BA /* AssignSelectDocsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D9EE125428DEE009867BA /* AssignSelectDocsVC.swift */; };
+		7C4D9EE52542AFBF009867BA /* NotificationNames+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D9EE42542AFBF009867BA /* NotificationNames+Extension.swift */; };
+		7C4D9EE82542E782009867BA /* SwitchForDocs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D9EE72542E782009867BA /* SwitchForDocs.swift */; };
+		7C4D9EEA2547DC48009867BA /* SearchMyTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D9EE92547DC48009867BA /* SearchMyTeam.swift */; };
 		7C5756EF24ED558F00346B1E /* projectStages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756EE24ED558F00346B1E /* projectStages.swift */; };
 		7C5756F124EE9A6800346B1E /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756F024EE9A6800346B1E /* TabBarVC.swift */; };
 		7C5756F424EED38300346B1E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5756F324EED38300346B1E /* Colors.swift */; };
@@ -87,6 +90,9 @@
 		7C48DA0C24FCFFA10020D447 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		7C4D9EDF2541A0F0009867BA /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		7C4D9EE125428DEE009867BA /* AssignSelectDocsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignSelectDocsVC.swift; sourceTree = "<group>"; };
+		7C4D9EE42542AFBF009867BA /* NotificationNames+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationNames+Extension.swift"; sourceTree = "<group>"; };
+		7C4D9EE72542E782009867BA /* SwitchForDocs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchForDocs.swift; sourceTree = "<group>"; };
+		7C4D9EE92547DC48009867BA /* SearchMyTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMyTeam.swift; sourceTree = "<group>"; };
 		7C5756EE24ED558F00346B1E /* projectStages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projectStages.swift; sourceTree = "<group>"; };
 		7C5756F024EE9A6800346B1E /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		7C5756F324EED38300346B1E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -158,8 +164,25 @@
 			isa = PBXGroup;
 			children = (
 				7C48D9FE24F51FAF0020D447 /* ProjectNote.swift */,
+				7C4D9EE92547DC48009867BA /* SearchMyTeam.swift */,
 			);
 			path = "SC Requests";
+			sourceTree = "<group>";
+		};
+		7C4D9EE32542AF82009867BA /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				7C4D9EE42542AFBF009867BA /* NotificationNames+Extension.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		7C4D9EE62542E74C009867BA /* Switches */ = {
+			isa = PBXGroup;
+			children = (
+				7C4D9EE72542E782009867BA /* SwitchForDocs.swift */,
+			);
+			path = Switches;
 			sourceTree = "<group>";
 		};
 		7C5756F224EED36100346B1E /* Colors */ = {
@@ -269,6 +292,8 @@
 		7CD6835A24D86A800091ED52 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7C4D9EE62542E74C009867BA /* Switches */,
+				7C4D9EE32542AF82009867BA /* Notifications */,
 				7CC6A2002523CF0C009CC468 /* Containers */,
 				7C5756F824EEDF7300346B1E /* TextField */,
 				7C5756F524EED49A00346B1E /* Buttons */,
@@ -487,6 +512,7 @@
 				7CD6836624D9D1200091ED52 /* DismissKeyboardDelegate.swift in Sources */,
 				7C70CA6B2533A3E500F0F182 /* AssignProjectStageVC.swift in Sources */,
 				7C48DA0324F662100020D447 /* UserType.swift in Sources */,
+				7C4D9EE82542E782009867BA /* SwitchForDocs.swift in Sources */,
 				7CD6836E24DAC6490091ED52 /* SmartKitty.xcdatamodeld in Sources */,
 				7CF4C4FD24E43ACD00F9FC02 /* projectStatuses.swift in Sources */,
 				7C46019E24E03B9C00CCDA63 /* HTTPStatusCodes.swift in Sources */,
@@ -511,6 +537,7 @@
 				7CD6836324D9CB090091ED52 /* AccountResponse.swift in Sources */,
 				7C5756F724EED4BC00346B1E /* PrimaryButton.swift in Sources */,
 				7C48DA0524F662820020D447 /* InternetStatus.swift in Sources */,
+				7C4D9EE52542AFBF009867BA /* NotificationNames+Extension.swift in Sources */,
 				7C6B29A624FEEDEC00284E4B /* BlackButton.swift in Sources */,
 				7CD6836B24DAA9CE0091ED52 /* DataController.swift in Sources */,
 				7C4601A124E054BA00CCDA63 /* Alerts.swift in Sources */,
@@ -530,6 +557,7 @@
 				7C6B29A824FF595800284E4B /* InstructionsVC.swift in Sources */,
 				7C48D9F824F3CBBF0020D447 /* ProjectStagesCell.swift in Sources */,
 				7CD6836024D96A810091ED52 /* SCClient.swift in Sources */,
+				7C4D9EEA2547DC48009867BA /* SearchMyTeam.swift in Sources */,
 				7C48D9FF24F51FAF0020D447 /* ProjectNote.swift in Sources */,
 				7CF4C50024E4405800F9FC02 /* ProjectStatusesData.swift in Sources */,
 				7CD6834824D8532E0091ED52 /* SceneDelegate.swift in Sources */,

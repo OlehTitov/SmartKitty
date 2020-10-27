@@ -36,6 +36,7 @@ class SCClient {
         case teamMember = "/api/integration/v1/account/myTeam"
         case project = "/api/integration/v1/project"
         case client = "/api/integration/v2/client"
+        case searchMyTeam = "/api/integration/v1/account/searchMyTeam"
     }
     
     class func urlComponents(path: Path) -> URL {
@@ -118,8 +119,11 @@ class SCClient {
             } else {
                 completion(false, error)
             }
-            
         }
+    }
+    
+    class func searchMyTeam() {
+        
     }
     
     class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, HTTPURLResponse?, Error?) -> Void) -> URLSessionDataTask {
@@ -169,6 +173,7 @@ class SCClient {
     
     class func taskForPostRequest<RequestType: Encodable>(url: URL, body: RequestType, method: String, completion: @escaping (String?, HTTPURLResponse?, Error?) -> Void) {
         var request = URLRequest(url: url)
+        //There are might be POST or PUT here
         request.httpMethod = method
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Basic \(Auth.authKey)", forHTTPHeaderField: "Authorization")

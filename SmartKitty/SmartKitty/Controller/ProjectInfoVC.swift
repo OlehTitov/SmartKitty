@@ -37,6 +37,10 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         return df
     }()
     
+    //Assignment
+    var selectedStage = 0
+    var selectedDocumentsIds = [String]()
+    
     //MARK: - OUTLETS
     @IBOutlet weak var projectTitle: UILabel!
     @IBOutlet weak var projectProgress: UILabel!
@@ -65,6 +69,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         setupStageFRC()
         setupDocumentFRC()
         displayNotesContainer()
+        addNotificationObservers()
     }
     
     //MARK: - VIEW DID APPEAR
@@ -80,6 +85,11 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         stageFRC = nil
         documentFRC = nil
         projectFRC = nil
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //removeObserver(<#T##observer: NSObject##NSObject#>, forKeyPath: <#T##String#>)
     }
     
     //MARK: - VIEW DID LOAD
@@ -106,6 +116,28 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
         copyToClipboardConfirmation.isHidden = true
         displayNotesContainer()
         addAssignButton()
+        
+    }
+    //MARK: - NOTIFICATIONS
+    func addNotificationObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(onSelectingStageForAssignment(_:)), name: .didSelectedProjectStageForAssignment, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onSelectingDocumentsForAssignment(_:)), name: .didSelectedDocumentsForAssignment, object: nil)
+    }
+    
+    @objc func onSelectingStageForAssignment(_ notification: Notification) {
+        //Present modal view to select documents for Assignment
+        print("Selected stage is: \(selectedStage)")
+        let assignSelectDocsVC = AssignSelectDocs()
+        assignSelectDocsVC.selectedProject = self.selectedProject
+        present(assignSelectDocsVC, animated: true, completion: nil)
+    }
+    
+    @objc func onSelectingDocumentsForAssignment(_ notification: Notification) {
+        //Present modal view to select linguists
+        print("Selected docs are: \(selectedDocumentsIds)")
+        //let assignSelectDocsVC = AssignSelectDocs()
+        //assignSelectDocsVC.selectedProject = self.selectedProject
+        //present(assignSelectDocsVC, animated: true, completion: nil)
     }
     
     //MARK: - ADD A NOTE
