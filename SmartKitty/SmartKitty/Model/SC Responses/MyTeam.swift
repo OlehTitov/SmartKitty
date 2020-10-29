@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - MyTeam
-struct MyTeam: Codable {
+struct MyTeam: Codable, Hashable {
     let id, email, firstName, lastName: String?
     let externalId: String?
     let services: [Service]?
@@ -17,7 +17,7 @@ struct MyTeam: Codable {
 }
 
 // MARK: - Service
-struct Service: Codable {
+struct Service: Codable, Hashable {
     let serviceType, sourceLanguage, targetLanguage: String?
     let pricePerUnit: Double?
     let currency: String?

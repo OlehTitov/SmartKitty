@@ -122,8 +122,14 @@ class SCClient {
         }
     }
     
-    class func searchMyTeam() {
-        
+    class func searchMyTeam(method: String, searchRequest: SearchMyTeam, completion: @escaping ([MyTeam]?, Error?) -> Void) {
+        taskForPostRequestWithResponseType(url: urlComponents(path: .searchMyTeam), responseType: [MyTeam].self, body: searchRequest, method: method) { (response, error) in
+            if let response = response {
+                completion(response, nil)
+            } else {
+                completion(nil, error)
+            }
+        }
     }
     
     class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, HTTPURLResponse?, Error?) -> Void) -> URLSessionDataTask {
@@ -192,6 +198,41 @@ class SCClient {
             print(rawServerResponse)
             DispatchQueue.main.async {
                 completion(rawServerResponse, httpResponse, nil)
+            }
+            
+        }
+        task.resume()
+    }
+    
+    class func taskForPostRequestWithResponseType<RequestType: Encodable, ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: RequestType, method: String, completion: @escaping (ResponseType?, Error?) -> Void) {
+        var request = URLRequest(url: url)
+        //There are might be POST or PUT here
+        request.httpMethod = method
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Basic \(Auth.authKey)", forHTTPHeaderField: "Authorization")
+        let body = body
+        request.httpBody = try! JSONEncoder().encode(body)
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let httpResponse = response as? HTTPURLResponse
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    print(httpResponse ?? "")
+                    completion(nil, error)
+                }
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let responseObject = try decoder.decode(ResponseType.self, from: data)
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
+                }
+            } catch {
+                let rawServerResponse = String(decoding: data, as: UTF8.self)
+                print(rawServerResponse)
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
             }
             
         }

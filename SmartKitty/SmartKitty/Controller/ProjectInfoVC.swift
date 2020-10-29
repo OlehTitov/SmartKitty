@@ -40,6 +40,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     //Assignment
     var selectedStage = 0
     var selectedDocumentsIds = [String]()
+    var selectedLinguistsIds = [String]()
     
     //MARK: - OUTLETS
     @IBOutlet weak var projectTitle: UILabel!
@@ -89,7 +90,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //removeObserver(<#T##observer: NSObject##NSObject#>, forKeyPath: <#T##String#>)
+        
     }
     
     //MARK: - VIEW DID LOAD
@@ -122,6 +123,7 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     func addNotificationObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(onSelectingStageForAssignment(_:)), name: .didSelectedProjectStageForAssignment, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onSelectingDocumentsForAssignment(_:)), name: .didSelectedDocumentsForAssignment, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onSelectingLinguistsForAssignment(_:)), name: .didSelectedLinguistsForAssignment, object: nil)
     }
     
     @objc func onSelectingStageForAssignment(_ notification: Notification) {
@@ -135,9 +137,20 @@ class ProjectInfoVC: UIViewController, NSFetchedResultsControllerDelegate {
     @objc func onSelectingDocumentsForAssignment(_ notification: Notification) {
         //Present modal view to select linguists
         print("Selected docs are: \(selectedDocumentsIds)")
-        //let assignSelectDocsVC = AssignSelectDocs()
-        //assignSelectDocsVC.selectedProject = self.selectedProject
-        //present(assignSelectDocsVC, animated: true, completion: nil)
+        let assignSelectLinguistVC = AssignSelectLinguistVC()
+        let stages = stageFRC.fetchedObjects ?? []
+        assignSelectLinguistVC.serviceType = stages[selectedStage - 1].stageType ?? ""
+        assignSelectLinguistVC.sourceLang = selectedProject.sourceLanguage ?? ""
+        let targetLanguages = selectedProject.targetLanguages ?? []
+        assignSelectLinguistVC.targetLang = targetLanguages[0]
+        present(assignSelectLinguistVC, animated: true, completion: nil)
+    }
+    
+    @objc func onSelectingLinguistsForAssignment(_ notification: Notification) {
+        //Present modal view to select linguists
+        print("Selected linguists are: \(selectedLinguistsIds)")
+        
+        //present(assignSelectLinguistVC, animated: true, completion: nil)
     }
     
     //MARK: - ADD A NOTE

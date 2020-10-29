@@ -11,5 +11,6 @@ import Foundation
 extension Notification.Name {
     static let didSelectedProjectStageForAssignment = Notification.Name("didSelectedProjectStageForAssignment")
     static let didSelectedDocumentsForAssignment = Notification.Name("didSelectedDocumentsForAssignment")
+    static let didSelectedLinguistsForAssignment = Notification.Name("didSelectedLinguistsForAssignment")
     
 }

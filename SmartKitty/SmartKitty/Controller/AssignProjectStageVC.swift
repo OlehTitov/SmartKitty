@@ -127,9 +127,9 @@ class AssignProjectStage: UIViewController, NSFetchedResultsControllerDelegate {
         nextButton.setTitle("Next", for: .normal)
         //nextButton.backgroundColor = .mediumSlateBlue
         nextButton.snp.makeConstraints { (make) -> Void in
-            make.left.equalToSuperview().offset(20)
-            make.right.equalToSuperview().offset(-20)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin).offset(-24)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin)
             make.top.equalTo(self.stagesTableView.snp.bottom)
             make.height.equalTo(50)
         }

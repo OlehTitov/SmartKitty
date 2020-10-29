@@ -22,7 +22,7 @@ class NextButton: UIButton {
     
     func setupButton() {
         backgroundColor = .mediumSlateBlue
-        layer.cornerRadius = 10
+        //layer.cornerRadius = 10
         tintColor = UIColor.white
         
     }
